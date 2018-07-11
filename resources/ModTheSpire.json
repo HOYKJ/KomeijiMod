@@ -1,0 +1,13 @@
+﻿{
+    "modid": "Thmod",
+    
+"name": "Touhoumod",
+    
+"author_list": ["hoykj"],
+    
+"description": "目前處於測試階段,加入新角色.如有bug或失衡,歡迎反饋. 本mod和其它部分mod可能存在部分衝突",
+    
+"version": "0.0.7",
+    
+"sts_version": "05-05-2018"
+  }

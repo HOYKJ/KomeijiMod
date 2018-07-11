@@ -1,0 +1,17 @@
+﻿{
+    "CampfireSweepEffect": {
+    "TEXT": [
+      "转换一张卡"
+       ]
+  },
+  "DiscardAndDamageAction": {
+    "TEXT": [
+      "弃一张卡"
+    ]
+  },
+  "FromDeckToHandAction": {
+    "TEXT": [
+      "选一张卡加入手牌"
+    ]
+  }
+}

@@ -1,0 +1,373 @@
+﻿{
+  "AbyssNovaPower": {
+    "NAME": "核充能!",
+    "DESCRIPTIONS": [
+      " #rWarning!Warning!Warning! "
+    ]
+  },
+  "ChantPower": {
+    "NAME": "吟唱",
+    "DESCRIPTIONS": [
+      "1回合后发挥效果."
+    ]
+  },
+    "CounterAttackPower": {
+      "NAME": "Perfact Maid",
+      "DESCRIPTIONS": [
+        "闪避下 #b1 次攻击,并对攻击者造成伤害,获得1 #rP ."
+      ]
+    },
+  "DashPower": {
+    "NAME": "擦弹!",
+    "DESCRIPTIONS": [
+      "闪避 #b1 次伤害,获得1 #rP .",
+      "闪避 #b"," 次伤害,获得1 #rP ."
+    ]
+  },
+  "DemonsForkAccumulate": {
+    "NAME": "蓄力",
+    "DESCRIPTIONS": [
+      "蓄力ing."
+    ]
+  },
+  "FreezePower": {
+    "NAME": "极寒",
+    "DESCRIPTIONS": [
+      "只要接触到就会受到伤害"
+    ]
+  },
+  "FuubiPower": {
+    "NAME": "幻想风靡",
+    "DESCRIPTIONS": [
+      "你现在很快快快快快快快快快快"
+    ]
+  },
+  "GasuOrimonoPower": {
+    "NAME": "瓦斯织物之玉",
+    "DESCRIPTIONS": [
+      "有 #g毒 ,危险!(自己提前喝了解药)."
+    ]
+  },
+  "HagoromoKuPower": {
+    "NAME": "擦弹!",
+    "DESCRIPTIONS": [
+      "打出技能卡后就会获得 格挡 ."
+    ]
+  },
+  "HeiyuPower": {
+    "NAME": "病气平愈",
+    "DESCRIPTIONS": [
+      "每个回合结束回复 #b2 点生命,受到伤害终止."
+    ]
+  },
+  "HenyouMirumePower": {
+    "NAME": "静观其变之眼",
+    "DESCRIPTIONS": [
+      "在你攻击后追加 #b10 点伤害."
+    ]
+  },
+  "HibernatePower": {
+    "NAME": "冬眠",
+    "DESCRIPTIONS": [
+      "回复生命,不能行动."
+    ]
+  },
+  "IceTornadoPower": {
+    "NAME": "Ice Tornado",
+    "DESCRIPTIONS": [
+      "对所有敌人造成伤害."
+    ]
+  },
+  "JyouchiPower": {
+    "NAME": "常置阵",
+    "DESCRIPTIONS": [
+      "在敌人攻击后触发效果."
+    ]
+  },
+  "JyouchiRei": {
+    "NAME": "紧缚灵",
+    "DESCRIPTIONS": [
+      "在受到伤害后爆发."
+    ]
+  },
+  "KamaitachiPower": {
+    "NAME": "镰鼬 Veiling",
+    "DESCRIPTIONS": [
+      "你打出攻击后抽 #b1 张卡."
+    ]
+  },
+  "KoKeiPower": {
+    "NAME": "虎劲",
+    "DESCRIPTIONS": [
+      "下 #b1 次攻击造成 #y2 倍伤害."
+    ]
+  },
+  "KyoufuSaiminPower": {
+    "NAME": "恐怖催眠术",
+    "DESCRIPTIONS": [
+      "记录接下来2回合内受到的伤害,结束时失去等额的生命."
+    ]
+  },
+  "LagDamagePower": {
+    "NAME": "延迟伤害",
+    "DESCRIPTIONS": [
+      "下个回合开始时,它将受到伤害"
+    ]
+  },
+  "LunaticRedEyesPower": {
+    "NAME": "幻陇月睨",
+    "DESCRIPTIONS": [
+      "当你使用一张不消耗P点的卡后,将 #b1 张带有 消耗 和 虚无 的复制加入你的手牌."
+    ]
+  },
+  "MakuraSekiPower": {
+    "NAME": "枕石漱流",
+    "DESCRIPTIONS": [
+      "受到攻击后,在下回合返还 #b「漱石枕流」 ."
+    ]
+  },
+    "MindReadingPower": {
+      "NAME": "读心",
+      "DESCRIPTIONS": [
+	"在每个回合开始时,根据敌人的 #b意图 获得属性."
+      ]
+    },
+  "MusuNoTegataPower": {
+    "NAME": "无寿之国的文书",
+    "DESCRIPTIONS": [
+      "回合后受到伤害,在你受到伤害后终止."
+    ]
+  },
+  "MusuNoYumePower": {
+    "NAME": "无寿之梦",
+    "DESCRIPTIONS": [
+      "持续受到伤害,在你受到伤害后终止."
+    ]
+  },
+    "NingyouPower": {
+      "NAME": "人偶",
+      "DESCRIPTIONS": [
+	"爱丽丝做的人偶,为什么会出现在这呢?"
+      ]
+    },
+  "PointPower": {
+    "NAME": "P点",
+    "DESCRIPTIONS": [
+      "当你攻击5次后,获得1点 #rP 点(符力)"
+    ]
+  },
+  "RokkonShyoujyouDefend": {
+    "NAME": "六根清净斩",
+    "DESCRIPTIONS": [
+      "弹反下1次攻击,获得1 #rP ."
+    ]
+  },
+  "SoulPower": {
+    "NAME": "灵魂",
+    "DESCRIPTIONS": [
+      "受到滋养,持续回复生命."
+    ]
+  },
+  "StardustAccumulate": {
+    "NAME": "蓄力",
+    "DESCRIPTIONS": [
+      "蓄力ing"
+    ]
+  },
+  "StrengthDownPower": {
+    "NAME": "Missing Purple Power",
+    "DESCRIPTIONS": [
+      "回合后失去",
+      " 力量 ,不能获得格挡."
+    ]
+  },
+  "StrengthEndPower": {
+    "NAME": "Missing Power",
+    "DESCRIPTIONS": [
+      "回合结束时失去",
+      " 力量 ."
+    ]
+  },
+  "TenmizuPower": {
+    "NAME": "天水",
+    "DESCRIPTIONS": [
+      "一两滴都是没用的,但是三滴的话..."
+    ]
+  },
+    "TimeLockPower": {
+      "NAME": "时间锁定",
+      "DESCRIPTIONS": [
+	"它的时间被锁定了"
+      ]
+    },
+    "WocchiPower": {
+      "NAME": "停表",
+      "DESCRIPTIONS": [
+	"下个回合开始时,将时间停止."
+      ]
+    },
+  "WumiGaWareruPower": {
+    "NAME": "开海",
+    "DESCRIPTIONS": [
+      "回合内持续造成",
+      "点伤害"
+    ]
+  },
+  "YuumeiPower": {
+    "NAME": "半灵",
+    "DESCRIPTIONS": [
+      "你的 #y攻击 将被再次打出"
+    ]
+  },
+
+
+
+    "KaiSei": {
+      "NAME": "快晴",
+      "DESCRIPTIONS": [
+	"在空中飞行程度的天气"
+      ]
+    },
+    "KiriSame": {
+      "NAME": "雾雨",
+      "DESCRIPTIONS": [
+	"符卡就是火力程度的天气"
+      ]
+    },
+    "DonTen": {
+      "NAME": "云天",
+      "DESCRIPTIONS": [
+	"灵活地使用符卡程度的天气"
+      ]
+    },
+    "SouTen": {
+      "NAME": "苍天",
+      "DESCRIPTIONS": [
+	"连续技变得锐利程度的天气"
+      ]
+    },
+    "Haku": {
+      "NAME": "雹",
+      "DESCRIPTIONS": [
+	"灵力强化程度的天气"
+      ]
+    },
+    "HanaGumo": {
+      "NAME": "花云",
+      "DESCRIPTIONS": [
+	"能回避打击程度的天气"
+      ]
+    },
+    "NouMu": {
+      "NAME": "浓雾",
+      "DESCRIPTIONS": [
+	"变得像吸血鬼程度的天气"
+      ]
+    },
+    "Yuki": {
+      "NAME": "雪",
+      "DESCRIPTIONS": [
+	"变得像幽灵程度的天气"
+      ]
+    },
+    "TenkiYume": {
+      "NAME": "太阳雨",
+      "DESCRIPTIONS": [
+	"防御变得诡异程度的天气"
+      ]
+    },
+    "Soyuki": {
+      "NAME": "疏雨",
+      "DESCRIPTIONS": [
+	"必杀技全开程度的天气"
+      ]
+    },
+    "Fuuu": {
+      "NAME": "风雨",
+      "DESCRIPTIONS": [
+	"借助风之力程度的天气"
+      ]
+    },
+    "SeiRan": {
+      "NAME": "晴岚",
+      "DESCRIPTIONS": [
+	"手卡不可见程度的天气"
+      ]
+    },
+    "KawaGiri": {
+      "NAME": "川雾",
+      "DESCRIPTIONS": [
+	"距离变得诡异程度的天气"
+      ]
+    },
+    "TaiFuu": {
+      "NAME": "台风",
+      "DESCRIPTIONS": [
+	"胜负变得疯狂程度的天气"
+      ]
+    },
+    "Nagi": {
+      "NAME": "无风",
+      "DESCRIPTIONS": [
+	"受伤能恢复程度的天气"
+      ]
+    },
+    "DaiyamondoDasuto": {
+      "NAME": "钻石尘",
+      "DESCRIPTIONS": [
+	"睡着了就会死程度的天气"
+      ]
+    },
+    "Kousa": {
+      "NAME": "黄沙",
+      "DESCRIPTIONS": [
+	"counter hit程度的天气"
+      ]
+    },
+    "RetsuJitsu": {
+      "NAME": "烈日",
+      "DESCRIPTIONS": [
+	"烧尽一切程度的天气"
+      ]
+    },
+    "Tsume": {
+      "NAME": "梅雨",
+      "DESCRIPTIONS": [
+	"在地面上弹起程度的天气"
+      ]
+    },
+    "KyoKkou": {
+      "NAME": "极光",
+      "DESCRIPTIONS": [
+	"不知道会产生什么程度的天气"
+      ]
+    },
+
+
+
+  "BlueAbnormity": {
+    "NAME": "负面效果",
+    "DESCRIPTIONS": [
+      "效果不明"
+    ]
+  },
+  "GreenAbnormity": {
+    "NAME": "负面效果",
+    "DESCRIPTIONS": [
+      "效果不明"
+    ]
+  },
+  "RedAbnormity": {
+    "NAME": "负面效果",
+    "DESCRIPTIONS": [
+      "效果不明"
+    ]
+  },
+  "HauntPower": {
+    "NAME": "负面效果",
+    "DESCRIPTIONS": [
+      "效果不明"
+    ]
+  }
+  
+  }
