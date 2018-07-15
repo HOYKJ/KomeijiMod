@@ -1,0 +1,14 @@
+﻿{
+    "NingyouOrb": {
+    "NAME":"人偶",
+    "DESCRIPTION":[
+      "在你的回合结束时，为你提供 #b",
+      " 点 #y格挡 ."
+    ]
+  },
+  "DiscardAndDamageAction": {
+    "TEXT": [
+      "弃一张卡"
+    ]
+  }
+}

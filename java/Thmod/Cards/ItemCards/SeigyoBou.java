@@ -29,7 +29,7 @@ public class SeigyoBou extends AbstractItemCards {
             if (p.getPower("PointPower").amount >= 1) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 3), 3));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, -1), -1));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

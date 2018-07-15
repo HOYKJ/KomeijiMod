@@ -36,7 +36,7 @@ public class BurariHaieki extends AbstractSpellCards {
                     AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     AbstractDungeon.actionManager.addToTop(new WaitAction(0.1F));
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

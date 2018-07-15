@@ -36,7 +36,7 @@ public class FusekiShinmei extends AbstractSpellCards {
                 DevConsole.logger.info("hp"+((int)(p.maxHealth * moper)));
                 m.currentHealth = (int)(m.maxHealth * plper);
                 m.healthBarUpdatedEvent();
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

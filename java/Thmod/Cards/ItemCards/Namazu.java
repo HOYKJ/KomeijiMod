@@ -35,7 +35,7 @@ public class Namazu extends AbstractItemCards {
                         AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, 10, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     }
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

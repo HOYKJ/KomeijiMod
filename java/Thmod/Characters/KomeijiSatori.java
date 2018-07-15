@@ -13,8 +13,10 @@ import java.util.ArrayList;
 
 import Thmod.Cards.Dash_Komeiji;
 import Thmod.Cards.Defend_Komeiji;
+import Thmod.Cards.RareCards.EverywhereHibernate;
 import Thmod.Cards.UncommonCards.NarrowSpark;
 import Thmod.Cards.Strike_Komeiji;
+import Thmod.Cards.UncommonCards.NingyouSousou;
 import Thmod.Cards.UncommonCards.SeishiRoten;
 import Thmod.Patches.CharacterEnum;
 import Thmod.ThMod;
@@ -48,7 +50,7 @@ public class KomeijiSatori extends CustomPlayer {
         retVal.add(Defend_Komeiji.ID);
         retVal.add(Defend_Komeiji.ID);
         retVal.add(Dash_Komeiji.ID);
-//        retVal.add(NarrowSpark.ID);
+        retVal.add(EverywhereHibernate.ID);
 //        retVal.add(SeishiRoten.ID);
         return retVal;
     }
@@ -64,7 +66,7 @@ public class KomeijiSatori extends CustomPlayer {
 
     public static CharSelectInfo getLoadout() {
         return new CharSelectInfo("古明地 觉", "觉从一次昏迷中醒来后,发现自己处在一个不知名的高塔中, NL 她所有的,只有一本符卡规则,和记忆中零散的符卡.",
-                50, 50, 0, 99, 4,
+                50, 50, 5, 99, 4,
                 CharacterEnum.KomeijiSatori, getStartingRelics(), getStartingDeck(), false);
     }
 

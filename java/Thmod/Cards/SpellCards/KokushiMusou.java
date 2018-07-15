@@ -48,7 +48,7 @@ public class KokushiMusou extends AbstractSpellCards {
                         }
                     }
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

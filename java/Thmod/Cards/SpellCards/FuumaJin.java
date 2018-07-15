@@ -45,7 +45,7 @@ public class FuumaJin extends AbstractSpellCards {
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping)))
                         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new WeakPower(target, this.magicNumber,false), this.magicNumber));
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

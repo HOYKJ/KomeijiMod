@@ -26,7 +26,7 @@ public class YomeiIkubaku extends AbstractSpellCards {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 m.currentHealth = (m.currentHealth/2);
                 m.healthBarUpdatedEvent();
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

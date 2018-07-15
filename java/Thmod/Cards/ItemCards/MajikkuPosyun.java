@@ -24,7 +24,7 @@ public class MajikkuPosyun extends AbstractItemCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= 1) {
                 AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

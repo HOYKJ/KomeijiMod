@@ -47,7 +47,7 @@ public class HagoromoToki extends AbstractSpellCards {
                 AbstractDungeon.actionManager.addToTop(new DiscardAndDamageAction(p));
                 if (discarded)
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

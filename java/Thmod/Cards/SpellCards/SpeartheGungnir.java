@@ -38,7 +38,7 @@ public class SpeartheGungnir extends AbstractSpellCards {
                         this.damage += 2;
                     }
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

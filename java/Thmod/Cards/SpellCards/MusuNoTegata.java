@@ -35,7 +35,7 @@ public class MusuNoTegata extends AbstractSpellCards {
                         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target,p,new MusuNoTegataPower(target,this.magicNumber)));
                     }
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

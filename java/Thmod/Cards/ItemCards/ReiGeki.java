@@ -34,7 +34,7 @@ public class ReiGeki extends AbstractItemCards {
                     if (c.type == CardType.CURSE || c.type == CardType.STATUS)
                         AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

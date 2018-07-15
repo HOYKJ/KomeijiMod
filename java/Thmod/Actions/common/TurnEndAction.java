@@ -22,8 +22,8 @@ public class TurnEndAction extends AbstractGameAction {
         AbstractDungeon.player.releaseCard();
         AbstractDungeon.overlayMenu.endTurnButton.disable(true);
 
-        AbstractDungeon.actionManager.endTurn();
-        AbstractDungeon.topLevelEffects.add(new EnemyTurnEffect());
+//        AbstractDungeon.actionManager.endTurn();
+//        AbstractDungeon.topLevelEffects.add(new EnemyTurnEffect());
         this.isDone = true;
     }
 }

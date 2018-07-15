@@ -45,7 +45,7 @@ public class FusyokuKusuri extends AbstractItemCards {
 //                        }
 //                    });
 //                }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

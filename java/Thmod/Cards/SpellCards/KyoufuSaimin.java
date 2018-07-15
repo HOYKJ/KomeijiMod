@@ -43,7 +43,7 @@ public class KyoufuSaimin extends AbstractSpellCards {
                         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new KyoufuSaiminPower(target)));
                     }
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

@@ -28,7 +28,7 @@ public class IbukiHisyaku extends AbstractItemCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= 1) {
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 2));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

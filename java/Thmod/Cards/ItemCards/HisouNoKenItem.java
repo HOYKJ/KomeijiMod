@@ -120,7 +120,7 @@ public class HisouNoKenItem extends AbstractItemCards {
                     default:
                         break;
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
     }

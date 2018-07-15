@@ -119,7 +119,7 @@
     "DemonsDinnerFork":{
       "NAME": "回忆「Demon's Dinner Fork」",
       "DESCRIPTION": 
-	" 蓄力 ,对所有敌人造成 !M! ×回合数(最多3)的伤害."
+	" 蓄力 ,对所有敌人造成 !M! ×蓄力回合数(最多3)的伤害."
     },
     "FreezeToughMe":{
       "NAME": "回忆「Freeze Tough Me」",
@@ -134,7 +134,7 @@
     "GroundStardust":{
       "NAME": "回忆「Ground Stardust」",
       "DESCRIPTION": 
-	" 蓄力 ,对所有敌人造成 固定 6+3×回合数的伤害, 消耗 . 联想 ."
+	" 蓄力 ,对所有敌人造成 固定 6+3×蓄力回合数的伤害, 消耗 . 联想 ."
     },
     "HenyouMirume":{
       "NAME": "回忆「静观其变之眼」",
@@ -269,7 +269,7 @@
   "IceTornado": {
     "NAME": "回忆「Ice Tornado」",
     "DESCRIPTION":
-    "2回合内 无实体 ,并对所有敌人造成 !M! /( !M! +2)点 固定 伤害, 虚无 ."
+    "2回合内 无实体 ,并在回合结束时对所有敌人造成 !M! &( !M! +2)点 固定 伤害, 虚无 ."
   },
   "JigokuNoTaiyou": {
     "NAME": "回忆「地狱的人造太阳」",

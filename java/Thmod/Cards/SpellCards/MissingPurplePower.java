@@ -32,7 +32,7 @@ public class MissingPurplePower extends AbstractSpellCards {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 10), 10));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthDownPower(p, 10)));
                 AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(p));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

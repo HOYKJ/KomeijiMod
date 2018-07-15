@@ -36,11 +36,11 @@ public class HibernatePower extends AbstractPower {
 
     public void atEndOfTurn(boolean isPlayer) {
         if(isPlayer){
-            if(this.amount > 0){
+            if(this.amount > 1){
                 p.heal(this.healnum);
                 this.amount -= 1;
             }
-            else
+            else if(this.amount == 1)
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"HibernatePower"));
         }
     }

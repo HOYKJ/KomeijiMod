@@ -270,8 +270,8 @@ public class CardSelectAction extends AbstractGameAction
         if (this.duration == 0.5f) {
             if (this.random) {
                 this.cardsToShuffle = getRandomSpellCards(this.amount, false);
-                this.cardselect();
                 SpellCardsRule.selected = true;
+                this.cardselect();
             }
             else {
                 if (AbstractDungeon.cardRewardScreen.codexCard != null) {

@@ -32,7 +32,7 @@ public class Mireniamu extends AbstractSpellCards {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,-this.magicNumber),-this.magicNumber));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new VampirePower(p)));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

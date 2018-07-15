@@ -36,7 +36,7 @@ public class MirenKamai extends AbstractSpellCards {
                     AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(mo,p,new JyouchiRei(mo,1),1));
                 }
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

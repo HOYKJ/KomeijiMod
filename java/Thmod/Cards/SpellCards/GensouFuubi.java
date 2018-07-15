@@ -32,7 +32,7 @@ public class GensouFuubi extends AbstractSpellCards {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new FuubiStrike(), 1));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new FuubiPower(p,9),9));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

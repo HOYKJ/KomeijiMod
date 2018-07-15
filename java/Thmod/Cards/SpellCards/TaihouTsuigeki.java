@@ -36,7 +36,7 @@ public class TaihouTsuigeki extends AbstractSpellCards {
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, 6, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }
