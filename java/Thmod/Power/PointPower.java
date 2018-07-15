@@ -2,6 +2,7 @@ package Thmod.Power;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -40,6 +41,10 @@ public class PointPower extends AbstractPower {
     }
 
     public void atStartOfTurn() {
+        if (p.hasPower("PointPower")) {
+            if (p.getPower("PointPower").amount > 5)
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner,this.owner,"PointPower",(p.getPower("PointPower").amount - 5)));
+        }
         if(ThMod.StartSelectOpen)
             Start();
     }

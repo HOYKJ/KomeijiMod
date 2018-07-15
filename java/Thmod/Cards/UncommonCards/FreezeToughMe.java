@@ -43,6 +43,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
             this.initializeTitle();
             this.upgradeMagicNumber(2);
             this.upgradeBlock(5);
+            this.timesUpgraded += 1;
             this.upgraded = true;
         }
     }

@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.DevConsole;
+
 public class FusekiShinmei extends AbstractSpellCards {
     public static final String ID = "FusekiShinmei";
     private static final CardStrings cardStrings;
@@ -26,10 +28,14 @@ public class FusekiShinmei extends AbstractSpellCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
-                moper = (m.currentHealth/m.maxHealth);
-                plper = (p.currentHealth/p.maxHealth);
+                moper = ((float)m.currentHealth/(float)m.maxHealth);
+                plper = ((float)p.currentHealth/(float)p.maxHealth);
+                DevConsole.logger.info("moper"+moper);
                 p.currentHealth = (int)(p.maxHealth * moper);
+                p.healthBarUpdatedEvent();
+                DevConsole.logger.info("hp"+((int)(p.maxHealth * moper)));
                 m.currentHealth = (int)(m.maxHealth * plper);
+                m.healthBarUpdatedEvent();
                 AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }

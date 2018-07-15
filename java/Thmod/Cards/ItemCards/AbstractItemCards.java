@@ -15,7 +15,7 @@ import basemod.abstracts.CustomCard;
 public abstract class AbstractItemCards extends CustomCard {
 
     public AbstractItemCards(final String id, final String name, final int cost, final String description, final AbstractCard.CardType type, final AbstractCard.CardRarity rarity, final AbstractCard.CardTarget target) {
-        super(id, name, ThMod.itemCardImage(id), cost, description, type, AbstractCardEnum.ItemCard, rarity, target);
+        super(id, name, ThMod.itemCardImage(id), cost, description, type, AbstractCardEnum.Item符卡, rarity, target);
         this.isEthereal = true;
         this.exhaust = true;
         this.upgraded = true;

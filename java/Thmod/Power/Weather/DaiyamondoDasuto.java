@@ -1,6 +1,5 @@
 package Thmod.Power.Weather;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,7 +27,7 @@ public class DaiyamondoDasuto extends AbstractPower {
 
     public void atEndOfRound() {
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-            AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 if(AbstractMonster.Intent.valueOf(target.intent.name()) == AbstractMonster.Intent.SLEEP) {
                     target.die();

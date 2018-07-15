@@ -38,7 +38,26 @@ public class VampireKiss extends AbstractKomeijiCards {
                 p.heal((tmp / 2));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.1F));
         }
+//        this.m = m;
     }
+
+//    public void update(){
+//        int i = 0;
+//        if(i != 3) {
+//            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+//            int tmp = this.damage;
+//            tmp -= m.currentBlock;
+//            if (tmp > m.currentHealth) {
+//                tmp = m.currentHealth;
+//            }
+//            if (tmp > 0)
+//                p.heal((tmp / 2));
+//            i += 1;
+//            AbstractDungeon.actionManager.addToTop(new WaitAction(0.1F));
+//        }
+//        else if (i == 3)
+//            tickDuration();
+//    }
 
     public AbstractCard makeCopy() {
         return new VampireKiss();

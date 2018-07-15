@@ -81,6 +81,7 @@ public class CardSelectAction extends AbstractGameAction
     private static CardGroup allUpgradedSpellCards;
     private ArrayList<AbstractCard> cardid;
     private String testid;
+    private String testid2;
     int powercount;
     private AbstractCard deletecard;
     private int zh;
@@ -276,7 +277,6 @@ public class CardSelectAction extends AbstractGameAction
                 if (AbstractDungeon.cardRewardScreen.codexCard != null) {
                     final AbstractCard c = AbstractDungeon.cardRewardScreen.codexCard.makeStatEquivalentCopy();
                     this.cardsToShuffle.add(c);
-                    SpellCardsRule.selected = true;
                     AbstractDungeon.cardRewardScreen.codexCard = null;
                 }
                 if (this.amount > 0) {
@@ -302,53 +302,48 @@ public class CardSelectAction extends AbstractGameAction
 
     private void cardselect() {
         final boolean randomSpot = true;
+        boolean canRep = false;
+        boolean given = false;
         for (final AbstractCard c : this.cardsToShuffle) {
             c.unhover();
             ThMod.removedcardids.clear();
             if (this.powercount >= 1) {
-//                for (final AbstractCard cd : AbstractDungeon.player.hand.group){
-//                    if (cd.cardID.equals(this.testid)){
-//                        for (Iterator Iterator = ThMod.upcardids.iterator(); Iterator.hasNext(); ) {
-//                            this.testid = (String) Iterator.next();
-//                            if (this.testid.equals(ThMod.removeids.get(cd.cardID))) {
-//                                boolean result = cd instanceof AbstractKomeijiCards;
-//                                if (result){
-//                                    if(cd.upgraded)
-//                                        ThMod.removedcardids.put(c.cardID,1);
-//                                    else
-//                                        ThMod.removedcardids.put(c.cardID,0);
-//                                }
-//                                boolean result2 = cd instanceof AbstractSweepCards;
-//                                if (result2){
-//                                    ThMod.removedcardids.put(c.cardID,1);
-//                                }
-//                                this.deletecard = cd;
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
                 label1:
                 for (Iterator Iterator = ThMod.upcardids.iterator(); Iterator.hasNext(); ) {
                     this.testid = (String) Iterator.next();
                     if (c.cardID.equals(this.testid)){
-                        for (final AbstractCard cd : AbstractDungeon.player.hand.group){
-                            if (ThMod.removemap.get(cd.cardID).equals(ThMod.upcardmap.get(this.testid)) ) {
-                                ThMod.removedcardids.clear();
-                                ThMod.removedcardids.put(c.cardID, cd);
-                                AbstractDungeon.player.hand.removeCard(this.deletecard);
-                                AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
-                                this.deletecard = cd;
-                                break label1;
+                        label2:
+                        for (Iterator Iterator2 = ThMod.fightids.iterator(); Iterator2.hasNext(); ) {
+                            this.testid2 = (String) Iterator2.next();
+                            for (final AbstractCard cd : AbstractDungeon.player.hand.group) {
+                                if (cd.cardID.equals((this.testid2))) {
+                                    if (ThMod.removemap.get(cd.cardID).equals(ThMod.upcardmap.get(c.cardID))) {
+                                        ThMod.removedcardids.clear();
+                                        ThMod.removedcardids.put(c.cardID, cd);
+                                        this.deletecard = cd;
+                                        given = true;
+                                        canRep = true;
+                                        break label2;
+                                    }
+                                }
                             }
-                            else
-                                AbstractDungeon.actionManager.addToBottom(new PlayerTalkAction(AbstractDungeon.player,"我手中没有可以替换的牌"));
+                        }
+                        if (!(canRep)) {
+                            AbstractDungeon.actionManager.addToBottom(new PlayerTalkAction(AbstractDungeon.player, "我手中没有可以替换的牌"));
+                            given = true;
+                            break label1;
+                        } else {
+                            AbstractDungeon.player.hand.removeCard(this.deletecard);
+                            AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
+                            SpellCardsRule.selected = true;
+                            given = true;
+                            break label1;
                         }
                     }
-                    else {
-                        AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
-                        break label1;
-                    }
+                }
+                if(!(given)) {
+                    AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
+                    SpellCardsRule.selected = true;
                 }
             }
             else if(this.powercount == -1)
@@ -369,7 +364,7 @@ public class CardSelectAction extends AbstractGameAction
     }
 
     private static ArrayList<AbstractCard> getRandomSpellCards(final int amount, final boolean allowDuplicates) {
-        final ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
+        final ArrayList<AbstractCard> cards = new ArrayList<>();
         while (cards.size() < amount) {
             int tries = 0;
             final AbstractCard card = getRandomSpellCards();

@@ -30,6 +30,7 @@ public class SoundMasterplayPatch
 
     static
     {
+        map.put("playerScore", load("playerScore.ogg"));
         map.put("select00", load("select00.ogg"));
         map.put("world", load("world.ogg"));
         map.put("world_ot", load("world_ot.ogg"));

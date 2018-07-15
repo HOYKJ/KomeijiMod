@@ -53,6 +53,7 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
             this.initializeTitle();
             this.upgradeMagicNumber(1);
             this.upgradeDamage(3);
+            this.timesUpgraded += 1;
             this.upgraded = true;
         }
     }

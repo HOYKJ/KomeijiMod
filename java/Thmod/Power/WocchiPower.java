@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.EntanglePower;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
 import Thmod.vfx.TheWorld;
 
@@ -44,7 +46,10 @@ public class WocchiPower extends AbstractPower {
             }
         }
         flash();
-        CardCrawlGame.music.silenceBGM();
+        if ((AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite) || (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss))
+            CardCrawlGame.music.silenceTempBgmInstantly();
+        else
+            CardCrawlGame.music.silenceBGM();
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY), 2F));
         if (!(this.sekai))
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EntanglePower(AbstractDungeon.player)));

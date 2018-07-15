@@ -1,6 +1,5 @@
 package Thmod.Power.Weather;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,6 +27,7 @@ public class Nagi extends AbstractPower {
     public void atEndOfTurn(boolean isPlayer) {
         if(isPlayer){
             AbstractDungeon.player.heal(1);
+            flash();
         }
     }
 

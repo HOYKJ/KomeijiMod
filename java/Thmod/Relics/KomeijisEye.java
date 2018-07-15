@@ -5,13 +5,17 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
+import Thmod.Actions.common.PlayerTalkAction;
 import Thmod.Power.MindReadingPower;
 import basemod.DevConsole;
 
 public class KomeijisEye extends AbstractThRelic {
     public static final String ID = "komeijisEye";
+    private int clicknum;
 
     public KomeijisEye()
     {
@@ -32,7 +36,17 @@ public class KomeijisEye extends AbstractThRelic {
 //            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.p, this.p, new MindReadingPower(this.p)));
 //    }
 
-    protected  void onRightClick(){}
+    protected  void onRightClick(){
+        AbstractPlayer p = AbstractDungeon.player;
+        if (this.clicknum < 20)
+            this.clicknum += 1;
+        else if (this.clicknum == 20){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,10),10));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,10),10));
+//            this.clicknum = 100;
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "test mode start"));
+        }
+    }
 
     public String getUpdatedDescription() {
         return this.DESCRIPTIONS[0];

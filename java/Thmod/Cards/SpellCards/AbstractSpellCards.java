@@ -18,7 +18,7 @@ public abstract class AbstractSpellCards extends CustomCard {
     private AbstractCard addcard;
 
     public AbstractSpellCards(final String id, final String name, final int cost, final String description, final AbstractCard.CardType type, final AbstractCard.CardRarity rarity, final AbstractCard.CardTarget target) {
-        super(id, name, ThMod.spellCardImage(id), cost, description, type, AbstractCardEnum.SPCard, rarity, target);
+        super(id, name, ThMod.spellCardImage(id), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target);
         this.isEthereal = true;
         this.exhaust = true;
         this.upgraded = true;

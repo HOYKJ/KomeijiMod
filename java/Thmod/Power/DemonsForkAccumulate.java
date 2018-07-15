@@ -22,7 +22,7 @@ public class DemonsForkAccumulate extends AbstractPower {
         this.name = NAME;
         this.ID = "DemonsForkAccumulate";
         this.owner = owner;
-        this.amount = 0;
+        this.amount = 1;
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/DemonsForkAccumulate.png");
         this.type = PowerType.BUFF;

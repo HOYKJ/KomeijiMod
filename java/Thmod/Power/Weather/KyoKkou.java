@@ -140,7 +140,7 @@ public class KyoKkou extends AbstractPower {
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if(this.roll == 5) {
             if ((power.ID == "DashPower") && (target == p)) {
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"DashPower",1));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1), 1));
                 flash();
             }
@@ -149,7 +149,10 @@ public class KyoKkou extends AbstractPower {
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if(this.roll == 6) {
-            AbstractDungeon.player.heal((int) (damageAmount * 0.15));
+            if(info.type != DamageInfo.DamageType.HP_LOSS) {
+                AbstractDungeon.player.heal((int) (damageAmount * 0.15));
+                flash();
+            }
         }
     }
 
@@ -218,6 +221,7 @@ public class KyoKkou extends AbstractPower {
         if(isPlayer){
             if (this.roll == 14) {
                 AbstractDungeon.player.heal(1);
+                flash();
             }
             if (this.roll == 17) {
                 for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
@@ -240,7 +244,7 @@ public class KyoKkou extends AbstractPower {
         }
         if (this.roll == 15) {
             for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                 if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                     if (AbstractMonster.Intent.valueOf(target.intent.name()) == AbstractMonster.Intent.SLEEP) {
                         target.die();

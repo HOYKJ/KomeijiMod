@@ -43,6 +43,7 @@ public class HisouNoKen extends AbstractKomeijiCards {
             this.name = "回忆「气焰万丈之剑」";
             this.initializeTitle();
             this.upgradeDamage(3);
+            this.timesUpgraded += 1;
             this.upgraded = true;
         }
     }

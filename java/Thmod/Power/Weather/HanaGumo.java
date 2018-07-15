@@ -33,7 +33,7 @@ public class HanaGumo extends AbstractPower {
 
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if((power.ID == "DashPower")&&(target == p)) {
-            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"DashPower",1));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1), 1));
             flash();
         }

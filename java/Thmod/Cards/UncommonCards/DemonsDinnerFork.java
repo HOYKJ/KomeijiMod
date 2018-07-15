@@ -23,6 +23,7 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
 
     public DemonsDinnerFork() {
         super("DemonsDinnerFork", DemonsDinnerFork.NAME,  1, DemonsDinnerFork.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        this.exhaust = true;
         this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
     }
@@ -30,10 +31,17 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
     public void use(AbstractPlayer p, AbstractMonster m)
     {
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DemonsForkAccumulate(p,this.upgraded)));
-        AbstractDeriveCards c = new DemonsFork(0);
+        AbstractDeriveCards c = new DemonsFork(1);
         if(this.upgraded)
             c.upgrade();
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        if (p.hasPower("DemonsForkAccumulate")) {
+            return false;
+        }
+        return true;
     }
 
     public AbstractCard makeCopy() {
@@ -43,7 +51,7 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(2);
+            this.upgradeMagicNumber(2);
         }
     }
 

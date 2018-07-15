@@ -6,11 +6,11 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 
 public class AbstractCardEnum {
     @SpireEnum
-    public static AbstractCard.CardColor Komeiji;
+    public static AbstractCard.CardColor 古明地觉;
     @SpireEnum
-    public static AbstractCard.CardColor SPCard;
+    public static AbstractCard.CardColor Sp符卡;
     @SpireEnum
-    public static AbstractCard.CardColor ItemCard;
+    public static AbstractCard.CardColor Item符卡;
     @SpireEnum
-    public static AbstractCard.CardColor DeriveCard;
+    public static AbstractCard.CardColor 衍生卡;
 }

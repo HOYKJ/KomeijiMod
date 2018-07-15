@@ -28,7 +28,7 @@ public class GroundStardust extends AbstractSweepCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StardustAccumulate(p)));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Stardust(0), false));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Stardust(1), false));
     }
 
     @Override
@@ -36,6 +36,13 @@ public class GroundStardust extends AbstractSweepCards {
         final ArrayList<AbstractSweepCards> opposite = new ArrayList<>();
         opposite.add(new MajikuruSanhai());
         return opposite;
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        if (p.hasPower("StardustAccumulate")) {
+            return false;
+        }
+        return true;
     }
 
     public AbstractCard makeCopy() {

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import Thmod.Actions.common.PlayerTalkAction;
 import Thmod.Power.PointPower;
+import Thmod.Power.TenmizuPower;
 import Thmod.ThMod;
 
 
@@ -36,12 +38,15 @@ public class SpellCardsRule extends AbstractThRelic {
         this.playerturn = false;
         selected = false;
         newCards = true;
+
     }
 
     public void atPreBattle() {
         AbstractPlayer p = AbstractDungeon.player;
-        if (!(pointcount.get(0) ==0))
+        if (!(pointcount.get(0) == 0))
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PointPower(p, pointcount.get(0)), pointcount.get(0)));
+        if (!(pointcount.get(1) == 0))
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new TenmizuPower(p, pointcount.get(1)), pointcount.get(1)));
         if (AbstractDungeon.player.hasRelic("Strange Spoon"))
             AbstractDungeon.player.loseRelic("Strange Spoon");
 //        if (p.hasPower("PointPower")) {
@@ -49,6 +54,16 @@ public class SpellCardsRule extends AbstractThRelic {
 //                beginPulse();
 //                this.pulse = true;
 //            }
+//            if(p.getPower("PointPower").amount == 1)
+//                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_1.png");
+//            if(p.getPower("PointPower").amount == 2)
+//                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_2.png");
+//            if(p.getPower("PointPower").amount == 3)
+//                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_3.png");
+//            if(p.getPower("PointPower").amount == 4)
+//                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_4.png");
+//            if(p.getPower("PointPower").amount == 5)
+//                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_5.png");
 //        }
     }
 
@@ -70,6 +85,18 @@ public class SpellCardsRule extends AbstractThRelic {
                 }
             }
         }
+        if (p.hasPower("PointPower")) {
+            if(p.getPower("PointPower").amount == 1)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_1.png");
+            if(p.getPower("PointPower").amount == 2)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_2.png");
+            if(p.getPower("PointPower").amount == 3)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_3.png");
+            if(p.getPower("PointPower").amount == 4)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_4.png");
+            if(p.getPower("PointPower").amount == 5)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_5.png");
+        }
     }
 
 //    public void onMonsterDeath(AbstractMonster m) {
@@ -84,17 +111,27 @@ public class SpellCardsRule extends AbstractThRelic {
 
     public void onVictory() {
         AbstractPlayer p = AbstractDungeon.player;
+
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount > 0)
                 pointcount.set(0,p.getPower("PointPower").amount);
         }
         else
             pointcount.set(0,0);
+
+        if (p.hasPower("TenmizuPower")) {
+            if (p.getPower("TenmizuPower").amount > 0)
+                pointcount.set(1,p.getPower("TenmizuPower").amount);
+        }
+        else
+            pointcount.set(1,0);
+
         try {
             ThMod.SavePointPower();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         selected = false;
         newCards = true;
         this.pulse = false;
@@ -123,7 +160,7 @@ public class SpellCardsRule extends AbstractThRelic {
                 }
             }
             else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我已经使用过这个遗物了"));
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我获得过符卡了"));
             }
         }
     }
@@ -138,21 +175,33 @@ public class SpellCardsRule extends AbstractThRelic {
                 beginPulse();
                 this.pulse = true;
             }
+            if(p.getPower("PointPower").amount == 1)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_1.png");
+            if(p.getPower("PointPower").amount == 2)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_2.png");
+            if(p.getPower("PointPower").amount == 3)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_3.png");
+            if(p.getPower("PointPower").amount == 4)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_4.png");
+            if(p.getPower("PointPower").amount == 5)
+                this.img = ImageMaster.loadImage("images/relics/SpellCardRule_5.png");
         }
     }
 
     public void onLoseHp(int damageAmount) {
         AbstractPlayer p = AbstractDungeon.player;
-        if((!(p.hasPower("CounterAttackPower"))) && (!(p.hasPower("DashPower")))){
-            if (p.hasPower("HeiyuPower"))
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "HeiyuPower"));
-            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                    if(target.hasPower("MusuNoYumePower"))
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, "MusuNoYumePower"));
-                    if(target.hasPower("MusuNoTegataPower"))
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, "MusuNoTegataPower"));
+        if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            if ((!(p.hasPower("CounterAttackPower"))) && (!(p.hasPower("DashPower")))) {
+                if (p.hasPower("HeiyuPower"))
+                    AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "HeiyuPower"));
+                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+                    AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                        if (target.hasPower("MusuNoYumePower"))
+                            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, "MusuNoYumePower"));
+                        if (target.hasPower("MusuNoTegataPower"))
+                            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, "MusuNoTegataPower"));
+                    }
                 }
             }
         }

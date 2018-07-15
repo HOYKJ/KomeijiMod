@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.city.Mugger;
 
 import Thmod.Power.PointPower;
 import Thmod.Power.WocchiPower;
@@ -27,13 +28,23 @@ public class FusyokuKusuri extends AbstractItemCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= 1) {
-                AbstractDungeon.actionManager.addToBottom((AbstractGameAction)new AbstractGameAction() {
+                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                     public void update() {
                         m.rollMove();
                         AbstractDungeon.getMonsters().showIntent();
                         this.isDone = true;
                     }
                 });
+//                if((m.id.equals("Mugger")) || (m.id.equals("Looter"))){
+//                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction()
+//                    {
+//                        public void update()
+//                        {
+//                            Mugger.this.stolenGold = (Mugger.this.stolenGold + Math.min(15, AbstractDungeon.player.gold));
+//                            this.isDone = true;
+//                        }
+//                    });
+//                }
                 AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",1));
             }
         }

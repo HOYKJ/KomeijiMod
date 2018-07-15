@@ -26,7 +26,7 @@ public class HenyouMirumePower extends AbstractPower {
             this.amount = -1;
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/HenyouMirumePower.png");
-        this.type = AbstractPower.PowerType.DEBUFF;
+        this.type = AbstractPower.PowerType.BUFF;
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type)

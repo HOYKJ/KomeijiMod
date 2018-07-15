@@ -5,9 +5,11 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 
 public class LibraryTypeEnum {
     @SpireEnum
-    public static CardLibrary.LibraryType Komeiji;
+    public static CardLibrary.LibraryType 古明地觉;
     @SpireEnum
-    public static CardLibrary.LibraryType SPCard;
+    public static CardLibrary.LibraryType Sp符卡;
     @SpireEnum
-    public static CardLibrary.LibraryType ItemCard;
+    public static CardLibrary.LibraryType Item符卡;
+    @SpireEnum
+    public static CardLibrary.LibraryType 衍生卡;
 }

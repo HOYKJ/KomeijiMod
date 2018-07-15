@@ -29,6 +29,7 @@ import java.util.Properties;
 import Thmod.Cards.Agarareta;
 import Thmod.Cards.DemonLordCradle;
 import Thmod.Cards.Demotivation;
+import Thmod.Cards.DeriveCards.Nothing;
 import Thmod.Cards.DochyakuKami;
 import Thmod.Cards.HagoromoMizu;
 import Thmod.Cards.Dash_Komeiji;
@@ -49,7 +50,6 @@ import Thmod.Cards.ItemCards.SutoppuWocchi;
 import Thmod.Cards.JyouchiJin;
 import Thmod.Cards.KeiseiJin;
 import Thmod.Cards.KinbakuJin;
-import Thmod.Cards.KochyouYume;
 import Thmod.Cards.MagicStarsSword;
 import Thmod.Cards.MakuraSeki;
 import Thmod.Cards.Melting;
@@ -162,13 +162,14 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean AliceOpen ;
     public static boolean SoundOpen ;
     public static boolean StartSelectOpen ;
+    public static boolean MusicOpen ;
     private float X;
     private float Y;
     private float IntervalY;
-    private static final Color Komeiji = CardHelper.getColor(232, 123, 169);
-    private static final Color SPCard = CardHelper.getColor(232, 123, 169);
-    private static final Color ItemCard = CardHelper.getColor(232, 123, 169);
-    private static final Color DeriveCard = CardHelper.getColor(232, 123, 169);
+    private static final Color 古明地觉 = CardHelper.getColor(232, 123, 169);
+    private static final Color Sp符卡 = CardHelper.getColor(239, 169, 23);
+    private static final Color Item符卡 = CardHelper.getColor(231, 34, 0);
+    private static final Color 衍生卡 = CardHelper.getColor(147, 147, 147);
     public static TextureAtlas orbAtlas;
     public static ArrayList<String> fightids = new ArrayList<>();
     public static ArrayList<String> campids = new ArrayList<>();
@@ -351,10 +352,12 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("AliceOpen", "true");
             defaults.setProperty("SoundOpen", "true");
             defaults.setProperty("StartSelectOpen", "true");
+            defaults.setProperty("MusicOpen", "true");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             ThMod.AliceOpen = config.getBool("AliceOpen");
             ThMod.SoundOpen = config.getBool("SoundOpen");
             ThMod.StartSelectOpen = config.getBool("StartSelectOpen");
+            ThMod.MusicOpen = config.getBool("MusicOpen");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -363,33 +366,33 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         DevConsole.logger.info("=========================== 初始化ThMod成功 ===========================");
         logger.info("========================正在注入新卡片相关信息========================");
 
-        BaseMod.addColor(AbstractCardEnum.Komeiji.toString(),
-                Komeiji, Komeiji, Komeiji, Komeiji, Komeiji, Komeiji, Komeiji,
+        BaseMod.addColor(AbstractCardEnum.古明地觉.toString(),
+                古明地觉, 古明地觉, 古明地觉, 古明地觉, 古明地觉, 古明地觉, 古明地觉,
                 "images/cardui/512/bg_attack_komeiji.png", "images/cardui/512/bg_skill_komeiji.png",
                 "images/cardui/512/bg_power_komeiji.png", "images/cardui/512/card_komeiji_orb.png",
                 "images/cardui/1024/bg_attack_komeiji.png", "images/cardui/1024/bg_skill_komeiji.png",
                 "images/cardui/1024/bg_power_komeiji.png", "images/cardui/1024/card_komeiji_orb.png");
 
-        BaseMod.addColor(AbstractCardEnum.SPCard.toString(),
-                SPCard, SPCard, SPCard, SPCard, SPCard, SPCard, SPCard,
-                "images/cardui/512/bg_attack_komeiji.png", "images/cardui/512/bg_skill_komeiji.png",
-                "images/cardui/512/bg_power_komeiji.png", "images/cardui/512/card_komeiji_orb.png",
-                "images/cardui/1024/bg_attack_komeiji.png", "images/cardui/1024/bg_skill_komeiji.png",
-                "images/cardui/1024/bg_power_komeiji.png", "images/cardui/1024/card_komeiji_orb.png");
+        BaseMod.addColor(AbstractCardEnum.Sp符卡.toString(),
+                Sp符卡, Sp符卡, Sp符卡, Sp符卡, Sp符卡, Sp符卡, Sp符卡,
+                "images/cardui/512/bg_attack_spcard.png", "images/cardui/512/bg_skill_spcard.png",
+                "images/cardui/512/bg_power_spcard.png", "images/cardui/512/card_spcard_orb.png",
+                "images/cardui/1024/bg_attack_spcard.png", "images/cardui/1024/bg_skill_spcard.png",
+                "images/cardui/1024/bg_power_spcard.png", "images/cardui/1024/card_spcard_orb.png");
 
-        BaseMod.addColor(AbstractCardEnum.ItemCard.toString(),
-                ItemCard, ItemCard, ItemCard, ItemCard, ItemCard, ItemCard, ItemCard,
-                "images/cardui/512/bg_attack_komeiji.png", "images/cardui/512/bg_skill_komeiji.png",
-                "images/cardui/512/bg_power_komeiji.png", "images/cardui/512/card_komeiji_orb.png",
-                "images/cardui/1024/bg_attack_komeiji.png", "images/cardui/1024/bg_skill_komeiji.png",
-                "images/cardui/1024/bg_power_komeiji.png", "images/cardui/1024/card_komeiji_orb.png");
+        BaseMod.addColor(AbstractCardEnum.Item符卡.toString(),
+                Item符卡, Item符卡, Item符卡, Item符卡, Item符卡, Item符卡, Item符卡,
+                "images/cardui/512/bg_attack_itemcard.png", "images/cardui/512/bg_skill_itemcard.png",
+                "images/cardui/512/bg_power_itemcard.png", "images/cardui/512/card_itemcard_orb.png",
+                "images/cardui/1024/bg_attack_itemcard.png", "images/cardui/1024/bg_skill_itemcard.png",
+                "images/cardui/1024/bg_power_itemcard.png", "images/cardui/1024/card_itemcard_orb.png");
 
-        BaseMod.addColor(AbstractCardEnum.DeriveCard.toString(),
-                DeriveCard, DeriveCard, DeriveCard, DeriveCard, DeriveCard, DeriveCard, DeriveCard,
-                "images/cardui/512/bg_attack_komeiji.png", "images/cardui/512/bg_skill_komeiji.png",
-                "images/cardui/512/bg_power_komeiji.png", "images/cardui/512/card_komeiji_orb.png",
-                "images/cardui/1024/bg_attack_komeiji.png", "images/cardui/1024/bg_skill_komeiji.png",
-                "images/cardui/1024/bg_power_komeiji.png", "images/cardui/1024/card_komeiji_orb.png");
+        BaseMod.addColor(AbstractCardEnum.衍生卡.toString(),
+                衍生卡, 衍生卡, 衍生卡, 衍生卡, 衍生卡, 衍生卡, 衍生卡,
+                "images/cardui/512/bg_attack_derivecard.png", "images/cardui/512/bg_skill_derivecard.png",
+                "images/cardui/512/bg_power_derivecard.png", "images/cardui/512/card_derivecard_orb.png",
+                "images/cardui/1024/bg_attack_derivecard.png", "images/cardui/1024/bg_skill_derivecard.png",
+                "images/cardui/1024/bg_power_derivecard.png", "images/cardui/1024/card_derivecard_orb.png");
 
 
 
@@ -424,9 +427,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         try {
             final Properties defaults = new Properties();
             defaults.setProperty("PointPower", "0");
+            defaults.getProperty("TenmizuPower","0");
+            defaults.setProperty("Hangongnum", "0");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             SpellCardsRule.pointcount.clear();
             SpellCardsRule.pointcount.add(config.getInt("PointPower"));
+            SpellCardsRule.pointcount.add(config.getInt("TenmizuPower"));
+            SpellCardsRule.Hangongnum = config.getInt("Hangongnum");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -442,7 +449,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         BaseMod.addCharacter(
                 KomeijiSatori.class, "古明地 觉", "CharacterName class string",
-                AbstractCardEnum.Komeiji.toString(),"古明地 觉","images/ui/charSelect/komeijiButton.png", "images/ui/charSelect/komeijiPortrait.jpg",
+                AbstractCardEnum.古明地觉.toString(),"古明地 觉","images/ui/charSelect/komeijiButton.png", "images/ui/charSelect/komeijiPortrait.jpg",
                 CharacterEnum.KomeijiSatori.toString());
 
         logger.info("========================注入Mod人物信息成功========================");
@@ -567,8 +574,10 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new TenkeiKisyou());
         BaseMod.addCard(new YomeiIkubaku());
 
+        BaseMod.addCard(new Nothing());
+
         if(ThMod.AliceOpen){
-            BaseMod.addCard(new NingyouSousou());
+//            BaseMod.addCard(new NingyouSousou());
         }
 
         logger.info("=========================加载新的卡牌内容成功=========================");
@@ -618,7 +627,22 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         });
         settingsPanel.addUIElement((IUIElement)SoundOpen);
 
-        final ModLabeledToggleButton StartSelectOpen = new ModLabeledToggleButton("回合开始时选择符卡", this.X, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.SoundOpen , settingsPanel, label -> {}, button -> {
+        final ModLabeledToggleButton MusicOpen = new ModLabeledToggleButton("mod自带bgm", this.X, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.MusicOpen , settingsPanel, label -> {}, button -> {
+            spireConfig.setBool("MusicOpen", ThMod.MusicOpen = button.enabled);
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
+
+            try {
+                spireConfig.save();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        });
+        settingsPanel.addUIElement((IUIElement)MusicOpen);
+
+        final ModLabeledToggleButton StartSelectOpen = new ModLabeledToggleButton("回合开始时选择符卡", this.X, this.Y + 8*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.SoundOpen , settingsPanel, label -> {}, button -> {
             spireConfig.setBool("StartSelectOpen", ThMod.StartSelectOpen = button.enabled);
             CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
             CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
@@ -646,11 +670,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             }
             return;
         });
-        settingsPanel.addLabel("本mod和其它部分mod可能存在部分冲突", this.X, this.Y + 9*this.IntervalY, (me) -> { });
+        settingsPanel.addLabel("本mod和其它部分mod可能存在部分冲突", this.X, this.Y + 10*this.IntervalY, (me) -> { });
+        settingsPanel.addLabel("适用版本: 1.游戏:7.13. 2.basemod:7.12. 3.ModTheSpire:2.8.0", this.X, this.Y + 11*this.IntervalY, (me) -> { });
+        settingsPanel.addLabel("更新日志请见hoykj吧(贴吧)", this.X, this.Y + 12*this.IntervalY, (me) -> { });
         settingsPanel.addLabel("目前进度:", 1100f, this.Y + 2*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("卡组:通用部分完成", 1100f, this.Y + 3*this.IntervalY , (me) -> { });
-        settingsPanel.addLabel("遗物:做了个头", 1100f, this.Y + 4*this.IntervalY , (me) -> { });
-        settingsPanel.addLabel("美工:还没开始", 1100f, this.Y + 5*this.IntervalY , (me) -> { });
+        settingsPanel.addLabel("遗物:做了个开头", 1100f, this.Y + 4*this.IntervalY , (me) -> { });
+        settingsPanel.addLabel("美工:做了个开头", 1100f, this.Y + 5*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("debug:做了一丢丢", 1100f, this.Y + 6*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("特效:几乎没做", 1100f, this.Y + 7*this.IntervalY , (me) -> { });
         //settingsPanel.addLabel("设计:hoykj  编程:hoykj  绘图:hoykj", 400.0f, 500.0f, (me) -> { });
@@ -695,7 +721,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addKeyword(new String[]{"符卡规则","符卡规则"}, "1.每个回合开始时,你将根据你的 #rp 点来获取SP卡. NL 2.获得的SP卡和你的手牌有关. NL 3.所有符卡具有 #y消耗 与 #y虚无 . NL 4.剩下的就靠你自己来摸索吧!");
         BaseMod.addKeyword(new String[]{"联想","联想"}, "这张卡不能被升级,但是可以在篝火处转换为另外的卡");
         BaseMod.addKeyword(new String[]{"替换","替换"}, "这种卡将会替换你手中的一张卡,在消耗后恢复.");
-        BaseMod.addKeyword(new String[]{"回响","回响"}, "这张卡在使用后会将一张复制加入你的手牌");
+        BaseMod.addKeyword(new String[]{"回响","回响"}, "这张卡在消耗后会将一张复制加入你的手牌");
         BaseMod.addKeyword(new String[]{"蓄力","蓄力"}, "这张卡在使用后不会立刻触发效果,而是由你选择触发");
         BaseMod.addKeyword(new String[]{"固定","固定"}, "不受任何加成");
         BaseMod.addKeyword(new String[]{"紧缚灵","紧缚灵"}, "在它受到伤害时,每只紧缚灵会对它造成10点伤害并消失");
@@ -704,13 +730,17 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
     public static void SavePointPower() throws IOException {
         final SpireConfig config = new SpireConfig("ThMod", "Common");
-        config.setInt("PointPower", (int) SpellCardsRule.pointcount.get(0));
+        config.setInt("PointPower",  SpellCardsRule.pointcount.get(0));
+        config.setInt("TenmizuPower",  SpellCardsRule.pointcount.get(1));
+        config.setInt("Hangongnum",  SpellCardsRule.Hangongnum);
         config.save();
     }
 
     public static void Default() throws IOException {
         final SpireConfig config = new SpireConfig("ThMod", "Common");
         config.setInt("PointPower", 0);
+        config.setInt("TenmizuPower", 0);
+        config.setInt("Hangongnum",0);
         config.save();
     }
 
@@ -718,6 +748,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.SoundOpen = true;
         ThMod.AliceOpen = true;
         ThMod.StartSelectOpen = true;
+        ThMod.MusicOpen = true;
     }
 
 }

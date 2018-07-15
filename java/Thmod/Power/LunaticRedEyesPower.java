@@ -10,12 +10,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.Iterator;
 
+import Thmod.Actions.common.PlayerTalkAction;
 import Thmod.Cards.ItemCards.AbstractItemCards;
 import Thmod.Cards.SpellCards.AbstractSpellCards;
 import Thmod.ThMod;
+import basemod.DevConsole;
 
 public class LunaticRedEyesPower extends AbstractPower {
     public static final String POWER_ID = "LunaticRedEyesPower";
@@ -54,11 +57,15 @@ public class LunaticRedEyesPower extends AbstractPower {
                     c.rawDescription = c.rawDescription + " 消耗 .";
                 if(!(c.isEthereal == true))
                     c.rawDescription = c.rawDescription + " 虚无 .";
-                c.exhaust = true;
+//                c.exhaust = true;
                 c.isEthereal = true;
                 c.purgeOnUse = true;
+                DevConsole.logger.info("purge?"+c.purgeOnUse);
                 c.initializeDescription();
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
+                if(AbstractDungeon.player.hand.size() == 10)
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我的手牌满了"));
+                else
+                    AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
             }
         }
     }

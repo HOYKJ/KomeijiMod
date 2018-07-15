@@ -27,9 +27,9 @@ public class Stardust extends AbstractDeriveCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-            AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.Gdamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.Gdamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
             }
         }
         if(AbstractDungeon.player.hasPower("StardustAccumulate"))

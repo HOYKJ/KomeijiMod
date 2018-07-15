@@ -19,7 +19,7 @@ public class HenyouMirume extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public HenyouMirume() {
-        super("HenyouMirume", HenyouMirume.NAME,  1, HenyouMirume.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super("HenyouMirume", HenyouMirume.NAME,  1, HenyouMirume.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m)

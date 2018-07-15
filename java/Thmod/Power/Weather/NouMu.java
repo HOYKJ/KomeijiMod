@@ -1,6 +1,5 @@
 package Thmod.Power.Weather;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -27,8 +26,10 @@ public class NouMu extends AbstractPower {
     }
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        AbstractDungeon.player.heal((int)(damageAmount*0.15));
-        flash();
+        if(info.type != DamageInfo.DamageType.HP_LOSS) {
+            AbstractDungeon.player.heal((int) (damageAmount * 0.15));
+            flash();
+        }
     }
 
     public void atEndOfRound() {

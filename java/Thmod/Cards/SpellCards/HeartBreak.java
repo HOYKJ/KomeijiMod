@@ -35,7 +35,7 @@ public class HeartBreak extends AbstractSpellCards {
                     AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                        this.damage -= 2;
+                        this.damage += 2;
                     }
                 }
                 AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"PointPower",this.pointcost));

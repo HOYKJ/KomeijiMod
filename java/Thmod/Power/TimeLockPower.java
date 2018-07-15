@@ -1,5 +1,6 @@
 package Thmod.Power;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -9,6 +10,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
 public class TimeLockPower extends AbstractPower {
     public static final String POWER_ID = "TimeLockPower";
@@ -48,6 +51,7 @@ public class TimeLockPower extends AbstractPower {
             STC = owner.state.getTimeScale();
             owner.state.setTimeScale(0F);
         }
+        this.owner.tint.color = Color.LIGHT_GRAY.cpy();
     }
 
     public void updateDescription()
@@ -70,5 +74,6 @@ public class TimeLockPower extends AbstractPower {
         CardCrawlGame.music.unsilenceBGM();
         if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")))
             owner.state.setTimeScale(STC);
+        this.owner.tint.changeColor(Color.WHITE.cpy());
     }
 }

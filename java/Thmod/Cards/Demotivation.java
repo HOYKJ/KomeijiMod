@@ -51,6 +51,7 @@ public class Demotivation extends AbstractKomeijiCards {
             this.target = AbstractCard.CardTarget.ALL_ENEMY;
             this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
+            this.timesUpgraded += 1;
             this.upgraded = true;
         }
     }

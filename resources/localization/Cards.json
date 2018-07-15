@@ -29,7 +29,7 @@
     "DochyakuKami": {
       "NAME": "回忆「土著神的作祟」",
       "DESCRIPTION": 
-	"使1个随机敌人获得异常状态. 消耗 . 联想 ."
+	"使1个敌人获得异常状态. 消耗 . 联想 ."
     },
     "HagoromoMizu":{
       "NAME": "回忆「羽衣若水」",
@@ -97,7 +97,7 @@
     "使指定敌人被 紧缚灵 缠绕."
   },
     "Strike_Komeiji": {
-      "NAME": "打击",
+      "NAME": "精神打击",
       "DESCRIPTION": 
 	"造成 !D! 点伤害.",
       "UPGRADE_DESCRIPTION": 
@@ -184,7 +184,7 @@
     "MusuNoYume":{
       "NAME": "回忆「无寿之梦」",
       "DESCRIPTION": 
-	"使目标敌人每回合受到 !M! 点伤害,最多3回合,当你受到伤害时立即结束."
+	"使目标敌人每回合受到 !M!  固定 点伤害,最多3回合,当你受到伤害时立即结束."
     },
     "NarrowSpark":{
       "NAME": "回忆「Narrow Spark」",
@@ -204,7 +204,7 @@
     "SatsujinDooru": {
       "NAME": "回忆「杀人玩偶」",
       "DESCRIPTION": 
-	"在下个回合开始时,所有敌人受到 !M! 点伤害."
+	"在下个回合开始时,所有敌人受到 !M!  固定 点伤害."
     },
   "SeishiRoten": {
     "NAME": "回忆「生死流转斩」",
@@ -305,7 +305,7 @@
   "TenguhouSokujitsuken": {
     "NAME": "回忆「天狗报当日到」",
     "DESCRIPTION":
-    "每个回合额外抽1张卡."
+    "每个回合额外抽 !M! 张卡."
   },
   "TerribleSouvenir": {
     "NAME": "回忆「Terrible Souvenir」",
@@ -456,7 +456,7 @@
   "HeartBreak": {
     "NAME": "回忆「Heart Break」",
     "DESCRIPTION":
-    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人减少2点. 替换 . NL 消耗2P."
+    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人增加2点. 替换 . NL 消耗2P."
   },
   "Kamaitachi": {
     "NAME": "回忆「镰鼬 Veiling」",
@@ -541,7 +541,7 @@
   "SpeartheGungnir": {
     "NAME": "回忆「Spear the Gungnir」",
     "DESCRIPTION":
-    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人减少2点. 替换 . NL 消耗4P."
+    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人增加2点. 替换 . NL 消耗4P."
   },
   "TaihouKen": {
     "NAME": "回忆「大鹏拳」",
@@ -600,6 +600,13 @@
     "NAME": "回忆「天狗的太鼓C」",
     "DESCRIPTION":
     "对所有敌人造成 !D! 点伤害. 消耗 , 虚无 ."
+  },
+
+
+  "Nothing": {
+    "NAME": "空无一物",
+    "DESCRIPTION":
+    "这里什么也没有"
   },
 
 

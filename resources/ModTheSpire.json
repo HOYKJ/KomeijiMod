@@ -5,9 +5,9 @@
     
 "author_list": ["hoykj"],
     
-"description": "目前處於測試階段,加入新角色.如有bug或失衡,歡迎反饋. 本mod和其它部分mod可能存在部分衝突",
+"description": "目前處於測試階段,遊玩前請先查看mod的config部分.如有bug或失衡,歡迎反饋. 本mod和其它部分mod可能存在部分衝突.版本:7.15.1",
     
-"version": "0.0.7",
+"version": "7.15.1",
     
-"sts_version": "05-05-2018"
+"sts_version": "07-15-2018"
   }

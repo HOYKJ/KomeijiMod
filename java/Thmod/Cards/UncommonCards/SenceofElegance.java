@@ -41,7 +41,7 @@ public class SenceofElegance extends AbstractKomeijiCards {
     }
 
     public void upgrade() {
-        this.upgradeDamage(4);
+        this.upgradeDamage(4 + this.timesUpgraded);
         this.timesUpgraded += 1;
         this.upgraded = true;
         this.name = NAME + "+" + this.timesUpgraded;

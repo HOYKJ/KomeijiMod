@@ -65,6 +65,7 @@ public class NarrowSpark extends AbstractKomeijiCards {
             this.upgradeMagicNumber(1);
             this.upgradeDamage(5);
             this.upgradeBaseCost(2);
+            this.timesUpgraded += 1;
             this.upgraded = true;
         }
     }

@@ -39,6 +39,7 @@ public class SatsujinDooru extends AbstractKomeijiCards {
             this.name = "回忆「夜雾幻影杀人鬼」";
             this.initializeTitle();
             this.upgradeMagicNumber(5);
+            this.timesUpgraded += 1;
             this.upgraded = true;
         }
     }

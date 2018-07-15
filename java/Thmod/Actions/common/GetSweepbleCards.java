@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.Iterator;
 
+import Thmod.Cards.AbstractSweepCards;
 import Thmod.ThMod;
 
 public class GetSweepbleCards {
@@ -18,11 +19,13 @@ public class GetSweepbleCards {
         CardGroup retVal = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for (Iterator localIterator = AbstractDungeon.player.masterDeck.group.iterator(); localIterator.hasNext();) {
             AbstractCard c = (AbstractCard)localIterator.next();
-            for (Iterator Iterator = ThMod.campids.iterator(); Iterator.hasNext(); ) {
-                cardid = (String) Iterator.next();
-                if (c.cardID.equals(cardid))
-                    retVal.group.add(c);
-            }
+//            for (Iterator Iterator = ThMod.campids.iterator(); Iterator.hasNext(); ) {
+//                cardid = (String) Iterator.next();
+//                if (c.cardID.equals(cardid))
+//                    retVal.group.add(c);
+//            }
+            if(c instanceof AbstractSweepCards)
+                retVal.group.add(c);
         }
         return retVal;
     }
