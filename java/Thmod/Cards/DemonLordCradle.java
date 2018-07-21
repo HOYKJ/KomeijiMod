@@ -41,7 +41,8 @@ public class DemonLordCradle extends AbstractKomeijiCards {
         if (!(this.upgraded)) {
             this.name = "回忆「Demon King Cradle」";
             this.initializeTitle();
-            upgradeMagicNumber(1);
+            this.upgradeDamage(1);
+            this.upgradeMagicNumber(1);
             this.timesUpgraded += 1;
             this.upgraded = true;
         }

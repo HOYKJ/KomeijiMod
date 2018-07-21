@@ -31,14 +31,14 @@ public class SeiRan extends AbstractPower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new CalculatedGambleAction(false));
         flash();
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "SeiRan"));
         else
             this.amount -= 1;
     }
 
     public void atEndOfRound() {
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "SeiRan"));
         else
             this.amount -= 1;

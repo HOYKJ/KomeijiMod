@@ -1,7 +1,7 @@
-package Thmod.Cards.UncommonCards;
+package Thmod.Cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,40 +13,38 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import java.util.ArrayList;
 
-import Thmod.Cards.AbstractSweepCards;
-import Thmod.Cards.PerfectMaid;
 import Thmod.Orbs.NingyouOrb;
-import Thmod.Power.NingyouPower;
 
-public class NingyouSousou extends AbstractSweepCards {
-    public static final String ID = "NingyouSousou";
+public class NingyouKisou extends AbstractSweepCards {
+    public static final String ID = "NingyouKisou";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 3;
+    private static final int BLOCK_AMT = 5;
 
-    public NingyouSousou() {
-        super("NingyouSousou", NingyouSousou.NAME,  1, NingyouSousou.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseBlock = 3;
-        this.baseDamage = 3;
+    public NingyouKisou() {
+        super("NingyouKisou", NingyouKisou.NAME,  1, NingyouKisou.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        this.baseDamage = 5;
+        this.isMultiDamage = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractOrb orb = new NingyouOrb();
         AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
-        AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     @Override
     public ArrayList<AbstractSweepCards> getOpposite() {
         final ArrayList<AbstractSweepCards> opposite = new ArrayList<>();
-        opposite.add(new PerfectMaid());
+        opposite.add(new NingyouSousou());
+        opposite.add(new NingyouFukuhei());
         return opposite;
     }
 
     public AbstractCard makeCopy() {
-        return new NingyouSousou();
+        return new NingyouKisou();
     }
 
     public void upgrade() {
@@ -56,8 +54,8 @@ public class NingyouSousou extends AbstractSweepCards {
     }
 
     static {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings("NingyouSousou");
-        NAME = NingyouSousou.cardStrings.NAME;
-        DESCRIPTION = NingyouSousou.cardStrings.DESCRIPTION;
+        cardStrings = CardCrawlGame.languagePack.getCardStrings("NingyouKisou");
+        NAME = NingyouKisou.cardStrings.NAME;
+        DESCRIPTION = NingyouKisou.cardStrings.DESCRIPTION;
     }
 }

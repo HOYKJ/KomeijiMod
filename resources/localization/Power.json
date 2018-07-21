@@ -49,7 +49,7 @@
     ]
   },
   "HagoromoKuPower": {
-    "NAME": "擦弹!",
+    "NAME": "羽衣若空",
     "DESCRIPTIONS": [
       "打出技能卡后就会获得 格挡 ."
     ]
@@ -367,6 +367,21 @@
     "NAME": "负面效果",
     "DESCRIPTIONS": [
       "效果不明"
+    ]
+  },
+
+  "RoundTable": {
+    "NAME": "圆桌人偶",
+    "DESCRIPTIONS": [
+      "回合结束时,获得 #b",
+      " * #y盾兵人偶 数量的 #y格挡 ."
+    ]
+  },
+  "AutomatonPower": {
+    "NAME": "Semi-Automaton",
+    "DESCRIPTIONS": [
+      "回合结束时,消耗剩余的最多 #b",
+      " 点能量,使你的所有人偶进行 #y额外行动 ."
     ]
   }
   

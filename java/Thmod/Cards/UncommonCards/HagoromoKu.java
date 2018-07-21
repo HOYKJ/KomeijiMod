@@ -1,4 +1,4 @@
-package Thmod.Cards.RareCards;
+package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,7 +19,7 @@ public class HagoromoKu extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public HagoromoKu() {
-        super("HagoromoKu", HagoromoKu.NAME,  1, HagoromoKu.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+        super("HagoromoKu", HagoromoKu.NAME,  1, HagoromoKu.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.NONE);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

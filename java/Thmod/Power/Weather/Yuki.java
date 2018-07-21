@@ -42,7 +42,7 @@ public class Yuki extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "Yuki"));
         else
             this.amount -= 1;

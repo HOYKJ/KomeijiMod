@@ -35,7 +35,7 @@ public class DaiyamondoDasuto extends AbstractPower {
                 }
             }
         }
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "DaiyamondoDasuto"));
         else
             this.amount -= 1;

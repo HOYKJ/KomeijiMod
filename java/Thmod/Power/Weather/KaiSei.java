@@ -41,7 +41,7 @@ public class KaiSei extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "KaiSei"));
         else
             this.amount -= 1;

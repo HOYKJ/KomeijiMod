@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -54,11 +53,29 @@ import Thmod.Cards.KinbakuJin;
 import Thmod.Cards.MagicStarsSword;
 import Thmod.Cards.MakuraSeki;
 import Thmod.Cards.Melting;
+import Thmod.Cards.NingyouFukuhei;
+import Thmod.Cards.NingyouKisou;
+import Thmod.Cards.NingyouSP;
+import Thmod.Cards.NingyouShinki;
+import Thmod.Cards.NingyouSousou;
+import Thmod.Cards.RareCards.HelanNingyou;
+import Thmod.Cards.RareCards.MiraiBunraku;
+import Thmod.Cards.RareCards.SemiAutomaton;
+import Thmod.Cards.RareCards.ShanghaiNingyou;
 import Thmod.Cards.Sabishigari;
 import Thmod.Cards.Mishyaguji;
 import Thmod.Cards.RareCards.AbyssNova;
 import Thmod.Cards.RareCards.EverywhereHibernate;
-import Thmod.Cards.RareCards.HagoromoKu;
+import Thmod.Cards.SeekerWire;
+import Thmod.Cards.SpellCards.CuteOchiyari;
+import Thmod.Cards.SpellCards.DollofRoundTable;
+import Thmod.Cards.SpellCards.DollsWar;
+import Thmod.Cards.SpellCards.LemmingsParade;
+import Thmod.Cards.SpellCards.PenglaiNingyou;
+import Thmod.Cards.SpellCards.ReturnInanimateness;
+import Thmod.Cards.SpellCards.TripWire;
+import Thmod.Cards.UncommonCards.ArtfulChanter;
+import Thmod.Cards.UncommonCards.HagoromoKu;
 import Thmod.Cards.RareCards.HisouTensoku;
 import Thmod.Cards.RareCards.IceTornado;
 import Thmod.Cards.RareCards.JigokuNoTaiyou;
@@ -104,7 +121,15 @@ import Thmod.Cards.SpellCards.TaihouKen;
 import Thmod.Cards.SpellCards.TaihouTsuigeki;
 import Thmod.Cards.SpellCards.TenkeiKisyou;
 import Thmod.Cards.SpellCards.YomeiIkubaku;
-import Thmod.Cards.SuitokuNoKyoryu;
+import Thmod.Cards.UncommonCards.LittleLegion;
+import Thmod.Cards.UncommonCards.NingyouChiyari;
+import Thmod.Cards.UncommonCards.NingyouKasou;
+import Thmod.Cards.UncommonCards.NingyouMusou;
+import Thmod.Cards.UncommonCards.NingyouOkisou;
+import Thmod.Cards.UncommonCards.NingyouYunhei;
+import Thmod.Cards.UncommonCards.OoedoNingyou;
+import Thmod.Cards.UncommonCards.SeekerDolls;
+import Thmod.Cards.UncommonCards.SuitokuNoKyoryu;
 import Thmod.Cards.UncommonCards.DemonsDinnerFork;
 import Thmod.Cards.UncommonCards.FreezeToughMe;
 import Thmod.Cards.UncommonCards.GasuOrimono;
@@ -119,7 +144,6 @@ import Thmod.Cards.UncommonCards.MajikuruSanhai;
 import Thmod.Cards.UncommonCards.MissingPower;
 import Thmod.Cards.UncommonCards.MusuNoYume;
 import Thmod.Cards.UncommonCards.NarrowSpark;
-import Thmod.Cards.UncommonCards.NingyouSousou;
 import Thmod.Cards.PerfectMaid;
 import Thmod.Cards.SpellCards.FinalSpark;
 import Thmod.Cards.UncommonCards.RoshinSou;
@@ -173,7 +197,6 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     private static final Color 衍生卡 = CardHelper.getColor(147, 147, 147);
     public static TextureAtlas orbAtlas;
     public static ArrayList<String> fightids = new ArrayList<>();
-    public static ArrayList<String> campids = new ArrayList<>();
     public static ArrayList<String> upcardids = new ArrayList<>();
     public static ArrayList<String> weathers = new ArrayList<>();
     public static HashMap<String,Integer> removemap = new HashMap<>();
@@ -208,21 +231,6 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         ThMod localThMod = new ThMod();
 
-        campids.add("PerfectMaid");
-        campids.add("VanishingEverything");
-        campids.add("JyouchiJin");
-        campids.add("KeiseiJin");
-        campids.add("KinbakuJin");
-        campids.add("Agarareta");
-        campids.add("DochyakuKami");
-        campids.add("Mishyaguji");
-        campids.add("GroundStardust");
-        campids.add("MajikuruSanhai");
-        campids.add("KoKei");
-        campids.add("KouPou");
-        campids.add("KokorosuKi");
-        campids.add("SeishiRoten");
-
         fightids.add("KeiseiJin");
         fightids.add("KinbakuJin");
         fightids.add("JyouchiJin");
@@ -247,6 +255,9 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         fightids.add("HisouTensoku");
         fightids.add("WumiGaWareru");
         fightids.add("TerribleSouvenir");
+        fightids.add("NingyouKasou");
+        fightids.add("OoedoNingyou");
+        fightids.add("ShanghaiNingyou");
 
         upcardids.add("FuumaJin");
         upcardids.add("HappouKibaku");
@@ -274,6 +285,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         upcardids.add("TenkeiKisyou");
         upcardids.add("MoozeNoKiseki");
         upcardids.add("KyoufuSaimin");
+        upcardids.add("ReturnInanimateness");
+        upcardids.add("PenglaiNingyou");
 
         removemap.put("KeiseiJin",1);
         removemap.put("KinbakuJin",1);
@@ -299,6 +312,9 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         removemap.put("HisouTensoku",20);
         removemap.put("WumiGaWareru",21);
         removemap.put("TerribleSouvenir",22);
+        removemap.put("NingyouKasou",23);
+        removemap.put("OoedoNingyou",23);
+        removemap.put("ShanghaiNingyou",24);
 
         upcardmap.put("FuumaJin",1);
         upcardmap.put("HappouKibaku",1);
@@ -326,6 +342,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         upcardmap.put("TenkeiKisyou",20);
         upcardmap.put("MoozeNoKiseki",21);
         upcardmap.put("KyoufuSaimin",22);
+        upcardmap.put("ReturnInanimateness",23);
+        upcardmap.put("PenglaiNingyou",24);
 
         weathers.add("KaiSei");
         weathers.add("KiriSame");
@@ -480,7 +498,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new DochyakuKami());
         BaseMod.addCard(new HagoromoMizu());
         BaseMod.addCard(new InscribeRedSoul());
-        BaseMod.addCard(new MagicStarsSword());
+//        BaseMod.addCard(new MagicStarsSword());
         BaseMod.addCard(new MakuraSeki());
         BaseMod.addCard(new Melting());
         BaseMod.addCard(new Sabishigari());
@@ -507,7 +525,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new SelfTokamak());
         BaseMod.addCard(new SenceofElegance());
         BaseMod.addCard(new SenyouGoraku());
-        BaseMod.addCard(new ShyakuBuku());
+//        BaseMod.addCard(new ShyakuBuku());
         BaseMod.addCard(new TenguNoTaiko());
         BaseMod.addCard(new VampireKiss());
 
@@ -578,7 +596,35 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new Nothing());
 
         if(ThMod.AliceOpen){
-//            BaseMod.addCard(new NingyouSousou());
+            BaseMod.addCard(new CuteOchiyari());
+            BaseMod.addCard(new DollofRoundTable());
+            BaseMod.addCard(new DollsWar());
+            BaseMod.addCard(new LemmingsParade());
+            BaseMod.addCard(new PenglaiNingyou());
+            BaseMod.addCard(new ReturnInanimateness());
+            BaseMod.addCard(new TripWire());
+
+            BaseMod.addCard(new HelanNingyou());
+            BaseMod.addCard(new MiraiBunraku());
+            BaseMod.addCard(new SemiAutomaton());
+            BaseMod.addCard(new ShanghaiNingyou());
+
+            BaseMod.addCard(new ArtfulChanter());
+            BaseMod.addCard(new LittleLegion());
+            BaseMod.addCard(new NingyouChiyari());
+            BaseMod.addCard(new NingyouKasou());
+            BaseMod.addCard(new NingyouMusou());
+            BaseMod.addCard(new NingyouOkisou());
+            BaseMod.addCard(new NingyouYunhei());
+            BaseMod.addCard(new OoedoNingyou());
+            BaseMod.addCard(new SeekerDolls());
+
+            BaseMod.addCard(new NingyouFukuhei());
+            BaseMod.addCard(new NingyouKisou());
+            BaseMod.addCard(new NingyouShinki());
+            BaseMod.addCard(new NingyouSousou());
+            BaseMod.addCard(new NingyouSP());
+            BaseMod.addCard(new SeekerWire());
         }
 
         logger.info("=========================加载新的卡牌内容成功=========================");
@@ -664,7 +710,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         settingsPanel.addLabel("点击按钮切换扩展卡组，重启后生效", this.X, this.Y + 2*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("", 525.0f, this.Y + 4*this.IntervalY, me -> {
             if (ThMod.AliceOpen) {
-                me.text = "启用爱丽丝卡组(还不能用)";
+                me.text = "启用爱丽丝卡组";
             }
             else {
                 me.text = "启用帕秋莉卡组(还不能用)";
@@ -675,10 +721,10 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         settingsPanel.addLabel("适用版本: 1.游戏:7.13. 2.basemod:7.12. 3.ModTheSpire:2.8.0", this.X, this.Y + 11*this.IntervalY, (me) -> { });
         settingsPanel.addLabel("更新日志请见hoykj吧(贴吧)", this.X, this.Y + 12*this.IntervalY, (me) -> { });
         settingsPanel.addLabel("目前进度:", 1100f, this.Y + 2*this.IntervalY , (me) -> { });
-        settingsPanel.addLabel("卡组:通用部分完成", 1100f, this.Y + 3*this.IntervalY , (me) -> { });
+        settingsPanel.addLabel("卡组:通用部分与爱丽丝卡组完成", 1100f, this.Y + 3*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("遗物:做了个开头", 1100f, this.Y + 4*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("美工:做了个开头", 1100f, this.Y + 5*this.IntervalY , (me) -> { });
-        settingsPanel.addLabel("debug:做了一丢丢", 1100f, this.Y + 6*this.IntervalY , (me) -> { });
+        settingsPanel.addLabel("debug:在做", 1100f, this.Y + 6*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("特效:几乎没做", 1100f, this.Y + 7*this.IntervalY , (me) -> { });
         //settingsPanel.addLabel("设计:hoykj  编程:hoykj  绘图:hoykj", 400.0f, 500.0f, (me) -> { });
     }
@@ -691,9 +737,12 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             e.printStackTrace();
         }
         // Add relics
-        RelicLibrary.add(new KomeijisEye());
-        RelicLibrary.add(new SpellCardsRule());
+        BaseMod.addRelicToCustomPool(new KomeijisEye(), AbstractCardEnum.古明地觉.toString());
+        BaseMod.addRelicToCustomPool(new SpellCardsRule(), AbstractCardEnum.古明地觉.toString());
+//        RelicLibrary.add(new KomeijisEye());
+//        RelicLibrary.add(new SpellCardsRule());
     }
+
     public void receiveEditStrings()
     {
         DevConsole.logger.info("========================= 正在加载文本信息 =========================");
@@ -713,9 +762,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     }
     public void receivePostDungeonInitialize()
     {
-        //if (!(AbstractDungeon.player.hasRelic("BlinkDagger")))
-            //   new BlinkDagger().instantObtain();
-
+//        if (!(AbstractDungeon.player.hasRelic("Letter Opener")))
+//            new LetterOpener().instantObtain();
     }
     public void receiveEditKeywords()
     {
@@ -729,6 +777,15 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addKeyword(new String[]{"固定","固定"}, "不受任何加成");
         BaseMod.addKeyword(new String[]{"紧缚灵","紧缚灵"}, "在它受到伤害时,每只紧缚灵会对它造成10点伤害并消失");
         BaseMod.addKeyword(new String[]{"天气","天气"}, "天气将为你提供额外效果");
+        BaseMod.addKeyword(new String[]{"人偶","人偶"}, "爱丽丝制作的人偶,为什么会出现在这呢?");
+        BaseMod.addKeyword(new String[]{"武装","武装"}, "普通人偶可以武装为枪兵,盾兵或弓兵.");
+        BaseMod.addKeyword(new String[]{"枪兵人偶","枪兵人偶"}, "枪兵人偶会使你获得力量加成");
+        BaseMod.addKeyword(new String[]{"盾兵人偶","盾兵人偶"}, "盾兵人偶会在回合结束提供格挡");
+        BaseMod.addKeyword(new String[]{"弓兵人偶","弓兵人偶"}, "弓兵人偶会在回合结束造成随机目标的伤害");
+        BaseMod.addKeyword(new String[]{"上海人偶","上海人偶"}, "上海人偶会使你获得力量加成,激发时造成全体伤害.(属于枪兵)");
+        BaseMod.addKeyword(new String[]{"蓬莱人偶","蓬莱人偶"}, "上海人偶会使你获得力量加成,激发时造成全体伤害.(属于枪兵)");
+        BaseMod.addKeyword(new String[]{"和兰人偶","和兰人偶"}, "和兰人偶会在回合结束提供格挡,激发后获得多层护甲.(属于盾兵)");
+        BaseMod.addKeyword(new String[]{"额外行动","额外行动"}, "枪兵:对随机敌人造成3点伤害. 盾兵:给予2点格挡. 弓兵:每2个弓兵将为你恢复1点生命");
     }
 
     public static void SavePointPower() throws IOException {

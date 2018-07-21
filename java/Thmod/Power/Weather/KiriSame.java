@@ -37,7 +37,7 @@ public class KiriSame extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "KiriSame"));
         else
             this.amount -= 1;

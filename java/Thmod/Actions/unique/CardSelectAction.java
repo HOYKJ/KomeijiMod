@@ -31,8 +31,11 @@ import Thmod.Cards.ItemCards.SeigyoBou;
 import Thmod.Cards.ItemCards.SutoppuWocchi;
 import Thmod.Cards.SpellCards.AbstractSpellCards;
 import Thmod.Cards.SpellCards.BurariHaieki;
+import Thmod.Cards.SpellCards.CuteOchiyari;
 import Thmod.Cards.SpellCards.DaiesanShikkaiKoroshi;
 import Thmod.Cards.SpellCards.DeepEcologicalBomb;
+import Thmod.Cards.SpellCards.DollofRoundTable;
+import Thmod.Cards.SpellCards.DollsWar;
 import Thmod.Cards.SpellCards.DraculaCradle;
 import Thmod.Cards.SpellCards.EasyMasterSpark;
 import Thmod.Cards.SpellCards.EnshinRoten;
@@ -47,6 +50,7 @@ import Thmod.Cards.SpellCards.HeartBreak;
 import Thmod.Cards.SpellCards.Kamaitachi;
 import Thmod.Cards.SpellCards.KokushiMusou;
 import Thmod.Cards.SpellCards.KyoufuSaimin;
+import Thmod.Cards.SpellCards.LemmingsParade;
 import Thmod.Cards.SpellCards.MirenKamai;
 import Thmod.Cards.SpellCards.Mireniamu;
 import Thmod.Cards.SpellCards.MissingPurplePower;
@@ -54,7 +58,9 @@ import Thmod.Cards.SpellCards.MoozeNoKiseki;
 import Thmod.Cards.SpellCards.MoukoNaikei;
 import Thmod.Cards.SpellCards.MusouTensei;
 import Thmod.Cards.SpellCards.MusuNoTegata;
+import Thmod.Cards.SpellCards.PenglaiNingyou;
 import Thmod.Cards.SpellCards.RapurasuNoMa;
+import Thmod.Cards.SpellCards.ReturnInanimateness;
 import Thmod.Cards.SpellCards.RokkonShyoujyou;
 import Thmod.Cards.SpellCards.SakuraHirame;
 import Thmod.Cards.SpellCards.SakuyaNoSekai;
@@ -64,6 +70,7 @@ import Thmod.Cards.SpellCards.SpeartheGungnir;
 import Thmod.Cards.SpellCards.TaihouKen;
 import Thmod.Cards.SpellCards.TaihouTsuigeki;
 import Thmod.Cards.SpellCards.TenkeiKisyou;
+import Thmod.Cards.SpellCards.TripWire;
 import Thmod.Cards.SpellCards.YomeiIkubaku;
 import Thmod.Relics.SpellCardsRule;
 import Thmod.ThMod;
@@ -96,7 +103,7 @@ public class CardSelectAction extends AbstractGameAction
             CardSelectAction.SpellCards.addToTop(new SutoppuWocchi());
             CardSelectAction.SpellCards.addToTop(new SaSen());
             CardSelectAction.SpellCards.addToTop(new ByoukiHeiyu());
-            CardSelectAction.SpellCards.addToTop(new FusyokuKusuri());
+//            CardSelectAction.SpellCards.addToTop(new FusyokuKusuri());
             CardSelectAction.SpellCards.addToTop(new HisouNoKenItem());
             CardSelectAction.SpellCards.addToTop(new IbukiHisyaku());
             CardSelectAction.SpellCards.addToTop(new Namazu());
@@ -122,7 +129,7 @@ public class CardSelectAction extends AbstractGameAction
         if ((this.powercount >= 1) && (this.cardid.size() > 0)){
             for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext();) {
                 AbstractCard Cardid = (AbstractCard) localIterator.next();
-                if (Cardid.equals("HagoromoMizu")) {
+                if (Cardid.cardID.equals("HagoromoMizu")) {
                     CardSelectAction.SpellCards.addToTop(new HagoromoToki());
                 }
             }
@@ -222,6 +229,8 @@ public class CardSelectAction extends AbstractGameAction
                 }
             }
         }
+
+
         if ((this.powercount == -1) && (this.cardid.size() > 0)){
             if(!(this.cardid.get(0).upgraded)){
                 (CardSelectAction.SpellCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED)).addToTop(new TaikoDefend());
@@ -252,6 +261,53 @@ public class CardSelectAction extends AbstractGameAction
                 this.zh = 3;
             }
         }
+
+
+        if(ThMod.AliceOpen){
+            if ((this.powercount >= 2) && (this.cardid.size() > 0)) {
+                for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
+                    AbstractCard Cardid = (AbstractCard) localIterator.next();
+                    if (Cardid.cardID.equals("TripWire")) {
+                        CardSelectAction.SpellCards.addToTop(new TripWire());
+                    }
+                }
+            }
+            if ((this.powercount >= 3) && (this.cardid.size() > 0)) {
+                for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
+                    AbstractCard Cardid = (AbstractCard) localIterator.next();
+                    if ((Cardid.cardID.equals("NingyouKasou")) || (Cardid.cardID.equals("OoedoNingyou"))) {
+                        CardSelectAction.SpellCards.addToTop(new ReturnInanimateness());
+                    }
+                    if (Cardid.cardID.equals("CuteOchiyari")) {
+                            CardSelectAction.SpellCards.addToTop(new CuteOchiyari());
+                    }
+                    if (Cardid.cardID.equals("DollofRoundTable")) {
+                        CardSelectAction.SpellCards.addToTop(new DollofRoundTable());
+                    }
+                }
+            }
+            if ((this.powercount >= 4) && (this.cardid.size() > 0)) {
+                for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
+                    AbstractCard Cardid = (AbstractCard) localIterator.next();
+                    if (Cardid.cardID.equals("ShanghaiNingyou")) {
+                        CardSelectAction.SpellCards.addToTop(new PenglaiNingyou());
+                    }
+                    if (Cardid.cardID.equals("DollsWar")) {
+                        CardSelectAction.SpellCards.addToTop(new DollsWar());
+                    }
+                }
+            }
+            if ((this.powercount >= 5) && (this.cardid.size() > 0)) {
+                for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
+                    AbstractCard Cardid = (AbstractCard) localIterator.next();
+                    if (Cardid.cardID.equals("LemmingsParade")) {
+                        CardSelectAction.SpellCards.addToTop(new LemmingsParade());
+                    }
+                }
+            }
+        }
+
+
         CardSelectAction.SpellCards.sortAlphabetically(false);
         CardSelectAction.allUpgradedSpellCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for (final AbstractCard c : CardSelectAction.SpellCards.group) {
@@ -294,6 +350,7 @@ public class CardSelectAction extends AbstractGameAction
 //                    else if (this.powercount == -1)
                     return;
                 }
+                SpellCardsRule.clicked = false;
                 this.cardselect();
             }
         }

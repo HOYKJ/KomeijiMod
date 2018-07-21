@@ -20,7 +20,7 @@ public class MusuNoYume extends AbstractKomeijiCards {
 
     public MusuNoYume() {
         super("MusuNoYume", MusuNoYume.NAME,  1, MusuNoYume.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseMagicNumber = 4;
+        this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
     }
 

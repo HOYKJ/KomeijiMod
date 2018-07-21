@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Thmod.Actions.common.PlayerTalkAction;
+import Thmod.Cards.DeriveCards.FuubiStrike;
 import Thmod.Power.PointPower;
 import Thmod.Power.TenmizuPower;
 import Thmod.ThMod;
@@ -28,6 +29,7 @@ public class SpellCardsRule extends AbstractThRelic {
     public static int Kokushinum;
     public static boolean selected;
     public static boolean newCards;
+    public static boolean clicked;
     public static ArrayList<AbstractCard> cardsToSelect = new ArrayList<>();
     private boolean playerturn;
 
@@ -69,17 +71,17 @@ public class SpellCardsRule extends AbstractThRelic {
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
         AbstractPlayer p = AbstractDungeon.player;
-        if (targetCard.type == AbstractCard.CardType.ATTACK) {
+        if ((targetCard.type == AbstractCard.CardType.ATTACK) && (!(targetCard instanceof FuubiStrike))) {
             if (!(p.hasPower("PointPower"))) {
                 this.counter += 1;
-                if (this.counter == 5) {
+                if (this.counter == 4) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
                     this.counter = 0;
                 }
             }
             else if (p.getPower("PointPower").amount < 5) {
                 this.counter += 1;
-                if (this.counter == 5) {
+                if (this.counter == 4) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
                     this.counter = 0;
                 }
@@ -141,26 +143,29 @@ public class SpellCardsRule extends AbstractThRelic {
 
     protected void onRightClick() {
         AbstractPlayer p = AbstractDungeon.player;
-        if((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
-            if(!(selected)) {
+        if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
+            if (!(selected)) {
                 if (this.playerturn) {
                     if (p.hasPower("PointPower")) {
                         if (p.getPower("PointPower").amount > 0) {
-                            PointPower.Start();
-                            this.pulse = false;
+                            if (!(clicked)) {
+                                clicked = true;
+                                PointPower.Start();
+                                this.pulse = false;
+                            } else {
+                                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "请不要连续点击"));
+                            }
                         } else {
                             AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我没有足够的P点"));
                         }
                     } else {
                         AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我没有足够的P点"));
                     }
+                } else {
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "这不是我的回合"));
                 }
-                else {
-                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"这不是我的回合"));
-                }
-            }
-            else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我获得过符卡了"));
+            } else {
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我获得过符卡了"));
             }
         }
     }
@@ -168,6 +173,7 @@ public class SpellCardsRule extends AbstractThRelic {
     public void atTurnStart() {
         AbstractPlayer p = AbstractDungeon.player;
         this.playerturn = true;
+        clicked = false;
         newCards = true;
         cardsToSelect.clear();
         if (p.hasPower("PointPower")) {

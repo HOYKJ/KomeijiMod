@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import Thmod.Cards.AbstractSweepCards;
 import Thmod.ThMod;
 import Thmod.ui.SweepOption;
 import basemod.ReflectionHacks;
@@ -35,15 +36,15 @@ public class CampfireUIPatch {
             label0:
             for (Iterator localIterator = AbstractDungeon.player.masterDeck.group.iterator(); localIterator.hasNext();) {
                 AbstractCard c = (AbstractCard)localIterator.next();
-                for (Iterator Iterator = ThMod.campids.iterator(); Iterator.hasNext(); ) {
-                    cardid = (String) Iterator.next();
-                    if (c.cardID.equals(cardid)) {
+//                for (Iterator Iterator = ThMod.campids.iterator(); Iterator.hasNext(); ) {
+//                    cardid = (String) Iterator.next();
+                    if (c instanceof AbstractSweepCards) {
                         campfireButtons.add(button);
                         ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 1)).setPosition(950.0F * Settings.scale, height * Settings.scale);
                         break label0;
                     }
                 }
-            }
+//            }
 
 
 

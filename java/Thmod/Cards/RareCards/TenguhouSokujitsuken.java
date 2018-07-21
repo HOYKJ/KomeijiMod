@@ -20,7 +20,7 @@ public class TenguhouSokujitsuken extends AbstractKomeijiCards {
 
     public TenguhouSokujitsuken() {
         super("TenguhouSokujitsuken", TenguhouSokujitsuken.NAME,  2, TenguhouSokujitsuken.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
-        this.baseMagicNumber = 1;
+        this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }
 
@@ -35,7 +35,7 @@ public class TenguhouSokujitsuken extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(1);
+            this.upgradeBaseCost(1);
         }
     }
 

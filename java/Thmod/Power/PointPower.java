@@ -17,6 +17,11 @@ import java.util.Iterator;
 
 import Thmod.Actions.unique.CardSelectAction;
 import Thmod.Actions.unique.isSeedAction;
+import Thmod.Cards.SpellCards.CuteOchiyari;
+import Thmod.Cards.SpellCards.DollofRoundTable;
+import Thmod.Cards.SpellCards.DollsWar;
+import Thmod.Cards.SpellCards.LemmingsParade;
+import Thmod.Cards.SpellCards.TripWire;
 import Thmod.ThMod;
 import basemod.DevConsole;
 
@@ -43,7 +48,7 @@ public class PointPower extends AbstractPower {
     public void atStartOfTurn() {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount > 5)
-                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner,this.owner,"PointPower",(p.getPower("PointPower").amount - 5)));
+                this.amount = 5;
         }
         if(ThMod.StartSelectOpen)
             Start();
@@ -58,11 +63,13 @@ public class PointPower extends AbstractPower {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount > 0) {
                 powercount = p.getPower("PointPower").amount;
+                if (powercount > 5)
+                    powercount = 5;
                 DevConsole.logger.info("beforeSelect"+powercount);
                 if (powercount == 1)
-                    AbstractDungeon.actionManager.addToBottom((AbstractGameAction) new CardSelectAction(1, true, true, 1, cardid));
+                    AbstractDungeon.actionManager.addToBottom( new CardSelectAction(1, true, true, 1, cardid));
                 else
-                    AbstractDungeon.actionManager.addToBottom((AbstractGameAction) new CardSelectAction(1, false, true, powercount, cardid));
+                    AbstractDungeon.actionManager.addToBottom( new CardSelectAction(1, false, true, powercount, cardid));
             }
         }
     }
@@ -74,6 +81,23 @@ public class PointPower extends AbstractPower {
                 cardid.add(c);
             }
         }
+    }
+
+    public void addNingyou(int NingyouNum,int YariNum,int TateNum,int YumiNum){
+        DevConsole.logger.info("NingyouNum"+NingyouNum);
+        DevConsole.logger.info("YariNum"+YariNum);
+        DevConsole.logger.info("TateNum"+TateNum);
+        DevConsole.logger.info("YumiNum"+YumiNum);
+        if(NingyouNum > 2){
+            cardid.add(new TripWire());
+            cardid.add(new LemmingsParade());
+        }
+        if(YariNum > 2)
+            cardid.add(new CuteOchiyari());
+        if((TateNum > 2) && ((!p.hasPower("RoundTable"))))
+            cardid.add(new DollofRoundTable());
+        if(YumiNum > 2)
+            cardid.add(new DollsWar());
     }
 
     public void updateDescription()

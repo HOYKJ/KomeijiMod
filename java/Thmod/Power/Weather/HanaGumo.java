@@ -40,7 +40,7 @@ public class HanaGumo extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "HanaGumo"));
         else
             this.amount -= 1;

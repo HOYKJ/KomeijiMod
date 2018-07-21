@@ -24,6 +24,7 @@ public class VampireKiss extends AbstractKomeijiCards {
     public VampireKiss() {
         super("VampireKiss", VampireKiss.NAME,  1, VampireKiss.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         this.baseDamage = 2;
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

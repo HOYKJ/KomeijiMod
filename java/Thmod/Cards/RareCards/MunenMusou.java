@@ -3,6 +3,7 @@ package Thmod.Cards.RareCards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveDebuffsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -28,9 +29,11 @@ public class MunenMusou extends AbstractKomeijiCards {
     public MunenMusou() {
         super("MunenMusou", MunenMusou.NAME,  3, MunenMusou.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
         this.exhaustnum = 0;
+        this.baseBlock = 15;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(p));
         for (Iterator localIterator = p.hand.group.iterator(); localIterator.hasNext(); ){
             AbstractCard c = (AbstractCard) localIterator.next();
@@ -64,6 +67,7 @@ public class MunenMusou extends AbstractKomeijiCards {
             this.upgradeName();
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
+            this.upgradeBlock(5);
         }
     }
 

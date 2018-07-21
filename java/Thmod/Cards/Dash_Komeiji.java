@@ -20,7 +20,7 @@ public class Dash_Komeiji extends AbstractKomeijiCards{
     private static final int COST = 2;
 
     public Dash_Komeiji() {
-        super("Dash_Komeiji", Dash_Komeiji.NAME,  2, Dash_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super("Dash_Komeiji", Dash_Komeiji.NAME,  2, Dash_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.NONE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

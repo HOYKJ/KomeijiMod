@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import Thmod.Power.MakuraSekiPower;
 
-public class MakuraSeki extends AbstractKomeijiCards{
+public class MakuraSeki extends AbstractKomeijiCards {
     public static final String ID = "MakuraSeki";
     private static final CardStrings cardStrings;
     public static final String NAME;
@@ -20,8 +20,8 @@ public class MakuraSeki extends AbstractKomeijiCards{
     private static final int BLOCK_AMT = 8;
 
     public MakuraSeki() {
-        super("MakuraSeki", MakuraSeki.NAME,  1, MakuraSeki.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        this.baseBlock = 8;
+        super("MakuraSeki", MakuraSeki.NAME,  1, MakuraSeki.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        this.baseBlock = 7;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -36,7 +36,7 @@ public class MakuraSeki extends AbstractKomeijiCards{
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBlock(4);
+            this.upgradeBlock(3);
         }
     }
 

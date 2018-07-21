@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -19,16 +20,16 @@ public class NingyouOrb extends AbstractOrb {
     private static Texture img1;
 
     public NingyouOrb() {
-        if (this.img1 == null) {
-            this.img1 = ImageMaster.loadImage("images/orbs/NingyouOrb.png");
+        this.ID = "NingyouOrb";
+        this.name = NingyouOrb.NAME;
+        if (NingyouOrb.img1 == null) {
+            NingyouOrb.img1 = ImageMaster.loadImage("images/orbs/NingyouOrb.png");
         }
         this.baseEvokeAmount = 0;
         this.evokeAmount = this.baseEvokeAmount;
         this.basePassiveAmount = 1;
         this.passiveAmount = this.basePassiveAmount;
         this.angle = MathUtils.random(360.0f);
-        this.ID = "NingyouOrb";
-        this.name = this.NAME;
         this.cX = AbstractDungeon.player.drawX + AbstractDungeon.player.hb_x;
         this.cY = AbstractDungeon.player.drawY + AbstractDungeon.player.hb_y + AbstractDungeon.player.hb_h / 2.0f;
         this.updateDescription();
@@ -43,12 +44,9 @@ public class NingyouOrb extends AbstractOrb {
 
     public void onEndOfTurn()
     {
-//        float speedTime = 0.60000002384185791F / AbstractDungeon.player.orbs.size();
-//        if (Settings.FAST_MODE) {
-//            speedTime = 0F;
-//        }
+        AbstractPlayer p = AbstractDungeon.player;
 
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.passiveAmount, true));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.passiveAmount, true));
     }
 
     public void onEvoke() {
@@ -62,7 +60,7 @@ public class NingyouOrb extends AbstractOrb {
 
     public void render(final SpriteBatch sb) {
         sb.setColor(this.c);
-        sb.draw(this.img1, this.cX - 48.0f + this.bobEffect.y / 8.0f, this.cY - 48.0f - this.bobEffect.y / 8.0f, 48.0f, 48.0f, 96.0f, 96.0f, this.scale, this.scale, 0.0f, 0, 0, 96, 96, false, false);
+        sb.draw(NingyouOrb.img1, this.cX - 48.0f + this.bobEffect.y / 8.0f, this.cY - 48.0f - this.bobEffect.y / 8.0f, 48.0f, 48.0f, 96.0f, 96.0f, this.scale, this.scale, 0.0f, 0, 0, 96, 96, false, false);
         this.renderText(sb);
         this.hb.render(sb);
     }

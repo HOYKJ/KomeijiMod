@@ -18,11 +18,11 @@ public class MusouMyousyu extends AbstractKomeijiCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 3;
-    private static final int ATTACK_DMG = 4;
+    private static final int ATTACK_DMG = 5;
 
     public MusouMyousyu() {
         super("MusouMyousyu", MusouMyousyu.NAME,  3, MusouMyousyu.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
-        this.baseDamage = 4;
+        this.baseDamage = 5;
         this.baseMagicNumber = 7;
         this.magicNumber = this.baseMagicNumber;
     }

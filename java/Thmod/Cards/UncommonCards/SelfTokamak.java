@@ -18,7 +18,7 @@ public class SelfTokamak extends AbstractKomeijiCards {
     public static final String DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION;
     private static final int COST = 0;
-    private static final int HP_LOSS = 5;
+    private static final int HP_LOSS = 3;
     private static final int ENERGY_AMT = 2;
 
     public SelfTokamak() {
@@ -31,7 +31,7 @@ public class SelfTokamak extends AbstractKomeijiCards {
     public void use(AbstractPlayer p, AbstractMonster m)
     {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new LoseHPAction(p, p, 5));
+        AbstractDungeon.actionManager.addToBottom(new LoseHPAction(p, p, 3));
     }
 
     public AbstractCard makeCopy() {

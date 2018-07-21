@@ -32,11 +32,11 @@ public class BurariHaieki extends AbstractSpellCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
                 for(int i = 0;i < this.magicNumber;i++) {
                     AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     AbstractDungeon.actionManager.addToTop(new WaitAction(0.1F));
                 }
-                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
     }

@@ -13,11 +13,9 @@ import java.util.ArrayList;
 
 import Thmod.Cards.Dash_Komeiji;
 import Thmod.Cards.Defend_Komeiji;
-import Thmod.Cards.RareCards.EverywhereHibernate;
-import Thmod.Cards.UncommonCards.NarrowSpark;
+import Thmod.Cards.NingyouFukuhei;
+import Thmod.Cards.NingyouShinki;
 import Thmod.Cards.Strike_Komeiji;
-import Thmod.Cards.UncommonCards.NingyouSousou;
-import Thmod.Cards.UncommonCards.SeishiRoten;
 import Thmod.Patches.CharacterEnum;
 import Thmod.ThMod;
 import basemod.abstracts.CustomPlayer;
@@ -32,7 +30,7 @@ public class KomeijiSatori extends CustomPlayer {
 
         this.dialogX = this.drawX + 0.0f * Settings.scale;
         this.dialogY = this.drawY + 240.0f * Settings.scale;
-        ThMod.orbAtlas = new TextureAtlas(Gdx.files.internal("images/orbs/orb.atlas"));
+        ThMod.orbAtlas = new TextureAtlas(Gdx.files.internal("images/orbs/Komeiji/orb.atlas"));
         AbstractCard.orb_red = ThMod.orbAtlas.findRegion("komeiji");
         ImageMaster.RED_ORB = ThMod.orbAtlas.findRegion("komeiji");
 
@@ -50,8 +48,8 @@ public class KomeijiSatori extends CustomPlayer {
         retVal.add(Defend_Komeiji.ID);
         retVal.add(Defend_Komeiji.ID);
         retVal.add(Dash_Komeiji.ID);
-        retVal.add(EverywhereHibernate.ID);
-//        retVal.add(SeishiRoten.ID);
+//        retVal.add(NingyouFukuhei.ID);
+//        retVal.add(NingyouShinki.ID);
         return retVal;
     }
 

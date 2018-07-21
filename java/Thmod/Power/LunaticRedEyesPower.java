@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import java.util.Iterator;
 
 import Thmod.Actions.common.PlayerTalkAction;
+import Thmod.Cards.DeriveCards.AbstractDeriveCards;
 import Thmod.Cards.ItemCards.AbstractItemCards;
 import Thmod.Cards.SpellCards.AbstractSpellCards;
 import Thmod.ThMod;
@@ -50,7 +51,8 @@ public class LunaticRedEyesPower extends AbstractPower {
 //            }
             boolean result = card instanceof AbstractSpellCards;
             boolean result2 = card instanceof AbstractItemCards;
-            if ((result) || (result2))
+            boolean result3 = card instanceof AbstractDeriveCards;
+            if ((result) || (result2) || (result3))
                 this.canback = false;
             if (this.canback) {
                 if(!(c.exhaust == true))

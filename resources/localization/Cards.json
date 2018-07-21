@@ -191,11 +191,6 @@
       "DESCRIPTION": 
 	"对所有敌人造成 !D! 点伤害, 力量 将发挥 !M! 倍效果."
     },
-    "NingyouSousou":{
-      "NAME": "回忆「人偶操创」",
-      "DESCRIPTION": 
-	"获得 !B! 点 格挡 , NL  获得1个 人偶 . 联想 ."
-    },
     "RoshinSou": {
       "NAME": "回忆「六震-相-」",
       "DESCRIPTION": 
@@ -241,7 +236,7 @@
   "VampireKiss": {
     "NAME": "回忆「Vampire Kiss」",
     "DESCRIPTION":
-    "造成 !D! 点伤害3次,未被 格挡 的伤害将为你回复半额的生命."
+    "造成 !D! 点伤害3次,未被 格挡 的伤害将为你回复半额的生命. 消耗 ."
   },
 
 
@@ -286,16 +281,16 @@
   "LunaticRedEyes": {
     "NAME": "回忆「幻陇月睨」",
     "DESCRIPTION":
-    "每当你使用一张不消耗P点的卡,将1张带有 消耗 和 虚无 的复制加入你的手牌.",
+    "每当你使用一张不消耗P点的卡,将1张带有 消耗 和 虚无 的复制加入你的手牌.(不会复制衍生卡)",
     "UPGRADE_DESCRIPTION":
-    " 固有 ,每当你使用一张不消耗P点的卡,将1张带有 消耗 和 虚无 的复制加入你的手牌."
+    " 固有 ,每当你使用一张不消耗P点的卡,将1张带有 消耗 和 虚无 的复制加入你的手牌.(不会复制衍生卡)"
   },
   "MunenMusou": {
     "NAME": "回忆「无念无想的境界」",
     "DESCRIPTION":
-    "清除你的所有debuff,消耗所有 诅咒 和 状态 ,每消耗一张手中的卡,抽一张卡.",
+    "获得 !B! 点 格挡 .清除你的所有debuff,消耗所有 诅咒 和 状态 ,每消耗一张手中的卡,抽一张卡.",
     "UPGRADE_DESCRIPTION":
-    "清除你的所有debuff,消耗所有 诅咒 和 状态 ,每消耗一张手中的卡,抽一张卡,并获得3层 人工制品 ."
+    "获得 !B! 点 格挡 .清除你的所有debuff,消耗所有 诅咒 和 状态 ,每消耗一张手中的卡,抽一张卡,并获得3层 人工制品 ."
   },
   "MusouMyousyu": {
     "NAME": "回忆「梦想妙珠」",
@@ -348,7 +343,7 @@
     "Namazu": {
       "NAME": "鲶鱼的大地震",
       "DESCRIPTION": 
-	"对自己造成5点 固定 伤害,对所有敌人造成10 固定 点伤害. NL 消耗1P."
+	"对自己造成3点 固定 伤害,对所有敌人造成10 固定 点伤害. NL 消耗1P."
     },
     "FusyokuKusuri": {
       "NAME": "符蚀药",
@@ -607,6 +602,187 @@
     "NAME": "空无一物",
     "DESCRIPTION":
     "这里什么也没有"
+  },
+
+
+  "NingyouFukuhei": {
+    "NAME": "回忆「人偶伏兵」",
+    "DESCRIPTION":
+    "选择获得1个: 枪兵人偶 , 盾兵人偶 , 弓兵人偶 . 联想 .",
+    "EXTENDED_DESCRIPTION":[
+      "选择1个人偶",
+      "枪兵人偶","获得1个 枪兵人偶 .",
+      "盾兵人偶","获得1个 盾兵人偶 .",
+      "弓兵人偶","获得1个 弓兵人偶 ."
+    ]
+  },
+  "NingyouKisou": {
+    "NAME": "回忆「人偶归巢」",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 点伤害. NL  获得1个 人偶 . 联想 ."
+  },
+  "NingyouShinki": {
+    "NAME": "回忆「人偶振起」",
+    "DESCRIPTION":
+    "选择最多3个 人偶  激发 ,对所有敌人造成6× 激发 数的伤害. 联想 .",
+    "EXTENDED_DESCRIPTION":[
+      "选择最多3个人偶",
+      "人偶","普通 人偶 .",
+      "枪兵人偶"," 枪兵人偶 .",
+      "盾兵人偶"," 盾兵人偶 .",
+      "弓兵人偶"," 弓兵人偶 .",
+      "上海"," 上海人偶 .",
+      "蓬莱"," 蓬莱人偶 .",
+      "和兰"," 和兰人偶 ."
+    ]
+  },
+  "NingyouSousou":{
+    "NAME": "回忆「人偶操创」",
+    "DESCRIPTION":
+    "造成 !D! 点伤害,获得 !B! 点 格挡 . NL  获得1个 人偶 . 联想 ."
+  },
+  "NingyouSP":{
+    "NAME": "回忆「人偶SP」",
+    "DESCRIPTION":
+    "获得最多 !M! 个 人偶 ."
+  },
+  "SeekerWire":{
+    "NAME": "回忆「Seeker Wire」",
+    "DESCRIPTION":
+    "获得 !M! 个人偶栏位. 虚无 ."
+  },
+
+  "ArtfulChanter":{
+    "NAME": "回忆「Artful Chanter」",
+    "DESCRIPTION":
+    " 激发 1个 人偶 ,抽 !M! 张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "选择1个人偶进行激发"
+    ]
+  },
+  "LittleLegion":{
+    "NAME": "回忆「Little Legion」",
+    "DESCRIPTION":
+    " 武装 所有未 武装 的人偶",
+    "EXTENDED_DESCRIPTION":[
+      "选择进行1种武装",
+      "枪兵人偶","武装为 枪兵人偶 .",
+      "盾兵人偶","武装为 盾兵人偶 .",
+      "弓兵人偶","武装为 弓兵人偶 ."
+    ]
+  },
+  "NingyouChiyari":{
+    "NAME": "回忆「人偶千枪」",
+    "DESCRIPTION":
+    "选择最多3个未 武装  人偶 , 武装 为 枪兵人偶 ",
+    "EXTENDED_DESCRIPTION":[
+      "选择最多3个人偶进行武装"
+    ]
+  },
+  "NingyouKasou":{
+    "NAME": "回忆「人偶火葬」",
+    "DESCRIPTION":
+    " 激发 1个 人偶 ,造成 !D! 点伤害,抽 !M! 张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "选择1个人偶进行激发"
+    ]
+  },
+  "NingyouMusou":{
+    "NAME": "回忆「人偶无操」",
+    "DESCRIPTION":
+    " 激发 1个 人偶 ,获得 [R] .",
+    "EXTENDED_DESCRIPTION":[
+      "选择1个人偶进行激发"
+    ]
+  },
+  "NingyouOkisou":{
+    "NAME": "回忆「人偶置操」",
+    "DESCRIPTION":
+    "选择最多3个未 武装  人偶 , 武装 为 盾兵人偶 ",
+    "EXTENDED_DESCRIPTION":[
+      "选择最多3个人偶进行武装"
+    ]
+  },
+  "NingyouYunhei":{
+    "NAME": "回忆「人偶弓兵」",
+    "DESCRIPTION":
+    "选择最多3个未 武装  人偶 , 武装 为 弓兵人偶 ",
+    "EXTENDED_DESCRIPTION":[
+      "选择最多3个人偶进行武装"
+    ]
+  },
+  "OoedoNingyou":{
+    "NAME": "回忆「大江户机关人偶」",
+    "DESCRIPTION":
+    " 激发 1个 人偶 ,造成 !D! 点伤害.",
+    "EXTENDED_DESCRIPTION":[
+      "选择1个人偶进行激发"
+    ]
+  },
+  "SeekerDolls":{
+    "NAME": "回忆「Seeker Dolls」",
+    "DESCRIPTION":
+    "获得1个 人偶 ,根据目标敌人的意图获得加成."
+  },
+
+  "HelanNingyou":{
+    "NAME": "回忆「和兰人偶」",
+    "DESCRIPTION":
+    "获得1个 和兰人偶 ."
+  },
+  "MiraiBunraku":{
+    "NAME": "回忆「未来文乐」",
+    "DESCRIPTION":
+    "获得 !M! 点 集中 ."
+  },
+  "SemiAutomaton":{
+    "NAME": "回忆「Semi-Automaton」",
+    "DESCRIPTION":
+    "获得 !M! 层Semi-Automaton,在回合结束时会消耗剩余的 [R] 使 人偶 进行 额外行动 ."
+  },
+  "ShanghaiNingyou":{
+    "NAME": "回忆「上海人偶」",
+    "DESCRIPTION":
+    "获得1个 上海人偶 ."
+  },
+
+  "CuteOchiyari":{
+    "NAME": "回忆「萌萌大千枪」",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! × 枪兵人偶 数量的伤害.消耗3P."
+  },
+  "DollofRoundTable":{
+    "NAME": "回忆「Doll of Round Table」",
+    "DESCRIPTION":
+    "获得圆桌人偶状态,使盾兵人偶在回合结束时给予更多的 格挡 .(受 敏捷 加成)消耗3P."
+  },
+  "DollsWar":{
+    "NAME": "回忆「Doll's War」",
+    "DESCRIPTION":
+    "获得 !M! × 弓兵人偶 数量的 力量 .消耗4P."
+  },
+  "LemmingsParade":{
+    "NAME": "回忆「Lemmings' Parade」",
+    "DESCRIPTION":
+    "激发所有 人偶 ,对所有敌人造成 !D! ×激发数的伤害.消耗5P."
+  },
+  "PenglaiNingyou":{
+    "NAME": "回忆「蓬莱人偶」",
+    "DESCRIPTION":
+    "获得1个 蓬莱人偶 .消耗4P."
+  },
+  "ReturnInanimateness":{
+    "NAME": "回忆「Return Inanimateness」",
+    "DESCRIPTION":
+    " 激发 1个 人偶 ,造成 !D! 点伤害,抽 !M! 张卡.消耗3P.",
+    "EXTENDED_DESCRIPTION":[
+      "选择1个人偶进行激发"
+    ]
+  },
+  "TripWire":{
+    "NAME": "回忆「Trip Wire」",
+    "DESCRIPTION":
+    "获得 !B! × 人偶 数量的 格挡 .消耗2P."
   },
 
 

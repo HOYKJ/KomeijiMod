@@ -21,10 +21,12 @@ public class AbyssNovaPower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private AbstractPlayer p = AbstractDungeon.player;
+    private static int novaIdOffset;
 
     public AbyssNovaPower(AbstractCreature owner) {
         this.name = NAME;
-        this.ID = "AbyssNovaPower";
+        this.ID = "AbyssNovaPower" + novaIdOffset;
+        novaIdOffset += 1;
         this.owner = owner;
         this.amount = 3;
         updateDescription();
@@ -34,18 +36,18 @@ public class AbyssNovaPower extends AbstractPower {
 
     public void atEndOfTurn(boolean isPlayer) {
         if(isPlayer){
-            if(this.amount > 0)
+            if(this.amount > 1)
                 this.amount -= 1;
-            else{
+            else if (this.amount == 1){
                 for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                    AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         flash();
                         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, 60, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
                     }
                 }
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Burn(), 3));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"AbyssNovaPower"));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this.ID));
             }
         }
     }

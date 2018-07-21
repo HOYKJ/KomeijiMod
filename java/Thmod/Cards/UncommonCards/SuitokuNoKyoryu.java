@@ -1,4 +1,4 @@
-package Thmod.Cards;
+package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,7 +9,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
-public class SuitokuNoKyoryu extends AbstractKomeijiCards{
+import Thmod.Cards.AbstractKomeijiCards;
+
+public class SuitokuNoKyoryu extends AbstractKomeijiCards {
     public static final String ID = "SuitokuNoKyoryu";
     private static final CardStrings cardStrings;
     public static final String NAME;
@@ -18,7 +20,7 @@ public class SuitokuNoKyoryu extends AbstractKomeijiCards{
     private static final int DEX_AMOUNT = 2;
 
     public SuitokuNoKyoryu() {
-        super("SuitokuNoKyoryu", SuitokuNoKyoryu.NAME,  1, SuitokuNoKyoryu.DESCRIPTION, CardType.POWER, CardRarity.COMMON, CardTarget.SELF);
+        super("SuitokuNoKyoryu", SuitokuNoKyoryu.NAME,  1, SuitokuNoKyoryu.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

@@ -27,9 +27,10 @@ public class DemonsFork extends AbstractDeriveCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
-        if(AbstractDungeon.player.hasPower("DemonsForkAccumulate"))
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p,p,"DemonsForkAccumulate"));
+        if (AbstractDungeon.player.hasPower("DemonsForkAccumulate")) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, "DemonsForkAccumulate"));
+        }
     }
 
     public AbstractCard makeCopy() {

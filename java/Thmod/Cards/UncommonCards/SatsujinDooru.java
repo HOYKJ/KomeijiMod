@@ -17,10 +17,10 @@ public class SatsujinDooru extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public SatsujinDooru() {
-        super("SatsujinDooru", SatsujinDooru.NAME,  2, SatsujinDooru.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super("SatsujinDooru", SatsujinDooru.NAME,  1, SatsujinDooru.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = 10;
         this.magicNumber = this.baseMagicNumber;
 

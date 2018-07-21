@@ -30,9 +30,11 @@ public class JyouchiRei extends AbstractPower {
     }
 
     public int onAttacked(DamageInfo info, int damageAmount) {
-        AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(p, (this.amount * 10), DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
-        flash();
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "JyouchiRei"));
+        if(info.type != DamageInfo.DamageType.HP_LOSS) {
+            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(p, (this.amount * 10), DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+            flash();
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "JyouchiRei"));
+        }
         return damageAmount;
     }
 

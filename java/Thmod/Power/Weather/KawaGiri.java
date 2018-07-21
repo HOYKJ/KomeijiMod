@@ -53,7 +53,7 @@ public class KawaGiri extends AbstractPower {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, -this.StrgengthCounter), -this.StrgengthCounter));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, -this.DexterityCounter), -this.DexterityCounter));
         flash();
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "KawaGiri"));
         else
             this.amount -= 1;

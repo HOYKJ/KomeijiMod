@@ -35,7 +35,7 @@ public class Soyuki extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        if (this.amount == 1)
+        if (this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "Soyuki"));
         else
             this.amount -= 1;
