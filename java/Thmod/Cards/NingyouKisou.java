@@ -21,11 +21,10 @@ public class NingyouKisou extends AbstractSweepCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 5;
 
     public NingyouKisou() {
         super("NingyouKisou", NingyouKisou.NAME,  1, NingyouKisou.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        this.baseDamage = 5;
+        this.baseDamage = 7;
         this.isMultiDamage = true;
     }
 

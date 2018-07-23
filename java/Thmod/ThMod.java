@@ -160,7 +160,9 @@ import Thmod.Cards.VanishingEverything;
 import Thmod.Characters.KomeijiSatori;
 import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
+import Thmod.Relics.Grimoire;
 import Thmod.Relics.KomeijisEye;
+import Thmod.Relics.MigarariNingyou;
 import Thmod.Relics.SpellCardsRule;
 import basemod.BaseMod;
 import basemod.DevConsole;
@@ -494,7 +496,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 //        BaseMod.addCard(new KochyouYume());
         BaseMod.addCard(new Agarareta());
         BaseMod.addCard(new DemonLordCradle());
-        BaseMod.addCard(new Demotivation());
+//        BaseMod.addCard(new Demotivation());
         BaseMod.addCard(new DochyakuKami());
         BaseMod.addCard(new HagoromoMizu());
         BaseMod.addCard(new InscribeRedSoul());
@@ -625,6 +627,14 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.addCard(new NingyouSousou());
             BaseMod.addCard(new NingyouSP());
             BaseMod.addCard(new SeekerWire());
+
+            BaseMod.addRelicToCustomPool(new Grimoire(), AbstractCardEnum.古明地觉.toString());
+            BaseMod.addRelicToCustomPool(new MigarariNingyou(), AbstractCardEnum.古明地觉.toString());
+        }
+        else {
+
+
+            BaseMod.addRelicToCustomPool(new Grimoire(), AbstractCardEnum.古明地觉.toString());
         }
 
         logger.info("=========================加载新的卡牌内容成功=========================");

@@ -29,7 +29,7 @@ public class MunenMusou extends AbstractKomeijiCards {
     public MunenMusou() {
         super("MunenMusou", MunenMusou.NAME,  3, MunenMusou.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
         this.exhaustnum = 0;
-        this.baseBlock = 15;
+        this.baseBlock = 20;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -67,7 +67,7 @@ public class MunenMusou extends AbstractKomeijiCards {
             this.upgradeName();
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
-            this.upgradeBlock(5);
+            this.upgradeBlock(10);
         }
     }
 

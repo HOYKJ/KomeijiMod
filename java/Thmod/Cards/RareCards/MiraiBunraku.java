@@ -31,7 +31,7 @@ public class MiraiBunraku extends AbstractKomeijiCards {
     }
 
     public AbstractCard makeCopy() {
-        return new NarrowSpark();
+        return new MiraiBunraku();
     }
 
     public void upgrade() {

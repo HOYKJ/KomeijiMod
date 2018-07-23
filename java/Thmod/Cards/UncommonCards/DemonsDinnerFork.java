@@ -24,7 +24,7 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
     public DemonsDinnerFork() {
         super("DemonsDinnerFork", DemonsDinnerFork.NAME,  1, DemonsDinnerFork.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         this.exhaust = true;
-        this.baseMagicNumber = 5;
+        this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
     }
 

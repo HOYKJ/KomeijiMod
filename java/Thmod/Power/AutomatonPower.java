@@ -65,6 +65,8 @@ public class AutomatonPower extends AbstractPower {
                             HealNum += 1;
                     }
                 }
+                else
+                    break;
             }
         }
     }

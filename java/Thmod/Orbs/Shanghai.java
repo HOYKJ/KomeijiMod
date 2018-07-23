@@ -18,6 +18,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
+import basemod.DevConsole;
+
 public class Shanghai extends AbstractOrb {
     public static final String ORB_ID = "Shanghai";
     private static final OrbStrings orbString;
@@ -40,7 +42,6 @@ public class Shanghai extends AbstractOrb {
         this.cX = AbstractDungeon.player.drawX + AbstractDungeon.player.hb_x;
         this.cY = AbstractDungeon.player.drawY + AbstractDungeon.player.hb_y + AbstractDungeon.player.hb_h / 2.0f;
         this.updateDescription();
-        this.StrNum = 0;
 //        this.showingEvoke = null;
     }
 
@@ -48,22 +49,6 @@ public class Shanghai extends AbstractOrb {
     {
         applyFocus();
         this.description = DESCRIPTION[0] + this.passiveAmount + DESCRIPTION[1] + this.evokeAmount + DESCRIPTION[2];
-    }
-
-    public void onEndOfTurn()
-    {
-        AbstractPlayer p = AbstractDungeon.player;
-        if(this.StrNum != this.passiveAmount) {
-            if(this.StrNum < this.passiveAmount) {
-                int addnum = (this.passiveAmount - this.StrNum);
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new StrengthPower(p,addnum),addnum));
-            }
-            if(this.StrNum > this.passiveAmount) {
-                int reducenum = (this.StrNum - this.passiveAmount);
-                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"Strength",reducenum));
-            }
-            this.StrNum = this.passiveAmount;
-        }
     }
 
     public void onEvoke() {
@@ -92,6 +77,24 @@ public class Shanghai extends AbstractOrb {
 
     public void playChannelSFX()
     {
+    }
+
+    public void applyFocus()
+    {
+        super.applyFocus();
+        AbstractPlayer p = AbstractDungeon.player;
+        if(this.StrNum != this.passiveAmount) {
+            if(this.StrNum < this.passiveAmount) {
+                int addnum = (this.passiveAmount - this.StrNum);
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new StrengthPower(p,addnum),addnum));
+            }
+            else if(this.StrNum > this.passiveAmount) {
+                int reducenum = (this.StrNum - this.passiveAmount);
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"Strength",reducenum));
+            }
+            this.StrNum = this.passiveAmount;
+            DevConsole.logger.info("StrNum"+this.StrNum);
+        }
     }
 
     public AbstractOrb makeCopy()

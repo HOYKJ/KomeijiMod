@@ -42,6 +42,15 @@ public class DollsWar extends AbstractSpellCards {
         }
     }
 
+    public void calculateCardDamage(AbstractMonster mo)
+    {
+        super.calculateCardDamage(mo);
+
+        this.rawDescription = DESCRIPTION;
+        this.rawDescription += EXTENDED_DESCRIPTION[0];
+        initializeDescription();
+    }
+
     public boolean canUse(AbstractPlayer p, AbstractMonster m){
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {

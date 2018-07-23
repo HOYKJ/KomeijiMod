@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class StrengthDownPower extends AbstractPower {
@@ -37,14 +38,22 @@ public class StrengthDownPower extends AbstractPower {
         return 0;
     }
 
-    public void atEndOfTurn(boolean isPlayer)
-    {
-        if(this.amount == 1) {
-            flash();
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, -10), -10));
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "StrengthEndPower"));
+    public void atEndOfTurn(boolean isPlayer) {
+        int Artnum = 0;
+        if (isPlayer) {
+            if (this.amount == 1) {
+                if (this.owner.hasPower("Artifact")) {
+                    Artnum = this.owner.getPower("Artifact").amount;
+                    AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "Artifact"));
+                }
+                flash();
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, -10), -10));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "StrengthEndPower"));
+                if(Artnum > 0){
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new ArtifactPower(this.owner, Artnum), Artnum));
+                }
+            } else
+                this.amount -= 1;
         }
-        else
-            this.amount -= 1;
     }
 }

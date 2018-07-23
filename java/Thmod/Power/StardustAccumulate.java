@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import Thmod.Cards.DeriveCards.Stardust;
+import basemod.DevConsole;
 
 public class StardustAccumulate extends AbstractPower {
     public static final String POWER_ID = "StardustAccumulate";
@@ -27,6 +28,7 @@ public class StardustAccumulate extends AbstractPower {
     }
 
     public void atStartOfTurnPostDraw() {
+        DevConsole.logger.info("amount"+this.amount);
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Stardust(this.amount), false));
     }
 

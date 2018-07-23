@@ -21,11 +21,11 @@ public class KokushiMusou extends AbstractSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 0;
+    private static final int COST = 1;
     private int pointcost;
 
     public KokushiMusou() {
-        super("KokushiMusou", KokushiMusou.NAME,  0, KokushiMusou.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
+        super("KokushiMusou", KokushiMusou.NAME,  1, KokushiMusou.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
         this.pointcost = 3;
     }
 
@@ -33,13 +33,13 @@ public class KokushiMusou extends AbstractSpellCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 if(SpellCardsRule.Kokushinum < 4){
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DexterityPower(p,1),1));
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StrengthPower(p,1),1));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DexterityPower(p,2),2));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StrengthPower(p,2),2));
                     SpellCardsRule.Kokushinum += 1;
                 }
                 else if(SpellCardsRule.Kokushinum == 4){
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DexterityPower(p,-3),-3));
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StrengthPower(p,-3),-3));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DexterityPower(p,-6),-6));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StrengthPower(p,-6),-6));
                     SpellCardsRule.Kokushinum = 0;
                     for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
                         AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);

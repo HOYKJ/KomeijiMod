@@ -38,19 +38,19 @@ public class WocchiPower extends AbstractPower {
         //this.done = false;
     }
 
-    public void atStartOfTurn() {
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-            AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-            if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new TimeLockPower(target)));
-            }
-        }
+    public void atStartOfTurnPostDraw() {
         flash();
         if ((AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite) || (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss))
             CardCrawlGame.music.silenceTempBgmInstantly();
         else
             CardCrawlGame.music.silenceBGM();
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY), 2F));
+        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+            if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new TimeLockPower(target)));
+            }
+        }
         if (!(this.sekai))
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EntanglePower(AbstractDungeon.player)));
         AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,"WocchiPower"));

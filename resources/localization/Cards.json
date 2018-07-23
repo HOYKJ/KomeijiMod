@@ -134,7 +134,7 @@
     "GroundStardust":{
       "NAME": "回忆「Ground Stardust」",
       "DESCRIPTION": 
-	" 蓄力 ,对所有敌人造成 固定 6+3×蓄力回合数的伤害, 消耗 . 联想 ."
+	" 蓄力 ,对所有敌人造成 固定 8+4×蓄力回合数的伤害, 消耗 . 联想 ."
     },
     "HenyouMirume":{
       "NAME": "回忆「静观其变之眼」",
@@ -323,7 +323,7 @@
     "ReiGeki": {
       "NAME": "灵击符",
       "DESCRIPTION": 
-	" 消耗 你手牌中的所有 诅咒 和 状态 . NL 消耗1P."
+	" 消耗 你手牌中的所有 诅咒 和 状态 ,并抽取等量的卡. NL 消耗1P."
     },
     "MajikkuPosyun": {
       "NAME": "魔法药水",
@@ -461,7 +461,7 @@
   "KokushiMusou": {
     "NAME": "回忆「国士无双之药」",
     "DESCRIPTION":
-    "获得1点 力量 和 敏捷 . NL 消耗3P."
+    "获得2点 力量 和 敏捷 . NL 消耗3P."
   },
   "KyoufuSaimin": {
     "NAME": "回忆「恐怖催眠术」",
@@ -481,7 +481,7 @@
   "MissingPurplePower": {
     "NAME": "回忆「Missing Purple Power」",
     "DESCRIPTION":
-    "3回合内,获得10点 力量 ,不能获得 格挡 .使用时清除所有debuff. 替换 . NL 消耗4P."
+    "3回合内,获得12点 力量 ,不能获得 格挡 .使用时清除所有debuff. 替换 . NL 消耗4P."
   },
   "MoozeNoKiseki": {
     "NAME": "回忆「摩西的奇迹」",
@@ -579,7 +579,10 @@
   "Stardust": {
     "NAME": "投掷",
     "DESCRIPTION":
-    "对所有敌人造成 固定 6+3×回合数的伤害. 消耗 , 虚无 ."
+    "对所有敌人造成 固定 8+4×回合数的伤害. 消耗 , 虚无 .",
+    "EXTENDED_DESCRIPTION": [
+      " NL （造成 !M! 点伤害.）"
+      ]
   },
   "TaikoStrike": {
     "NAME": "回忆「天狗的太鼓A」",
@@ -639,7 +642,7 @@
   "NingyouSousou":{
     "NAME": "回忆「人偶操创」",
     "DESCRIPTION":
-    "造成 !D! 点伤害,获得 !B! 点 格挡 . NL  获得1个 人偶 . 联想 ."
+    "获得 !B! 点 格挡 ,造成 !D! 点伤害. NL  获得1个 人偶 . 联想 ."
   },
   "NingyouSP":{
     "NAME": "回忆「人偶SP」",

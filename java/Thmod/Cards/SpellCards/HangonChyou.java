@@ -23,7 +23,7 @@ public class HangonChyou extends AbstractSpellCards {
 
     public HangonChyou(int Times) {
         super("HangonChyou", HangonChyou.NAME,  1, HangonChyou.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseDamage = (5 + 3*Times);
+        this.baseDamage = (8 + 3*Times);
         this.isMultiDamage = true;
         this.pointcost = 3;
         switch (Times){

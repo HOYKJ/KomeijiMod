@@ -24,12 +24,11 @@ public class NingyouSousou extends AbstractSweepCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 1;
-    private static final int BLOCK_AMT = 3;
 
     public NingyouSousou() {
         super("NingyouSousou", NingyouSousou.NAME,  1, NingyouSousou.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
-        this.baseBlock = 3;
-        this.baseDamage = 3;
+        this.baseBlock = 5;
+        this.baseDamage = 5;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
