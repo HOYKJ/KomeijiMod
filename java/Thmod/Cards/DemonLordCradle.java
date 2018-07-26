@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static Thmod.ThMod.AllzhsOpen;
+
 public class DemonLordCradle extends AbstractKomeijiCards {
     public static final String ID = "DemonLordCradle";
     private static final CardStrings cardStrings;
@@ -39,7 +41,10 @@ public class DemonLordCradle extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「Demon King Cradle」";
+            if(AllzhsOpen)
+                this.name = "回忆「恶魔领主的摇篮」";
+            else
+                this.name = "回忆「Demon King Cradle」";
             this.initializeTitle();
             this.upgradeDamage(1);
             this.upgradeMagicNumber(1);

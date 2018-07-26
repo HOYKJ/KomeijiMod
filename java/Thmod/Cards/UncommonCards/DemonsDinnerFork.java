@@ -30,10 +30,12 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DemonsForkAccumulate(p,this.upgraded)));
+//        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DemonsForkAccumulate(p,this.upgraded)));
         AbstractDeriveCards c = new DemonsFork(1);
         if(this.upgraded)
             c.upgrade();
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
     }
 

@@ -1,6 +1,5 @@
 package Thmod.Cards.ItemCards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,9 +8,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import Thmod.Power.PointPower;
-import Thmod.Power.WocchiPower;
 
 public class IbukiHisyaku extends AbstractItemCards {
     public static final String ID = "IbukiHisyaku";

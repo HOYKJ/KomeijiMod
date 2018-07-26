@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Thmod.Actions.common.GetSweepbleCards;
+import Thmod.Actions.unique.GetSweepbleCards;
 import Thmod.Cards.AbstractSweepCards;
 
 public class CampfireSweepEffect extends AbstractGameEffect

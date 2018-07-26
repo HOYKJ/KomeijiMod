@@ -16,6 +16,8 @@ import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 
 import java.util.Iterator;
 
+import static Thmod.ThMod.AllzhsOpen;
+
 public class InscribeRedSoul extends AbstractKomeijiCards {
     public static final String ID = "InscribeRedSoul";
     private static final CardStrings cardStrings;
@@ -49,7 +51,10 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「Soul Sculpture」";
+            if(AllzhsOpen)
+                this.name = "回忆「灵魂雕塑」";
+            else
+                this.name = "回忆「Soul Sculpture」";
             this.initializeTitle();
             this.upgradeMagicNumber(1);
             this.upgradeDamage(3);

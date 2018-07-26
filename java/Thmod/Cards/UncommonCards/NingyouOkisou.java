@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.ArrayList;
 
 import Thmod.Actions.common.ChangeOrbAction;
-import Thmod.Actions.common.ChooseAction;
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Cards.AbstractSweepCards;
 import Thmod.Cards.NingyouShinki;
 import Thmod.Orbs.NingyouOrb;

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import Thmod.Actions.unique.JinkouTaiyouAction;
+import Thmod.Actions.common.JinkouTaiyouAction;
 import Thmod.Cards.AbstractKomeijiCards;
 
 public class JigokuNoTaiyou extends AbstractKomeijiCards {

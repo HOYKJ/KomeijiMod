@@ -16,6 +16,7 @@ public class BlueAbnormity extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("BlueAbnormity");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    private float damageGive;
 
     public BlueAbnormity(AbstractCreature owner, int amount) {
         this.name = NAME;
@@ -27,9 +28,14 @@ public class BlueAbnormity extends AbstractPower {
         this.type = PowerType.DEBUFF;
     }
 
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        this.damageGive = damage;
+        return damage;
+    }
+
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if(target == AbstractDungeon.player)
-            AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, (int)(damageAmount*0.5), DamageInfo.DamageType.HP_LOSS)));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, (int)(this.damageGive*0.5), DamageInfo.DamageType.HP_LOSS)));
     }
 
     public void atEndOfRound() {

@@ -18,7 +18,6 @@ public class HangonChyou extends AbstractSpellCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 1;
-    private static final int ATTACK_DMG = 12;
     private int pointcost;
 
     public HangonChyou(int Times) {
@@ -28,18 +27,30 @@ public class HangonChyou extends AbstractSpellCards {
         this.pointcost = 3;
         switch (Times){
             case 0:
-                this.name = "「反魂蝶 -一分咲-」";
+                this.name = "回忆「反魂蝶 -一分咲-」";
                 break;
             case 1:
-                this.name = "「反魂蝶  -参分咲-」";
+                this.name = "回忆「反魂蝶  -贰分咲-」";
                 break;
             case 2:
-                this.name = "「反魂蝶  -伍分咲-」";
+                this.name = "回忆「反魂蝶  -参分咲-」";
                 break;
             case 3:
-                this.name = "「反魂蝶  -八分咲-」";
+                this.name = "回忆「反魂蝶  -肆分咲-」";
                 break;
             case 4:
+                this.name = "回忆「反魂蝶  -伍分咲-」";
+                break;
+            case 5:
+                this.name = "回忆「反魂蝶  -陆分咲-」";
+                break;
+            case 6:
+                this.name = "回忆「反魂蝶  -柒分咲-」";
+                break;
+            case 7:
+                this.name = "回忆「反魂蝶  -八分咲-」";
+                break;
+            case 8:
                 this.name = "回忆「西行寺无余涅槃」";
                 break;
             default:
@@ -54,7 +65,7 @@ public class HangonChyou extends AbstractSpellCards {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
-                if (SpellCardsRule.Hangongnum < 4)
+                if (SpellCardsRule.Hangongnum < 8)
                     SpellCardsRule.Hangongnum += 1;
             }
         }

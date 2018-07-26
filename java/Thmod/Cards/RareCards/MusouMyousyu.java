@@ -1,7 +1,6 @@
 package Thmod.Cards.RareCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.common.RandomAttackAction;
 import Thmod.Cards.AbstractKomeijiCards;
 
 public class MusouMyousyu extends AbstractKomeijiCards {
@@ -29,10 +29,7 @@ public class MusouMyousyu extends AbstractKomeijiCards {
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
-        for(int i = 0;i < this.magicNumber;i++) {
-            AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
-            AbstractDungeon.actionManager.addToTop(new DamageAction(mo, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        }
+        AbstractDungeon.actionManager.addToBottom(new RandomAttackAction(AbstractDungeon.getMonsters().getRandomMonster(true), new DamageInfo(p, this.baseDamage), this.magicNumber, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public AbstractCard makeCopy() {

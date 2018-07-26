@@ -29,7 +29,7 @@ public class SeishiRoten extends AbstractSweepCards {
 
     public SeishiRoten() {
         super("SeishiRoten", SeishiRoten.NAME,  1, SeishiRoten.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseDamage = 6;
+        this.baseDamage = 7;
         this.exhaust = true;
     }
 

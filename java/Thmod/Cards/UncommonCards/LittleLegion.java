@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import Thmod.Actions.common.ChangeOrbAction;
-import Thmod.Actions.common.ChooseAction;
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Orbs.NingyouOrb;
 

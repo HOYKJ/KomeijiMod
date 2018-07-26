@@ -23,7 +23,7 @@ public class Helan extends AbstractOrb {
 
     public Helan() {
         this.ID = "Helan";
-        this.name = TateNingyou.NAME;
+        this.name = Helan.NAME;
         if (Helan.img1 == null) {
             Helan.img1 = ImageMaster.loadImage("images/orbs/Helan.png");
         }

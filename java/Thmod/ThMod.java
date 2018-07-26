@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -16,6 +17,7 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
 
 
@@ -28,7 +30,6 @@ import java.util.Properties;
 
 import Thmod.Cards.Agarareta;
 import Thmod.Cards.DemonLordCradle;
-import Thmod.Cards.Demotivation;
 import Thmod.Cards.DeriveCards.Nothing;
 import Thmod.Cards.DochyakuKami;
 import Thmod.Cards.HagoromoMizu;
@@ -50,7 +51,6 @@ import Thmod.Cards.ItemCards.SutoppuWocchi;
 import Thmod.Cards.JyouchiJin;
 import Thmod.Cards.KeiseiJin;
 import Thmod.Cards.KinbakuJin;
-import Thmod.Cards.MagicStarsSword;
 import Thmod.Cards.MakuraSeki;
 import Thmod.Cards.Melting;
 import Thmod.Cards.NingyouFukuhei;
@@ -151,9 +151,8 @@ import Thmod.Cards.UncommonCards.SatsujinDooru;
 import Thmod.Cards.Strike_Komeiji;
 import Thmod.Cards.UncommonCards.SeishiRoten;
 import Thmod.Cards.UncommonCards.SelfTokamak;
-import Thmod.Cards.UncommonCards.SenceofElegance;
+import Thmod.Cards.UncommonCards.SenseofElegance;
 import Thmod.Cards.UncommonCards.SenyouGoraku;
-import Thmod.Cards.UncommonCards.ShyakuBuku;
 import Thmod.Cards.UncommonCards.TenguNoTaiko;
 import Thmod.Cards.UncommonCards.VampireKiss;
 import Thmod.Cards.VanishingEverything;
@@ -190,6 +189,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean SoundOpen ;
     public static boolean StartSelectOpen ;
     public static boolean MusicOpen ;
+    public static boolean AllzhsOpen ;
     private float X;
     private float Y;
     private float IntervalY;
@@ -204,6 +204,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static HashMap<String,Integer> removemap = new HashMap<>();
     public static HashMap<String,Integer> upcardmap = new HashMap<>();
     public static HashMap<String,AbstractCard> removedcardids = new HashMap<>();
+    public static CardGroup elementCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
 
     public static String komeijiCardImage(final String id) {
         return "images/cards/komeiji/" + id + ".png";
@@ -251,7 +252,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         fightids.add("KoKei");
         fightids.add("MajikuruSanhai");
         fightids.add("DemonsDinnerFork");
-        fightids.add("SenceofElegance");
+        fightids.add("SenseofElegance");
         fightids.add("MusouMyousyu");
         fightids.add("LunaDial");
         fightids.add("HisouTensoku");
@@ -308,7 +309,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         removemap.put("KoKei",14);
         removemap.put("MajikuruSanhai",15);
         removemap.put("DemonsDinnerFork",16);
-        removemap.put("SenceofElegance",17);
+        removemap.put("SenseofElegance",17);
         removemap.put("MusouMyousyu",18);
         removemap.put("LunaDial",19);
         removemap.put("HisouTensoku",20);
@@ -374,11 +375,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("SoundOpen", "true");
             defaults.setProperty("StartSelectOpen", "true");
             defaults.setProperty("MusicOpen", "true");
+            defaults.setProperty("AllzhsOpen", "false");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             ThMod.AliceOpen = config.getBool("AliceOpen");
             ThMod.SoundOpen = config.getBool("SoundOpen");
             ThMod.StartSelectOpen = config.getBool("StartSelectOpen");
             ThMod.MusicOpen = config.getBool("MusicOpen");
+            ThMod.AllzhsOpen = config.getBool("AllzhsOpen");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -525,7 +528,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new SatsujinDooru());
         BaseMod.addCard(new SeishiRoten());
         BaseMod.addCard(new SelfTokamak());
-        BaseMod.addCard(new SenceofElegance());
+        BaseMod.addCard(new SenseofElegance());
         BaseMod.addCard(new SenyouGoraku());
 //        BaseMod.addCard(new ShyakuBuku());
         BaseMod.addCard(new TenguNoTaiko());
@@ -638,6 +641,104 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         }
 
         logger.info("=========================加载新的卡牌内容成功=========================");
+
+        logger.info("=========================解锁卡牌=========================");
+        UnlockTracker.unlockCard("Strike_Komeiji");
+        UnlockTracker.unlockCard("Defend_Komeiji");
+        UnlockTracker.unlockCard("VanishingEverything");
+        UnlockTracker.unlockCard("PerfectMaid");
+        UnlockTracker.unlockCard("HagoromoMizu");
+        UnlockTracker.unlockCard("KeiseiJin");
+        UnlockTracker.unlockCard("KinbakuJin");
+        UnlockTracker.unlockCard("JyouchiJin");
+        UnlockTracker.unlockCard("Agarareta");
+        UnlockTracker.unlockCard("DemonLordCradle");
+        UnlockTracker.unlockCard("DochyakuKami");
+        UnlockTracker.unlockCard("HagoromoMizu");
+        UnlockTracker.unlockCard("InscribeRedSoul");
+        UnlockTracker.unlockCard("MakuraSeki");
+        UnlockTracker.unlockCard("Melting");
+        UnlockTracker.unlockCard("Sabishigari");
+        UnlockTracker.unlockCard("Mishyaguji");
+        UnlockTracker.unlockCard("SuitokuNoKyoryu");
+
+        UnlockTracker.unlockCard("DemonsDinnerFork");
+        UnlockTracker.unlockCard("FreezeToughMe");
+        UnlockTracker.unlockCard("GasuOrimono");
+        UnlockTracker.unlockCard("GroundStardust");
+        UnlockTracker.unlockCard("HenyouMirume");
+        UnlockTracker.unlockCard("HisouNoKen");
+        UnlockTracker.unlockCard("KimairaNoYoku");
+        UnlockTracker.unlockCard("KoKei");
+        UnlockTracker.unlockCard("KokorosuKi");
+        UnlockTracker.unlockCard("KouPou");
+        UnlockTracker.unlockCard("MajikuruSanhai");
+        UnlockTracker.unlockCard("MissingPower");
+        UnlockTracker.unlockCard("MusuNoYume");
+        UnlockTracker.unlockCard("NarrowSpark");
+        UnlockTracker.unlockCard("RoshinSou");
+        UnlockTracker.unlockCard("SatsujinDooru");
+        UnlockTracker.unlockCard("SeishiRoten");
+        UnlockTracker.unlockCard("SelfTokamak");
+        UnlockTracker.unlockCard("SenseofElegance");
+        UnlockTracker.unlockCard("SenyouGoraku");
+        UnlockTracker.unlockCard("TenguNoTaiko");
+        UnlockTracker.unlockCard("VampireKiss");
+
+        UnlockTracker.unlockCard("AbyssNova");
+        UnlockTracker.unlockCard("EverywhereHibernate");
+        UnlockTracker.unlockCard("HagoromoKu");
+        UnlockTracker.unlockCard("HisouTensoku");
+        UnlockTracker.unlockCard("IceTornado");
+        UnlockTracker.unlockCard("JigokuNoTaiyou");
+        UnlockTracker.unlockCard("LunaDial");
+        UnlockTracker.unlockCard("LunaticRedEyes");
+        UnlockTracker.unlockCard("MunenMusou");
+        UnlockTracker.unlockCard("MusouMyousyu");
+        UnlockTracker.unlockCard("TenguhouSokujitsuken");
+        UnlockTracker.unlockCard("TerribleSouvenir");
+        UnlockTracker.unlockCard("WumiGaWareru");
+        UnlockTracker.unlockCard("YuumeiNoKurin");
+
+        UnlockTracker.unlockCard("ReiGeki");
+        UnlockTracker.unlockCard("MajikkuPosyun");
+        UnlockTracker.unlockCard("SutoppuWocchi");
+        UnlockTracker.unlockCard("SaSen");
+        UnlockTracker.unlockCard("ByoukiHeiyu");
+        UnlockTracker.unlockCard("FusyokuKusuri");
+        UnlockTracker.unlockCard("HisouNoKenItem");
+        UnlockTracker.unlockCard("IbukiHisyaku");
+        UnlockTracker.unlockCard("Namazu");
+        UnlockTracker.unlockCard("RyuuSei");
+        UnlockTracker.unlockCard("SanbutsuTenmizu");
+        UnlockTracker.unlockCard("SeigyoBou");
+
+        UnlockTracker.unlockCard("Nothing");
+
+        if(ThMod.AliceOpen) {
+            UnlockTracker.unlockCard("HelanNingyou");
+            UnlockTracker.unlockCard("MiraiBunraku");
+            UnlockTracker.unlockCard("SemiAutomaton");
+            UnlockTracker.unlockCard("ShanghaiNingyou");
+
+            UnlockTracker.unlockCard("ArtfulChanter");
+            UnlockTracker.unlockCard("LittleLegion");
+            UnlockTracker.unlockCard("NingyouChiyari");
+            UnlockTracker.unlockCard("NingyouKasou");
+            UnlockTracker.unlockCard("NingyouMusou");
+            UnlockTracker.unlockCard("NingyouOkisou");
+            UnlockTracker.unlockCard("NingyouYunhei");
+            UnlockTracker.unlockCard("OoedoNingyou");
+            UnlockTracker.unlockCard("SeekerDolls");
+
+            UnlockTracker.unlockCard("NingyouFukuhei");
+            UnlockTracker.unlockCard("NingyouKisou");
+            UnlockTracker.unlockCard("NingyouShinki");
+            UnlockTracker.unlockCard("NingyouSousou");
+            UnlockTracker.unlockCard("NingyouSP");
+            UnlockTracker.unlockCard("SeekerWire");
+        }
+        logger.info("=========================解锁卡牌成功=========================");
     }
 
     private void CreatePanel() throws IOException {
@@ -682,7 +783,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             }
             return;
         });
-        settingsPanel.addUIElement((IUIElement)SoundOpen);
+        settingsPanel.addUIElement(SoundOpen);
 
         final ModLabeledToggleButton MusicOpen = new ModLabeledToggleButton("mod自带bgm", this.X, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.MusicOpen , settingsPanel, label -> {}, button -> {
             spireConfig.setBool("MusicOpen", ThMod.MusicOpen = button.enabled);
@@ -697,9 +798,9 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             }
             return;
         });
-        settingsPanel.addUIElement((IUIElement)MusicOpen);
+        settingsPanel.addUIElement(MusicOpen);
 
-        final ModLabeledToggleButton StartSelectOpen = new ModLabeledToggleButton("回合开始时选择符卡", this.X, this.Y + 8*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.SoundOpen , settingsPanel, label -> {}, button -> {
+        final ModLabeledToggleButton StartSelectOpen = new ModLabeledToggleButton("回合开始时选择符卡", this.X, this.Y + 8*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.StartSelectOpen , settingsPanel, label -> {}, button -> {
             spireConfig.setBool("StartSelectOpen", ThMod.StartSelectOpen = button.enabled);
             CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
             CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
@@ -712,7 +813,22 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             }
             return;
         });
-        settingsPanel.addUIElement((IUIElement)StartSelectOpen);
+        settingsPanel.addUIElement(StartSelectOpen);
+
+        final ModLabeledToggleButton AllzhsOpen = new ModLabeledToggleButton("全中文卡牌名", this.X + 250, this.Y + 6*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.AllzhsOpen , settingsPanel, label -> {}, button -> {
+            spireConfig.setBool("AllzhsOpen", ThMod.AllzhsOpen = button.enabled);
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
+
+            try {
+                spireConfig.save();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        });
+        settingsPanel.addUIElement(AllzhsOpen);
 
         Texture badgeTexture = new Texture(Gdx.files.internal("images/ThMod.png"));
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
@@ -728,8 +844,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             return;
         });
         settingsPanel.addLabel("本mod和其它部分mod可能存在部分冲突", this.X, this.Y + 10*this.IntervalY, (me) -> { });
-        settingsPanel.addLabel("适用版本: 1.游戏:7.13. 2.basemod:7.12. 3.ModTheSpire:2.8.0", this.X, this.Y + 11*this.IntervalY, (me) -> { });
-        settingsPanel.addLabel("更新日志请见hoykj吧(贴吧)", this.X, this.Y + 12*this.IntervalY, (me) -> { });
+//        settingsPanel.addLabel("适用版本: 1.游戏:7.13. 2.basemod:7.12. 3.ModTheSpire:2.8.0", this.X, this.Y + 11*this.IntervalY, (me) -> { });
+        settingsPanel.addLabel("更新日志请见hoykj吧(贴吧)", this.X, this.Y + 11*this.IntervalY, (me) -> { });
         settingsPanel.addLabel("目前进度:", 1100f, this.Y + 2*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("卡组:通用部分与爱丽丝卡组完成", 1100f, this.Y + 3*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("遗物:做了个开头", 1100f, this.Y + 4*this.IntervalY , (me) -> { });
@@ -757,8 +873,14 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     {
         DevConsole.logger.info("========================= 正在加载文本信息 =========================");
 
-        String cardStrings = Gdx.files.internal("localization/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        if(AllzhsOpen){
+            String cardStrings = Gdx.files.internal("localization/zhsCards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        }
+        else {
+            String cardStrings = Gdx.files.internal("localization/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        }
         String relicStrings = Gdx.files.internal("localization/Relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
         String powerStrings = Gdx.files.internal("localization/Power.json").readString(String.valueOf(StandardCharsets.UTF_8));
@@ -819,6 +941,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.AliceOpen = true;
         ThMod.StartSelectOpen = true;
         ThMod.MusicOpen = true;
+        ThMod.AllzhsOpen = false;
     }
 
 }

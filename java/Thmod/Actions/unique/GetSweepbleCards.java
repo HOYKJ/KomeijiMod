@@ -1,4 +1,4 @@
-package Thmod.Actions.common;
+package Thmod.Actions.unique;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;

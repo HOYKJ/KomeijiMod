@@ -7,10 +7,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.HeatsinkPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 
-import Thmod.Actions.common.TurnEndAction;
+import Thmod.Actions.unique.TurnEndAction;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Power.HibernatePower;
 

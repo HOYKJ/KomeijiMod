@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import Thmod.Actions.common.TurnEndAction;
+import Thmod.Actions.unique.TurnEndAction;
 
 public class HibernatePower extends AbstractPower {
     public static final String POWER_ID = "HibernatePower";

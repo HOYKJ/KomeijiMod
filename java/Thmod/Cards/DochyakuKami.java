@@ -28,7 +28,7 @@ public class DochyakuKami extends AbstractSweepCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        int roll = MathUtils.random(3);
+        int roll = MathUtils.random(2);
         switch (roll){
             case 0:
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new RedAbnormity(m, 3), 3));
@@ -39,6 +39,8 @@ public class DochyakuKami extends AbstractSweepCards {
             case 2:
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new BlueAbnormity(m, 3), 3));
                 break;
+            default:
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new RedAbnormity(m, 3), 3));
         }
     }
 

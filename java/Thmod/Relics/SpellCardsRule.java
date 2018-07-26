@@ -14,8 +14,9 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Thmod.Actions.common.PlayerTalkAction;
+import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.DeriveCards.FuubiStrike;
+import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Power.PointPower;
 import Thmod.Power.TenmizuPower;
 import Thmod.ThMod;
@@ -27,10 +28,12 @@ public class SpellCardsRule extends AbstractThRelic {
     public static int SeishiRotenNum;
     public static int Hangongnum;
     public static int Kokushinum;
+    public static boolean HangongUsed;
     public static boolean selected;
     public static boolean newCards;
     public static boolean clicked;
     public static ArrayList<AbstractCard> cardsToSelect = new ArrayList<>();
+    public static ArrayList<AbstractElementOrb> orbToMix = new ArrayList<>();
     private boolean playerturn;
 
     public SpellCardsRule()
@@ -40,7 +43,7 @@ public class SpellCardsRule extends AbstractThRelic {
         this.playerturn = false;
         selected = false;
         newCards = true;
-
+        HangongUsed = false;
     }
 
     public void atPreBattle() {
@@ -51,6 +54,7 @@ public class SpellCardsRule extends AbstractThRelic {
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new TenmizuPower(p, pointcount.get(1)), pointcount.get(1)));
         if (AbstractDungeon.player.hasRelic("Strange Spoon"))
             AbstractDungeon.player.loseRelic("Strange Spoon");
+        HangongUsed = false;
 //        if (p.hasPower("PointPower")) {
 //            if (p.getPower("PointPower").amount > 0) {
 //                beginPulse();
@@ -197,11 +201,11 @@ public class SpellCardsRule extends AbstractThRelic {
     public void onLoseHp(int damageAmount) {
         AbstractPlayer p = AbstractDungeon.player;
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            if ((!(p.hasPower("CounterAttackPower"))) && (!(p.hasPower("DashPower")))) {
+            if ((!(p.hasPower("CounterAttackPower"))) && (!(p.hasPower("DashPower"))) && (!(p.hasPower("HardnessPower")))) {
                 if (p.hasPower("HeiyuPower"))
                     AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "HeiyuPower"));
                 for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                    AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         if (target.hasPower("MusuNoYumePower"))
                             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, "MusuNoYumePower"));

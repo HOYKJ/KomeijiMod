@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Power.FreezePower;
 
+import static Thmod.ThMod.AllzhsOpen;
+
 public class FreezeToughMe extends AbstractKomeijiCards {
     public static final String ID = "FreezeToughMe";
     private static final CardStrings cardStrings;
@@ -39,7 +41,10 @@ public class FreezeToughMe extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「Freeze Atmosphere」";
+            if(AllzhsOpen)
+                this.name = "回忆「急冻大气」";
+            else
+                this.name = "回忆「Freeze Atmosphere」";
             this.initializeTitle();
             this.upgradeMagicNumber(2);
             this.upgradeBlock(5);

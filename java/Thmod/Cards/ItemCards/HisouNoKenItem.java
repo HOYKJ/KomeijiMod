@@ -55,7 +55,7 @@ public class HisouNoKenItem extends AbstractItemCards {
                         break;
                     }
                 }
-                int roll = MathUtils.random(20);
+                int roll = MathUtils.random(19);
                 switch (roll){
                     case 0:
                         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new KaiSei(p)));

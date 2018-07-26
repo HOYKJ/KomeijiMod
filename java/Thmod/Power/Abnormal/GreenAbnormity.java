@@ -29,7 +29,7 @@ public class GreenAbnormity extends AbstractPower {
 
     public int onAttacked(DamageInfo info, int damageAmount)
     {
-        int roll = MathUtils.random(7);
+        int roll = MathUtils.random(6);
         return (damageAmount + roll);
     }
 

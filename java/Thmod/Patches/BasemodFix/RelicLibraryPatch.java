@@ -11,6 +11,6 @@ public class RelicLibraryPatch
 {
     @SpireInsertPatch(rloc = 1)
     public static void Insert(final MainMenuScreen _inst, final boolean b) {
-//        _inst.relicScreen = new CustomRelicViewScreen();
+        _inst.relicScreen = new CustomRelicViewScreen();
     }
 }

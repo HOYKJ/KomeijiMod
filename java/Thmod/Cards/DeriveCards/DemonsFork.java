@@ -20,17 +20,18 @@ public class DemonsFork extends AbstractDeriveCards {
     public DemonsFork(int magicNum) {
         super("DemonsFork", DemonsFork.NAME,  0, DemonsFork.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         if(this.upgraded)
-            this.baseDamage = (8 * magicNum);
+            this.baseDamage = (5 * magicNum);
         else
-            this.baseDamage = (6 * magicNum);
+            this.baseDamage = (3 * magicNum);
         this.isMultiDamage = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (AbstractDungeon.player.hasPower("DemonsForkAccumulate")) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, "DemonsForkAccumulate"));
-        }
+//        if (AbstractDungeon.player.hasPower("DemonsForkAccumulate")) {
+//            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+//            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, "DemonsForkAccumulate"));
+//        }
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     public AbstractCard makeCopy() {

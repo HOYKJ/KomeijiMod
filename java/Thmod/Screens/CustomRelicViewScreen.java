@@ -150,9 +150,11 @@ public class CustomRelicViewScreen
         }
     }
 
-    private enum RelicCategory
+    private static enum RelicCategory
     {
         STARTER,  COMMON,  UNCOMMON,  RARE,  BOSS,  EVENT,  SHOP,  NONE;
+
+        private RelicCategory() {}
     }
 
     private void updateControllerInput()
@@ -757,9 +759,9 @@ public class CustomRelicViewScreen
         renderList(sb, TEXT[9], TEXT[10], RelicLibrary.bossList);
         renderList(sb, TEXT[11], TEXT[12], RelicLibrary.specialList);
         renderList(sb, TEXT[13], TEXT[14], RelicLibrary.shopList);
-
         this.button.render(sb);
         this.scrollBar.render(sb);
+        this.scrollUpperBound = (START_Y + SPACE * (this.row + 3) - (Settings.HEIGHT - SPACE * 3.0F));
     }
 
     private void renderList(SpriteBatch sb, String msg, String desc, ArrayList<AbstractRelic> list)

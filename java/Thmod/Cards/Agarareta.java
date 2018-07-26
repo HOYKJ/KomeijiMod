@@ -32,7 +32,7 @@ public class Agarareta extends AbstractSweepCards {
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
             AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                int roll = MathUtils.random(3);
+                int roll = MathUtils.random(2);
                 switch (roll) {
                     case 0:
                         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new RedAbnormity(target, 3), 3));

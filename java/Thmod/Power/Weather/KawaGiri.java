@@ -36,7 +36,7 @@ public class KawaGiri extends AbstractPower {
     }
 
     public void atStartOfTurnPostDraw() {
-        int roll = MathUtils.random(5);
+        int roll = MathUtils.random(4);
         if(roll >= 2){
             this.StrgengthCounter = roll - 2;
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, this.StrgengthCounter), this.StrgengthCounter));

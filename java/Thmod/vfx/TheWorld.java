@@ -30,7 +30,7 @@ public class TheWorld extends AbstractGameEffect
         this.stakeTimer -= Gdx.graphics.getDeltaTime();
         if (this.stakeTimer < 0F) {
             if (this.count == 13) {
-                int roll = MathUtils.random(100);
+                int roll = MathUtils.random(99);
                 if(ThMod.SoundOpen){
                     if (roll == 0)
                         CardCrawlGame.sound.play("world_ot");

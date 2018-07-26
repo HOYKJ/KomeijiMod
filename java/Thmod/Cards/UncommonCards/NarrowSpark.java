@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 
 import Thmod.Cards.AbstractKomeijiCards;
 
+import static Thmod.ThMod.AllzhsOpen;
+
 public class NarrowSpark extends AbstractKomeijiCards {
     public static final String ID = "NarrowSpark";
     private static final CardStrings cardStrings;
@@ -60,7 +62,10 @@ public class NarrowSpark extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「Master Spark」";
+            if(AllzhsOpen)
+                this.name = "回忆「极限火花」";
+            else
+                this.name = "回忆「Master Spark」";
             this.initializeTitle();
             this.upgradeMagicNumber(1);
             this.upgradeDamage(5);

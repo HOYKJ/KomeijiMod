@@ -12,21 +12,21 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import Thmod.Cards.AbstractKomeijiCards;
 
-public class SenceofElegance extends AbstractKomeijiCards {
-    public static final String ID = "SenceofElegance";
+public class SenseofElegance extends AbstractKomeijiCards {
+    public static final String ID = "SenseofElegance";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 2;
     private static final int ATTACK_DMG = 12;
 
-    public SenceofElegance()
+    public SenseofElegance()
     {
         this(0);
     }
 
-    public SenceofElegance(int upgrades) {
-        super("SenceofElegance", SenceofElegance.NAME,  2, SenceofElegance.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+    public SenseofElegance(int upgrades) {
+        super("SenseofElegance", SenseofElegance.NAME,  2, SenseofElegance.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         this.baseDamage = 12;
         this.timesUpgraded = upgrades;
     }
@@ -37,7 +37,7 @@ public class SenceofElegance extends AbstractKomeijiCards {
     }
 
     public AbstractCard makeCopy() {
-        return new SenceofElegance(this.timesUpgraded);
+        return new SenseofElegance(this.timesUpgraded);
     }
 
     public void upgrade() {
@@ -54,8 +54,8 @@ public class SenceofElegance extends AbstractKomeijiCards {
     }
 
     static {
-        cardStrings = CardCrawlGame.languagePack.getCardStrings("SenceofElegance");
-        NAME = SenceofElegance.cardStrings.NAME;
-        DESCRIPTION = SenceofElegance.cardStrings.DESCRIPTION;
+        cardStrings = CardCrawlGame.languagePack.getCardStrings("SenseofElegance");
+        NAME = SenseofElegance.cardStrings.NAME;
+        DESCRIPTION = SenseofElegance.cardStrings.DESCRIPTION;
     }
 }

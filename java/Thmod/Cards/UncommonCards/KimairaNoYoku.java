@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.Iterator;
 
-import Thmod.Actions.unique.FromDeckToHandAction;
+import Thmod.Actions.common.FromDeckToHandAction;
 import Thmod.Cards.AbstractKomeijiCards;
 
 public class KimairaNoYoku extends AbstractKomeijiCards {

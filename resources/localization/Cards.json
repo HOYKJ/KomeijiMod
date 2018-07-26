@@ -119,7 +119,7 @@
     "DemonsDinnerFork":{
       "NAME": "回忆「Demon's Dinner Fork」",
       "DESCRIPTION": 
-	" 蓄力 ,对所有敌人造成 !M! ×蓄力回合数(最多3)的伤害."
+	"给予你三张「Dinner Fork」.(0费攻击卡)"
     },
     "FreezeToughMe":{
       "NAME": "回忆「Freeze Tough Me」",
@@ -213,8 +213,8 @@
     "UPGRADE_DESCRIPTION":
     "失去5点生命,获得 [R]  [R]  [R] , 消耗 ."
   },
-  "SenceofElegance": {
-    "NAME": "回忆「Sence of Elegance」",
+  "SenseofElegance": {
+    "NAME": "回忆「Sense of Elegance」",
     "DESCRIPTION":
     "造成 !D! 点伤害,可多次 升级 ."
   },
@@ -441,7 +441,7 @@
   "HangonChyou": {
     "NAME": "回忆「反魂蝶」",
     "DESCRIPTION":
-    "对所有敌人造成 !D! 点伤害,每次使用将永久升级(最多4次). NL 消耗3P."
+    "对所有敌人造成 !D! 点伤害,每次使用将永久升级(最多8次). NL 消耗3P."
   },
   "HappouKibaku": {
     "NAME": "回忆「八方鬼缚阵」",
@@ -562,7 +562,7 @@
 
 
   "DemonsFork": {
-    "NAME": "投掷",
+    "NAME": "「Dinner Fork」",
     "DESCRIPTION":
     "对所有敌人造成 !D! 点伤害. 消耗 , 虚无 ."
   },

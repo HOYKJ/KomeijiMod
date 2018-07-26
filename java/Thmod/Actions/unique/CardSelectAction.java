@@ -10,15 +10,11 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Thmod.Actions.common.PlayerTalkAction;
-import Thmod.Cards.AbstractKomeijiCards;
-import Thmod.Cards.AbstractSweepCards;
 import Thmod.Cards.DeriveCards.AbstractDeriveCards;
 import Thmod.Cards.DeriveCards.TaikoAoe;
 import Thmod.Cards.DeriveCards.TaikoDefend;
 import Thmod.Cards.DeriveCards.TaikoStrike;
 import Thmod.Cards.ItemCards.ByoukiHeiyu;
-import Thmod.Cards.ItemCards.FusyokuKusuri;
 import Thmod.Cards.ItemCards.HisouNoKenItem;
 import Thmod.Cards.ItemCards.IbukiHisyaku;
 import Thmod.Cards.ItemCards.MajikkuPosyun;
@@ -29,7 +25,6 @@ import Thmod.Cards.ItemCards.SaSen;
 import Thmod.Cards.ItemCards.SanbutsuTenmizu;
 import Thmod.Cards.ItemCards.SeigyoBou;
 import Thmod.Cards.ItemCards.SutoppuWocchi;
-import Thmod.Cards.SpellCards.AbstractSpellCards;
 import Thmod.Cards.SpellCards.BurariHaieki;
 import Thmod.Cards.SpellCards.CuteOchiyari;
 import Thmod.Cards.SpellCards.DaiesanShikkaiKoroshi;
@@ -116,7 +111,8 @@ public class CardSelectAction extends AbstractGameAction
         }
         if (this.powercount >= 3){
             CardSelectAction.SpellCards.addToTop(new KokushiMusou());
-            CardSelectAction.SpellCards.addToTop(new HangonChyou(SpellCardsRule.Hangongnum));
+            if(!(SpellCardsRule.HangongUsed))
+                CardSelectAction.SpellCards.addToTop(new HangonChyou(SpellCardsRule.Hangongnum));
         }
         if (this.powercount >= 5){
             CardSelectAction.SpellCards.addToTop(new YomeiIkubaku());
@@ -212,7 +208,7 @@ public class CardSelectAction extends AbstractGameAction
                 if (Cardid.cardID.equals("KouPou")) {
                     CardSelectAction.SpellCards.addToTop(new TaihouTsuigeki());
                 }
-                if (Cardid.cardID.equals("SenceofElegance")) {
+                if (Cardid.cardID.equals("SenseofElegance")) {
                     CardSelectAction.SpellCards.addToTop(new SenseofCherryBlossom(Cardid.timesUpgraded));
                 }
                 if (Cardid.cardID.equals("MusouMyousyu")) {

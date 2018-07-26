@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.ArrayList;
 
 import Thmod.Actions.common.ChangeOrbAction;
-import Thmod.Actions.common.ChooseAction;
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Cards.NingyouShinki;
 import Thmod.Orbs.Helan;

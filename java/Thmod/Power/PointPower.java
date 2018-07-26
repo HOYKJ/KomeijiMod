@@ -32,8 +32,6 @@ public class PointPower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private AbstractPlayer p = AbstractDungeon.player;
     private static ArrayList<AbstractCard> cardid = new ArrayList<>();
-    private String Cardid;
-    private int powercount;
 
     public PointPower(AbstractCreature owner, int amount) {
         this.name = NAME;
@@ -62,10 +60,10 @@ public class PointPower extends AbstractPower {
     public void cardSelect(){
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount > 0) {
-                powercount = p.getPower("PointPower").amount;
+                int powercount = p.getPower("PointPower").amount;
                 if (powercount > 5)
                     powercount = 5;
-                DevConsole.logger.info("beforeSelect"+powercount);
+                DevConsole.logger.info("beforeSelect"+ powercount);
                 if (powercount == 1)
                     AbstractDungeon.actionManager.addToBottom( new CardSelectAction(1, true, true, 1, cardid));
                 else
@@ -76,8 +74,8 @@ public class PointPower extends AbstractPower {
 
     public void isSeed(final AbstractCard c) {
         for (Iterator Iterator = ThMod.fightids.iterator(); Iterator.hasNext(); ) {
-            Cardid = (String) Iterator.next();
-            if (c.cardID.equals(Cardid)) {
+            String cardid1 = (String) Iterator.next();
+            if (c.cardID.equals(cardid1)) {
                 cardid.add(c);
             }
         }
@@ -98,6 +96,13 @@ public class PointPower extends AbstractPower {
             cardid.add(new DollofRoundTable());
         if(YumiNum > 2)
             cardid.add(new DollsWar());
+    }
+
+    public void elementMix(boolean earth,boolean fire,boolean luna,boolean metal,boolean sun,boolean water,boolean wood,boolean isMix){
+        if(isMix){
+            cardid.clear();
+        }
+
     }
 
     public void updateDescription()

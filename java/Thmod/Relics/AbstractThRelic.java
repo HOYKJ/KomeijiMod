@@ -1,7 +1,6 @@
 package Thmod.Relics;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -12,7 +11,7 @@ public abstract class AbstractThRelic extends CustomRelic {
     private boolean RclickStart;
     private boolean Rclick;
     public AbstractThRelic(final String id, final AbstractRelic.RelicTier tier, final AbstractRelic.LandingSound landingSound){
-        super(id, new Texture(Gdx.files.internal(ThMod.komeijiRelicImage(id))), new Texture(Gdx.files.internal(ThMod.komeijiRelicOutlineImage(id))), tier, landingSound);
+        super(id, ImageMaster.loadImage(ThMod.komeijiRelicImage(id)),ImageMaster.loadImage(ThMod.komeijiRelicOutlineImage(id)), tier, landingSound);
         this.Rclick=false;
         this.RclickStart=false;
     }
@@ -21,13 +20,13 @@ public abstract class AbstractThRelic extends CustomRelic {
     @Override
     public void update() {
         super.update();
-        if(this.RclickStart&& InputHelper.justReleasedClickRight) {
+        if(this.RclickStart && InputHelper.justReleasedClickRight) {
             if(this.hb.hovered) {
                 this.Rclick=true;
             }
             this.RclickStart=false;
         }
-        if((this.isObtained)&&(this.hb != null)&&((this.hb.hovered) && (InputHelper.justClickedRight))) {
+        if((this.isObtained) && (this.hb != null) && ((this.hb.hovered) && (InputHelper.justClickedRight))) {
             this.RclickStart=true;
             //logger.info("rcs");
         }

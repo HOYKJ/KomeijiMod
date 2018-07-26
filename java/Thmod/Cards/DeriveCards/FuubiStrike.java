@@ -23,7 +23,7 @@ public class FuubiStrike extends AbstractDeriveCards {
 
     public FuubiStrike() {
         super("FuubiStrike", FuubiStrike.NAME,  0, FuubiStrike.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
-        this.baseDamage = 1;
+        this.baseDamage = 2;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

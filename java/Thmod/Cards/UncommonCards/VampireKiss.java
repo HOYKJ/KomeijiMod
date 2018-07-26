@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.common.VampireKissAction;
 import Thmod.Cards.AbstractKomeijiCards;
 
 public class VampireKiss extends AbstractKomeijiCards {
@@ -28,37 +29,8 @@ public class VampireKiss extends AbstractKomeijiCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        for(int i = 0; i < 3; i++) {
-            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-            int tmp = this.damage;
-            tmp -= m.currentBlock;
-            if (tmp > m.currentHealth) {
-                tmp = m.currentHealth;
-            }
-            if (tmp > 0)
-                p.heal((tmp / 2));
-            AbstractDungeon.actionManager.addToTop(new WaitAction(0.1F));
-        }
-//        this.m = m;
+        AbstractDungeon.actionManager.addToTop(new VampireKissAction(m,new DamageInfo(p, this.baseDamage),3, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
-
-//    public void update(){
-//        int i = 0;
-//        if(i != 3) {
-//            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-//            int tmp = this.damage;
-//            tmp -= m.currentBlock;
-//            if (tmp > m.currentHealth) {
-//                tmp = m.currentHealth;
-//            }
-//            if (tmp > 0)
-//                p.heal((tmp / 2));
-//            i += 1;
-//            AbstractDungeon.actionManager.addToTop(new WaitAction(0.1F));
-//        }
-//        else if (i == 3)
-//            tickDuration();
-//    }
 
     public AbstractCard makeCopy() {
         return new VampireKiss();

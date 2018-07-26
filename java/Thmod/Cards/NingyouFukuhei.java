@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import java.util.ArrayList;
 
-import Thmod.Actions.common.ChooseAction;
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Orbs.TateNingyou;
 import Thmod.Orbs.YariNingyou;
 import Thmod.Orbs.YumiNingyou;

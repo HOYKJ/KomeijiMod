@@ -1,15 +1,13 @@
 package Thmod.Relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-import Thmod.Actions.common.PlayerTalkAction;
+import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Power.MindReadingPower;
 import basemod.DevConsole;
 
