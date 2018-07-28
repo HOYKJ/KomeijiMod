@@ -25,7 +25,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
     public FreezeToughMe() {
         super("FreezeToughMe", FreezeToughMe.NAME,  2, FreezeToughMe.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseBlock = 15;
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
     }
 
@@ -46,7 +46,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
             else
                 this.name = "回忆「Freeze Atmosphere」";
             this.initializeTitle();
-            this.upgradeMagicNumber(2);
+            this.upgradeMagicNumber(3);
             this.upgradeBlock(5);
             this.timesUpgraded += 1;
             this.upgraded = true;

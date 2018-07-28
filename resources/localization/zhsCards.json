@@ -209,9 +209,9 @@
   "SelfTokamak": {
     "NAME": "回忆「自动托卡马克」",
     "DESCRIPTION":
-    "失去5点生命,获得 [R]  [R] , 消耗 .",
+    "失去3点生命,获得 [R]  [R] , 消耗 .",
     "UPGRADE_DESCRIPTION":
-    "失去5点生命,获得 [R]  [R]  [R] , 消耗 ."
+    "失去3点生命,获得 [R]  [R]  [R] , 消耗 ."
   },
   "SenseofElegance": {
     "NAME": "回忆「优雅的意志」",
@@ -441,7 +441,7 @@
   "HangonChyou": {
     "NAME": "回忆「反魂蝶」",
     "DESCRIPTION":
-    "对所有敌人造成 !D! 点伤害,每次使用将永久升级(最多4次). NL 消耗3P."
+    "对所有敌人造成 !D! 点伤害,每次使用将永久升级(最多8次). NL 消耗3P."
   },
   "HappouKibaku": {
     "NAME": "回忆「八方鬼缚阵」",

@@ -41,6 +41,8 @@ public class MusouMyousyu extends AbstractKomeijiCards {
             this.name = "回忆「梦想封印」";
             this.initializeTitle();
             this.upgradeDamage(1);
+            this.timesUpgraded += 1;
+            this.upgraded = true;
         }
     }
 

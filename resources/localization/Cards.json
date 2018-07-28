@@ -209,9 +209,9 @@
   "SelfTokamak": {
     "NAME": "回忆「Self Tokamak」",
     "DESCRIPTION":
-    "失去5点生命,获得 [R]  [R] , 消耗 .",
+    "失去3点生命,获得 [R]  [R] , 消耗 .",
     "UPGRADE_DESCRIPTION":
-    "失去5点生命,获得 [R]  [R]  [R] , 消耗 ."
+    "失去3点生命,获得 [R]  [R]  [R] , 消耗 ."
   },
   "SenseofElegance": {
     "NAME": "回忆「Sense of Elegance」",

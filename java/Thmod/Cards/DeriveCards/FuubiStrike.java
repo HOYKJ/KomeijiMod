@@ -34,8 +34,8 @@ public class FuubiStrike extends AbstractDeriveCards {
             }
             else
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,"FuubiPower"));
-            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         }
+        AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public AbstractCard makeCopy() {

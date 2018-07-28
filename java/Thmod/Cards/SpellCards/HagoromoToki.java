@@ -35,7 +35,7 @@ public class HagoromoToki extends AbstractSpellCards {
     public HagoromoToki() {
         super("HagoromoToki", HagoromoToki.NAME,  1, HagoromoToki.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF_AND_ENEMY);
         this.baseDamage = 8;
-        this.baseBlock = 5;
+        this.baseBlock = 8;
         this.pointcost = 1;
         discarded = false;
     }

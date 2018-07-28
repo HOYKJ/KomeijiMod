@@ -80,14 +80,14 @@ public class SpellCardsRule extends AbstractThRelic {
             if (!(p.hasPower("PointPower"))) {
                 this.counter += 1;
                 if (this.counter == 4) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
                     this.counter = 0;
                 }
             }
             else if (p.getPower("PointPower").amount < 5) {
                 this.counter += 1;
                 if (this.counter == 4) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
                     this.counter = 0;
                 }
             }

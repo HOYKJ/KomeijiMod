@@ -15,10 +15,10 @@ public class LavaCromlech extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public LavaCromlech() {
-        super("LavaCromlech", LavaCromlech.NAME,  2, LavaCromlech.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE,ElementType.Earth,ElementType.Fire);
+        super("LavaCromlech", LavaCromlech.NAME,  1, LavaCromlech.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE,ElementType.Earth,ElementType.Fire);
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
     }
