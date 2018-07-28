@@ -14,14 +14,14 @@
     "CounterAttackPower": {
       "NAME": "Perfact Maid",
       "DESCRIPTIONS": [
-        "闪避下 #b1 次攻击,并对攻击者造成伤害,获得1 #rP ."
+        "闪避下 #b1 次攻击,并对攻击者造成伤害,获得 #b1  #rP ."
       ]
     },
   "DashPower": {
     "NAME": "擦弹!",
     "DESCRIPTIONS": [
-      "闪避 #b1 次伤害,获得1 #rP .",
-      "闪避 #b"," 次伤害,获得1 #rP ."
+      "闪避 #b1 次伤害,获得 #b1  #rP .",
+      "闪避 #b"," 次伤害,获得 #b1  #rP ."
     ]
   },
   "DemonsForkAccumulate": {
@@ -382,6 +382,82 @@
     "DESCRIPTIONS": [
       "回合结束时,消耗剩余的最多 #b",
       " 点能量,使你的所有人偶进行 #y额外行动 ."
+    ]
+  },
+
+
+
+  "BubblePower": {
+    "NAME": "Sticky Bubble",
+    "DESCRIPTIONS": [
+      "使这个单位损失 #b",
+      " 点 #y力量 ,回合结束生效.每个回合开始时失去1层."
+    ]
+  },
+  "CromlechPower": {
+    "NAME": "Lava Cromlech",
+    "DESCRIPTIONS": [
+      "每当你打出1张攻击,获得 #b",
+      " 点 #y格挡 ."
+    ]
+  },
+  "ForestBlazePower": {
+    "NAME": "ForestBlaze",
+    "DESCRIPTIONS": [
+      "你的所有 #y元素 卡费用为0,获得 #y消耗 属性."
+    ]
+  },
+  "HardnessPower": {
+    "NAME": "Diamond Hardness",
+    "DESCRIPTIONS": [
+      "抵挡接下来 #b",
+      " 次伤害,获得 #b1  #rP ."
+    ]
+  },
+  "HimawariPower": {
+    "NAME": "Satellite Himawari",
+    "DESCRIPTIONS": [
+      "在回合开始时,将 #b",
+      " 张带有 #y消耗 和 #y虚无 的 #y元素 卡加入你的手牌."
+    ]
+  },
+  "KenjiaPower": {
+    "NAME": "贤者之石",
+    "DESCRIPTIONS": [
+      "在回合开始时,给予你火/木/金/土/水 #y元素 的 #y魔石 ."
+    ]
+  },
+  "NextSpear": {
+    "NAME": "Midautumn Spear",
+    "DESCRIPTIONS": [
+      "在回合开始时,受到 #b",
+      " 点伤害."
+    ]
+  },
+  "PhotosynthesisPower": {
+    "NAME": "Photosynthesis",
+    "DESCRIPTIONS": [
+      "每个回合开始时获得",
+      "."
+    ]
+  },
+  "ReflectorPower": {
+    "NAME": "Sunshine Reflector",
+    "DESCRIPTIONS": [
+      "在你受到攻击时,给予对方等额的伤害."
+    ]
+  },
+  "SelenePower": {
+    "NAME": "Silent Selene",
+    "DESCRIPTIONS": [
+      "在你受到攻击时,给予对方 #b",
+      " 点伤害."
+    ]
+  },
+  "ThrasherAccumulate": {
+    "NAME": "蓄力",
+    "DESCRIPTIONS": [
+      "蓄力ing"
     ]
   }
   

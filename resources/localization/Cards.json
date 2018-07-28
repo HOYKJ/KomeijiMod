@@ -579,7 +579,7 @@
   "Stardust": {
     "NAME": "投掷",
     "DESCRIPTION":
-    "对所有敌人造成 固定 8+4×回合数的伤害. 消耗 , 虚无 .",
+    "对所有敌人造成 固定 8+4×回合数的伤害. 消耗 , 虚无 . NL （造成 !M! 点伤害.）",
     "EXTENDED_DESCRIPTION": [
       " NL （造成 !M! 点伤害.）"
       ]
@@ -598,6 +598,11 @@
     "NAME": "回忆「天狗的太鼓C」",
     "DESCRIPTION":
     "对所有敌人造成 !D! 点伤害. 消耗 , 虚无 ."
+  },
+  "Thrasher": {
+    "NAME": "释放",
+    "DESCRIPTION":
+    "造成 !D! 点随机伤害 !M! 次."
   },
 
 
@@ -786,6 +791,213 @@
     "NAME": "回忆「Trip Wire」",
     "DESCRIPTION":
     "获得 !B! × 人偶 数量的 格挡 .消耗2P."
+  },
+
+
+  "CondensedBubble":{
+    "NAME": "回忆「Condensed Bubble」",
+    "DESCRIPTION":
+    " 元素 水,获得 !M! 层 多层护甲 ."
+  },
+  "StickyBubble":{
+    "NAME": "回忆「Sticky Bubble」",
+    "DESCRIPTION":
+    " 元素 水,给予 !M! 层泡泡,每层降低1点 力量 ,回合结束生效,每个回合开始减少1层, 回响 ."
+  },
+  "SummerFlame":{
+    "NAME": "回忆「Summer Flame」",
+    "DESCRIPTION":
+    " 元素 火,对所有敌人造成 !D! 点伤害."
+  },
+  "SummerRed":{
+    "NAME": "回忆「Summer Red」",
+    "DESCRIPTION":
+    " 元素 火, 固有 ,造成 !D! 点伤害."
+  },
+  "WinterElement":{
+    "NAME": "回忆「Winter Element」",
+    "DESCRIPTION":
+    " 元素 水,造成 !D! 点伤害,给予 !M! 层 虚弱 ."
+  },
+  "WipeMoisture":{
+    "NAME": "回忆「Wipe Moisture」",
+    "DESCRIPTION":
+    " 元素 火,造成 !D! 点伤害, 回响 ."
+  },
+
+
+  "AutumnBlades":{
+    "NAME": "回忆「Autumn Blades」",
+    "DESCRIPTION":
+    " 元素 金,对所有敌人造成 !D! 点伤害,给予 !M! 层 易伤 ."
+  },
+  "AutumnEdge":{
+    "NAME": "回忆「Autumn Edge」",
+    "DESCRIPTION":
+    " 元素 金,造成 !D! 点随机伤害 !M! 次."
+  },
+  "DiamondHardness":{
+    "NAME": "回忆「Diamond Hardness」",
+    "DESCRIPTION":
+    " 元素 土,抵挡下1次受到的伤害."
+  },
+  "EmeraldCity":{
+    "NAME": "回忆「Emerald City」",
+    "DESCRIPTION":
+    " 元素 土,获得 !B! 点 格挡 ,然后对敌人造成等同于 格挡 的伤害.",
+    "UPGRADE_DESCRIPTION":
+    " NL (造成 !D! 点伤害)"
+  },
+  "FallThrasher":{
+    "NAME": "回忆「Fall Thrasher」",
+    "DESCRIPTION":
+    " 元素 金, 蓄力 ,造成 !M! ×蓄力回合次数的随机伤害.(在蓄力状态下使用将返还2费,抽1卡)"
+  },
+  "FlashOfSpring":{
+    "NAME": "回忆「Flash Of Spring」",
+    "DESCRIPTION":
+    " 元素 木,造成 !D! 点伤害,抽 !M! 张卡."
+  },
+  "MidautumnSpear":{
+    "NAME": "回忆「Midautumn Spear」",
+    "DESCRIPTION":
+    " 元素 土,造成 !D! 点伤害,在下回合开始时造成等额的伤害."
+  },
+  "SpringWind":{
+    "NAME": "回忆「Spring Wind」",
+    "DESCRIPTION":
+    " 元素 木,抽 !M! 张卡."
+  },
+  "StaticGreen":{
+    "NAME": "回忆「Static Green」",
+    "DESCRIPTION":
+    " 元素 木,获得 !M! 点能量."
+  },
+
+
+  "ElementInvoke":{
+    "NAME": "回忆「元素祈唤」",
+    "DESCRIPTION":
+    "获得随机 元素 球,直至填满你的球槽, 虚无 .",
+    "UPGRADE_DESCRIPTION":
+    "获得随机 元素 球,直至填满你的球槽."
+  },
+  "ElementMix":{
+    "NAME": "回忆「元素融合」",
+    "DESCRIPTION":
+    "选择2个元素球,获得它们的融合符卡, 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    "选择2个元素球,获得它们的融合符卡.",
+    "EXTENDED_DESCRIPTION":[
+      "选择2个元素进行融合",
+      "土","土 元素 .",
+      "火","火 元素 .",
+      "月","月 元素 .",
+      "金","金 元素 .",
+      "日","日 元素 .",
+      "水","水 元素 .",
+      "木","木 元素 ."
+    ]
+  },
+  "RoyalFlare":{
+    "NAME": "回忆「Royal Flare」",
+    "DESCRIPTION":
+    " 元素 日,对所有敌人造成 !D! 点伤害."
+  },
+  "SilentSelene":{
+    "NAME": "回忆「Silent Selene」",
+    "DESCRIPTION":
+    " 元素 月,获得1层 无实体 ,在本回合内,对攻击你的敌人造成 !M! 点 固定 伤害."
+  },
+
+
+  "ElementalHarvester":{
+    "NAME": "回忆「Elemental Harvester」",
+    "DESCRIPTION":
+    " 元素 金木,获得 !B! 点 格挡 ,抽 !M! 张卡."
+  },
+  "ElementExtend":{
+    "NAME": "回忆「元素扩展」",
+    "DESCRIPTION":
+    "获得 !M! 个元素栏位,消耗2P."
+  },
+  "EmeraldMegalopolis":{
+    "NAME": "回忆「Emerald Megalopolis」",
+    "DESCRIPTION":
+    " 元素 土金,你的 格挡 不再会在回合开始时消失."
+  },
+  "ForestBlaze":{
+    "NAME": "回忆「Forest Blaze」",
+    "DESCRIPTION":
+    " 元素 木火,你的所有 元素 卡变为0费,获得 消耗 属性."
+  },
+  "HydrogenousProminence":{
+    "NAME": "回忆「Hydrogenous Prominence」",
+    "DESCRIPTION":
+    " 元素 日水,造成你本局生成的3× 元素 球的随机 固定 伤害.",
+    "EXTENDED_DESCRIPTION":[
+    " NL (累计 !M! 次)"
+      ]
+  },
+  "JellyfishPrincess":{
+    "NAME": "回忆「Jellyfish Princess」",
+    "DESCRIPTION":
+    " 元素 水,获得 !M! 层 金属化 , 替换 ,消耗3P."
+  },
+  "KenjiaNoSeki":{
+    "NAME": "回忆「贤者之石」",
+    "DESCRIPTION":
+    " 元素 火水木金土,每个回合给予你火/木/金/土/水 元素 的 魔石 ,持续5回合."
+  },
+  "LavaCromlech":{
+    "NAME": "回忆「Lava Cromlech」",
+    "DESCRIPTION":
+    " 元素 火土,每使用1张攻击卡,给予你 !M! 点 格挡 ."
+  },
+  "MercuryPoison":{
+    "NAME": "回忆「Mercury Poison」",
+    "DESCRIPTION":
+    " 元素 金水,给予所有敌人 !D! 层毒, !M! 层 虚弱 和 易伤 ."
+  },
+  "NoachianDeluge":{
+    "NAME": "回忆「Noachian Deluge」",
+    "DESCRIPTION":
+    " 元素 土水,造成 !D! 点随机伤害 !M! 次."
+  },
+  "PhlogisticPillar":{
+    "NAME": "回忆「Phlogistic Pillar」",
+    "DESCRIPTION":
+    " 元素 火水,对所有敌人造成 !D! 点伤害,给予 !M! 层 虚弱 ."
+  },
+  "Photosynthesis":{
+    "NAME": "回忆「Photosynthesis」",
+    "DESCRIPTION":
+    " 元素 日木,每个回合开始时,获得 [R] ."
+  },
+  "RoyalDiamondRing":{
+    "NAME": "回忆「Royal Diamond Ring」",
+    "DESCRIPTION":
+    " 元素 日月,激发所有 元素 球,对所有敌人造成激发数×10的伤害."
+  },
+  "SatelliteHimawari":{
+    "NAME": "回忆「Satellite Himawari」",
+    "DESCRIPTION":
+    " 元素 月木,每个回合开始时,将1张费用为0,具有 消耗 和 虚无 属性的 元素 卡加入你的手牌."
+  },
+  "StElmoPillar":{
+    "NAME": "回忆「St. Elmo Pillar」",
+    "DESCRIPTION":
+    " 元素 火金,造成 !D! 点伤害,给予 !M! 层 易伤 ."
+  },
+  "SunshineReflector":{
+    "NAME": "回忆「Sunshine Reflector」",
+    "DESCRIPTION":
+    " 元素 月金,使你在本回合内,对攻击你的单位造成等额的伤害."
+  },
+  "WaterElf":{
+    "NAME": "回忆「Water Elf」",
+    "DESCRIPTION":
+    " 元素 水木,所有敌人失去 !M! 点 力量 ."
   },
 
 

@@ -36,6 +36,7 @@ public class SakuraHirame extends AbstractSpellCards {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        super.canUse(p,m);
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 return true;

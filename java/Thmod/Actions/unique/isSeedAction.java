@@ -84,8 +84,8 @@ public class isSeedAction extends AbstractGameAction {
                                 break;
                         }
                     }
-                    pointPower.elementMix(earth,fire,luna,metal,sun,water,wood,false);
                 }
+                pointPower.elementMix(earth,fire,luna,metal,sun,water,wood,false);
             }
             pointPower.cardSelect();
         }

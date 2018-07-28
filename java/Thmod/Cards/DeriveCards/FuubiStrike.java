@@ -29,12 +29,12 @@ public class FuubiStrike extends AbstractDeriveCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if(p.hasPower("FuubiPower")){
             if(p.getPower("FuubiPower").amount > 0){
-                AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(this, 1));
                 AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"FuubiPower",1));
             }
             else
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,"FuubiPower"));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         }
     }
 

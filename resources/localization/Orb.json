@@ -50,5 +50,82 @@
       " 点 #y格挡 . NL  #y激发:获得 #b",
       " 层 #y多层护甲 ."
     ]
+  },
+
+
+
+  "EarthOrb": {
+    "NAME":"土元素",
+    "DESCRIPTION":[
+      "元素球将影响你获得的符卡."
+    ]
+  },
+  "FireOrb": {
+    "NAME":"火元素",
+    "DESCRIPTION":[
+      "元素球将影响你获得的符卡."
+    ]
+  },
+  "MetalOrb": {
+    "NAME":"金元素",
+    "DESCRIPTION":[
+      "元素球将影响你获得的符卡."
+    ]
+  },
+  "WaterOrb": {
+    "NAME":"水元素",
+    "DESCRIPTION":[
+      "元素球将影响你获得的符卡."
+    ]
+  },
+  "WoodOrb": {
+    "NAME":"木元素",
+    "DESCRIPTION":[
+      "元素球将影响你获得的符卡."
+    ]
+  },
+  "LunaOrb": {
+    "NAME":"月元素",
+    "DESCRIPTION":[
+      " #y被动: 为你提供 #b",
+      " 点 #y敏捷 . NL 元素球将影响你获得的符卡."
+    ]
+  },
+  "SunOrb": {
+    "NAME":"日元素",
+    "DESCRIPTION":[
+      " #y被动: 为你提供 #b",
+      " 点 #y力量 . NL 元素球将影响你获得的符卡."
+    ]
+  },
+  "KenjiaEarth": {
+    "NAME":"土魔石",
+    "DESCRIPTION":[
+      "土元素 #y魔石 ."
+    ]
+  },
+  "KenjiaFire": {
+    "NAME":"火魔石",
+    "DESCRIPTION":[
+      "火元素 #y魔石 ."
+    ]
+  },
+  "KenjiaMetal": {
+    "NAME":"金魔石",
+    "DESCRIPTION":[
+      "金元素 #y魔石 ."
+    ]
+  },
+  "KenjiaWater": {
+    "NAME":"水魔石",
+    "DESCRIPTION":[
+      "水元素 #y魔石 ."
+    ]
+  },
+  "KenjiaWood": {
+    "NAME":"木魔石",
+    "DESCRIPTION":[
+      "木元素 #y魔石 ."
+    ]
   }
 }

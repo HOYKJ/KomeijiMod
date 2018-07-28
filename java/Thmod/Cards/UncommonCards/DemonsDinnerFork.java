@@ -40,10 +40,8 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m){
-        if (p.hasPower("DemonsForkAccumulate")) {
-            return false;
-        }
-        return true;
+        super.canUse(p,m);
+        return !p.hasPower("DemonsForkAccumulate");
     }
 
     public AbstractCard makeCopy() {

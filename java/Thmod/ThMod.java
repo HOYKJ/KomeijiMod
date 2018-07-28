@@ -32,6 +32,42 @@ import Thmod.Cards.Agarareta;
 import Thmod.Cards.DemonLordCradle;
 import Thmod.Cards.DeriveCards.Nothing;
 import Thmod.Cards.DochyakuKami;
+import Thmod.Cards.ElementCards.CondensedBubble;
+import Thmod.Cards.ElementCards.RareCards.ElementInvoke;
+import Thmod.Cards.ElementCards.RareCards.ElementMix;
+import Thmod.Cards.ElementCards.RareCards.RoyalFlare;
+import Thmod.Cards.ElementCards.RareCards.SilentSelene;
+import Thmod.Cards.ElementCards.SpellCards.ElementExtend;
+import Thmod.Cards.ElementCards.SpellCards.ElementalHarvester;
+import Thmod.Cards.ElementCards.SpellCards.EmeraldMegalopolis;
+import Thmod.Cards.ElementCards.SpellCards.ForestBlaze;
+import Thmod.Cards.ElementCards.SpellCards.HydrogenousProminence;
+import Thmod.Cards.ElementCards.SpellCards.JellyfishPrincess;
+import Thmod.Cards.ElementCards.SpellCards.KenjiaNoSeki;
+import Thmod.Cards.ElementCards.SpellCards.LavaCromlech;
+import Thmod.Cards.ElementCards.SpellCards.MercuryPoison;
+import Thmod.Cards.ElementCards.SpellCards.NoachianDeluge;
+import Thmod.Cards.ElementCards.SpellCards.PhlogisticPillar;
+import Thmod.Cards.ElementCards.SpellCards.Photosynthesis;
+import Thmod.Cards.ElementCards.SpellCards.RoyalDiamondRing;
+import Thmod.Cards.ElementCards.SpellCards.SatelliteHimawari;
+import Thmod.Cards.ElementCards.SpellCards.StElmoPillar;
+import Thmod.Cards.ElementCards.SpellCards.SunshineReflector;
+import Thmod.Cards.ElementCards.SpellCards.WaterElf;
+import Thmod.Cards.ElementCards.StickyBubble;
+import Thmod.Cards.ElementCards.SummerFlame;
+import Thmod.Cards.ElementCards.SummerRed;
+import Thmod.Cards.ElementCards.UncommonCards.AutumnBlades;
+import Thmod.Cards.ElementCards.UncommonCards.AutumnEdge;
+import Thmod.Cards.ElementCards.UncommonCards.DiamondHardness;
+import Thmod.Cards.ElementCards.UncommonCards.EmeraldCity;
+import Thmod.Cards.ElementCards.UncommonCards.FallThrasher;
+import Thmod.Cards.ElementCards.UncommonCards.FlashOfSpring;
+import Thmod.Cards.ElementCards.UncommonCards.MidautumnSpear;
+import Thmod.Cards.ElementCards.UncommonCards.SpringWind;
+import Thmod.Cards.ElementCards.UncommonCards.StaticGreen;
+import Thmod.Cards.ElementCards.WinterElement;
+import Thmod.Cards.ElementCards.WipeMoisture;
 import Thmod.Cards.HagoromoMizu;
 import Thmod.Cards.Dash_Komeiji;
 import Thmod.Cards.Defend_Komeiji;
@@ -204,7 +240,6 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static HashMap<String,Integer> removemap = new HashMap<>();
     public static HashMap<String,Integer> upcardmap = new HashMap<>();
     public static HashMap<String,AbstractCard> removedcardids = new HashMap<>();
-    public static CardGroup elementCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
 
     public static String komeijiCardImage(final String id) {
         return "images/cards/komeiji/" + id + ".png";
@@ -261,6 +296,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         fightids.add("NingyouKasou");
         fightids.add("OoedoNingyou");
         fightids.add("ShanghaiNingyou");
+        fightids.add("CondensedBubble");
 
         upcardids.add("FuumaJin");
         upcardids.add("HappouKibaku");
@@ -290,6 +326,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         upcardids.add("KyoufuSaimin");
         upcardids.add("ReturnInanimateness");
         upcardids.add("PenglaiNingyou");
+        upcardids.add("JellyfishPrincess");
 
         removemap.put("KeiseiJin",1);
         removemap.put("KinbakuJin",1);
@@ -318,6 +355,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         removemap.put("NingyouKasou",23);
         removemap.put("OoedoNingyou",23);
         removemap.put("ShanghaiNingyou",24);
+        removemap.put("CondensedBubble",25);
 
         upcardmap.put("FuumaJin",1);
         upcardmap.put("HappouKibaku",1);
@@ -347,6 +385,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         upcardmap.put("KyoufuSaimin",22);
         upcardmap.put("ReturnInanimateness",23);
         upcardmap.put("PenglaiNingyou",24);
+        upcardmap.put("JellyfishPrincess",25);
 
         weathers.add("KaiSei");
         weathers.add("KiriSame");
@@ -635,7 +674,45 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.addRelicToCustomPool(new MigarariNingyou(), AbstractCardEnum.古明地觉.toString());
         }
         else {
+            BaseMod.addCard(new ElementalHarvester());
+            BaseMod.addCard(new ElementExtend());
+            BaseMod.addCard(new EmeraldMegalopolis());
+            BaseMod.addCard(new ForestBlaze());
+            BaseMod.addCard(new HydrogenousProminence());
+            BaseMod.addCard(new JellyfishPrincess());
+            BaseMod.addCard(new KenjiaNoSeki());
+            BaseMod.addCard(new LavaCromlech());
+            BaseMod.addCard(new MercuryPoison());
+            BaseMod.addCard(new NoachianDeluge());
+            BaseMod.addCard(new PhlogisticPillar());
+            BaseMod.addCard(new Photosynthesis());
+            BaseMod.addCard(new RoyalDiamondRing());
+            BaseMod.addCard(new SatelliteHimawari());
+            BaseMod.addCard(new StElmoPillar());
+            BaseMod.addCard(new SunshineReflector());
+            BaseMod.addCard(new WaterElf());
 
+            BaseMod.addCard(new ElementInvoke());
+            BaseMod.addCard(new ElementMix());
+            BaseMod.addCard(new RoyalFlare());
+            BaseMod.addCard(new SilentSelene());
+
+            BaseMod.addCard(new AutumnBlades());
+            BaseMod.addCard(new AutumnEdge());
+            BaseMod.addCard(new DiamondHardness());
+            BaseMod.addCard(new EmeraldCity());
+            BaseMod.addCard(new FallThrasher());
+            BaseMod.addCard(new FlashOfSpring());
+            BaseMod.addCard(new MidautumnSpear());
+            BaseMod.addCard(new SpringWind());
+            BaseMod.addCard(new StaticGreen());
+
+            BaseMod.addCard(new CondensedBubble());
+            BaseMod.addCard(new StickyBubble());
+            BaseMod.addCard(new SummerFlame());
+            BaseMod.addCard(new SummerRed());
+            BaseMod.addCard(new WinterElement());
+            BaseMod.addCard(new WipeMoisture());
 
             BaseMod.addRelicToCustomPool(new Grimoire(), AbstractCardEnum.古明地觉.toString());
         }
@@ -738,7 +815,31 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             UnlockTracker.unlockCard("NingyouSP");
             UnlockTracker.unlockCard("SeekerWire");
         }
+        else{
+            UnlockTracker.unlockCard("ElementInvoke");
+            UnlockTracker.unlockCard("ElementMix");
+            UnlockTracker.unlockCard("RoyalFlare");
+            UnlockTracker.unlockCard("SilentSelene");
+
+            UnlockTracker.unlockCard("AutumnBlades");
+            UnlockTracker.unlockCard("AutumnEdge");
+            UnlockTracker.unlockCard("DiamondHardness");
+            UnlockTracker.unlockCard("EmeraldCity");
+            UnlockTracker.unlockCard("FallThrasher");
+            UnlockTracker.unlockCard("FlashOfSpring");
+            UnlockTracker.unlockCard("MidautumnSpear");
+            UnlockTracker.unlockCard("SpringWind");
+            UnlockTracker.unlockCard("StaticGreen");
+
+            UnlockTracker.unlockCard("CondensedBubble");
+            UnlockTracker.unlockCard("StickyBubble");
+            UnlockTracker.unlockCard("SummerFlame");
+            UnlockTracker.unlockCard("SummerRed");
+            UnlockTracker.unlockCard("WinterElement");
+            UnlockTracker.unlockCard("WipeMoisture");
+        }
         logger.info("=========================解锁卡牌成功=========================");
+
     }
 
     private void CreatePanel() throws IOException {
@@ -839,7 +940,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
                 me.text = "启用爱丽丝卡组";
             }
             else {
-                me.text = "启用帕秋莉卡组(还不能用)";
+                me.text = "启用帕秋莉卡组";
             }
             return;
         });
@@ -847,7 +948,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 //        settingsPanel.addLabel("适用版本: 1.游戏:7.13. 2.basemod:7.12. 3.ModTheSpire:2.8.0", this.X, this.Y + 11*this.IntervalY, (me) -> { });
         settingsPanel.addLabel("更新日志请见hoykj吧(贴吧)", this.X, this.Y + 11*this.IntervalY, (me) -> { });
         settingsPanel.addLabel("目前进度:", 1100f, this.Y + 2*this.IntervalY , (me) -> { });
-        settingsPanel.addLabel("卡组:通用部分与爱丽丝卡组完成", 1100f, this.Y + 3*this.IntervalY , (me) -> { });
+        settingsPanel.addLabel("卡组:基本完成", 1100f, this.Y + 3*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("遗物:做了个开头", 1100f, this.Y + 4*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("美工:做了个开头", 1100f, this.Y + 5*this.IntervalY , (me) -> { });
         settingsPanel.addLabel("debug:在做", 1100f, this.Y + 6*this.IntervalY , (me) -> { });
@@ -918,6 +1019,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addKeyword(new String[]{"蓬莱人偶","蓬莱人偶"}, "上海人偶会使你获得力量加成,激发时造成全体伤害.(属于枪兵)");
         BaseMod.addKeyword(new String[]{"和兰人偶","和兰人偶"}, "和兰人偶会在回合结束提供格挡,激发后获得多层护甲.(属于盾兵)");
         BaseMod.addKeyword(new String[]{"额外行动","额外行动"}, "枪兵:对随机敌人造成3点伤害. 盾兵:给予2点格挡. 弓兵:每2个弓兵将为你恢复1点生命");
+        BaseMod.addKeyword(new String[]{"元素","元素"}, "元素卡会生成或消耗相应的元素球.(多重元素即为消耗)");
+        BaseMod.addKeyword(new String[]{"魔石","魔石"}, "在你使用元素牌时,如果你拥有对应元素的魔石,将消耗魔石,将那张卡再打出一次(再打出的卡不会获得或消耗元素球)");
     }
 
     public static void SavePointPower() throws IOException {

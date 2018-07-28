@@ -18,10 +18,10 @@ public class LunaDial extends AbstractKomeijiCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION;
-    private static final int COST = 3;
+    private static final int COST = 2;
 
     public LunaDial() {
-        super("LunaDial", LunaDial.NAME,  3, LunaDial.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+        super("LunaDial", LunaDial.NAME,  2, LunaDial.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         this.exhaust = true;
     }
 

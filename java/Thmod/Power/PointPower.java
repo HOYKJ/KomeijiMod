@@ -11,12 +11,29 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import Thmod.Actions.unique.CardSelectAction;
+import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Actions.unique.isSeedAction;
+import Thmod.Cards.ElementCards.SpellCards.ElementalHarvester;
+import Thmod.Cards.ElementCards.SpellCards.EmeraldMegalopolis;
+import Thmod.Cards.ElementCards.SpellCards.ForestBlaze;
+import Thmod.Cards.ElementCards.SpellCards.HydrogenousProminence;
+import Thmod.Cards.ElementCards.SpellCards.KenjiaNoSeki;
+import Thmod.Cards.ElementCards.SpellCards.LavaCromlech;
+import Thmod.Cards.ElementCards.SpellCards.MercuryPoison;
+import Thmod.Cards.ElementCards.SpellCards.NoachianDeluge;
+import Thmod.Cards.ElementCards.SpellCards.PhlogisticPillar;
+import Thmod.Cards.ElementCards.SpellCards.Photosynthesis;
+import Thmod.Cards.ElementCards.SpellCards.RoyalDiamondRing;
+import Thmod.Cards.ElementCards.SpellCards.SatelliteHimawari;
+import Thmod.Cards.ElementCards.SpellCards.StElmoPillar;
+import Thmod.Cards.ElementCards.SpellCards.SunshineReflector;
+import Thmod.Cards.ElementCards.SpellCards.WaterElf;
 import Thmod.Cards.SpellCards.CuteOchiyari;
 import Thmod.Cards.SpellCards.DollofRoundTable;
 import Thmod.Cards.SpellCards.DollsWar;
@@ -102,7 +119,45 @@ public class PointPower extends AbstractPower {
         if(isMix){
             cardid.clear();
         }
-
+        if((metal) && (wood))
+            cardid.add(new ElementalHarvester());
+        if((metal) && (water))
+            cardid.add(new MercuryPoison());
+        if((metal) && (fire))
+            cardid.add(new StElmoPillar());
+        if((metal) && (earth))
+            cardid.add(new EmeraldMegalopolis());
+        if((wood) && (water))
+            cardid.add(new WaterElf());
+        if((wood) && (fire))
+            cardid.add(new ForestBlaze());
+        if((water) && (fire))
+            cardid.add(new PhlogisticPillar());
+        if((water) && (earth))
+            cardid.add(new NoachianDeluge());
+        if((fire) && (earth))
+            cardid.add(new LavaCromlech());
+        if((luna) && (metal))
+            cardid.add(new SunshineReflector());
+        if((luna) && (wood))
+            cardid.add(new SatelliteHimawari());
+        if((sun) && (wood))
+            cardid.add(new Photosynthesis());
+        if((sun) && (water))
+            cardid.add(new HydrogenousProminence());
+        if((sun) && (luna))
+            cardid.add(new RoyalDiamondRing());
+        if((metal) && (wood) && (water) && (fire) && (earth) && (!(p.hasPower("KenjiaPower"))))
+            cardid.add(new KenjiaNoSeki());
+        if(isMix){
+            if(cardid.size() > 0) {
+                AbstractCard c = cardid.get(0);
+                AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
+            }
+            else {
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "融合失败..."));
+            }
+        }
     }
 
     public void updateDescription()

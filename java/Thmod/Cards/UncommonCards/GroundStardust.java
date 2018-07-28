@@ -2,15 +2,19 @@ package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.AbstractSweepCards;
 import Thmod.Cards.DeriveCards.Stardust;
 import Thmod.Power.StardustAccumulate;
@@ -40,7 +44,9 @@ public class GroundStardust extends AbstractSweepCards {
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        super.canUse(p,m);
         if (p.hasPower("StardustAccumulate")) {
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我已经在蓄力了"));
             return false;
         }
         return true;

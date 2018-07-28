@@ -20,6 +20,7 @@ public class Stardust extends AbstractDeriveCards {
     public static final String DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 0;
+//    private int offset;
     private int magicNum;
 
     public Stardust(int magicNum) {
@@ -27,30 +28,30 @@ public class Stardust extends AbstractDeriveCards {
         this.baseMagicNumber = (8 + 4 * magicNum);
         this.magicNumber = this.baseMagicNumber;
         this.upgraded = true;
+//        this.offset = offset;
         this.magicNum = magicNum;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if(AbstractDungeon.player.hasPower("StardustAccumulate")) {
-            DevConsole.logger.info("magicNumber"+this.magicNumber);
             for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
                 AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                 if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                     AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.magicNumber, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
                 }
             }
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, "StardustAccumulate"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, "StardustAccumulate" ));
         }
     }
 
-    public void calculateCardDamage(AbstractMonster mo)
-    {
-//        super.calculateCardDamage(mo);
-        this.magicNumber = (8 + 4 * magicNum);
-        this.rawDescription = DESCRIPTION;
-        this.rawDescription += EXTENDED_DESCRIPTION[0];
-        initializeDescription();
-    }
+//    public void calculateCardDamage(AbstractMonster mo)
+//    {
+////        super.calculateCardDamage(mo);
+//        this.magicNumber = (8 + 4 * magicNum);
+//        this.rawDescription = DESCRIPTION;
+//        this.rawDescription += EXTENDED_DESCRIPTION[0];
+//        initializeDescription();
+//    }
 
     public AbstractCard makeCopy() {
         return new Stardust(0);

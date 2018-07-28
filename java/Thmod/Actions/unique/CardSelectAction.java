@@ -14,6 +14,8 @@ import Thmod.Cards.DeriveCards.AbstractDeriveCards;
 import Thmod.Cards.DeriveCards.TaikoAoe;
 import Thmod.Cards.DeriveCards.TaikoDefend;
 import Thmod.Cards.DeriveCards.TaikoStrike;
+import Thmod.Cards.ElementCards.SpellCards.ElementExtend;
+import Thmod.Cards.ElementCards.SpellCards.JellyfishPrincess;
 import Thmod.Cards.ItemCards.ByoukiHeiyu;
 import Thmod.Cards.ItemCards.HisouNoKenItem;
 import Thmod.Cards.ItemCards.IbukiHisyaku;
@@ -70,6 +72,7 @@ import Thmod.Cards.SpellCards.YomeiIkubaku;
 import Thmod.Relics.SpellCardsRule;
 import Thmod.ThMod;
 import Thmod.Utils;
+import basemod.DevConsole;
 
 public class CardSelectAction extends AbstractGameAction
 {
@@ -296,13 +299,38 @@ public class CardSelectAction extends AbstractGameAction
             if ((this.powercount >= 5) && (this.cardid.size() > 0)) {
                 for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
                     AbstractCard Cardid = (AbstractCard) localIterator.next();
-                    if (Cardid.cardID.equals("LemmingsParade")) {
-                        CardSelectAction.SpellCards.addToTop(new LemmingsParade());
+                    if (Cardid.cardID.equals("TripWire")) {
+                        CardSelectAction.SpellCards.addToTop(new TripWire());
                     }
                 }
             }
         }
 
+        else{
+            if ((this.powercount >= 2)) {
+                CardSelectAction.SpellCards.addToTop(new ElementExtend());
+            }
+            if ((this.powercount >= 3) && (this.cardid.size() > 0)) {
+                for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
+                    AbstractCard Cardid = (AbstractCard) localIterator.next();
+                    if (Cardid.cardID.equals("CondensedBubble")) {
+                        CardSelectAction.SpellCards.addToTop(new JellyfishPrincess());
+                    }
+                }
+            }
+            if(this.cardid.size() > 0){
+                for (int i = 0;i < this.cardid.size();i++) {
+                    AbstractCard Cardid = this.cardid.get(i);
+                    DevConsole.logger.info("Cardids"+Cardid.cardID);
+                    if (Cardid.cardID.equals("ElementalHarvester") || (Cardid.cardID.equals("MercuryPoison")) || (Cardid.cardID.equals("StElmoPillar")) || (Cardid.cardID.equals("EmeraldMegalopolis"))
+                            || (Cardid.cardID.equals("WaterElf")) || (Cardid.cardID.equals("ForestBlaze")) || (Cardid.cardID.equals("PhlogisticPillar")) || (Cardid.cardID.equals("NoachianDeluge"))
+                            || (Cardid.cardID.equals("LavaCromlech")) || (Cardid.cardID.equals("SunshineReflector")) || (Cardid.cardID.equals("SatelliteHimawari")) || (Cardid.cardID.equals("Photosynthesis"))
+                            || (Cardid.cardID.equals("HydrogenousProminence")) || (Cardid.cardID.equals("RoyalDiamondRing")) || (Cardid.cardID.equals("KenjiaNoSeki"))) {
+                        CardSelectAction.SpellCards.addToTop(this.cardid.get(i));
+                    }
+                }
+            }
+        }
 
         CardSelectAction.SpellCards.sortAlphabetically(false);
         CardSelectAction.allUpgradedSpellCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);

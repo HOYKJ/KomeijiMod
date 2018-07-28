@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Thmod.Actions.common.MoveOrbAction;
 import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.DeriveCards.FuubiStrike;
 import Thmod.Orbs.ElementOrb.AbstractElementOrb;
@@ -196,6 +197,7 @@ public class SpellCardsRule extends AbstractThRelic {
             if(p.getPower("PointPower").amount == 5)
                 this.img = ImageMaster.loadImage("images/relics/SpellCardRule_5.png");
         }
+        AbstractDungeon.actionManager.addToTop(new MoveOrbAction());
     }
 
     public void onLoseHp(int damageAmount) {
