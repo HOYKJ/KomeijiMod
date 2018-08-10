@@ -35,7 +35,7 @@ public class NingyouKasou extends AbstractSweepCards {
 
     public NingyouKasou() {
         super("NingyouKasou", NingyouKasou.NAME,  0, NingyouKasou.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseDamage = 4;
+        this.baseDamage = 6;
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }

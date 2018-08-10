@@ -31,7 +31,7 @@ public class YuumeiNoKurin extends AbstractKomeijiCards {
     }
 
     public AbstractCard makeCopy() {
-        return new MusouMyousyu();
+        return new YuumeiNoKurin();
     }
 
     public void upgrade() {

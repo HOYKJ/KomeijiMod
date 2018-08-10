@@ -18,6 +18,7 @@ public class ShanghaiNingyou extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     private static final int COST = 2;
 
     public ShanghaiNingyou() {
@@ -45,6 +46,8 @@ public class ShanghaiNingyou extends AbstractKomeijiCards {
         if (!(this.upgraded)) {
             this.upgradeName();
             this.isEthereal = false;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -52,5 +55,6 @@ public class ShanghaiNingyou extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("ShanghaiNingyou");
         NAME = ShanghaiNingyou.cardStrings.NAME;
         DESCRIPTION = ShanghaiNingyou.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = ShanghaiNingyou.cardStrings.UPGRADE_DESCRIPTION;
     }
 }

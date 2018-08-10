@@ -49,6 +49,10 @@ public class MetalOrb extends AbstractElementOrb {
         this.hb.render(sb);
     }
 
+    protected void renderText(SpriteBatch sb)
+    {
+    }
+
     public AbstractOrb makeCopy()
     {
         return new MetalOrb();

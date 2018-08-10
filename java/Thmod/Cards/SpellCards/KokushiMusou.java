@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import Thmod.Relics.SpellCardsRule;
 
@@ -41,10 +42,11 @@ public class KokushiMusou extends AbstractSpellCards {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new DexterityPower(p,-6),-6));
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StrengthPower(p,-6),-6));
                     SpellCardsRule.Kokushinum = 0;
-                    for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                        AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    UnlockTracker.unlockCard("SpontaneousDetonation");
+                    for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                        AbstractMonster target =  AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                         if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, 36, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, 80, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                         }
                     }
                 }

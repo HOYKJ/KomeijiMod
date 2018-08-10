@@ -24,7 +24,7 @@ public class WaterElf extends AbstractElementSpellCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         super.use(p,m);
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new StrengthPower(target, -this.magicNumber), -this.magicNumber));

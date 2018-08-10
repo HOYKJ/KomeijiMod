@@ -1,6 +1,5 @@
 package Thmod.Power.Weather;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.CalculatedGambleAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -32,14 +31,14 @@ public class SeiRan extends AbstractPower {
         AbstractDungeon.actionManager.addToBottom(new CalculatedGambleAction(false));
         flash();
         if (this.amount <= 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "SeiRan"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }
 
     public void atEndOfRound() {
         if (this.amount <= 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "SeiRan"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }

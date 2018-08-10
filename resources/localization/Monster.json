@@ -1,0 +1,29 @@
+﻿{
+  "Remiria": {
+    "MOVES": [
+      "悲惨的命运",
+      "碎心",
+      "冈格尼尔之枪",
+      "Chain Gang",
+      "红色不夜城",
+      "绯红色的恶魔",
+      "蕾米莉亚伸展"
+    ],
+    "NAME": "Remilia Scarlet",
+    "DIALOG": [
+      " @是谁@ ,召唤了 NL  #r@绯红之主@  @?!@ ",
+      " ~你成功了...~ ",
+      " ~你战胜了~  #r~命运~ "
+    ]
+  },
+  "DiscardAndDamageAction": {
+    "TEXT": [
+      "弃一张卡"
+    ]
+  },
+  "FromDeckToHandAction": {
+    "TEXT": [
+      "选一张卡加入手牌"
+    ]
+  }
+}

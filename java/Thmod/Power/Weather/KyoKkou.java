@@ -224,8 +224,8 @@ public class KyoKkou extends AbstractPower {
                 flash();
             }
             if (this.roll == 17) {
-                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                    AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
+                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         flash();
                         AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(AbstractDungeon.player, this.counter1, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE, true));
@@ -243,7 +243,7 @@ public class KyoKkou extends AbstractPower {
             flash();
         }
         if (this.roll == 15) {
-            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+            for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
                 AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                 if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                     if (AbstractMonster.Intent.valueOf(target.intent.name()) == AbstractMonster.Intent.SLEEP) {

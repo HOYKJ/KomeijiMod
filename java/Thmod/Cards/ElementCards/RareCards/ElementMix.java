@@ -29,10 +29,10 @@ public class ElementMix extends AbstractKomeijiCards {
     public static final String DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 0;
 
     public ElementMix() {
-        super("ElementMix", ElementMix.NAME,  1, ElementMix.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super("ElementMix", ElementMix.NAME,  0, ElementMix.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         this.exhaust = true;
     }
 

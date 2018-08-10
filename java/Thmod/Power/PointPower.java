@@ -70,8 +70,12 @@ public class PointPower extends AbstractPower {
     }
 
     public static void Start() {
-        cardid.clear();
-        AbstractDungeon.actionManager.addToBottom(new isSeedAction());
+        if(AbstractDungeon.player.hand.size() >= 10)
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,"我的手牌满了"));
+        else {
+            cardid.clear();
+            AbstractDungeon.actionManager.addToBottom(new isSeedAction());
+        }
     }
 
     public void cardSelect(){

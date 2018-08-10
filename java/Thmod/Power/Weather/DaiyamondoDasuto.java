@@ -26,11 +26,12 @@ public class DaiyamondoDasuto extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+        for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 if(AbstractMonster.Intent.valueOf(target.intent.name()) == AbstractMonster.Intent.SLEEP) {
-                    target.die();
+                    AbstractDungeon.getCurrRoom().monsters.monsters.get(0).currentHealth = 0;
+                    AbstractDungeon.getCurrRoom().monsters.monsters.get(0).healthBarUpdatedEvent();
                     flash();
                 }
             }

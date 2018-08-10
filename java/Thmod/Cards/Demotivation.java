@@ -32,8 +32,8 @@ public class Demotivation extends AbstractKomeijiCards {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
         }
         else
-            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-                AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                 if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new WeakPower(target, this.magicNumber, false), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
                 }

@@ -2,6 +2,7 @@ package Thmod.Cards.ElementCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -32,7 +33,14 @@ public class WipeMoisture extends AbstractElementSweepCards {
     }
 
     public void triggerOnExhaust(){
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(this, 1));
+        if(!(AbstractDungeon.player.hasPower("ForestBlazePower"))) {
+            if(!(this.purgeOnUse)) {
+                if(AbstractDungeon.player.hand.size() >= 10)
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new WipeMoisture(), 1));
+                else
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new WipeMoisture(), 1));
+            }
+        }
     }
 
     @Override

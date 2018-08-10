@@ -2,6 +2,7 @@ package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.AbstractSweepCards;
 import Thmod.Relics.SpellCardsRule;
 import basemod.DevConsole;
@@ -45,7 +47,12 @@ public class SeishiRoten extends AbstractSweepCards {
     }
 
     public void triggerOnExhaust(){
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(this, 1));
+        if(!(this.purgeOnUse)) {
+            if(AbstractDungeon.player.hand.size() >= 10)
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new SeishiRoten(), 1));
+            else
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SeishiRoten(), 1));
+        }
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Nothing extends AbstractDeriveCards {
     public static final String DESCRIPTION;
 
     public Nothing() {
-        super("Nothing", Nothing.NAME,  0, Nothing.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE);
+        super("Nothing", Nothing.NAME,  -2, Nothing.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

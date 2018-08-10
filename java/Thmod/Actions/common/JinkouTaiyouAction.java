@@ -30,8 +30,8 @@ public class JinkouTaiyouAction extends AbstractGameAction
         if (this.duration == this.startingDuration) {
             int count = AbstractDungeon.player.hand.size();
             for (int i = 0; i < count; ++i) {
-                for (int i1 = 0; i1 < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i1) {
-                    AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i1);
+                for (int i1 = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i1 >= 0; i1--) {
+                    AbstractMonster target =  AbstractDungeon.getCurrRoom().monsters.monsters.get(i1);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         AbstractDungeon.actionManager.addToTop(new DamageAction(target, this.info, AbstractGameAction.AttackEffect.FIRE));
                     }

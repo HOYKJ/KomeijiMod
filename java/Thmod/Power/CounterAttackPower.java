@@ -34,7 +34,8 @@ public class CounterAttackPower extends AbstractPower {
         if ((info.type != DamageInfo.DamageType.HP_LOSS) && (info.owner != null) && (info.owner != this.owner))
         {
             flash();
-            AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, 8, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            for(int i = 0;i < 10;i++)
+                AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, 1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             if (!(this.owner.hasPower("PointPower"))) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
             }

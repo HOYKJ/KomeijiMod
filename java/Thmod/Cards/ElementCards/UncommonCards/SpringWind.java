@@ -1,6 +1,7 @@
 package Thmod.Cards.ElementCards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,16 +20,18 @@ public class SpringWind extends AbstractElementSweepCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 0;
+    private static final int COST = 1;
 
     public SpringWind() {
-        super("SpringWind", SpringWind.NAME,  0, SpringWind.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE,ElementType.Wood);
+        super("SpringWind", SpringWind.NAME,  1, SpringWind.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE,ElementType.Wood);
+        this.baseBlock = 3;
         this.baseMagicNumber = 2;
         this.magicNumber = baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         super.use(p,m);
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
     }
 

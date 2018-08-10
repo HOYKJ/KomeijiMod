@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.Iterator;
 
 import Thmod.Cards.AbstractSweepCards;
+import Thmod.Cards.ElementCards.AbstractElementSweepCards;
 import Thmod.ThMod;
 
 public class GetSweepbleCards {
@@ -25,6 +26,8 @@ public class GetSweepbleCards {
 //                    retVal.group.add(c);
 //            }
             if(c instanceof AbstractSweepCards)
+                retVal.group.add(c);
+            if(c instanceof AbstractElementSweepCards)
                 retVal.group.add(c);
         }
         return retVal;

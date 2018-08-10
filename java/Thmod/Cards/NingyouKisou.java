@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import java.util.ArrayList;
 
@@ -29,8 +30,15 @@ public class NingyouKisou extends AbstractSweepCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractOrb orb = new NingyouOrb();
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        int EmptyNum = 0;
+        for(int i = 0;i < p.orbs.size();i++){
+            if(p.orbs.get(i) instanceof EmptyOrbSlot)
+                EmptyNum += 1;
+        }
+        if(EmptyNum > 0) {
+            AbstractOrb orb = new NingyouOrb();
+            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        }
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 

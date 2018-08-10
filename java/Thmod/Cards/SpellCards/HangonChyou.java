@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import Thmod.Relics.SpellCardsRule;
 
@@ -67,6 +68,8 @@ public class HangonChyou extends AbstractSpellCards {
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
                 if (SpellCardsRule.Hangongnum < 8)
                     SpellCardsRule.Hangongnum += 1;
+                SpellCardsRule.HangongUsed = true;
+                UnlockTracker.unlockCard("MuyoNehan");
             }
         }
     }

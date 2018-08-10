@@ -36,7 +36,7 @@ public class RoyalDiamondRing extends AbstractElementSpellCards {
             }
         }
         for(int i1 = 0;i1 < this.magicNumber;i1++) {
-            for (int i = AbstractDungeon.getCurrRoom().monsters.monsters.size(); i > 0; i--) {
+            for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
             }
         }

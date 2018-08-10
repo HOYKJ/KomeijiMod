@@ -61,7 +61,7 @@ public class LunaticRedEyesPower extends AbstractPower {
                 c.isEthereal = true;
                 c.purgeOnUse = true;
                 c.initializeDescription();
-                if(AbstractDungeon.player.hand.size() == 10)
+                if(AbstractDungeon.player.hand.size() >= 10)
                     AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我的手牌满了"));
                 else
                     AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));

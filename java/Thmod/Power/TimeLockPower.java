@@ -47,7 +47,7 @@ public class TimeLockPower extends AbstractPower {
             m.createIntent();
             AbstractDungeon.actionManager.addToBottom(new SetMoveAction(m, a, AbstractMonster.Intent.STUN));
         }
-        if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb"))) {
+        if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")) && !(owner.id.equals("Remiria"))) {
             STC = owner.state.getTimeScale();
             owner.state.setTimeScale(0F);
         }
@@ -72,7 +72,7 @@ public class TimeLockPower extends AbstractPower {
             m.updatePowers();
         }
         CardCrawlGame.music.unsilenceBGM();
-        if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")))
+        if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")) && !(owner.id.equals("Remiria")))
             owner.state.setTimeScale(STC);
         this.owner.tint.changeColor(Color.WHITE.cpy());
     }

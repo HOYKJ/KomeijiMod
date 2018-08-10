@@ -84,17 +84,17 @@
     "PerfectMaid": {
       "NAME": "回忆「完美无瑕的女仆」",
       "DESCRIPTION": 
-	"闪避下1次攻击,并对攻击者造成8点伤害. 联想 ."
+	"闪避下1次攻击,并对攻击者造成1点 固定 伤害10次. 联想 ."
     },
     "RikonNoKama": {
       "NAME": "回忆「离魂之镰」",
       "DESCRIPTION": 
-	"造成 !D! 点伤害.使你回复 !M! 点生命,持续3回合."
+	"造成 !D! 点伤害.使你回复 !M! 点生命,持续3回合. 联想 ."
     },
   "Sabishigari": {
     "NAME": "回忆「寂寞之人的紧缚灵」",
     "DESCRIPTION":
-    "使指定敌人被 紧缚灵 缠绕."
+    "使指定敌人被 紧缚灵 缠绕. 联想 ."
   },
     "Strike_Komeiji": {
       "NAME": "精神打击",
@@ -116,10 +116,12 @@
 
 
 
-    "DemonsDinnerFork":{
-      "NAME": "回忆「恶魔的餐叉」",
-      "DESCRIPTION": 
-	"给予你三张「餐叉」.(0费攻击卡)"
+  "DemonsDinnerFork":{
+    "NAME": "回忆「恶魔的餐叉」",
+    "DESCRIPTION":
+    "给予你3张「Dinner Fork」.(0费攻击卡)",
+    "UPGRADE_DESCRIPTION":
+    "给予你3张升级的「Dinner Fork」.(0费攻击卡)"
     },
     "FreezeToughMe":{
       "NAME": "回忆「接触即冻伤」",
@@ -207,11 +209,9 @@
     " 回响 ,造成 !D! 点伤害,本回合内每使用1次增加2点, 消耗 . 联想 ."
   },
   "SelfTokamak": {
-    "NAME": "回忆「自动托卡马克」",
+    "NAME": "回忆「自动托克马克」",
     "DESCRIPTION":
-    "失去3点生命,获得 [R]  [R] , 消耗 .",
-    "UPGRADE_DESCRIPTION":
-    "失去3点生命,获得 [R]  [R]  [R] , 消耗 ."
+    "失去3点生命,在接下来的 !M! 回合中获得 [R] , 消耗 ."
   },
   "SenseofElegance": {
     "NAME": "回忆「优雅的意志」",
@@ -226,17 +226,29 @@
   "ShyakuBuku": {
     "NAME": "回忆「折伏无间」",
     "DESCRIPTION":
-    "使1个敌人随机改变 意图 ,抽 !M! 张卡."
+    "打出牌堆顶的 !M! 张卡."
   },
   "TenguNoTaiko": {
     "NAME": "回忆「天狗的太鼓」",
     "DESCRIPTION":
-    "抽1张卡,从3张衍生卡中选1张加入手牌."
+    "抽1张卡,从3张衍生卡中选1张加入手牌.",
+    "UPGRADE_DESCRIPTION":
+    "抽1张卡,从3张升级的衍生卡中选1张加入手牌."
   },
   "VampireKiss": {
     "NAME": "回忆「吸血鬼之吻」",
     "DESCRIPTION":
     "造成 !D! 点伤害3次,未被 格挡 的伤害将为你回复半额的生命. 消耗 ."
+  },
+  "EnMu": {
+    "NAME": "回忆「厌雾」",
+    "DESCRIPTION":
+    "获得1回合无实体, !M! 回合 易伤 和 虚弱 . 联想 ."
+  },
+  "YoukiSo": {
+    "NAME": "回忆「妖鬼 -疏-」",
+    "DESCRIPTION":
+    "弃 !M! 张卡,获得 [R]  [R] . 联想 ."
   },
 
 
@@ -264,7 +276,7 @@
   "IceTornado": {
     "NAME": "回忆「碎冰龙卷」",
     "DESCRIPTION":
-    "2回合内 无实体 ,并在回合结束时对所有敌人造成 !M! &( !M! +2)点 固定 伤害, 虚无 ."
+    "2回合内 无实体 ,并在回合结束时对所有敌人造成 !M! /( !M! +2)点 固定 伤害, 虚无 ."
   },
   "JigokuNoTaiyou": {
     "NAME": "回忆「地狱的人造太阳」",
@@ -511,7 +523,7 @@
   "RokkonShyoujyou": {
     "NAME": "回忆「六根清净斩」",
     "DESCRIPTION":
-    "弹反下1次攻击,对所有敌人造成 !D! 点伤害,并清除buff. NL 消耗5P."
+    "抵挡下1次攻击,对所有敌人造成 !D! 点伤害,并清除buff. NL 消耗5P."
   },
   "SakuraHirame": {
     "NAME": "回忆「樱花闪々」",
@@ -546,7 +558,7 @@
   "TaihouTsuigeki": {
     "NAME": "回忆「大鹏坠击拳」",
     "DESCRIPTION":
-    "造成3/6点 固定 伤害,再 !D! 点伤害,抽 !M! 张卡. 替换 . NL 消耗5P."
+    "造成3/6点 固定 伤害,再造成 !D! 点伤害,抽 !M! 张卡. 替换 . NL 消耗5P."
   },
   "TenkeiKisyou": {
     "NAME": "回忆「天启气象之剑」",
@@ -604,12 +616,82 @@
     "DESCRIPTION":
     "造成 !D! 点随机伤害 !M! 次."
   },
+  "Torch": {
+    "NAME": "火把",
+    "DESCRIPTION":
+    "在恐怖的绝望中的一束慰藉...",
+    "EXTENDED_DESCRIPTION":[
+      "顽强的火种渴望延续...",
+      "点燃火把,带来一丝希望...",
+      "跳动的火光驱散前方的黑暗...",
+      "光明的灯塔为你指明道路!"
+    ]
+  },
 
 
   "Nothing": {
-    "NAME": "空无一物",
+    "NAME": "彩蛋列表",
     "DESCRIPTION":
-    "这里什么也没有"
+    "你可以在这里查看已解锁的彩蛋yo"
+  },
+  "TheWorld": {
+    "NAME": "The World!",
+    "DESCRIPTION":
+    "在时停的时候听到 NL The.World."
+  },
+  "SpontaneousDetonation": {
+    "NAME": "国士无双!!!!",
+    "DESCRIPTION":
+    "喝四瓶国士无双自爆."
+  },
+  "Scarlet": {
+    "NAME": "战胜Scarlet",
+    "DESCRIPTION":
+    "召唤并战胜Scarlet."
+  },
+  "MuyoNehan": {
+    "NAME": "无余涅槃",
+    "DESCRIPTION":
+    "使用8次反魂蝶."
+  },
+  "THsWorld": {
+    "NAME": "欢迎来到sl的世界",
+    "DESCRIPTION":
+    "获得神秘的怀表"
+  },
+  "ScarletsBlessing": {
+    "NAME": "绯红的祝福",
+    "DESCRIPTION":
+    "获得祝福卡:绯红"
+  },
+
+
+  "RidiculousThoughts": {
+    "NAME": "天马行空",
+    "DESCRIPTION":
+    "在每个回合开始时,将 !M! 张 联想 卡加入你的手牌,并且本回合内消费为0."
+  },
+  "ThoughtExtend": {
+    "NAME": "思维扩展",
+    "DESCRIPTION":
+    "每当你使用 !M! 张 联想 卡,获得1点 [R] 并抽1张卡."
+  },
+
+
+  "MiserableFate": {
+    "NAME": "回忆「悲惨的命运」",
+    "DESCRIPTION":
+    "吸取目标敌人的 !M! 点 力量 ,并给予它99层脆弱和易伤, 消耗 ."
+  },
+  "ScarletDevil": {
+    "NAME": "回忆「绯红色的恶魔」",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 点伤害 !M! 次, 消耗 ."
+  },
+  "RemiliaStretch": {
+    "NAME": "回忆「蕾米莉亚伸展」",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 点 纯粹伤害 , 消耗 ."
   },
 
 
@@ -698,9 +780,9 @@
   "NingyouMusou":{
     "NAME": "回忆「人偶无操」",
     "DESCRIPTION":
-    " 激发 1个 人偶 ,获得 [R] .",
+    " 激发 最多2个 人偶 ,获得 [R] .",
     "EXTENDED_DESCRIPTION":[
-      "选择1个人偶进行激发"
+      "选择最多2个人偶进行激发"
     ]
   },
   "NingyouOkisou":{
@@ -730,12 +812,16 @@
   "SeekerDolls":{
     "NAME": "回忆「探索人偶」",
     "DESCRIPTION":
-    "获得1个 人偶 ,根据目标敌人的意图获得加成."
+    "获得1个 人偶 ,根据目标敌人的意图获得加成.",
+    "UPGRADE_DESCRIPTION":
+    "获得1个 人偶 ,根据目标敌人的意图获得更高加成."
   },
 
   "HelanNingyou":{
     "NAME": "回忆「和兰人偶」",
     "DESCRIPTION":
+    "获得1个 和兰人偶 . 虚无 .",
+    "UPGRADE_DESCRIPTION":
     "获得1个 和兰人偶 ."
   },
   "MiraiBunraku":{
@@ -751,6 +837,8 @@
   "ShanghaiNingyou":{
     "NAME": "回忆「上海人偶」",
     "DESCRIPTION":
+    "获得1个 上海人偶 . 虚无 .",
+    "UPGRADE_DESCRIPTION":
     "获得1个 上海人偶 ."
   },
 
@@ -868,7 +956,7 @@
   "SpringWind":{
     "NAME": "回忆「早春之风」",
     "DESCRIPTION":
-    " 元素 木,抽 !M! 张卡."
+    " 元素 木,抽 !M! 张卡,获得 !B! 点 格挡 ."
   },
   "StaticGreen":{
     "NAME": "回忆「静态之绿」",
@@ -916,7 +1004,7 @@
   "ElementalHarvester":{
     "NAME": "回忆「元素收获者」",
     "DESCRIPTION":
-    " 元素 金木,获得 !B! 点 格挡 ,抽 !M! 张卡."
+    " 元素 金&木,获得 !B! 点 格挡 ,抽 !M! 张卡."
   },
   "ElementExtend":{
     "NAME": "回忆「元素扩展」",
@@ -926,17 +1014,17 @@
   "EmeraldMegalopolis":{
     "NAME": "回忆「翡翠巨石」",
     "DESCRIPTION":
-    " 元素 土金,你的 格挡 不再会在回合开始时消失."
+    " 元素 土&金,你的 格挡 不再会在回合开始时消失."
   },
   "ForestBlaze":{
     "NAME": "回忆「森林大火」",
     "DESCRIPTION":
-    " 元素 木火,你的所有 元素 卡变为0费,获得 消耗 属性."
+    " 元素 木&火,你的所有 元素 卡变为0费,获得 消耗 属性."
   },
   "HydrogenousProminence":{
     "NAME": "回忆「氢化日珥」",
     "DESCRIPTION":
-    " 元素 日水,造成你本局生成的3× 元素 球的随机 固定 伤害.",
+    " 元素 日&水,造成你本局生成的3× 元素 球的随机 固定 伤害.",
     "EXTENDED_DESCRIPTION":[
     " NL (累计 !M! 次)"
       ]
@@ -949,57 +1037,76 @@
   "KenjiaNoSeki":{
     "NAME": "回忆「贤者之石」",
     "DESCRIPTION":
-    " 元素 火水木金土,每个回合给予你火/木/金/土/水 元素 的 魔石 ,持续5回合."
+    " 元素 火&水&木&金&土,每个回合给予你火/木/金/土/水 元素 的 魔石 ,持续5回合."
   },
   "LavaCromlech":{
     "NAME": "回忆「环状熔岩带」",
     "DESCRIPTION":
-    " 元素 火土,每使用1张攻击卡,给予你 !M! 点 格挡 ."
+    " 元素 火&土,每使用1张攻击卡,给予你 !M! 点 格挡 ."
   },
   "MercuryPoison":{
     "NAME": "回忆「水银之毒」",
     "DESCRIPTION":
-    " 元素 金水,给予所有敌人 !D! 层毒, !M! 层 虚弱 和 易伤 ."
+    " 元素 金&水,给予所有敌人 !D! 层毒, !M! 层 虚弱 和 易伤 ."
   },
   "NoachianDeluge":{
     "NAME": "回忆「诺亚的大洪水」",
     "DESCRIPTION":
-    " 元素 土水,造成 !D! 点随机伤害 !M! 次."
+    " 元素 土&水,造成 !D! 点随机伤害 !M! 次."
   },
   "PhlogisticPillar":{
     "NAME": "回忆「燃素之柱」",
     "DESCRIPTION":
-    " 元素 火水,对所有敌人造成 !D! 点伤害,给予 !M! 层 虚弱 ."
+    " 元素 火&水,对所有敌人造成 !D! 点伤害,给予 !M! 层 虚弱 ."
   },
   "Photosynthesis":{
     "NAME": "回忆「光合作用」",
     "DESCRIPTION":
-    " 元素 日木,每个回合开始时,获得 [R] ."
+    " 元素 日&木,每个回合开始时,获得 [R] ."
   },
   "RoyalDiamondRing":{
     "NAME": "回忆「皇家钻戒」",
     "DESCRIPTION":
-    " 元素 日月,激发所有 元素 球,对所有敌人造成激发数×10的伤害."
+    " 元素 日&月,激发所有 元素 球,对所有敌人造成激发数×10的伤害."
   },
   "SatelliteHimawari":{
     "NAME": "回忆「卫星向日葵」",
     "DESCRIPTION":
-    " 元素 月木,每个回合开始时,将1张费用为0,具有 消耗 和 虚无 属性的 元素 卡加入你的手牌."
+    " 元素 月&木,每个回合开始时,将1张费用为0,具有 消耗 和 虚无 属性的 元素 卡加入你的手牌."
   },
   "StElmoPillar":{
     "NAME": "回忆「圣爱尔摩火柱」",
     "DESCRIPTION":
-    " 元素 火金,造成 !D! 点伤害,给予 !M! 层 易伤 ."
+    " 元素 火&金,造成 !D! 点伤害,给予 !M! 层 易伤 ."
   },
   "SunshineReflector":{
     "NAME": "回忆「日光反射器」",
     "DESCRIPTION":
-    " 元素 月金,使你在本回合内,对攻击你的单位造成等额的伤害."
+    " 元素 月&金,使你在本回合内,对攻击你的单位造成等额的伤害."
   },
   "WaterElf":{
     "NAME": "回忆「水精灵」",
     "DESCRIPTION":
-    " 元素 水木,所有敌人失去 !M! 点 力量 ."
+    " 元素 水&木,所有敌人失去 !M! 点 力量 ."
+  },
+
+
+  "Fetter":{
+    "NAME": "命运的束缚",
+    "DESCRIPTION":
+    "你无法挣脱..."
+  },
+
+
+  "BlessingOfTime":{
+    "NAME": "时",
+    "DESCRIPTION":
+    " 祝福 , 永恒 .抽 !M! 张卡."
+  },
+  "BlessingOfScarlet":{
+    "NAME": "猩红",
+    "DESCRIPTION":
+    " 祝福 .获得 !M! 点 力量 ,抽 !M! 张卡.."
   },
 
 

@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.Cards.RareCards.HelanNingyou;
 import Thmod.Orbs.NingyouOrb;
 
 public class SeekerDolls extends AbstractKomeijiCards {
@@ -21,6 +22,7 @@ public class SeekerDolls extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     private static final int COST = 1;
 
     public SeekerDolls() {
@@ -56,6 +58,8 @@ public class SeekerDolls extends AbstractKomeijiCards {
         if (!(this.upgraded)) {
             this.upgradeName();
             this.upgradeMagicNumber(1);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -63,5 +67,6 @@ public class SeekerDolls extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("SeekerDolls");
         NAME = SeekerDolls.cardStrings.NAME;
         DESCRIPTION = SeekerDolls.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = SeekerDolls.cardStrings.UPGRADE_DESCRIPTION;
     }
 }

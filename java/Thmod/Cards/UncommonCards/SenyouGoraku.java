@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.ArrayList;
 
 import Thmod.Cards.AbstractSweepCards;
-import Thmod.Cards.VanishingEverything;
 
 public class SenyouGoraku extends AbstractSweepCards {
     public static final String ID = "SenyouGoraku";
@@ -34,8 +33,8 @@ public class SenyouGoraku extends AbstractSweepCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-            AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+        for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
+            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping)) && (!(target.hasPower("Flight")))) {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             }

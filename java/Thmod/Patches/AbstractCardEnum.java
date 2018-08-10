@@ -12,5 +12,5 @@ public class AbstractCardEnum {
     @SpireEnum
     public static AbstractCard.CardColor Item符卡;
     @SpireEnum
-    public static AbstractCard.CardColor 衍生卡;
+    public static AbstractCard.CardColor 彩蛋;
 }

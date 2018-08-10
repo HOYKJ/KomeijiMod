@@ -22,7 +22,7 @@ public class EverywhereHibernate extends AbstractKomeijiCards {
 
     public EverywhereHibernate() {
         super("EverywhereHibernate", EverywhereHibernate.NAME,  3, EverywhereHibernate.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
-        this.baseMagicNumber = 10;
+        this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
     }
 
@@ -39,7 +39,7 @@ public class EverywhereHibernate extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(5);
+            this.upgradeMagicNumber(2);
         }
     }
 

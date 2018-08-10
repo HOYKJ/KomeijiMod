@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.RoomTintEffect;
 
@@ -17,12 +18,14 @@ public class TheWorld extends AbstractGameEffect
     private float y;
     private int count;
     private float stakeTimer = 0F;
+    private boolean stop;
 
-    public TheWorld(float x, float y)
+    public TheWorld(float x, float y,boolean stop)
     {
         this.x = x;
         this.y = y;
         this.count = 13;
+        this.stop = stop;
     }
 
     public void update()
@@ -32,8 +35,10 @@ public class TheWorld extends AbstractGameEffect
             if (this.count == 13) {
                 int roll = MathUtils.random(99);
                 if(ThMod.SoundOpen){
-                    if (roll == 0)
+                    if ((roll == 1) && (this.stop)) {
                         CardCrawlGame.sound.play("world_ot");
+                        UnlockTracker.unlockCard("TheWorld");
+                    }
                     else
                         CardCrawlGame.sound.play("world");
                 }

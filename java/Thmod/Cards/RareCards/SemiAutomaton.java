@@ -19,7 +19,7 @@ public class SemiAutomaton extends AbstractKomeijiCards {
     private static final int COST = 3;
 
     public SemiAutomaton() {
-        super("SemiAutomaton", SemiAutomaton.NAME,  3, SemiAutomaton.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super("SemiAutomaton", SemiAutomaton.NAME,  3, SemiAutomaton.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }

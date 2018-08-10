@@ -165,7 +165,8 @@
   "SoulPower": {
     "NAME": "灵魂",
     "DESCRIPTIONS": [
-      "受到滋养,持续回复生命."
+      "受到滋养,持续回复 #b",
+      " 点生命."
     ]
   },
   "StardustAccumulate": {
@@ -458,6 +459,46 @@
     "NAME": "蓄力",
     "DESCRIPTIONS": [
       "蓄力ing"
+    ]
+  },
+  "TokamakPower": {
+    "NAME": "SelfTokamak",
+    "DESCRIPTIONS": [
+      "在",
+      "回合内,获得 [R] ."
+    ]
+  },
+
+
+  "RidiculousPower": {
+    "NAME": "天马行空",
+    "DESCRIPTIONS": [
+      "每个回合开始时,将 #b",
+      " 张 #y联想 卡加入你的手牌,在本回合内消费为0."
+    ]
+  },
+  "ThoughtExtendPower": {
+    "NAME": "思维扩展",
+    "DESCRIPTIONS": [
+      "再打出 #b",
+      " 张 #y联想 卡,获得 [R] 并抽 #b1 张卡."
+    ]
+  },
+
+
+  "FetterPower": {
+    "NAME": "命运的束缚",
+    "DESCRIPTIONS": [
+      "你无法挣脱..."
+    ]
+  },
+
+
+
+  "Breakthrough": {
+    "NAME": "贯穿",
+    "DESCRIPTIONS": [
+      "强力的穿刺击穿护甲,直抵血肉..."
     ]
   }
   

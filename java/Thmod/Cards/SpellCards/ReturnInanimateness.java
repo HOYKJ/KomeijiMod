@@ -35,8 +35,8 @@ public class ReturnInanimateness extends AbstractSpellCards {
     private int pointcost;
 
     public ReturnInanimateness() {
-        super("ReturnInanimateness", ReturnInanimateness.NAME,  1, ReturnInanimateness.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseDamage = 15;
+        super("ReturnInanimateness", ReturnInanimateness.NAME,  1, ReturnInanimateness.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
+        this.baseDamage = 20;
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 3;

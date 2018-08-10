@@ -26,6 +26,10 @@ public class RoyalFlare extends AbstractElementCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         super.use(p,m);
+        if(AbstractDungeon.getCurrRoom().monsters.monsters.get(0).id.equals("Remiria")) {
+            AbstractDungeon.getCurrRoom().monsters.monsters.get(0).currentHealth = 0;
+            AbstractDungeon.getCurrRoom().monsters.monsters.get(0).healthBarUpdatedEvent();
+        }
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
     }
 

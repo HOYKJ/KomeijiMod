@@ -31,7 +31,7 @@ public class NingyouShinki extends AbstractSweepCards {
 
     public NingyouShinki() {
         super("NingyouShinki", NingyouShinki.NAME,  1, NingyouShinki.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        this.baseDamage = 6;
+        this.baseDamage = 8;
         this.isMultiDamage = true;
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;

@@ -22,6 +22,7 @@ import java.util.Iterator;
 
 import Thmod.Actions.unique.GetSweepbleCards;
 import Thmod.Cards.AbstractSweepCards;
+import Thmod.Cards.ElementCards.AbstractElementSweepCards;
 
 public class CampfireSweepEffect extends AbstractGameEffect
 {
@@ -34,7 +35,7 @@ public class CampfireSweepEffect extends AbstractGameEffect
     private boolean selectedSweepCard = false;
     private AbstractCard chosencard;
     private Color screenColor = AbstractDungeon.fadeColor.cpy();
-    private CardGroup sweepCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);;
+    private CardGroup sweepCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
     public CampfireSweepEffect()
     {
@@ -51,22 +52,34 @@ public class CampfireSweepEffect extends AbstractGameEffect
             updateBlackScreenColor();
         }
 
-        if ((!(this.selectedCard)) && (!(AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) ) {
+        if ((!(this.selectedCard)) && (!(AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) && (!(AbstractDungeon.gridSelectScreen.forUpgrade)) ) {
             for (localIterator = AbstractDungeon.gridSelectScreen.selectedCards.iterator(); localIterator.hasNext(); ) {
-                AbstractSweepCards c = (AbstractSweepCards)localIterator.next();
-                final ArrayList<AbstractSweepCards> newCard = c.getOpposite();
-                for (localIterator = newCard.iterator(); localIterator.hasNext(); ) {
-                    AbstractCard scard = (AbstractCard)localIterator.next();
-                    sweepCards.group.add(scard);
+                AbstractCard bc = (AbstractCard) localIterator.next();
+                if(bc instanceof AbstractSweepCards) {
+                    AbstractSweepCards c = (AbstractSweepCards) bc;
+                    final ArrayList<AbstractSweepCards> newCard = c.getOpposite();
+                    for (localIterator = newCard.iterator(); localIterator.hasNext(); ) {
+                        AbstractCard scard = (AbstractCard) localIterator.next();
+                        sweepCards.group.add(scard);
+                    }
+                    this.chosencard = c;
                 }
-                this.chosencard = c;
+                if(bc instanceof AbstractElementSweepCards) {
+                    AbstractElementSweepCards c = (AbstractElementSweepCards) bc;
+                    final ArrayList<AbstractElementSweepCards> newCard = c.getOpposite();
+                    for (localIterator = newCard.iterator(); localIterator.hasNext(); ) {
+                        AbstractCard scard = (AbstractCard) localIterator.next();
+                        sweepCards.group.add(scard);
+                    }
+                    this.chosencard = c;
+                }
                 //AbstractDungeon.player.masterDeck.removeCard(c);
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             this.selectedCard = true;
             ((RestRoom)AbstractDungeon.getCurrRoom()).fadeIn();
         }
-        if ((this.selectedCard) && (!(AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) && (!(this.selectedSweepCard)) ) {
+        if ((this.selectedCard) && (!(AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) && (!(this.selectedSweepCard)) && (sweepCards.size() > 0) && (!(AbstractDungeon.gridSelectScreen.forUpgrade)) ) {
             for (localIterator = AbstractDungeon.gridSelectScreen.selectedCards.iterator(); localIterator.hasNext(); ) {
                 AbstractSweepCards c = (AbstractSweepCards)localIterator.next();
                 CardCrawlGame.metricData.addCampfireChoiceData("SWEEP", c.getMetricID());
@@ -78,13 +91,15 @@ public class CampfireSweepEffect extends AbstractGameEffect
             ((RestRoom)AbstractDungeon.getCurrRoom()).fadeIn();
         }
 
+//        if((this.openedScreen) && (AbstractDungeon.gridSelectScreen))
+
         if ((this.duration < 2F) && (!(this.openedScreen))) {
             this.openedScreen = true;
 
             AbstractDungeon.gridSelectScreen.open(GetSweepbleCards.getSweepbleCards(), 1, "转换...", false, false, true, true);
         }
 
-        if ((this.duration < 1F) && (this.openedScreen) && (this.selectedCard) && (!(this.openedScreen2))) {
+        if ((this.duration < 1F) && (this.openedScreen) && (this.selectedCard) && (!(this.openedScreen2)) && (sweepCards.size() > 0)) {
         this.openedScreen2 = true;
 
         AbstractDungeon.gridSelectScreen.open(sweepCards, 1, "回想起来吧...", false, false, true, true);

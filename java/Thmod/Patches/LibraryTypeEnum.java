@@ -11,5 +11,5 @@ public class LibraryTypeEnum {
     @SpireEnum
     public static CardLibrary.LibraryType Item符卡;
     @SpireEnum
-    public static CardLibrary.LibraryType 衍生卡;
+    public static CardLibrary.LibraryType 彩蛋;
 }

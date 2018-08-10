@@ -28,26 +28,24 @@ public class BubblePower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer){
-            if(this.strNum != this.amount) {
-                if(this.strNum < this.amount) {
-                    int reducenum = (this.amount - this.strNum);
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, -reducenum), -reducenum));
-                }
-                else if(this.strNum > this.amount) {
-                    int addnum = (this.strNum - this.amount);
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner,addnum),addnum));
-                }
-                this.strNum = this.amount;
-            }
-        }
-    }
-
-    public void atStartOfTurn() {
         if(this.amount <= 1)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
         else
             this.amount -= 1;
+    }
+
+    public void atStartOfTurn() {
+        if(this.strNum != this.amount) {
+            if(this.strNum < this.amount) {
+                int reducenum = (this.amount - this.strNum);
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, -reducenum), -reducenum));
+            }
+            else if(this.strNum > this.amount) {
+                int addnum = (this.strNum - this.amount);
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner,addnum),addnum));
+            }
+            this.strNum = this.amount;
+        }
     }
 
     public void updateDescription()

@@ -20,8 +20,7 @@ public class RemoveBuffsAction extends AbstractGameAction
 
     public void update()
     {
-        for (Iterator localIterator = this.c.powers.iterator(); localIterator.hasNext(); ) {
-            AbstractPower p = (AbstractPower)localIterator.next();
+        for (AbstractPower p : this.c.powers) {
             if (p.type == AbstractPower.PowerType.BUFF)
                 AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.c, this.c, p.ID));
 

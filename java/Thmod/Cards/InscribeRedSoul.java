@@ -36,8 +36,8 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
-            AbstractMonster target = (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new VulnerablePower(target, this.magicNumber, false), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
             }

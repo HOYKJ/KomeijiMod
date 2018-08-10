@@ -19,6 +19,7 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     private static final int COST = 1;
 
     public DemonsDinnerFork() {
@@ -51,6 +52,8 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
         if (!(this.upgraded)) {
             this.upgradeName();
             this.upgradeMagicNumber(2);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 
@@ -58,5 +61,6 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("DemonsDinnerFork");
         NAME = DemonsDinnerFork.cardStrings.NAME;
         DESCRIPTION = DemonsDinnerFork.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = DemonsDinnerFork.cardStrings.UPGRADE_DESCRIPTION;
     }
 }

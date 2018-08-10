@@ -44,8 +44,8 @@ public class WocchiPower extends AbstractPower {
             CardCrawlGame.music.silenceTempBgmInstantly();
         else
             CardCrawlGame.music.silenceBGM();
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY), 2F));
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY,true), 2F));
+        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new TimeLockPower(target)));

@@ -35,7 +35,7 @@ public class NingyouMusou extends AbstractSweepCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        final ChooseAction choice = new ChooseAction(this, m, NingyouMusou.EXTENDED_DESCRIPTION[0], false, 1);
+        final ChooseAction choice = new ChooseAction(this, m, NingyouMusou.EXTENDED_DESCRIPTION[0], true, 2);
         for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
             final ArrayList<Integer> orbnum = new ArrayList<>();
             orbnum.clear();

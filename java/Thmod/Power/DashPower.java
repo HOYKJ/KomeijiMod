@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -37,13 +38,34 @@ public class DashPower extends AbstractPower {
             this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
     }
 
+//    public float atDamageReceive(float damage, DamageInfo.DamageType type)
+//    {
+//        if(this.owner != p) {
+//            if (damage > 0.0F) {
+//                damage = 0.0F;
+//            }
+//        }
+//        return damage;
+//    }
+
+    public int onAttacked(com.megacrit.cardcrawl.cards.DamageInfo info, int damageAmount) {
+        if(this.owner != p) {
+            if (damageAmount > 0) {
+                damageAmount = 0;
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
+            }
+        }
+        return damageAmount;
+    }
+
     public int onLoseHp(int damageAmount) {
         AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
-        if (!(p.hasPower("PointPower"))) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
-        }
-        else if (p.getPower("PointPower").amount < 5) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+        if(this.owner == p) {
+            if (!(p.hasPower("PointPower"))) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+            } else if (p.getPower("PointPower").amount < 5) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+            }
         }
         return 0;
     }

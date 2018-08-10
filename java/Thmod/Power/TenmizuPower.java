@@ -30,9 +30,9 @@ public class TenmizuPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        if((isPlayer)&&(this.amount == 3)){
+        if((isPlayer) && (this.amount >= 3)){
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new IntangiblePlayerPower(p,3),3));
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "TenmizuPower"));
         }
     }
 

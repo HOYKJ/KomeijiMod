@@ -39,7 +39,7 @@ public class AbyssNovaPower extends AbstractPower {
             if(this.amount > 1)
                 this.amount -= 1;
             else if (this.amount == 1){
-                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); ++i) {
+                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                     AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         flash();

@@ -31,5 +31,6 @@ public class TempMusicPatch
         map.put("TH_BGM_AWAKEN2", load("MysteriousMountain2.mp3"));
         map.put("TH_BGM_TIMEEATER", load("LunaDial.mp3"));
         map.put("TH_BGM_DECADONU", load("狂気.mp3"));
+        map.put("TH_BGM_REMIRIA",load("七重奏.mp3"));
     }
 }

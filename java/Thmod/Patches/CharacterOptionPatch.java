@@ -19,7 +19,7 @@ public class CharacterOptionPatch {
         switch (ch.ordinal()) {
             case 3:
                 if(ThMod.SoundOpen)
-                    CardCrawlGame.sound.playA("select00", MathUtils.random(-0.20000000298023224F, 0.20000000298023224F));
+                    CardCrawlGame.sound.playA("select00", MathUtils.random(-0.2F, 0.2F));
                 CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
                 break;
         }
