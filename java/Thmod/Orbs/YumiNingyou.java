@@ -27,7 +27,7 @@ public class YumiNingyou extends AbstractOrb {
         this.ID = "YumiNingyou";
         this.name = YumiNingyou.NAME;
         if (YumiNingyou.img1 == null) {
-            YumiNingyou.img1 = ImageMaster.loadImage("images/orbs/NingyouOrb.png");
+            YumiNingyou.img1 = ImageMaster.loadImage("images/orbs/YumiNingyou.png");
         }
         this.baseEvokeAmount = 0;
         this.evokeAmount = this.baseEvokeAmount;

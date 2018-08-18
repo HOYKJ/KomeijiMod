@@ -1,6 +1,5 @@
 package Thmod.Cards.UncommonCards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Cards.DeriveCards.AbstractDeriveCards;
 import Thmod.Cards.DeriveCards.DemonsFork;
-import Thmod.Power.DemonsForkAccumulate;
 
 public class DemonsDinnerFork extends AbstractKomeijiCards {
     public static final String ID = "DemonsDinnerFork";
@@ -34,9 +32,7 @@ public class DemonsDinnerFork extends AbstractKomeijiCards {
         AbstractDeriveCards c = new DemonsFork(1);
         if(this.upgraded)
             c.upgrade();
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, 3));
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m){

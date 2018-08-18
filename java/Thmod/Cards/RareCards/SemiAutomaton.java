@@ -16,6 +16,7 @@ public class SemiAutomaton extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     private static final int COST = 3;
 
     public SemiAutomaton() {
@@ -36,6 +37,8 @@ public class SemiAutomaton extends AbstractKomeijiCards {
         if (!(this.upgraded)) {
             this.upgradeName();
             this.isInnate = true;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -43,5 +46,6 @@ public class SemiAutomaton extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("SemiAutomaton");
         NAME = SemiAutomaton.cardStrings.NAME;
         DESCRIPTION = SemiAutomaton.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = SemiAutomaton.cardStrings.UPGRADE_DESCRIPTION;
     }
 }

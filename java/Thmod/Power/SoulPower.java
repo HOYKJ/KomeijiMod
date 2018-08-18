@@ -1,6 +1,8 @@
 package Thmod.Power;
 
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -27,8 +29,9 @@ public class SoulPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer){
+        AbstractPlayer p = AbstractDungeon.player;
         if(isPlayer)
-            AbstractDungeon.player.heal(this.num);
+            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, this.num));
     }
 
     public void atEndOfRound() {

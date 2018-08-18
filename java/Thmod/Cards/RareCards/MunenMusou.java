@@ -35,20 +35,17 @@ public class MunenMusou extends AbstractKomeijiCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(p));
-        for (Iterator localIterator = p.hand.group.iterator(); localIterator.hasNext(); ){
-            AbstractCard c = (AbstractCard) localIterator.next();
-            if ((c.type == CardType.STATUS) || (c.type == CardType.CURSE)){
+        for (AbstractCard c : p.hand.group) {
+            if ((c.type == CardType.STATUS) || (c.type == CardType.CURSE)) {
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
                 this.exhaustnum += 1;
             }
         }
-        for (Iterator localIterator = p.discardPile.group.iterator(); localIterator.hasNext(); ){
-            AbstractCard c = (AbstractCard) localIterator.next();
+        for (AbstractCard c : p.discardPile.group) {
             if ((c.type == CardType.STATUS) || (c.type == CardType.CURSE))
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.discardPile));
         }
-        for (Iterator localIterator = p.drawPile.group.iterator(); localIterator.hasNext(); ){
-            AbstractCard c = (AbstractCard) localIterator.next();
+        for (AbstractCard c : p.drawPile.group) {
             if ((c.type == CardType.STATUS) || (c.type == CardType.CURSE))
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.drawPile));
         }

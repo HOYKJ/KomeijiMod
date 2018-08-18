@@ -8,9 +8,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.common.AddNewOrbAction;
 import Thmod.Actions.unique.ChooseAction;
 import Thmod.Orbs.TateNingyou;
 import Thmod.Orbs.YariNingyou;
@@ -31,16 +33,46 @@ public class NingyouFukuhei extends AbstractSweepCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         final ChooseAction choice = new ChooseAction(this, m, NingyouFukuhei.EXTENDED_DESCRIPTION[0],false, 1);
         choice.add(NingyouFukuhei.EXTENDED_DESCRIPTION[1], NingyouFukuhei.EXTENDED_DESCRIPTION[2], () -> {
-            AbstractOrb orb = new YariNingyou();
-            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            int EmptyNum = 0;
+            for(int i = 0;i < p.orbs.size();i++){
+                if(p.orbs.get(i) instanceof EmptyOrbSlot)
+                    EmptyNum += 1;
+            }
+            if(EmptyNum > 0) {
+                AbstractOrb orb = new YariNingyou();
+                AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            }
+            else {
+                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",1));
+            }
         });
         choice.add(NingyouFukuhei.EXTENDED_DESCRIPTION[3], NingyouFukuhei.EXTENDED_DESCRIPTION[4], () -> {
-            AbstractOrb orb = new TateNingyou();
-            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            int EmptyNum = 0;
+            for(int i = 0;i < p.orbs.size();i++){
+                if(p.orbs.get(i) instanceof EmptyOrbSlot)
+                    EmptyNum += 1;
+            }
+            if(EmptyNum > 0) {
+                AbstractOrb orb = new TateNingyou();
+                AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            }
+            else {
+                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",2));
+            }
         });
         choice.add(NingyouFukuhei.EXTENDED_DESCRIPTION[5], NingyouFukuhei.EXTENDED_DESCRIPTION[6], () -> {
-            AbstractOrb orb = new YumiNingyou();
-            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            int EmptyNum = 0;
+            for(int i = 0;i < p.orbs.size();i++){
+                if(p.orbs.get(i) instanceof EmptyOrbSlot)
+                    EmptyNum += 1;
+            }
+            if(EmptyNum > 0) {
+                AbstractOrb orb = new YumiNingyou();
+                AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            }
+            else {
+                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",3));
+            }
         });
         AbstractDungeon.actionManager.addToBottom(choice);
     }

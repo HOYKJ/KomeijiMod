@@ -30,7 +30,7 @@ public class TimeLockPower extends AbstractPower {
         this.amount = -1;
         updateDescription();
 
-        this.type = AbstractPower.PowerType.DEBUFF;
+        this.type = AbstractPower.PowerType.BUFF;
         this.img = ImageMaster.loadImage("images/power/32/TimeLockPower.png");
 
         this.moveByte = 1;

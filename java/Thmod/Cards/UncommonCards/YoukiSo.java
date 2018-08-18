@@ -24,12 +24,14 @@ public class YoukiSo extends AbstractSweepCards {
 
     public YoukiSo() {
         super("YoukiSo", YoukiSo.NAME,  0, YoukiSo.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber;
         this.upgraded = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
-        AbstractDungeon.actionManager.addToBottom(new DiscardAction(p, p, 1, true));
+        AbstractDungeon.actionManager.addToBottom(new DiscardAction(p, p, this.magicNumber, true));
     }
 
     @Override

@@ -36,11 +36,11 @@ public class MusuNoYumePower extends AbstractPower {
 //        }
 //    }
 
-    public void atEndOfRound() {
+    public void atStartOfTurn() {
         AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
         flash();
         if (this.amount == 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "MusuNoYumePower"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }

@@ -6,7 +6,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
+import Thmod.Orbs.Helan;
 import Thmod.Orbs.NingyouOrb;
+import Thmod.Orbs.Penglai;
+import Thmod.Orbs.Shanghai;
 import Thmod.Orbs.TateNingyou;
 import Thmod.Orbs.YariNingyou;
 import Thmod.Orbs.YumiNingyou;
@@ -57,6 +60,18 @@ public class ChangeOrbAction extends AbstractGameAction{
         }
         else if(this.setNum == 3){
             AbstractOrb orb = new YumiNingyou();
+            p.orbs.set(this.orbNum, orb);
+        }
+        else if(this.setNum == 4){
+            AbstractOrb orb = new Shanghai();
+            p.orbs.set(this.orbNum, orb);
+        }
+        else if(this.setNum == 5){
+            AbstractOrb orb = new Penglai();
+            p.orbs.set(this.orbNum, orb);
+        }
+        else if(this.setNum == 6){
+            AbstractOrb orb = new Helan();
             p.orbs.set(this.orbNum, orb);
         }
 

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
+import Thmod.Actions.common.AddNewOrbAction;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Orbs.Helan;
 
@@ -35,6 +36,9 @@ public class HelanNingyou extends AbstractKomeijiCards {
         if(EmptyNum > 0) {
             AbstractOrb orb = new Helan();
             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        }
+        else {
+            AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",6));
         }
     }
 

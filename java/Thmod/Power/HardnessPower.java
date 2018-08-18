@@ -33,13 +33,15 @@ public class HardnessPower extends AbstractPower {
     }
 
     public int onLoseHp(int damageAmount) {
-        AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
-        if (!(p.hasPower("PointPower"))) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+        if(!(p.hasPower("DashPower"))) {
+            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
+            if (!(p.hasPower("PointPower"))) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+            } else if (p.getPower("PointPower").amount < 5) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+            }
+            return 0;
         }
-        else if (p.getPower("PointPower").amount < 5) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
-        }
-        return 0;
+        return damageAmount;
     }
 }

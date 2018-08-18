@@ -29,15 +29,12 @@ public class MusuNoTegataPower extends AbstractPower {
         this.damage = Amount;
     }
 
-    public void atEndOfTurn(boolean isPlayer) {
-        if(isPlayer){
-            if(this.amount == 1){
-                AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"MusuNoTegataPower"));
-            }
-            else
-                this.amount -= 1;
-        }
+    public void atStartOfTurn() {
+        if (this.amount == 1) {
+            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.damage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        } else
+            this.amount -= 1;
     }
 
     public void updateDescription()

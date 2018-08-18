@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.unique.BackInTimeAction;
 import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.vfx.TheWorld;
 
@@ -61,18 +62,8 @@ public class LinkosWocchi extends AbstractThRelic {
             if ((this.playerturn) && (playerHPtobe != 0) && (!(this.used))) {
                 this.used = true;
                 this.pulse = false;
+                AbstractDungeon.actionManager.addToTop(new BackInTimeAction(this.playerHPtobe,this.monHPtobe));
                 AbstractDungeon.actionManager.addToTop(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, true), 2F));
-                p.currentHealth = this.playerHPtobe;
-                p.healthBarUpdatedEvent();
-                for (int i = 0; i < this.monHPtobe.size(); i++) {
-                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        if (this.monHPtobe.get(i) != 0) {
-                            target.currentHealth = this.monHPtobe.get(i);
-                            target.healthBarUpdatedEvent();
-                        }
-                    }
-                }
             } else {
                 AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我还不能使用它!"));
             }

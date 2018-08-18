@@ -285,7 +285,7 @@ public class RoomOfDemon extends AbstractEvent {
         super.render(sb);
         sb.setColor(Color.WHITE);
         if (this.raedDone) {
-            sb.draw(this.adventurerImg, 600 - 128.0F, 450 - 128.0F, 128.0F, 128.0F, 256.0F, 256.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 256, 256, false, false);
+            sb.draw(this.adventurerImg, (800 * Settings.scale) - 128.0F, (550 * Settings.scale) - 128.0F, 128.0F, 128.0F, 256.0F, 256.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 256, 256, false, false);
         }
         if(this.extractDone){
             sb.draw(this.adventurerImg3, this.x - 64.0F, this.y -64.0F, 64.0F, 64.0F, 128.0F, 128.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 128, 128, false, false);

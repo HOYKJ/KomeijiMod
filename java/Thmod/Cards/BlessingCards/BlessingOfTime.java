@@ -42,6 +42,10 @@ public class BlessingOfTime extends AbstractBlessingCard
         AbstractDungeon.actionManager.addToBottom(new TalkAction(AbstractDungeon.getCurrRoom().monsters.monsters.get(0), "停止这无意义的争斗吧...", 0.5F, 2.0F));
         AbstractDungeon.getCurrRoom().rewards.clear();
         AbstractDungeon.getCurrRoom().addCardReward(specialCard);
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if (c instanceof BlessingOfTime)
+                AbstractDungeon.player.masterDeck.group.remove(c);
+        }
         UnlockTracker.unlockCard("ScarletsBlessing");
         AbstractDungeon.actionManager.addToBottom(new EndBattleAction());
     }
@@ -49,6 +53,10 @@ public class BlessingOfTime extends AbstractBlessingCard
     public void triggerWhenDrawn()
     {
         if((!(AbstractDungeon.getCurrRoom().monsters.monsters.get(0) instanceof Remiria))) {
+            AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
+            AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
+        }
+        else if(ThMod.blessingOfTime < 2){
             AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
             AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
         }

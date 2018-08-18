@@ -23,7 +23,7 @@ public class SpeartheGungnir extends AbstractSpellCards {
     public SpeartheGungnir() {
         super("SpeartheGungnir", SpeartheGungnir.NAME,  1, SpeartheGungnir.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 20;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;
     }
@@ -31,11 +31,11 @@ public class SpeartheGungnir extends AbstractSpellCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
-                for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
+                for (int i = 0; i <= AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                     AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                        this.damage += 2;
+                        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                        this.damage += this.magicNumber;
                     }
                 }
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));

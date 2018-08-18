@@ -15,6 +15,7 @@ import Thmod.Cards.DeriveCards.AbstractDeriveCards;
 import Thmod.Cards.ElementCards.SpellCards.AbstractElementSpellCards;
 import Thmod.Cards.ItemCards.AbstractItemCards;
 import Thmod.Cards.SpellCards.AbstractSpellCards;
+import Thmod.Characters.KomeijiSatori;
 
 public class FetterPower extends AbstractPower {
     public static final String POWER_ID = "FetterPower";
@@ -33,10 +34,22 @@ public class FetterPower extends AbstractPower {
         this.type = PowerType.BUFF;
     }
 
+    public void onInitialApplication()
+    {
+        if(!(AbstractDungeon.player instanceof KomeijiSatori))
+            AbstractDungeon.player.gameHandSize -= 1;
+    }
+
     public void onExhaust(AbstractCard card) {
         if((!(card instanceof AbstractSpellCards)) && (!(card instanceof AbstractDeriveCards)) && (!(card instanceof AbstractElementSpellCards)) && (!(card instanceof AbstractItemCards))){
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(new Fetter(),false));
         }
+    }
+
+    public void onRemove()
+    {
+        if(!(AbstractDungeon.player instanceof KomeijiSatori))
+            AbstractDungeon.player.gameHandSize += 1;
     }
 
     public void updateDescription()

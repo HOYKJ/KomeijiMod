@@ -119,9 +119,9 @@
     "DemonsDinnerFork":{
       "NAME": "回忆「Demon's Dinner Fork」",
       "DESCRIPTION": 
-	"给予你3张「Dinner Fork」.(0费攻击卡)",
+	"给予你3张「DinnerFork」.(0费攻击卡)",
       "UPGRADE_DESCRIPTION":
-      "给予你3张升级的「Dinner Fork」.(0费攻击卡)"
+      "给予你3张升级的「Fork」.(0费攻击卡)"
     },
     "FreezeToughMe":{
       "NAME": "回忆「Freeze Tough Me」",
@@ -307,7 +307,7 @@
   "MusouMyousyu": {
     "NAME": "回忆「梦想妙珠」",
     "DESCRIPTION":
-    "对随机敌人造成 !D! 点7次伤害."
+    "对随机敌人造成 !D! 点伤害7次."
   },
   "TenguhouSokujitsuken": {
     "NAME": "回忆「天狗报当日到」",
@@ -463,7 +463,7 @@
   "HeartBreak": {
     "NAME": "回忆「Heart Break」",
     "DESCRIPTION":
-    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人增加2点. 替换 . NL 消耗2P."
+    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人增加 !M! 点. 替换 . NL 消耗2P."
   },
   "Kamaitachi": {
     "NAME": "回忆「镰鼬 Veiling」",
@@ -548,7 +548,7 @@
   "SpeartheGungnir": {
     "NAME": "回忆「Spear the Gungnir」",
     "DESCRIPTION":
-    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人增加2点. 替换 . NL 消耗4P."
+    "对所有敌人造成 !D! 点伤害,每贯穿一个敌人增加 !M! 点. 替换 . NL 消耗4P."
   },
   "TaihouKen": {
     "NAME": "回忆「大鹏拳」",
@@ -657,7 +657,7 @@
   "THsWorld": {
     "NAME": "欢迎来到sl的世界",
     "DESCRIPTION":
-    "获得神秘的怀表"
+    "获得遗物「倒转的怀表」"
   },
   "ScarletsBlessing": {
     "NAME": "绯红的祝福",
@@ -753,7 +753,7 @@
   "LittleLegion":{
     "NAME": "回忆「Little Legion」",
     "DESCRIPTION":
-    " 武装 所有未 武装 的人偶",
+    " 武装 所有未 武装 的人偶, 消耗 .",
     "EXTENDED_DESCRIPTION":[
       "选择进行1种武装",
       "枪兵人偶","武装为 枪兵人偶 .",
@@ -764,7 +764,7 @@
   "NingyouChiyari":{
     "NAME": "回忆「人偶千枪」",
     "DESCRIPTION":
-    "选择最多3个未 武装  人偶 , 武装 为 枪兵人偶 ",
+    "选择最多3个 人偶 , 武装 为 枪兵人偶 ",
     "EXTENDED_DESCRIPTION":[
       "选择最多3个人偶进行武装"
     ]
@@ -780,7 +780,7 @@
   "NingyouMusou":{
     "NAME": "回忆「人偶无操」",
     "DESCRIPTION":
-    " 激发 最多2个 人偶 ,获得 [R] .",
+    " 激发 最多2个 人偶 ,获得等量的 [R] .",
     "EXTENDED_DESCRIPTION":[
       "选择最多2个人偶进行激发"
     ]
@@ -788,7 +788,7 @@
   "NingyouOkisou":{
     "NAME": "回忆「人偶置操」",
     "DESCRIPTION":
-    "选择最多3个未 武装  人偶 , 武装 为 盾兵人偶 ",
+    "选择最多3个 人偶 , 武装 为 盾兵人偶 ",
     "EXTENDED_DESCRIPTION":[
       "选择最多3个人偶进行武装"
     ]
@@ -796,7 +796,7 @@
   "NingyouYunhei":{
     "NAME": "回忆「人偶弓兵」",
     "DESCRIPTION":
-    "选择最多3个未 武装  人偶 , 武装 为 弓兵人偶 ",
+    "选择最多3个 人偶 , 武装 为 弓兵人偶 ",
     "EXTENDED_DESCRIPTION":[
       "选择最多3个人偶进行武装"
     ]
@@ -832,7 +832,9 @@
   "SemiAutomaton":{
     "NAME": "回忆「Semi-Automaton」",
     "DESCRIPTION":
-    "获得 !M! 层Semi-Automaton,在回合结束时会消耗剩余的 [R] 使 人偶 进行 额外行动 ."
+    "获得 !M! 层Semi-Automaton,在回合结束时会消耗剩余的 [R] 使 人偶 进行 额外行动 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 ,获得 !M! 层Semi-Automaton,在回合结束时会消耗剩余的 [R] 使 人偶 进行 额外行动 ."
   },
   "ShanghaiNingyou":{
     "NAME": "回忆「上海人偶」",
@@ -1094,6 +1096,16 @@
     "DESCRIPTION":
     "你无法挣脱..."
   },
+  "Confused":{
+    "NAME": "彷徨",
+    "DESCRIPTION":
+    "抽到时将这张卡消耗,并给予你 !M! 层 虚弱 和 易伤 ."
+  },
+  "Exhaustion":{
+    "NAME": "疲惫",
+    "DESCRIPTION":
+    "抽到时将这张卡消耗,并给予你 !M! 层 缠绕 ."
+  },
 
 
   "BlessingOfTime":{
@@ -1104,7 +1116,17 @@
   "BlessingOfScarlet":{
     "NAME": "猩红",
     "DESCRIPTION":
-    " 祝福 .获得 !M! 点 力量 ,抽 !M! 张卡.."
+    " 祝福 .获得 !M! 点 力量 ,抽 !M! 张卡."
+  },
+  "Determination":{
+    "NAME": "决心",
+    "DESCRIPTION":
+    " 祝福 .回复 !M! 点生命 ,抽 1 张卡."
+  },
+  "Remission":{
+    "NAME": "赦免",
+    "DESCRIPTION":
+    " 祝福 .清除你身上的所有负面状态,抽 !M! 张卡."
   },
 
 

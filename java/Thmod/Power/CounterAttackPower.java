@@ -33,16 +33,17 @@ public class CounterAttackPower extends AbstractPower {
     {
         if ((info.type != DamageInfo.DamageType.HP_LOSS) && (info.owner != null) && (info.owner != this.owner))
         {
-            flash();
-            for(int i = 0;i < 10;i++)
-                AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, 1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-            if (!(this.owner.hasPower("PointPower"))) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
+            if(damageAmount > 0) {
+                flash();
+                for (int i = 0; i < 10; i++)
+                    AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, 1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                if (!(this.owner.hasPower("PointPower"))) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
+                } else if (this.owner.getPower("PointPower").amount < 5) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
+                }
+                AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "CounterAttackPower"));
             }
-            else if (this.owner.getPower("PointPower").amount < 5) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
-            }
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner,this.owner,"CounterAttackPower"));
             return 0;
         }
         else

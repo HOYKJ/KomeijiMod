@@ -402,6 +402,8 @@ public class CardSelectAction extends AbstractGameAction
                             this.testid2 = (String) Iterator2.next();
                             for (final AbstractCard cd : AbstractDungeon.player.hand.group) {
                                 if (cd.cardID.equals((this.testid2))) {
+                                    DevConsole.logger.info("remove" + ThMod.removemap.get(cd.cardID));
+                                    DevConsole.logger.info("up" + ThMod.upcardmap.get(c.cardID));
                                     if (ThMod.removemap.get(cd.cardID).equals(ThMod.upcardmap.get(c.cardID))) {
                                         ThMod.removedcardids.clear();
                                         ThMod.removedcardids.put(c.cardID, cd);

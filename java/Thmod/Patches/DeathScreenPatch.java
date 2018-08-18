@@ -2,6 +2,7 @@ package Thmod.Patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.screens.DeathScreen;
 
@@ -19,5 +20,6 @@ public class DeathScreenPatch
         logger.info(DeathScreen.STINGER_KEY);
         logger.info(Long.valueOf(DeathScreen.STINGER_ID));
         DeathScreen.STINGER_KEY = "playerScore";
+        Settings.hideCombatElements = false;
     }
 }

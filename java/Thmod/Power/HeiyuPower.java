@@ -1,6 +1,8 @@
 package Thmod.Power;
 
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -32,13 +34,14 @@ public class HeiyuPower extends AbstractPower {
 //    }
 
     public void atEndOfTurn(boolean isPlayer){
+        AbstractPlayer p = AbstractDungeon.player;
         if(isPlayer)
-            AbstractDungeon.player.heal(2);
+            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, 2));
     }
 
     public void atEndOfRound() {
         if (this.amount == 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "HeiyuPower"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }

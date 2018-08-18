@@ -63,8 +63,13 @@ public class KomeijiSatori extends CustomPlayer {
     }
 
     public static CharSelectInfo getLoadout() {
+        int maxOrbs;
+        if(ThMod.AliceOpen)
+            maxOrbs = 5;
+        else
+            maxOrbs = 6;
         return new CharSelectInfo("古明地 觉", "觉从一次昏迷中醒来后,发现自己处在一个不知名的高塔中, NL 她所有的,只有一本符卡规则,和记忆中零散的符卡.",
-                50, 50, 6, 99, 4,
+                50, 50, maxOrbs, 99, 4,
                 CharacterEnum.KomeijiSatori, getStartingRelics(), getStartingDeck(), false);
     }
 

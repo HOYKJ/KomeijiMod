@@ -19,7 +19,7 @@ public class SunshineReflector extends AbstractElementSpellCards {
     private static final int COST = 2;
 
     public SunshineReflector() {
-        super("SunshineReflector", SunshineReflector.NAME,  2, SunshineReflector.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.ALL_ENEMY,ElementType.Metal,ElementType.Water);
+        super("SunshineReflector", SunshineReflector.NAME,  2, SunshineReflector.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF,ElementType.Metal,ElementType.Water);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

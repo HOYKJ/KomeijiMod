@@ -19,10 +19,7 @@ public class DemonsFork extends AbstractDeriveCards {
 
     public DemonsFork(int magicNum) {
         super("DemonsFork", DemonsFork.NAME,  0, DemonsFork.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        if(this.upgraded)
-            this.baseDamage = (5 * magicNum);
-        else
-            this.baseDamage = (3 * magicNum);
+        this.baseDamage = 3;
         this.isMultiDamage = true;
     }
 
@@ -41,6 +38,7 @@ public class DemonsFork extends AbstractDeriveCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
+            this.upgradeDamage(2);
         }
     }
 

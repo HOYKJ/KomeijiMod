@@ -16,9 +16,17 @@
       " ~你战胜了~  #r~命运~ "
     ]
   },
-  "DiscardAndDamageAction": {
-    "TEXT": [
-      "弃一张卡"
+  "Shikieiki": {
+    "MOVES": [
+      "审判",
+      "Guilty or Not Guilty",
+      "十王审判",
+      "最终审判",
+      "净颇梨审判"
+    ],
+    "NAME": "四季映姫・ヤマザナドゥ",
+    "DIALOG": [
+      "对于你自身的 #r罪 , NL  ~你又有几分认识呢?~ "
     ]
   },
   "FromDeckToHandAction": {

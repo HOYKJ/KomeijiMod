@@ -29,7 +29,7 @@ public class VampireKiss extends AbstractKomeijiCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToTop(new VampireKissAction(m,new DamageInfo(p, this.baseDamage),3, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        AbstractDungeon.actionManager.addToTop(new VampireKissAction(m,new DamageInfo(p, this.damage),3, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     public AbstractCard makeCopy() {

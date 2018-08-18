@@ -87,7 +87,10 @@ public class isSeedAction extends AbstractGameAction {
                 }
                 pointPower.elementMix(earth,fire,luna,metal,sun,water,wood,false);
             }
-            pointPower.cardSelect();
+            if(AbstractDungeon.player.hand.size() >= 10)
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,"我的手牌满了"));
+            else
+                pointPower.cardSelect();
         }
         this.tickDuration();
     }

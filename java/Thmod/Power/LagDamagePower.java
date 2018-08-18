@@ -35,7 +35,7 @@ public class LagDamagePower extends AbstractPower {
             AbstractMonster target =AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 flash();
-                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, 5, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             }
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LagDamagePower(this.owner, -this.amount), -this.amount));

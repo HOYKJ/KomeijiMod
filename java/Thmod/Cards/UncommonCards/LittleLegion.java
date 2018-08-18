@@ -22,7 +22,8 @@ public class LittleLegion extends AbstractKomeijiCards {
 
     public LittleLegion() {
         super("LittleLegion", LittleLegion.NAME,  3, LittleLegion.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-}
+        this.exhaust = true;
+    }
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {

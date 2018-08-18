@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
@@ -26,7 +27,6 @@ public class RoomOfTime extends AbstractImageEvent {
     private static final String INTRO_MSG = DESCRIPTIONS[0];
     private float x = 400.0F * Settings.scale;
     private float y = 200.0F * Settings.scale;
-    public static boolean enemyAppear = false;
     private CurScreen screen = CurScreen.INTRO;
 
 
@@ -94,7 +94,7 @@ public class RoomOfTime extends AbstractImageEvent {
                         AbstractDungeon.player.heal(10);
                     } else if (ThMod.blessingOfTime >= 1) {
                         this.imageEventText.updateBodyText(DESCRIPTIONS[8]);
-                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.x, this.y, new LinkosWocchi());
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain(this.x, this.y,  RelicLibrary.getRelic("LinkosWocchi").makeCopy());
                         UnlockTracker.unlockCard("THsWorld");
                     }
                 }
@@ -103,6 +103,7 @@ public class RoomOfTime extends AbstractImageEvent {
                     this.imageEventText.updateBodyText(DESCRIPTIONS[7]);
                 }
                 this.imageEventText.updateDialogOption(0, OPTIONS[7]);
+                this.imageEventText.clearRemainingOptions();
                 break;
             case READ:
                 switch (buttonPressed){

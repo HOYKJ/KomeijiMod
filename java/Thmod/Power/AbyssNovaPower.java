@@ -46,8 +46,8 @@ public class AbyssNovaPower extends AbstractPower {
                         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, 60, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
                     }
                 }
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Burn(), 3));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this.ID));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Burn(), 1));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
             }
         }
     }

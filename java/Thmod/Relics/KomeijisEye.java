@@ -2,6 +2,7 @@ package Thmod.Relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -21,6 +22,8 @@ public class KomeijisEye extends AbstractThRelic {
     }
 
     public void atBattleStartPreDraw() {
+        if(Settings.hideCombatElements)
+            Settings.hideCombatElements = false;
         AbstractPlayer p = AbstractDungeon.player;
         flash();
         if(!(p.hasPower("MindReadingPower"))) {

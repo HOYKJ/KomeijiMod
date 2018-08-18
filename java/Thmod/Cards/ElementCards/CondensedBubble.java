@@ -26,7 +26,7 @@ public class CondensedBubble extends AbstractElementSweepCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         super.use(p,m);
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PlatedArmorPower(AbstractDungeon.player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PlatedArmorPower(p, this.magicNumber), this.magicNumber));
     }
 
     @Override

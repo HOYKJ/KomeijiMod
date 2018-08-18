@@ -33,7 +33,11 @@ import java.util.Properties;
 import Thmod.Cards.Agarareta;
 import Thmod.Cards.BlessingCards.BlessingOfScarlet;
 import Thmod.Cards.BlessingCards.BlessingOfTime;
+import Thmod.Cards.BlessingCards.Determination;
+import Thmod.Cards.BlessingCards.Remission;
 import Thmod.Cards.ColorlessCards.RidiculousThoughts;
+import Thmod.Cards.Curses.Confused;
+import Thmod.Cards.Curses.Exhaustion;
 import Thmod.Cards.DemonLordCradle;
 import Thmod.Cards.DeriveCards.EasterEgg.MuyoNehan;
 import Thmod.Cards.DeriveCards.EasterEgg.Scarlet;
@@ -211,12 +215,18 @@ import Thmod.Cards.UncommonCards.VampireKiss;
 import Thmod.Cards.RewardCards.VanishingEverything;
 import Thmod.Cards.UncommonCards.YoukiSo;
 import Thmod.Characters.KomeijiSatori;
+import Thmod.Events.Ferry;
+import Thmod.Events.GateofTheMinistry;
 import Thmod.Events.RoomOfDemon;
 import Thmod.Events.RoomOfTime;
+import Thmod.Events.SpiritSuffering;
 import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
 import Thmod.Relics.Grimoire;
+import Thmod.Relics.JyouHari;
+import Thmod.Relics.KoishisEye;
 import Thmod.Relics.KomeijisEye;
+import Thmod.Relics.KyoryuNoHagoromo;
 import Thmod.Relics.LinkosWocchi;
 import Thmod.Relics.MigarariNingyou;
 import Thmod.Relics.ReiryokuShyu;
@@ -225,6 +235,7 @@ import Thmod.Relics.SpellCardsRule;
 import Thmod.Relics.SpellExtend;
 import Thmod.Relics.SteinsOfFate;
 import Thmod.Relics.ThirstyCross;
+import Thmod.Relics.WordlessDocument;
 import basemod.BaseMod;
 import basemod.DevConsole;
 import basemod.ModLabeledToggleButton;
@@ -252,6 +263,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean MusicOpen ;
     public static boolean AllzhsOpen ;
     public static int blessingOfTime ;
+    public static int blessingOfDetermination ;
+    public static int blessingOfRemission ;
     private float X;
     private float Y;
     private float IntervalY;
@@ -450,6 +463,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("MusicOpen", "true");
             defaults.setProperty("AllzhsOpen", "false");
             defaults.setProperty("blessingOfTime", "0");
+            defaults.setProperty("blessingOfDetermination", "0");
+            defaults.setProperty("blessingOfRemission", "0");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             ThMod.AliceOpen = config.getBool("AliceOpen");
             ThMod.SoundOpen = config.getBool("SoundOpen");
@@ -457,6 +472,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             ThMod.MusicOpen = config.getBool("MusicOpen");
             ThMod.AllzhsOpen = config.getBool("AllzhsOpen");
             ThMod.blessingOfTime = config.getInt("blessingOfTime");
+            ThMod.blessingOfDetermination = config.getInt("blessingOfDetermination");
+            ThMod.blessingOfRemission = config.getInt("blessingOfRemission");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -538,7 +555,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             e.printStackTrace();
         }
         DevConsole.logger.info("=========================数据载入也o了=========================");
-
+        Settings.hideCombatElements = false;
     }
 
     public void receiveEditCharacters() {
@@ -689,6 +706,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         BaseMod.addCard(new BlessingOfTime());
         BaseMod.addCard(new BlessingOfScarlet());
+        BaseMod.addCard(new Determination());
+        BaseMod.addCard(new Remission());
+
+        BaseMod.addCard(new Confused());
+        BaseMod.addCard(new Exhaustion());
 
         BaseMod.addCard(new MiserableFate());
         BaseMod.addCard(new RemiliaStretch());
@@ -1014,6 +1036,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         //settingsPanel.addLabel("设计:hoykj  编程:hoykj  绘图:hoykj", 400.0f, 500.0f, (me) -> { });
     }
     public void receivePostInitialize() {
+        DevConsole.logger.info("========================= receivePostInitialize =========================");
         // Mod badge
         try {
             this.CreatePanel();
@@ -1026,13 +1049,22 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addRelicToCustomPool(new SpellCardsRule(), AbstractCardEnum.古明地觉.toString());
         BaseMod.addRelicToCustomPool(new SpellExtend(), AbstractCardEnum.古明地觉.toString());
         BaseMod.addRelicToCustomPool(new ReiryokuShyu(), AbstractCardEnum.古明地觉.toString());
+        BaseMod.addRelicToCustomPool(new LinkosWocchi(), AbstractCardEnum.古明地觉.toString());
+        BaseMod.addRelicToCustomPool(new KoishisEye(), AbstractCardEnum.古明地觉.toString());
+        BaseMod.addRelicToCustomPool(new WordlessDocument(), AbstractCardEnum.古明地觉.toString());
         RelicLibrary.add(new SteinsOfFate());
         RelicLibrary.add(new ThirstyCross());
         RelicLibrary.add(new ShirouKen());
-        RelicLibrary.add(new LinkosWocchi());
+        RelicLibrary.add(new KyoryuNoHagoromo());
+        RelicLibrary.add(new JyouHari());
 
         BaseMod.addEvent(RoomOfDemon.ID, RoomOfDemon.class, BaseMod.EventPool.THE_EXORDIUM);
         BaseMod.addEvent(RoomOfTime.ID, RoomOfTime.class, BaseMod.EventPool.THE_CITY);
+        BaseMod.addEvent(SpiritSuffering.ID, SpiritSuffering.class, BaseMod.EventPool.THE_BEYOND);
+        if(blessingOfRemission == 0)
+            BaseMod.addEvent(Ferry.ID, Ferry.class, BaseMod.EventPool.THE_CITY);
+        else
+            BaseMod.addEvent(GateofTheMinistry.ID, GateofTheMinistry.class, BaseMod.EventPool.THE_CITY);
     }
 
     public void receiveEditStrings()
@@ -1101,6 +1133,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         config.setInt("TenmizuPower",  SpellCardsRule.pointcount.get(1));
         config.setInt("Hangongnum",  SpellCardsRule.Hangongnum);
         config.setInt("blessingOfTime",  ThMod.blessingOfTime);
+        config.setInt("blessingOfDetermination",  ThMod.blessingOfDetermination);
+        config.setInt("blessingOfRemission",  ThMod.blessingOfRemission);
         config.save();
     }
 
@@ -1119,6 +1153,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.MusicOpen = true;
         ThMod.AllzhsOpen = false;
         ThMod.blessingOfTime = 0;
+        ThMod.blessingOfDetermination = 0;
+        ThMod.blessingOfRemission = 0;
     }
 
 }

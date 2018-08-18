@@ -41,21 +41,22 @@ public class RokkonShyoujyouDefend extends AbstractPower {
     {
         if ((info.type != DamageInfo.DamageType.HP_LOSS) && (info.owner != null) && (info.owner != this.owner))
         {
-            flash();
-            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                    AbstractDungeon.actionManager.addToBottom(new RemoveBuffsAction(target));
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            if(damageAmount > 0) {
+                flash();
+                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                        AbstractDungeon.actionManager.addToBottom(new RemoveBuffsAction(target));
+                        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    }
                 }
+                if (!(p.hasPower("PointPower"))) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+                } else if (p.getPower("PointPower").amount < 5) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+                }
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
             }
-            if (!(p.hasPower("PointPower"))) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
-            }
-            else if (p.getPower("PointPower").amount < 5) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
-            }
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this.ID));
             return 0;
         }
         return damageAmount;

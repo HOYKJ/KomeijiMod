@@ -492,6 +492,26 @@
       "你无法挣脱..."
     ]
   },
+  "Judgement": {
+    "NAME": "审判",
+    "DESCRIPTIONS": [
+      "每当你使用 #b1 张 #y",
+      " ,叠加 #b1 层 #y罪 ,并失去 #b1 生命."
+    ]
+  },
+  "AtonePower": {
+    "NAME": "赎罪",
+    "DESCRIPTIONS": [
+      "每当你使用 #b1 张 #y",
+      " ,减少 #b1 层 #y罪 ."
+    ]
+  },
+  "FinalJudgement": {
+    "NAME": "最终审判",
+    "DESCRIPTIONS": [
+      "每个回合并失去 #b2 生命,你所使用的所有卡都会被 #y消耗 ."
+    ]
+  },
 
 
 
