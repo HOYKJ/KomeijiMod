@@ -34,8 +34,8 @@ public class ChantPower extends AbstractPower {
 
     public void atStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WumiGaWareruPower(p, this.turn,this.damage), this.turn));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new IntangiblePlayerPower(p,2)));
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,"ChantPower"));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new IntangiblePlayerPower(p,this.turn)));
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this));
     }
 
     public void updateDescription()

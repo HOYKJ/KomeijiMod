@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import basemod.DevConsole;
+
 public class TenkiYume extends AbstractPower {
     public static final String POWER_ID = "TenkiYume";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("TenkiYume");
@@ -29,9 +31,10 @@ public class TenkiYume extends AbstractPower {
         this.type = PowerType.BUFF;
     }
 
-    public int onPlayerGainedBlock(int blockAmount) {
+    public float modifyBlock(float blockAmount) {
         int roll = MathUtils.random(5);
         flash();
+        DevConsole.logger.info("Tenkiyume" + blockAmount);
         return (blockAmount + roll - 2);
     }
 

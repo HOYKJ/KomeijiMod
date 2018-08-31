@@ -34,9 +34,9 @@ public class Shanghai extends AbstractOrb {
         if (Shanghai.img1 == null) {
             Shanghai.img1 = ImageMaster.loadImage("images/orbs/Shanghai.png");
         }
-        this.baseEvokeAmount = 8;
+        this.baseEvokeAmount = 10;
         this.evokeAmount = this.baseEvokeAmount;
-        this.basePassiveAmount = 3;
+        this.basePassiveAmount = 4;
         this.passiveAmount = this.basePassiveAmount;
         this.angle = MathUtils.random(360.0f);
         this.cX = AbstractDungeon.player.drawX + AbstractDungeon.player.hb_x;

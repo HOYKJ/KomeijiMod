@@ -26,7 +26,7 @@ public class KyoufuSaimin extends AbstractSpellCards {
 
     public KyoufuSaimin() {
         super("KyoufuSaimin", KyoufuSaimin.NAME,  3, KyoufuSaimin.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 5;
     }
@@ -57,7 +57,7 @@ public class KyoufuSaimin extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

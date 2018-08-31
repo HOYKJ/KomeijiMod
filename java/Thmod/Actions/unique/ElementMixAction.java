@@ -78,7 +78,7 @@ public class ElementMixAction extends AbstractGameAction {
                         break;
                 }
                 if(((earth) && (wood)) || ((luna) && (water)) || ((luna) && (fire)) || ((luna) && (earth)) || ((sun) && (metal)) || ((sun) && (fire)) || ((sun) && (earth)))
-                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "融合失败..."));
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, PointPower.DESCRIPTIONS[2]));
                 else
                     pointPower.elementMix(earth, fire, luna, metal, sun, water, wood, true);
                 SpellCardsRule.orbToMix.clear();

@@ -1,8 +1,25 @@
 ﻿{
     "CampfireSweepEffect": {
     "TEXT": [
-      "转换一张卡"
+      "转换...",
+      "回想起来吧..."
        ]
+  },
+  "SweepOption": {
+    "TEXT": [
+      "联想",
+      "选择一张卡进行转换."
+    ]
+  },
+  "isSeedAction": {
+    "TEXT": [
+      "我的手牌满了"
+    ]
+  },
+  "CardSelectAction": {
+    "TEXT": [
+      "我手中没有可以替换的牌"
+    ]
   },
   "DiscardAndDamageAction": {
     "TEXT": [
@@ -12,6 +29,27 @@
   "FromDeckToHandAction": {
     "TEXT": [
       "选一张卡加入手牌"
+    ]
+  },
+  "CreatePanel": {
+    "TEXT": [
+      "mod自带音效",
+      "mod自带bgm",
+      "回合开始时选择符卡",
+      "全中文卡牌名",
+      "设置",
+      "点击按钮切换扩展卡组，重启后生效",
+      "启用爱丽丝卡组",
+      "启用帕秋莉卡组",
+      "本mod和其它部分mod可能存在部分冲突",
+      "更新日志请见hoykj吧(贴吧)",
+      "目前进度:",
+      "卡组:基本完成",
+      "遗物:做了一部分",
+      "美工:做了一部分",
+      "debug:在做",
+      "特效:几乎没做",
+      "All English Mode"
     ]
   }
 }

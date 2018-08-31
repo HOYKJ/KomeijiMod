@@ -18,6 +18,7 @@ public class DemonLordCradle extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 1;
     private static final int ATTACK_DMG = 8;
     private static final int BASE_DRAW = 1;
@@ -41,10 +42,7 @@ public class DemonLordCradle extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            if(AllzhsOpen)
-                this.name = "回忆「恶魔领主的摇篮」";
-            else
-                this.name = "回忆「Demon King Cradle」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeDamage(1);
             this.upgradeMagicNumber(1);
@@ -57,5 +55,6 @@ public class DemonLordCradle extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("DemonLordCradle");
         NAME = DemonLordCradle.cardStrings.NAME;
         DESCRIPTION = DemonLordCradle.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = DemonLordCradle.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

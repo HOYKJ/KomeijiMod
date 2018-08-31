@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import Thmod.Cards.AbstractSweepCards;
+import Thmod.Cards.ElementCards.AbstractElementSweepCards;
 import Thmod.ThMod;
 import Thmod.ui.SweepOption;
 import basemod.ReflectionHacks;
@@ -38,7 +39,7 @@ public class CampfireUIPatch {
                 AbstractCard c = (AbstractCard)localIterator.next();
 //                for (Iterator Iterator = ThMod.campids.iterator(); Iterator.hasNext(); ) {
 //                    cardid = (String) Iterator.next();
-                    if (c instanceof AbstractSweepCards) {
+                    if ((c instanceof AbstractSweepCards) || (c instanceof AbstractElementSweepCards)) {
                         campfireButtons.add(button);
                         ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 1)).setPosition(950.0F * Settings.scale, height * Settings.scale);
                         break label0;

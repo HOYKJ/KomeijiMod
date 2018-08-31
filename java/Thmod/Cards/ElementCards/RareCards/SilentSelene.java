@@ -21,6 +21,7 @@ public class SilentSelene extends AbstractElementCards {
 
     public SilentSelene() {
         super("SilentSelene", SilentSelene.NAME,  3, SilentSelene.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.SELF,ElementType.Luna);
+        this.exhaust = true;
         this.baseMagicNumber = 15;
         this.magicNumber = baseMagicNumber;
     }

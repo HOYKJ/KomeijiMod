@@ -23,6 +23,7 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 1;
     private static final int ATTACK_DMG = 6;
 
@@ -51,10 +52,7 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            if(AllzhsOpen)
-                this.name = "回忆「灵魂雕塑」";
-            else
-                this.name = "回忆「Soul Sculpture」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeMagicNumber(1);
             this.upgradeDamage(3);
@@ -67,5 +65,6 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("InscribeRedSoul");
         NAME = InscribeRedSoul.cardStrings.NAME;
         DESCRIPTION = InscribeRedSoul.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = InscribeRedSoul.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

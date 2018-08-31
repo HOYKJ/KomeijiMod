@@ -26,7 +26,7 @@ public class KomeijiSatori extends CustomPlayer {
     public static final String orbVfx;
 
     public KomeijiSatori(final String name, final PlayerClass setClass) {
-        super(name, setClass, orbTextures, orbVfx, null, "images/characters/komeiji/skeleton.json");
+        super(name, setClass, orbTextures, orbVfx, (String) null, null);
 
         this.dialogX = this.drawX + 0.0f * Settings.scale;
         this.dialogY = this.drawY + 240.0f * Settings.scale;
@@ -67,7 +67,7 @@ public class KomeijiSatori extends CustomPlayer {
         if(ThMod.AliceOpen)
             maxOrbs = 5;
         else
-            maxOrbs = 6;
+            maxOrbs = 4;
         return new CharSelectInfo("古明地 觉", "觉从一次昏迷中醒来后,发现自己处在一个不知名的高塔中, NL 她所有的,只有一本符卡规则,和记忆中零散的符卡.",
                 50, 50, maxOrbs, 99, 4,
                 CharacterEnum.KomeijiSatori, getStartingRelics(), getStartingDeck(), false);

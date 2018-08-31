@@ -31,7 +31,7 @@ public class EasyMasterSpark extends AbstractSpellCards {
     public EasyMasterSpark() {
         super("EasyMasterSpark", EasyMasterSpark.NAME,  2, EasyMasterSpark.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 16;
-        this.baseMagicNumber = 5;
+        this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
         this.pointcost = 5;
@@ -69,7 +69,7 @@ public class EasyMasterSpark extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

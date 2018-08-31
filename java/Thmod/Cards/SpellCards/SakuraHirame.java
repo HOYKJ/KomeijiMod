@@ -21,7 +21,7 @@ public class SakuraHirame extends AbstractSpellCards {
 
     public SakuraHirame() {
         super("SakuraHirame", SakuraHirame.NAME,  1, SakuraHirame.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseDamage = 12;
+        this.baseDamage = 15;
         this.isMultiDamage = true;
         this.pointcost = 3;
     }
@@ -42,7 +42,7 @@ public class SakuraHirame extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

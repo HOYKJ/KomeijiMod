@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,14 +62,17 @@ public class SpellCardsRule extends AbstractThRelic {
         if (blessingOfTime > 0){
             if (blessingOfTime < 3) {
                 boolean giveBlessing = true;
-                for (AbstractCard c : AbstractDungeon.player.masterDeck.group){
-                    if(c instanceof BlessingOfTime)
+                for (AbstractCard c : p.masterDeck.group){
+                    if(c instanceof BlessingOfTime) {
                         giveBlessing = false;
+                        break;
+                    }
                 }
                 if (giveBlessing)
-                    AbstractDungeon.player.masterDeck.group.add(new BlessingOfTime());
+                    p.masterDeck.group.add(new BlessingOfTime());
             }
         }
+
 
         try {
             ThMod.SavePointPower();
@@ -76,8 +80,6 @@ public class SpellCardsRule extends AbstractThRelic {
             e.printStackTrace();
         }
 
-        if (AbstractDungeon.player.hasRelic("Strange Spoon"))
-            AbstractDungeon.player.loseRelic("Strange Spoon");
         HangongUsed = false;
     }
 
@@ -165,19 +167,19 @@ public class SpellCardsRule extends AbstractThRelic {
                                 PointPower.Start();
                                 this.pulse = false;
                             } else {
-                                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "请不要连续点击"));
+                                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[1]));
                             }
                         } else {
-                            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我没有足够的P点"));
+                            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,this.DESCRIPTIONS[2] ));
                         }
                     } else {
-                        AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我没有足够的P点"));
+                        AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[2]));
                     }
                 } else {
-                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "这不是我的回合"));
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[3]));
                 }
             } else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我获得过符卡了"));
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[4]));
             }
         }
     }

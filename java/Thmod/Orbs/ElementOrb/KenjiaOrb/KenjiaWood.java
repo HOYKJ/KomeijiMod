@@ -49,6 +49,10 @@ public class KenjiaWood extends AbstractKenjiaOrb {
         this.hb.render(sb);
     }
 
+    protected void renderText(SpriteBatch sb)
+    {
+    }
+
     public AbstractOrb makeCopy()
     {
         return new KenjiaWood();

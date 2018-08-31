@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.AbstractSweepCards;
+import Thmod.Characters.KomeijiSatori;
 import Thmod.Relics.SpellCardsRule;
 import basemod.DevConsole;
 
@@ -43,7 +44,9 @@ public class SeishiRoten extends AbstractSweepCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        SpellCardsRule.SeishiRotenNum += 2;
+        if(AbstractDungeon.player instanceof KomeijiSatori) {
+            SpellCardsRule.SeishiRotenNum += 2;
+        }
     }
 
     public void triggerOnExhaust(){

@@ -60,8 +60,8 @@ public class YuumeiPower extends AbstractPower {
     public void atEndOfTurn(boolean isPlayer)
     {
         if (isPlayer){
-            if (this.amount == 1)
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "YuumeiPower"));
+            if (this.amount <= 1)
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             else
                 this.amount -= 1;
         }

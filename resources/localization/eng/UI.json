@@ -1,0 +1,55 @@
+﻿{
+    "CampfireSweepEffect": {
+    "TEXT": [
+      "Transform...",
+      "Recollect something..."
+       ]
+  },
+  "SweepOption": {
+    "TEXT": [
+      "Association",
+      "Choose one card to transform"
+    ]
+  },
+  "isSeedAction": {
+    "TEXT": [
+      "My hand is full"
+    ]
+  },
+  "CardSelectAction": {
+    "TEXT": [
+      "There is no card can be replaced in my hand."
+    ]
+  },
+  "DiscardAndDamageAction": {
+    "TEXT": [
+      "Discard 1 card."
+    ]
+  },
+  "FromDeckToHandAction": {
+    "TEXT": [
+      "Choose one card and place it into your hand."
+    ]
+  },
+  "CreatePanel": {
+    "TEXT": [
+      "Mod's sound",
+      "Mod's bgm",
+      "Select Spell Card on turn's start",
+      "All chinese card name",
+      "Setting",
+      "Click to change the extend deck, restart game to take effect.",
+      "Use Alice extend deck.",
+      "Use Patchouli extend deck.",
+      "This mod may have problems if run with other mods",
+      "No English Change Log till now.",
+      "Current rate of progress:",
+      "Deck: almost done.",
+      "Relic: finished some of them",
+      "Art: finished a little of them",
+      "Debug: doing now",
+      "Special efficiency: almost nothing",
+      "All English Mode"
+    ]
+  }
+}

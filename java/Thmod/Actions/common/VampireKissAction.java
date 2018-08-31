@@ -42,7 +42,6 @@ public class VampireKissAction extends AbstractGameAction
             this.target.damageFlashFrames = 4;
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
 //            this.info.applyPowers(this.info.owner, this.target);
-            this.target.damage(this.info);
 
             int tmp = this.info.base;
             tmp -= this.target.currentBlock;
@@ -51,6 +50,8 @@ public class VampireKissAction extends AbstractGameAction
             }
             if (tmp > 0)
                 this.info.owner.heal((tmp / 2));
+
+            this.target.damage(this.info);
 
             if ((this.numTimes > 1) && (!(AbstractDungeon.getMonsters().areMonstersBasicallyDead()))) {
                 this.numTimes -= 1;

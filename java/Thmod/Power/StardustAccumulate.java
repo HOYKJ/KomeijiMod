@@ -24,7 +24,7 @@ public class StardustAccumulate extends AbstractPower {
         this.ID = "StardustAccumulate";
 //        stardustIdOffset += 1;
         this.owner = owner;
-        this.amount = 1;
+        this.amount = 0;
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/StardustAccumulate.png");
         this.type = PowerType.BUFF;

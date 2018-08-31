@@ -1,8 +1,10 @@
 package Thmod.Relics;
 
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class Grimoire extends AbstractThRelic {
@@ -19,9 +21,19 @@ public class Grimoire extends AbstractThRelic {
     }
 
     public void atTurnStart() {
-        flash();
-        AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        AbstractDungeon.actionManager.addToBottom(new IncreaseMaxOrbAction(1));
+        AbstractPlayer p = AbstractDungeon.player;
+        if(p.maxOrbs < 10) {
+            flash();
+            AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            CardCrawlGame.sound.play("MAP_OPEN_2", 0.1F);
+            p.maxOrbs += 1;
+            for (int i = 0; i < 1; i++) {
+                p.orbs.add(new EmptyOrbSlot());
+            }
+            for (int i = 0; i < p.orbs.size(); i++) {
+                (p.orbs.get(i)).setSlot(i, p.maxOrbs);
+            }
+        }
     }
 
     protected  void onRightClick(){

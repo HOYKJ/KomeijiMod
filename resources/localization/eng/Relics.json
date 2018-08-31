@@ -1,0 +1,243 @@
+﻿{
+    "SpellCardsRule": {
+      "NAME": "Spell Card Rule Manual",
+      "FLAVOR": "A mysterious power keeps Spell Card Rule's work.",
+      "DESCRIPTIONS": [
+        "With this, you can use the #ySpell #yCard #yRule. Right click to get a SP card. (Every turn limit #b1).",
+        "Don't continuous click please.",
+        "I don't have enough P point.",
+        "It's not my turn.",
+        "I had got the SP card."
+      ]
+    },
+    "KomeijisEye": {
+      "NAME": "Satori's Eye",
+      "FLAVOR": "The source of mind-reading.",
+      "DESCRIPTIONS": [
+        "At the start of your turn, you will gain buff according to enemy's #bIntents. (It will be of no effect at the first turn)."
+      ]
+    },
+  "Grimoire": {
+    "NAME": "Grimoire",
+    "FLAVOR": "A precious book that fills you up with magic power.",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain #b1 Orb slot."
+    ]
+  },
+  "MigarariNingyou": {
+    "NAME": "Sacrificial Doll",
+    "FLAVOR": "The damage taken by the possessor will be partially taken by this gratitude evoking doll.",
+    "DESCRIPTIONS": [
+      "At the start of your turn, get #b1 #yShield #yDoll."
+    ]
+  },
+  "SteinsOfFate": {
+    "NAME": "Gem of Fate",
+    "FLAVOR": "This scarlet gem produce an effect on your fate somehow...",
+    "DESCRIPTIONS": [
+      "Draw an extra card at the start of your turn. When each enemy die,gain #1 count. right click to cost #1 count to draw #b1 card."
+    ]
+  },
+  "ThirstyCross": {
+    "NAME": "Thirsty Cross",
+    "FLAVOR": "You can't rid it. Whether itself, or the thirst it brings,the thirst of blood...",
+    "DESCRIPTIONS": [
+      "Start each combat with #b2 #yStrength . If you didn't use any #yAttack in #b1 turn, lose #b3 HP at turn's end."
+    ]
+  },
+  "ReiryokuShyu": {
+    "NAME": "Spirit Orb",
+    "FLAVOR": "When you glow with energy, this gem will radiate softly.",
+    "DESCRIPTIONS": [
+      "At start of your turn, if you have at least  #b4 #rP point, gain [R] ."
+    ]
+  },
+  "SpellExtend": {
+    "NAME": "Spell Card Extend",
+    "FLAVOR": "This SP card will suddenly appear in Spell Card Rule Manual,and become can be use...",
+    "DESCRIPTIONS": [
+      "If you have at least #b2 #rP point,you can choose from #b5 cards when choose SP card."
+    ]
+  },
+  "ShirouKen": {
+    "NAME": "Hakurou Sword",
+    "FLAVOR": "A sword cast by mystic apparition, which can chop off maze.",
+    "DESCRIPTIONS": [
+      "In #1 turn, each #yAttack you used will make after #yAttacks' damage grows #1 ."
+    ]
+  },
+  "LinkosWocchi": {
+    "NAME": "Reverse Watch",
+    "FLAVOR": "There is several words on its back: As long as you keep pushing beyond yourself, there will be light in the front.",
+    "DESCRIPTIONS": [
+      "Right click it in your turn, will make every unit's HP back to last turn, it is of no effect to dead or Minion.(Every combat limit #b1 time)",
+      "I can't use it yet!"
+    ]
+  },
+  "KyoryuNoHagoromo": {
+    "NAME": "Divine Raiment of the Dragon Fish",
+    "FLAVOR": "A wind and lightning bolt repelling raiment of dragon fish.",
+    "DESCRIPTIONS": [
+      "When you blocked damage, gain #b1  #yPlated #yArmor ."
+    ]
+  },
+  "KoishisEye": {
+    "NAME": "Closed Satori's Eye",
+    "FLAVOR": "*****",
+    "DESCRIPTIONS": [
+      "Start each combat with #b2 #yStrength and #yDexterity . You can no longer see enemy #bIntents and ALL units' status."
+    ]
+  },
+  "JyouHari": {
+    "NAME": "Cleansed Crystal Mirror",
+    "FLAVOR": "By looking into the mirror, they see all your past deeds.",
+    "DESCRIPTIONS": [
+      "At the start of your turn, enemy will gain debuff according to its #bIntents ."
+    ]
+  },
+  "WordlessDocument": {
+    "NAME": "Wordless Document",
+    "FLAVOR": "There is no word on it,but a signet with: the Ministry of Right and Wrong...",
+    "DESCRIPTIONS": [
+      "You can feel something peculiar with it,but you can't say what it is..."
+    ]
+  },
+  "CrystalBall": {
+    "NAME": "Crystal Ball",
+    "FLAVOR": "By pour mana into this,you can make element magic work easily.",
+    "DESCRIPTIONS": [
+      "Right click to choose #b1 #yElement #yOrb to gain (Except Luna and Sun).Every turn limit #1 time.",
+      "Choose an Element Orb",
+      "Don't continuous click please.",
+      "It's not my turn.",
+      "I had used it before."
+    ]
+  },
+  "FamiliarSpoon": {
+    "NAME": "Familiar Spoon",
+    "FLAVOR": "ψυχήκίνησις...",
+    "DESCRIPTIONS": [
+      "When you stare at this spoon, there is someone emerge in your mind..."
+    ]
+  },
+  "BookofPenglai": {
+    "NAME": "Mysterious Book",
+    "FLAVOR": "There is no word on its cover...",
+    "DESCRIPTIONS": [
+      " #yPermanent Right click to browse this book...",
+      "Choose one page.",
+      "First page","Read first page",
+      "Second page","Read second page",
+      "Third page","Read third page",
+      "Fourth page","Read fourth page",
+      "Fifth page","Read fifth page",
+      "Sixth page","Read sixth page",
+      "Seventh page","Read seventh page",
+      "Eighth page","Read eighth page",
+      "Ninth page","Read ninth page",
+      "Last page","Read last page",
+
+
+      "The remaining pages are all blank...",
+      "What does it main...",
+      "The anxious paradise will open the gate.'",
+      "It says:'When \"Innocent Treasures\" coming,",
+      "There write in blood: NL Hexa Ghost",
+      "There write in blood: NL Slime Boss",
+      "There write in blood: NL The Guardian",
+      "There write in blood: NL Bronze Automaton",
+      "There write in blood: NL Champ",
+      "There write in blood: NL The Collector",
+      "There write in blood: NL Awakened One",
+      "There write in blood: NL Time Eater",
+      "This handwriting,it's my handwriting...",
+      "It says:This no longer has practical effect,keep it only as a souvenir.",
+
+      "Right click to browse this book..."
+    ]
+  },
+  "NitorisBag": {
+    "NAME": "General Service Bag",
+    "FLAVOR": "There are various items in the bag,you can assemble them optionally.",
+    "DESCRIPTIONS": [
+      "Right click to create #b1 card and add to your draw pile.(Every combat limit #b1 time)",
+      "Assemle fittings",
+      "Specification:Small device","cost 1",
+      "Specification:Middle device","cost 2",
+      "Specification:Large device","cost 3",
+
+      "Fittings:Extending Arm","Deal 6 Static damage to a random enemy.",
+      "Fittings:Extending Arm","Deal 5 Static damage to ALL enemies.",
+      "Fittings:Hydro Camouflage","Gain 5 Static Block.",
+      "Fittings:Propelling unit","Draw 1 card.",
+      "Fittings:Comminution device","Apply 3 Weak to a random enemy.",
+      "Fittings:Comminution device","Apply 3 Vulnerable to a random enemy.",
+      "Fittings:Siphon energy","A random enemy lose 1 Strength.",
+      "Fittings:Multiplexing armor","Gain 1 Strength.",
+      "Fittings:Multiplexing armor","Gain 1 Dexterity.",
+      "Fittings:Medical machine","Heal 3 HP.",
+
+      "Fittings:Extending Arm","Deal 12 Static damage to a random enemy.",
+      "Fittings:Extending Arm","Deal 10 Static damage to ALL enemies.",
+      "Fittings:Hydro Camouflage","Gain 10 Static Block.",
+      "Fittings:Propelling unit","Draw 2 card.",
+      "Fittings:Comminution device","Apply 3 Weak and Vulnerable to a random enemy.",
+      "Fittings:Comminution device","Apply 3 Weak to ALL enemies.",
+      "Fittings:Comminution device","Apply 3 Vulnerable to ALL enemies.",
+      "Fittings:Siphon energy","ALL enemies lose 1 Strength.",
+      "Fittings:Siphon energy","A random enemy lose 2 Strength.",
+      "Fittings:Multiplexing armor","Gain 2 Strength.",
+      "Fittings:Multiplexing armor","Gain 2 Dexterity.",
+      "Fittings:Multiplexing armor","Gain 1 Strength and Dexterity.",
+      "Fittings:Power device","Gain [R] .",
+      "Fittings:Medical machine","Heal 6 HP.",
+
+      "Fittings:Extending Arm","Deal 18 Static damage to a random enemy.",
+      "Fittings:Extending Arm","Deal 15 Static damage to ALL enemies.",
+      "Fittings:Hydro Camouflage","Gain 15 Static Block.",
+      "Fittings:Propelling unit","Draw 3 card.",
+      "Fittings:Comminution device","Apply 3 Weak, Vulnerable and Frail to ALL enemies.",
+      "Fittings:Siphon energy","ALL enemies lose 2 Strength.",
+      "Fittings:Siphon energy","A random enemy lose 3 Strength.",
+      "Fittings:Multiplexing armor","Gain 3 Strength.",
+      "Fittings:Multiplexing armor","Gain 3 Dexterity.",
+      "Fittings:Multiplexing armor","Gain 2 Strength and 1 Dexterity.",
+      "Fittings:Multiplexing armor","Gain 1 Strength and 2 Dexterity.",
+      "Fittings:Power device","Gain [R] [R] .",
+      "Fittings:Medical machine","Heal 9 HP.",
+
+      "Don't continuous click please.",
+      "It's not my turn.",
+      "I had used it before."
+    ]
+  },
+  "MysticStaff": {
+    "NAME": "Staff",
+    "FLAVOR": "Formidable magician can conjure without tool. But to those new magicians, they can only ues senior magic with a staff.",
+    "DESCRIPTIONS": [
+      "Right click to add #b1 Spell Card to your hand. This card base on #b2 next #yElement orb.(Every turn limit #b1 time)",
+      "I had used it before.",
+      "It's not my turn.",
+      "I had used it before.",
+      "I don't have enough Element orb."
+    ]
+  },
+  "ColorfulQuillpen": {
+    "NAME": "Colorful Quill-pen",
+    "FLAVOR": "This miraculous quill-pen can overwrite the Manual partly...",
+    "DESCRIPTIONS": [
+      "Right click to refresh the Spell Card you can choose.(Every combat limit #b1 time)",
+      "I don't need to use it now.",
+      "I had used it before."
+    ]
+  },
+  "RingOfDollmaker": {
+    "NAME": "Ring of Dollmaker",
+    "FLAVOR": "It's almost a essential tool to Dollmakers. Even a Dollmaker attained perfection in skill, he still will use it.",
+    "DESCRIPTIONS": [
+      "Right click to fill your slot with #yDoll. At most #3.(Every combat limit #b1 time)",
+      "It's not my turn.",
+      "I had used it before."
+    ]
+  }
+  }

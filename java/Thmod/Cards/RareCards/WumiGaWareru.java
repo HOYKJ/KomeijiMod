@@ -22,7 +22,7 @@ public class WumiGaWareru extends AbstractKomeijiCards {
         super("WumiGaWareru", WumiGaWareru.NAME,  2, WumiGaWareru.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
-        this.baseDamage = 6;
+        this.baseDamage = 8;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

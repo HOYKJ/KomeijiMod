@@ -1,8 +1,5 @@
 package Thmod.Power;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -11,6 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.ArrayList;
@@ -39,6 +38,8 @@ import Thmod.Cards.SpellCards.DollofRoundTable;
 import Thmod.Cards.SpellCards.DollsWar;
 import Thmod.Cards.SpellCards.LemmingsParade;
 import Thmod.Cards.SpellCards.TripWire;
+import Thmod.Relics.BookofPenglai;
+import Thmod.Relics.FamiliarSpoon;
 import Thmod.ThMod;
 import basemod.DevConsole;
 
@@ -67,11 +68,37 @@ public class PointPower extends AbstractPower {
         }
         if(ThMod.StartSelectOpen)
             Start();
+
+        if (AbstractDungeon.player.hasRelic("Strange Spoon")) {
+            AbstractDungeon.player.loseRelic("Strange Spoon");
+            AbstractRelic relic = new FamiliarSpoon();
+            UnlockTracker.markRelicAsSeen(relic.relicId);
+            relic.obtain();
+            relic.isObtained = true;
+            relic.isAnimating = false;
+            relic.isDone = false;
+        }
+        if (ThMod.blessingOfDetermination == 2){
+            boolean giveBook = true;
+            for (AbstractRelic r : p.relics){
+                if(r instanceof BookofPenglai) {
+                    giveBook = false;
+                    break;
+                }
+            }
+            if(giveBook) {
+                AbstractRelic relic = new BookofPenglai();
+                relic.obtain();
+                relic.isObtained = true;
+                relic.isAnimating = false;
+                relic.isDone = false;
+            }
+        }
     }
 
     public static void Start() {
         if(AbstractDungeon.player.hand.size() >= 10)
-            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,"我的手牌满了"));
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,DESCRIPTIONS[1]));
         else {
             cardid.clear();
             AbstractDungeon.actionManager.addToBottom(new isSeedAction());
@@ -159,7 +186,7 @@ public class PointPower extends AbstractPower {
                 AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
             }
             else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "融合失败..."));
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[2]));
             }
         }
     }

@@ -31,6 +31,7 @@ public class NingyouOkisou extends AbstractSweepCards {
 
     public NingyouOkisou() {
         super("NingyouOkisou", NingyouOkisou.NAME,  1, NingyouOkisou.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

@@ -8,7 +8,7 @@
   "ChantPower": {
     "NAME": "吟唱",
     "DESCRIPTIONS": [
-      "1回合后发挥效果."
+      " #b1 回合后发挥效果."
     ]
   },
     "CounterAttackPower": {
@@ -117,7 +117,10 @@
   "LunaticRedEyesPower": {
     "NAME": "幻陇月睨",
     "DESCRIPTIONS": [
-      "当你使用一张不消耗P点的卡后,将 #b1 张带有 消耗 和 虚无 的复制加入你的手牌."
+      "当你使用一张不消耗P点的卡后,将 #b1 张带有 消耗 和 虚无 的复制加入你的手牌.",
+      " 消耗 .",
+      " 虚无 .",
+      "我的手牌满了"
     ]
   },
   "MakuraSekiPower": {
@@ -135,7 +138,8 @@
   "MusuNoTegataPower": {
     "NAME": "无寿之国的文书",
     "DESCRIPTIONS": [
-      "回合后受到伤害,在你受到伤害后终止."
+      "在 #b",
+      " 回合后受到伤害,在你受到伤害后终止."
     ]
   },
   "MusuNoYumePower": {
@@ -153,13 +157,15 @@
   "PointPower": {
     "NAME": "P点",
     "DESCRIPTIONS": [
-      "当你攻击5次后,获得1点 #rP 点(符力)"
+      "当你攻击 #b4 次后,获得 #b1 点 #rP 点(符力)",
+      "我的手牌满了",
+      "融合失败..."
     ]
   },
   "RokkonShyoujyouDefend": {
     "NAME": "六根清净斩",
     "DESCRIPTIONS": [
-      "弹反下1次攻击,获得1 #rP ."
+      "弹反下 #b1 次攻击,获得 #b1 #rP ."
     ]
   },
   "SoulPower": {
@@ -178,15 +184,16 @@
   "StrengthDownPower": {
     "NAME": "Missing Purple Power",
     "DESCRIPTIONS": [
-      "回合后失去",
-      " 力量 ,不能获得格挡."
+      "在 #b",
+      " 回合后失去 #b",
+      " #y力量 ,不能获得 #y格挡 ."
     ]
   },
   "StrengthEndPower": {
     "NAME": "Missing Power",
     "DESCRIPTIONS": [
-      "回合结束时失去",
-      " 力量 ."
+      "回合结束时失去 #b",
+      " #y力量 ."
     ]
   },
   "TenmizuPower": {
@@ -210,8 +217,9 @@
   "WumiGaWareruPower": {
     "NAME": "开海",
     "DESCRIPTIONS": [
-      "回合内持续造成",
-      "点伤害"
+      "在 #b",
+      " 回合内持续造成 #b",
+      " 点伤害"
     ]
   },
   "YuumeiPower": {
@@ -464,8 +472,15 @@
   "TokamakPower": {
     "NAME": "SelfTokamak",
     "DESCRIPTIONS": [
-      "在",
-      "回合内,获得 [R] ."
+      "在 #b",
+      " 回合内,获得 [R] ."
+    ]
+  },
+  "InfluxPower": {
+    "NAME": "魔力汇集",
+    "DESCRIPTIONS": [
+      "每个回合开始时获得",
+      "."
     ]
   },
 
@@ -496,14 +511,18 @@
     "NAME": "审判",
     "DESCRIPTIONS": [
       "每当你使用 #b1 张 #y",
-      " ,叠加 #b1 层 #y罪 ,并失去 #b1 生命."
+      " ,叠加 #b1 层 #y罪 ,并失去 #b1 生命.",
+      "攻击",
+      "技能"
     ]
   },
   "AtonePower": {
     "NAME": "赎罪",
     "DESCRIPTIONS": [
       "每当你使用 #b1 张 #y",
-      " ,减少 #b1 层 #y罪 ."
+      " ,减少 #b1 层 #y罪 .",
+      "攻击",
+      "技能"
     ]
   },
   "FinalJudgement": {

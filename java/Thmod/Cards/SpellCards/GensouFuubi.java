@@ -44,7 +44,7 @@ public class GensouFuubi extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

@@ -22,10 +22,10 @@ public class SoulPower extends AbstractPower {
         this.ID = "SoulPower";
         this.owner = owner;
         this.amount = amount;
-        updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/SoulPower.png");
         this.type = PowerType.BUFF;
         this.num = num;
+        updateDescription();
     }
 
     public void atEndOfTurn(boolean isPlayer){

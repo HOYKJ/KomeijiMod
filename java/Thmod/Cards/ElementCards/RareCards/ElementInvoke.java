@@ -26,10 +26,10 @@ public class ElementInvoke extends AbstractKomeijiCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION;
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public ElementInvoke() {
-        super("ElementInvoke", ElementInvoke.NAME,  2, ElementInvoke.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+        super("ElementInvoke", ElementInvoke.NAME,  1, ElementInvoke.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
         this.isEthereal = true;
     }
 

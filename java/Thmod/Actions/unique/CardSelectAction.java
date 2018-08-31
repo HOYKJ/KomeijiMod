@@ -4,7 +4,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import Thmod.Cards.DeriveCards.TaikoAoe;
 import Thmod.Cards.DeriveCards.TaikoDefend;
 import Thmod.Cards.DeriveCards.TaikoStrike;
 import Thmod.Cards.ElementCards.SpellCards.ElementExtend;
+import Thmod.Cards.ElementCards.SpellCards.ElementInflux;
 import Thmod.Cards.ElementCards.SpellCards.JellyfishPrincess;
 import Thmod.Cards.ItemCards.ByoukiHeiyu;
 import Thmod.Cards.ItemCards.HisouNoKenItem;
@@ -37,6 +40,7 @@ import Thmod.Cards.SpellCards.DraculaCradle;
 import Thmod.Cards.SpellCards.EasyMasterSpark;
 import Thmod.Cards.SpellCards.EnshinRoten;
 import Thmod.Cards.SpellCards.FinalSpark;
+import Thmod.Cards.SpellCards.FocusManipulate;
 import Thmod.Cards.SpellCards.FusekiShinmei;
 import Thmod.Cards.SpellCards.FuumaJin;
 import Thmod.Cards.SpellCards.GensouFuubi;
@@ -76,6 +80,8 @@ import basemod.DevConsole;
 
 public class CardSelectAction extends AbstractGameAction
 {
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("CardSelectAction");
+    public static final String[] TEXT = uiStrings.TEXT;
     private static final float startingDuration = 0.5f;
     private boolean random;
     private static final boolean ALLOW_DUPLICATES = false;
@@ -269,6 +275,8 @@ public class CardSelectAction extends AbstractGameAction
                     if (Cardid.cardID.equals("TripWire")) {
                         CardSelectAction.SpellCards.addToTop(new TripWire());
                     }
+                    if(AbstractDungeon.player.orbs.size() >= 2)
+                        CardSelectAction.SpellCards.addToTop(new FocusManipulate());
                 }
             }
             if ((this.powercount >= 3) && (this.cardid.size() > 0)) {
@@ -309,6 +317,8 @@ public class CardSelectAction extends AbstractGameAction
         else{
             if ((this.powercount >= 2)) {
                 CardSelectAction.SpellCards.addToTop(new ElementExtend());
+                if(AbstractDungeon.player.orbs.size() >= 4)
+                    CardSelectAction.SpellCards.addToTop(new ElementInflux());
             }
             if ((this.powercount >= 3) && (this.cardid.size() > 0)) {
                 for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
@@ -416,7 +426,7 @@ public class CardSelectAction extends AbstractGameAction
                             }
                         }
                         if (!(canRep)) {
-                            AbstractDungeon.actionManager.addToBottom(new PlayerTalkAction(AbstractDungeon.player, "我手中没有可以替换的牌"));
+                            AbstractDungeon.actionManager.addToBottom(new PlayerTalkAction(AbstractDungeon.player, TEXT[0]));
                             given = true;
                             break label1;
                         } else {

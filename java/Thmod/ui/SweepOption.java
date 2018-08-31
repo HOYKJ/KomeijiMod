@@ -1,14 +1,16 @@
 package Thmod.ui;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 
 import Thmod.vfx.campfire.CampfireSweepEffect;
 
 public class SweepOption extends AbstractCampfireOption {
-    public static final String LABEL = "转换";
-    public static final String DESCRIPTION = "选择一张卡进行转换.";
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("SweepOption");
+    public static final String[] TEXT = uiStrings.TEXT;
 
     public static Texture GetUpgradeOptionTexture()
     {
@@ -17,13 +19,13 @@ public class SweepOption extends AbstractCampfireOption {
 
     public SweepOption(boolean active)
     {
-        this.label = "联想";
+        this.label = TEXT[0];
         this.usable = active;
         if (active) {
-            this.description = "选择一张卡进行转换.";
+            this.description = TEXT[1];
             this.img = GetUpgradeOptionTexture();
         } else {
-            this.description = "选择一张卡进行转换.";
+            this.description = TEXT[1];
             this.img = GetUpgradeOptionTexture();
         }
     }

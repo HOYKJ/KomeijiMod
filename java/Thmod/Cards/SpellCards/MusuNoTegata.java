@@ -21,7 +21,7 @@ public class MusuNoTegata extends AbstractSpellCards {
 
     public MusuNoTegata() {
         super("MusuNoTegata", MusuNoTegata.NAME,  1, MusuNoTegata.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseMagicNumber = 30;
+        this.baseMagicNumber = 32;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;
     }
@@ -47,7 +47,7 @@ public class MusuNoTegata extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

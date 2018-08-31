@@ -1,0 +1,37 @@
+﻿{
+  "Remiria": {
+    "MOVES": [
+      "Miserable Fate",
+      "Heart Break",
+      "Spear the Gungnir",
+      "Chain Gang",
+      "Red the Nightless Castle",
+      "Scarlet Devil",
+      "Remilia Stretch"
+    ],
+    "NAME": "Remilia Scarlet",
+    "DIALOG": [
+      " @Who@ ,summoned NL  #r@The@ #r@Scarlet@ #r@Lord@ @?!@ ",
+      " ~You~ ~succeed~ ~...~ ",
+      " ~You~ ~overcame~ #r~The~ #r~Fate~ "
+    ]
+  },
+  "Shikieiki": {
+    "MOVES": [
+      "Judgement",
+      "Guilty or Not Guilty",
+      "Trial of the Ten Kings",
+      "Last Last Judgement",
+      "Cleansed Crystal Judgement"
+    ],
+    "NAME": "Shiki Eiki Yamazanadu,",
+    "DIALOG": [
+      "To your #rguilt , NL  ~how~  ~ much~  ~ do~  ~ you~  ~ cognize?~ "
+    ]
+  },
+  "FromDeckToHandAction": {
+    "TEXT": [
+      "Choose a card and please it into your hand."
+    ]
+  }
+}

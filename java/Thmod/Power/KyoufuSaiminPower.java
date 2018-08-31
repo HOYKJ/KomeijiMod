@@ -26,16 +26,16 @@ public class KyoufuSaiminPower extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/KyoufuSaiminPower.png");
         this.type = PowerType.DEBUFF;
-        this.counter = 2;
+        this.counter = 3;
     }
 
     public void atEndOfRound() {
-        if(this.counter == 1){
-            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if(this.counter <= 1){
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"KyoufuSaiminPower"));
         }
         else
             this.counter -= 1;
+        AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public int onLoseHp(int damageAmount) {

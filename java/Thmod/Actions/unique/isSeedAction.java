@@ -4,7 +4,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 
 import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Orbs.Helan;
@@ -19,6 +21,8 @@ import Thmod.ThMod;
 import basemod.DevConsole;
 
 public class isSeedAction extends AbstractGameAction {
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("isSeedAction");
+    public static final String[] TEXT = uiStrings.TEXT;
     private static final float startingDuration = 0.5f;
 
     public isSeedAction (){
@@ -88,7 +92,7 @@ public class isSeedAction extends AbstractGameAction {
                 pointPower.elementMix(earth,fire,luna,metal,sun,water,wood,false);
             }
             if(AbstractDungeon.player.hand.size() >= 10)
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,"我的手牌满了"));
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,TEXT[0]));
             else
                 pointPower.cardSelect();
         }

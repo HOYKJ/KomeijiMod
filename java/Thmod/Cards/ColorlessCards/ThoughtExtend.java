@@ -18,7 +18,7 @@ public class ThoughtExtend extends AbstractColorlessCards {
     private static final int COST = 2;
 
     public ThoughtExtend() {
-        super("ThoughtExtend", RidiculousThoughts.NAME,  2, RidiculousThoughts.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+        super("ThoughtExtend", ThoughtExtend.NAME,  2, ThoughtExtend.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
         this.baseMagicNumber = 5;
         this.magicNumber = baseMagicNumber;
     }

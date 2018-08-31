@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import Thmod.Actions.unique.BackInTimeAction;
 import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.vfx.TheWorld;
+import basemod.DevConsole;
 
 public class LinkosWocchi extends AbstractThRelic {
     public static final String ID = "LinkosWocchi";
@@ -46,7 +47,7 @@ public class LinkosWocchi extends AbstractThRelic {
         this.monHP.clear();
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-            if ((target.halfDead) || (!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping)) && (target.hasPower("Minion"))) {
+            if ((target.halfDead) || ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping)) && (!(target.hasPower("Minion"))))) {
                 if(target.halfDead)
                     this.monHP.add(0);
                 else
@@ -65,7 +66,7 @@ public class LinkosWocchi extends AbstractThRelic {
                 AbstractDungeon.actionManager.addToTop(new BackInTimeAction(this.playerHPtobe,this.monHPtobe));
                 AbstractDungeon.actionManager.addToTop(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, true), 2F));
             } else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, "我还不能使用它!"));
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[1]));
             }
         }
     }

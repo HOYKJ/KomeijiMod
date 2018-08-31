@@ -31,7 +31,7 @@ public class RoyalDiamondRing extends AbstractElementSpellCards {
         super.use(p,m);
         for(int i = 0;i < p.orbs.size();i++){
             if(!(p.orbs.get(i) instanceof EmptyOrbSlot)){
-                this.baseDamage += 1;
+                this.damage += 1;
                 AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i,true));
             }
         }

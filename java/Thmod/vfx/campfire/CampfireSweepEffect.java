@@ -81,7 +81,13 @@ public class CampfireSweepEffect extends AbstractGameEffect
         }
         if ((this.selectedCard) && (!(AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())) && (!(this.selectedSweepCard)) && (sweepCards.size() > 0) && (!(AbstractDungeon.gridSelectScreen.forUpgrade)) ) {
             for (localIterator = AbstractDungeon.gridSelectScreen.selectedCards.iterator(); localIterator.hasNext(); ) {
-                AbstractSweepCards c = (AbstractSweepCards)localIterator.next();
+                AbstractCard c = (AbstractCard) localIterator.next();
+//                if(bc instanceof AbstractSweepCards) {
+//                    AbstractSweepCards c = (AbstractSweepCards) bc;
+//                }
+//                else{
+//                    AbstractElementSweepCards c = (AbstractElementSweepCards) bc;
+//                }
                 CardCrawlGame.metricData.addCampfireChoiceData("SWEEP", c.getMetricID());
                 AbstractDungeon.player.masterDeck.removeCard(this.chosencard);
                 AbstractDungeon.effectsQueue.add(new ShowCardAndObtainEffect(c, (float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2)));
@@ -96,13 +102,13 @@ public class CampfireSweepEffect extends AbstractGameEffect
         if ((this.duration < 2F) && (!(this.openedScreen))) {
             this.openedScreen = true;
 
-            AbstractDungeon.gridSelectScreen.open(GetSweepbleCards.getSweepbleCards(), 1, "转换...", false, false, true, true);
+            AbstractDungeon.gridSelectScreen.open(GetSweepbleCards.getSweepbleCards(), 1, TEXT[0], false, false, true, true);
         }
 
         if ((this.duration < 1F) && (this.openedScreen) && (this.selectedCard) && (!(this.openedScreen2)) && (sweepCards.size() > 0)) {
         this.openedScreen2 = true;
 
-        AbstractDungeon.gridSelectScreen.open(sweepCards, 1, "回想起来吧...", false, false, true, true);
+        AbstractDungeon.gridSelectScreen.open(sweepCards, 1, TEXT[1], false, false, true, true);
         }
 
         if (this.duration < 0F) {

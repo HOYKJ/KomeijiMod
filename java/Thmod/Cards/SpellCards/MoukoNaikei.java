@@ -16,11 +16,11 @@ public class MoukoNaikei extends AbstractSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 1;
+    private static final int COST = 0;
     private int pointcost;
 
     public MoukoNaikei() {
-        super("MoukoNaikei", MoukoNaikei.NAME,  1, MoukoNaikei.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
+        super("MoukoNaikei", MoukoNaikei.NAME,  0, MoukoNaikei.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.pointcost = 4;
     }
 
@@ -40,7 +40,7 @@ public class MoukoNaikei extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

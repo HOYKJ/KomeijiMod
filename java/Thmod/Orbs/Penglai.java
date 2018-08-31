@@ -34,7 +34,7 @@ public class Penglai extends AbstractOrb {
         if (Penglai.img1 == null) {
             Penglai.img1 = ImageMaster.loadImage("images/orbs/Penglai.png");
         }
-        this.baseEvokeAmount = 15;
+        this.baseEvokeAmount = 18;
         this.evokeAmount = this.baseEvokeAmount;
         this.basePassiveAmount = 6;
         this.passiveAmount = this.basePassiveAmount;

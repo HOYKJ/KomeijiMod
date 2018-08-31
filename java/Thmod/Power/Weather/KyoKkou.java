@@ -208,7 +208,7 @@ public class KyoKkou extends AbstractPower {
             return damageAmount;
     }
 
-    public int onPlayerGainedBlock(int blockAmount) {
+    public float modifyBlock(float blockAmount) {
         if (this.roll == 8) {
             int roll = MathUtils.random(5);
             flash();

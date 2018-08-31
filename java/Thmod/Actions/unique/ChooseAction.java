@@ -15,13 +15,13 @@ import java.util.ArrayList;
 public class ChooseAction extends AbstractGameAction
 {
     public static final Logger logger;
-    AbstractCard baseCard;
-    AbstractMonster target;
-    CardGroup choices;
+    private AbstractCard baseCard;
+    private AbstractMonster target;
+    private CardGroup choices;
     ArrayList<Runnable> actions;
-    String message;
-    boolean canCancel;
-    int chooseNum;
+    private String message;
+    private boolean canCancel;
+    private int chooseNum;
 
     public ChooseAction(final AbstractCard baseCard, final AbstractMonster target, final String message,final boolean canCancel,final int chooceNum) {
         this.choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
@@ -33,6 +33,7 @@ public class ChooseAction extends AbstractGameAction
         this.duration = Settings.ACTION_DUR_FASTER;
         this.canCancel = canCancel;
         this.chooseNum = chooceNum;
+        this.target = target;
     }
 
     public void add(final String name, final String description, final Runnable action) {

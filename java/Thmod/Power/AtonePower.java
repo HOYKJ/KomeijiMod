@@ -30,9 +30,9 @@ public class AtonePower extends AbstractPower {
         this.type = PowerType.BUFF;
         this.isAttack = isAttack;
         if(this.isAttack)
-            this.desForTurn = "攻击";
+            this.desForTurn = DESCRIPTIONS[2];
         else
-            this.desForTurn = "技能";
+            this.desForTurn = DESCRIPTIONS[3];
         updateDescription();
     }
 

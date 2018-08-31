@@ -1,0 +1,131 @@
+﻿{
+    "NingyouOrb": {
+    "NAME":"Doll",
+    "DESCRIPTION":[
+      " #yPassive: At the end of turn, gain #b",
+      " #yBlock . NL  #yEvoke: Disappear."
+    ]
+  },
+    "YariNingyou": {
+    "NAME":"Spear Doll",
+    "DESCRIPTION":[
+      " #yPassive: Provide #b",
+      " #yStrength . NL  #yEvoke: Lose #yStrength provided. Disarm."
+    ]
+  },
+  "TateNingyou": {
+    "NAME":"Shield Doll",
+    "DESCRIPTION":[
+      " #yPassive: At the end of turn, gain #b",
+      " #yBlock for you. NL  #yEvoke: Disarm."
+    ]
+  },
+  "YumiNingyou": {
+    "NAME":"Bow Doll",
+    "DESCRIPTION":[
+      " #yPassive: At the end of turn, deal #b",
+      " damage to a random enemy. NL  #yEvoke: Disarm."
+    ]
+  },
+  "Shanghai": {
+    "NAME":"ShangHai Doll",
+    "DESCRIPTION":[
+      " #yPassive: Provide #b",
+      " #yStrength . NL  #yEvoke: Lose #yStrength provided. deal #b",
+      "  damage to ALL enemies."
+    ]
+  },
+  "Penglai": {
+    "NAME":"PengLai Doll",
+    "DESCRIPTION":[
+      " #yPassive: Provide #b",
+      " #yStrength . NL  #yEvoke: Lose #yStrength provided. deal #b",
+      "  damage to ALL enemies."
+    ]
+  },
+  "Helan": {
+    "NAME":"HeLan Doll",
+    "DESCRIPTION":[
+      " #yPassive: At the end of turn, gain #b",
+      " #yBlock for you. NL  #yEvoke: Gain #b",
+      " #yPlated #yArmor for you."
+    ]
+  },
+
+
+
+  "EarthOrb": {
+    "NAME":"Element Earth",
+    "DESCRIPTION":[
+      "Element Orb will do effect to the SP cards you can choose. #yResonance: Gain #b8 #yBlock."
+    ]
+  },
+  "FireOrb": {
+    "NAME":"Element Fire",
+    "DESCRIPTION":[
+      "Element Orb will do effect to the SP cards you can choose. #yResonance: Gain #b1 #yStrength."
+    ]
+  },
+  "MetalOrb": {
+    "NAME":"Element Metal",
+    "DESCRIPTION":[
+      "Element Orb will do effect to the SP cards you can choose. #yResonance: Deal #b10 damage to a random enemy."
+    ]
+  },
+  "WaterOrb": {
+    "NAME":"Element Water",
+    "DESCRIPTION":[
+      "Element Orb will do effect to the SP cards you can choose. #yResonance: Gain #b1 #yDexterity."
+    ]
+  },
+  "WoodOrb": {
+    "NAME":"Element Wood",
+    "DESCRIPTION":[
+      "Element Orb will do effect to the SP cards you can choose. #yResonance: Draw #b2 cards."
+    ]
+  },
+  "LunaOrb": {
+    "NAME":"Element Luna",
+    "DESCRIPTION":[
+      " #yPassive: Provide #b",
+      " #yDexterity . NL Element Orb will do effect to the SP cards you can choose."
+    ]
+  },
+  "SunOrb": {
+    "NAME":"Element Sun",
+    "DESCRIPTION":[
+      " #yPassive: Provide #b",
+      " #yStrength . NL Element Orb will do effect to the SP cards you can choose."
+    ]
+  },
+  "KenjiaEarth": {
+    "NAME":"Dimensity Earth",
+    "DESCRIPTION":[
+      " #yDimensity of Element Earth."
+    ]
+  },
+  "KenjiaFire": {
+    "NAME":"Dimensity Fire",
+    "DESCRIPTION":[
+      " #yDimensity of Element Fire."
+    ]
+  },
+  "KenjiaMetal": {
+    "NAME":"Dimensity Metal",
+    "DESCRIPTION":[
+      " #yDimensity of Element Metal."
+    ]
+  },
+  "KenjiaWater": {
+    "NAME":"Dimensity Water",
+    "DESCRIPTION":[
+      " #yDimensity of Element Water."
+    ]
+  },
+  "KenjiaWood": {
+    "NAME":"Dimensity Wood",
+    "DESCRIPTION":[
+      " #yDimensity of Element Wood."
+    ]
+  }
+}

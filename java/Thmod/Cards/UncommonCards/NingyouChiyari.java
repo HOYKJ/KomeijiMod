@@ -31,6 +31,7 @@ public class NingyouChiyari extends AbstractSweepCards {
 
     public NingyouChiyari() {
         super("NingyouChiyari", NingyouChiyari.NAME,  1, NingyouChiyari.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

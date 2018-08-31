@@ -31,7 +31,7 @@ public class FinalSpark extends AbstractSpellCards {
     public FinalSpark() {
         super("FinalSpark", FinalSpark.NAME,  2, FinalSpark.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 12;
-        this.baseMagicNumber = 4;
+        this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
         this.pointcost = 3;
@@ -69,7 +69,7 @@ public class FinalSpark extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

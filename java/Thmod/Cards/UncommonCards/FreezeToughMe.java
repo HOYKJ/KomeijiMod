@@ -19,6 +19,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 2;
     private static final int BLOCK_AMT = 15;
 
@@ -41,10 +42,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            if(AllzhsOpen)
-                this.name = "回忆「急冻大气」";
-            else
-                this.name = "回忆「Freeze Atmosphere」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeMagicNumber(3);
             this.upgradeBlock(5);
@@ -57,5 +55,6 @@ public class FreezeToughMe extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("FreezeToughMe");
         NAME = FreezeToughMe.cardStrings.NAME;
         DESCRIPTION = FreezeToughMe.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = FreezeToughMe.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

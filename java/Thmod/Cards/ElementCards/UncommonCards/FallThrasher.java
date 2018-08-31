@@ -36,6 +36,7 @@ public class FallThrasher extends AbstractElementSweepCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        super.use(p,m);
         if(!(p.hasPower("ThrasherAccumulate"))) {
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new ThrasherAccumulate(p)));
             AbstractDeriveCards c = new Thrasher(1);

@@ -26,15 +26,15 @@ public class WumiGaWareruPower extends AbstractPower {
         this.ID = "WumiGaWareruPower";
         this.owner = owner;
         this.amount = amount;
-        updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/WumiGaWareruPower.png");
         this.type = PowerType.BUFF;
         this.damage = damage;
+        updateDescription();
     }
 
     public void atEndOfTurn(boolean isPlayer) {
         if(isPlayer){
-            if(this.amount > 0){
+            if(this.amount > 1){
                 for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                     AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
@@ -51,6 +51,6 @@ public class WumiGaWareruPower extends AbstractPower {
 
     public void updateDescription()
     {
-        this.description = this.amount + DESCRIPTIONS[0] + this.damage + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.damage + DESCRIPTIONS[2];
     }
 }

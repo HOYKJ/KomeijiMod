@@ -16,6 +16,7 @@ public class HisouNoKen extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = -1;
     private static final int ATTACK_DMG = 5;
 
@@ -40,7 +41,7 @@ public class HisouNoKen extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「气焰万丈之剑」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeDamage(3);
             this.timesUpgraded += 1;
@@ -52,5 +53,6 @@ public class HisouNoKen extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("HisouNoKen");
         NAME = HisouNoKen.cardStrings.NAME;
         DESCRIPTION = HisouNoKen.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = HisouNoKen.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

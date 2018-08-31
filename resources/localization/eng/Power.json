@@ -1,0 +1,544 @@
+﻿{
+  "AbyssNovaPower": {
+    "NAME": "Nucleus Charging!",
+    "DESCRIPTIONS": [
+      " #rWarning!Warning!Warning! "
+    ]
+  },
+  "ChantPower": {
+    "NAME": "Chant",
+    "DESCRIPTIONS": [
+      "Take effect after #b1 Turn."
+    ]
+  },
+    "CounterAttackPower": {
+      "NAME": "Perfact Maid",
+      "DESCRIPTIONS": [
+        "Dodge next #b1 Damage, and deal damage to attacker, gain #b1  #rP ."
+      ]
+    },
+  "DashPower": {
+    "NAME": "Graze!",
+    "DESCRIPTIONS": [
+      "Dodge next #b1 Damage, gain #b1  #rP .",
+      "Dodge next #b"," Damage, gain #b1  #rP ."
+    ]
+  },
+  "DemonsForkAccumulate": {
+    "NAME": "Charging",
+    "DESCRIPTIONS": [
+      "Charging."
+    ]
+  },
+  "FreezePower": {
+    "NAME": "Extremely cold",
+    "DESCRIPTIONS": [
+      "You will be badly injured, only need one tough."
+    ]
+  },
+  "FuubiPower": {
+    "NAME": "Illusionary Dominance",
+    "DESCRIPTIONS": [
+      "Now,you are veeery faaaaaaaaast!"
+    ]
+  },
+  "GasuOrimonoPower": {
+    "NAME": "Orb of Gas-Treated Weave",
+    "DESCRIPTIONS": [
+      " #gVenomousness, dangerous!(You already took the antidote)."
+    ]
+  },
+  "HagoromoKuPower": {
+    "NAME": "Veils Like Sky",
+    "DESCRIPTIONS": [
+      "Whenever you play a Skill, gain block."
+    ]
+  },
+  "HeiyuPower": {
+    "NAME": "Illness Recovery",
+    "DESCRIPTIONS": [
+      "Heal #b2 HP at the end of turn. Stop as if you lose HP."
+    ]
+  },
+  "HenyouMirumePower": {
+    "NAME": "Eyes that View Change",
+    "DESCRIPTIONS": [
+      "Deal #b10 damage to your target when you play a #yAttack."
+    ]
+  },
+  "HibernatePower": {
+    "NAME": "Hibernate",
+    "DESCRIPTIONS": [
+      "Heal HP, cannot do anything. zzz."
+    ]
+  },
+  "IceTornadoPower": {
+    "NAME": "Ice Tornado",
+    "DESCRIPTIONS": [
+      "Deal damage to ALL enemies."
+    ]
+  },
+  "JyouchiPower": {
+    "NAME": "Permanent Border",
+    "DESCRIPTIONS": [
+      "Take effect after be attacked."
+    ]
+  },
+  "JyouchiRei": {
+    "NAME": "Bound Spirit",
+    "DESCRIPTIONS": [
+      "Burst when be attacked."
+    ]
+  },
+  "KamaitachiPower": {
+    "NAME": "Sickle Weasel Veiling",
+    "DESCRIPTIONS": [
+      "Whenever you play #b1 Attack, draw #b1 card."
+    ]
+  },
+  "KoKeiPower": {
+    "NAME": "Tiger Chi Release",
+    "DESCRIPTIONS": [
+      "Next #b1 #yAttack will deal double damage."
+    ]
+  },
+  "KyoufuSaiminPower": {
+    "NAME": "Terrifying Hypnotism",
+    "DESCRIPTIONS": [
+      "Record the damage received this #2 turns, lose same HP at this power's end."
+    ]
+  },
+  "LagDamagePower": {
+    "NAME": "Lag Damage",
+    "DESCRIPTIONS": [
+      "Deal damage when next turn starts."
+    ]
+  },
+  "LunaticRedEyesPower": {
+    "NAME": "Lunatic Red Eyes",
+    "DESCRIPTIONS": [
+      "Whenever you play a card without P point cost, make #b1 copy of card played with Exhaust and Ethereal ,then add to your hand.",
+      " Exhaust .",
+      " Ethereal .",
+      "My hand is full."
+    ]
+  },
+  "MakuraSekiPower": {
+    "NAME": "Rest on Stone, Rinse in Rivers",
+    "DESCRIPTIONS": [
+      "If you are attacked, add a #b\"Rinse with Stone, Rest in Rivers\" to your hand."
+    ]
+  },
+    "MindReadingPower": {
+      "NAME": "Mind Reading",
+      "DESCRIPTIONS": [
+	"At the start of your turn, you will gain buff according to enemy's #bIntents."
+      ]
+    },
+  "MusuNoTegataPower": {
+    "NAME": "Ticket to the Ageless Land",
+    "DESCRIPTIONS": [
+      "Deal damage after #b",
+      " turns. End when you lose HP."
+    ]
+  },
+  "MusuNoYumePower": {
+    "NAME": "Ageless Dream",
+    "DESCRIPTIONS": [
+      "Keep dealing damage, end when you lose HP."
+    ]
+  },
+    "NingyouPower": {
+      "NAME": "人偶",
+      "DESCRIPTIONS": [
+	"爱丽丝做的人偶,为什么会出现在这呢?"
+      ]
+    },
+  "PointPower": {
+    "NAME": "P Point",
+    "DESCRIPTIONS": [
+      "When you played #b4 #yAttacks,gain #b1 #rP Point",
+      "My hand is full",
+      "Fuse fail..."
+    ]
+  },
+  "RokkonShyoujyouDefend": {
+    "NAME": "Slash Clearing the Six Senses",
+    "DESCRIPTIONS": [
+      "Defend next #b1 attack,gain #b1 #rP."
+    ]
+  },
+  "SoulPower": {
+    "NAME": "Spirit",
+    "DESCRIPTIONS": [
+      "Keep healing #b",
+      " HP."
+    ]
+  },
+  "StardustAccumulate": {
+    "NAME": "Charging",
+    "DESCRIPTIONS": [
+      "Charging"
+    ]
+  },
+  "StrengthDownPower": {
+    "NAME": "Missing Purple Power",
+    "DESCRIPTIONS": [
+      "After #b",
+      " turns, lose #b",
+      " #yStrength .You can't gain #yBlock ."
+    ]
+  },
+  "StrengthEndPower": {
+    "NAME": "Missing Power",
+    "DESCRIPTIONS": [
+      "At the end of turn,lose #b",
+      " #yStrength ."
+    ]
+  },
+  "TenmizuPower": {
+    "NAME": "Heavenly Drops",
+    "DESCRIPTIONS": [
+      "On the first and second use, nothing happens, but on the third use?"
+    ]
+  },
+    "TimeLockPower": {
+      "NAME": "Time Lock",
+      "DESCRIPTIONS": [
+	"Its time is locked."
+      ]
+    },
+    "WocchiPower": {
+      "NAME": "Stopwatch",
+      "DESCRIPTIONS": [
+	"At next turn's Start, stop the time."
+      ]
+    },
+  "WumiGaWareruPower": {
+    "NAME": "Sea Split",
+    "DESCRIPTIONS": [
+      "In #b",
+      " turns, keep dealing #b",
+      " damage."
+    ]
+  },
+  "YuumeiPower": {
+    "NAME": "Half Phantoms",
+    "DESCRIPTIONS": [
+      "Whenever you play a #yAttack, it will play twice."
+    ]
+  },
+
+
+
+    "KaiSei": {
+      "NAME": "Pleasant Weather",
+      "DESCRIPTIONS": [
+	"Fly through the sky"
+      ]
+    },
+    "KiriSame": {
+      "NAME": "Drizzle",
+      "DESCRIPTIONS": [
+	"Spell cards are power!"
+      ]
+    },
+    "DonTen": {
+      "NAME": "Dull Cloudy Weather",
+      "DESCRIPTIONS": [
+	"Spell use becomes easier"
+      ]
+    },
+    "SouTen": {
+      "NAME": "Azure Sky",
+      "DESCRIPTIONS": [
+	"Combos become sharper"
+      ]
+    },
+    "Haku": {
+      "NAME": "Hail",
+      "DESCRIPTIONS": [
+	"Spirit attacks become stronger"
+      ]
+    },
+    "HanaGumo": {
+      "NAME": "Hazy Spring Weather",
+      "DESCRIPTIONS": [
+	"Physical attacks become ineffective"
+      ]
+    },
+    "NouMu": {
+      "NAME": "Heavy Fog",
+      "DESCRIPTIONS": [
+	"Become like a vampire"
+      ]
+    },
+    "Yuki": {
+      "NAME": "Snow",
+      "DESCRIPTIONS": [
+	"Become like a ghost"
+      ]
+    },
+    "TenkiYume": {
+      "NAME": "Sun Shower",
+      "DESCRIPTIONS": [
+	"Defence becomes strange"
+      ]
+    },
+    "Soyuki": {
+      "NAME": "Sparse Rain",
+      "DESCRIPTIONS": [
+	"Special moves all go out"
+      ]
+    },
+    "Fuuu": {
+      "NAME": "Rainstorm",
+      "DESCRIPTIONS": [
+	"Aerial combat is more effective"
+      ]
+    },
+    "SeiRan": {
+      "NAME": "Mountain Vapor",
+      "DESCRIPTIONS": [
+	"Cards become invisible"
+      ]
+    },
+    "KawaGiri": {
+      "NAME": "River Mist",
+      "DESCRIPTIONS": [
+	"Distance becomes strange"
+      ]
+    },
+    "TaiFuu": {
+      "NAME": "Typhoon",
+      "DESCRIPTIONS": [
+	"Fights become wild"
+      ]
+    },
+    "Nagi": {
+      "NAME": "Calm",
+      "DESCRIPTIONS": [
+	"Heals your injuries"
+      ]
+    },
+    "DaiyamondoDasuto": {
+      "NAME": "Diamond Dust",
+      "DESCRIPTIONS": [
+	"You snooze, you lose"
+      ]
+    },
+    "Kousa": {
+      "NAME": "Dust Storm",
+      "DESCRIPTIONS": [
+	"Counter hits"
+      ]
+    },
+    "RetsuJitsu": {
+      "NAME": "Blazing Sun",
+      "DESCRIPTIONS": [
+	"Incinerate everything"
+      ]
+    },
+    "Tsume": {
+      "NAME": "Rainy Season",
+      "DESCRIPTIONS": [
+	"Bounce off the ground"
+      ]
+    },
+    "KyoKkou": {
+      "NAME": "Aurora Borealis",
+      "DESCRIPTIONS": [
+	"Anything can happen"
+      ]
+    },
+
+
+
+  "BlueAbnormity": {
+    "NAME": "Abnormity",
+    "DESCRIPTIONS": [
+      "Effect unknown"
+    ]
+  },
+  "GreenAbnormity": {
+    "NAME": "Abnormity",
+    "DESCRIPTIONS": [
+      "Effect unknown"
+    ]
+  },
+  "RedAbnormity": {
+    "NAME": "Abnormity",
+    "DESCRIPTIONS": [
+      "Effect unknown"
+    ]
+  },
+  "HauntPower": {
+    "NAME": "Abnormity",
+    "DESCRIPTIONS": [
+      "Effect unknown"
+    ]
+  },
+
+  "RoundTable": {
+    "NAME": "Doll of Round Table",
+    "DESCRIPTIONS": [
+      "At the end of turn, gain  #yBlock equal to #b",
+      " × #yShield #yDoll 's number ."
+    ]
+  },
+  "AutomatonPower": {
+    "NAME": "Semi-Automaton",
+    "DESCRIPTIONS": [
+      "At the end of turn,cost most #b",
+      " energy, make your Dolls do #yExtra #yAction."
+    ]
+  },
+
+
+
+  "BubblePower": {
+    "NAME": "Sticky Bubble",
+    "DESCRIPTIONS": [
+      "Its owner lose #b",
+      " #yStrength , take effect at the end of Turn. Reduce this by #b1 at start of turn."
+    ]
+  },
+  "CromlechPower": {
+    "NAME": "Lava Cromlech",
+    "DESCRIPTIONS": [
+      "Whenever you play a #yAttack, gain #b",
+      " #yBlock ."
+    ]
+  },
+  "ForestBlazePower": {
+    "NAME": "ForestBlaze",
+    "DESCRIPTIONS": [
+      "#yElement Card cost 0, #yExhaust when you play it."
+    ]
+  },
+  "HardnessPower": {
+    "NAME": "Diamond Hardness",
+    "DESCRIPTIONS": [
+      "Defend next #b",
+      " damage, gain #b1 #rP."
+    ]
+  },
+  "HimawariPower": {
+    "NAME": "Satellite Himawari",
+    "DESCRIPTIONS": [
+      "At start of turn, add #b",
+      " #yElement Card with #yExhaust and #yEthereal to your hand."
+    ]
+  },
+  "KenjiaPower": {
+    "NAME": "Philosopher's Stone",
+    "DESCRIPTIONS": [
+      "At start of turn, get #yDimensity of Fire/Wood/Metal/Earth/Water #yElement."
+    ]
+  },
+  "NextSpear": {
+    "NAME": "Midautumn Spear",
+    "DESCRIPTIONS": [
+      "At start of turn, deal #b",
+      " damage."
+    ]
+  },
+  "PhotosynthesisPower": {
+    "NAME": "Photosynthesis",
+    "DESCRIPTIONS": [
+      "At start of turn, gain",
+      "."
+    ]
+  },
+  "ReflectorPower": {
+    "NAME": "Sunshine Reflector",
+    "DESCRIPTIONS": [
+      "Whenever you are attacked, deal same damage to the attacker."
+    ]
+  },
+  "SelenePower": {
+    "NAME": "Silent Selene",
+    "DESCRIPTIONS": [
+      "Whenever you are attacked, deal #b",
+      " damage to the attacker."
+    ]
+  },
+  "ThrasherAccumulate": {
+    "NAME": "Charging",
+    "DESCRIPTIONS": [
+      "Charging"
+    ]
+  },
+  "TokamakPower": {
+    "NAME": "SelfTokamak",
+    "DESCRIPTIONS": [
+      "Till #b",
+      " turns, gain [R] ."
+    ]
+  },
+  "InfluxPower": {
+    "NAME": "Mana Influx",
+    "DESCRIPTIONS": [
+      "At start of turn, gain ",
+      " ."
+    ]
+  },
+
+
+  "RidiculousPower": {
+    "NAME": "Ridiculous Thoughts",
+    "DESCRIPTIONS": [
+      "At start of turn, add #b",
+      " #yAssociation card to your hand, It costs 0 this turn."
+    ]
+  },
+  "ThoughtExtendPower": {
+    "NAME": "Thoughts Extend",
+    "DESCRIPTIONS": [
+      "Need play #b",
+      " #yAssociation card, gain [R] and draw #b1 card."
+    ]
+  },
+
+
+  "FetterPower": {
+    "NAME": "Fetter of Fate",
+    "DESCRIPTIONS": [
+      "You can't get rid of..."
+    ]
+  },
+  "Judgement": {
+    "NAME": "Judgement",
+    "DESCRIPTIONS": [
+      "Whenever you play #b1 #y",
+      " , gain #b1 #yguilt, and lose #b1 HP.",
+      "Attack",
+      "Skill"
+    ]
+  },
+  "AtonePower": {
+    "NAME": "Atone",
+    "DESCRIPTIONS": [
+      "Whenever you play #b1 #y",
+      " , Reduce #b1 #yguilt.",
+      "Attack",
+      "Skill"
+    ]
+  },
+  "FinalJudgement": {
+    "NAME": "FinalJudgement",
+    "DESCRIPTIONS": [
+      "At start of turn, lose #b2 HP. Every card you played will be #yExhaust."
+    ]
+  },
+
+
+
+  "Breakthrough": {
+    "NAME": "Break through",
+    "DESCRIPTIONS": [
+      "Powerful lunge penetrate block, to the flesh..."
+    ]
+  }
+  
+  }

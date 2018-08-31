@@ -27,9 +27,9 @@ public class Helan extends AbstractOrb {
         if (Helan.img1 == null) {
             Helan.img1 = ImageMaster.loadImage("images/orbs/Helan.png");
         }
-        this.baseEvokeAmount = 5;
+        this.baseEvokeAmount = 4;
         this.evokeAmount = this.baseEvokeAmount;
-        this.basePassiveAmount = 8;
+        this.basePassiveAmount = 7;
         this.passiveAmount = this.basePassiveAmount;
         this.angle = MathUtils.random(360.0f);
         this.cX = AbstractDungeon.player.drawX + AbstractDungeon.player.hb_x;

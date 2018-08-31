@@ -1,0 +1,1219 @@
+﻿{
+    "Agarareta": {
+      "NAME": "Rec\"Scourged Earth\"",
+      "DESCRIPTION": 
+	"Apply Abnormity to ALL enemies. NL Exhaust . Association ."
+    },
+    "Dash_Komeiji": {
+      "NAME": "Graze",
+      "DESCRIPTION": 
+	"Gain 1 Graze."
+    },
+    "Defend_Komeiji": {
+      "NAME": "Defend",
+      "DESCRIPTION": 
+	"Gain !B! Block."
+    },
+  "DemonLordCradle": {
+    "NAME": "Rec\"Demon Lord Cradle\"",
+    "DESCRIPTION":
+    "Deal !D! damage, draw !M! card.",
+    "EXTENDED_DESCRIPTION": [
+      "Rec\"Demon King Cradle\""
+    ]
+  },
+    "Demotivation": {
+      "NAME": "回忆\"丧心丧意\"",
+      "DESCRIPTION": 
+	"使1个敌人获得 !M! 层 虚弱 .",
+      "UPGRADE_DESCRIPTION":
+        "使所有敌人获得 !M! 层 虚弱 ."
+    },
+    "DochyakuKami": {
+      "NAME": "Rec\"Native God's Scourge\"",
+      "DESCRIPTION": 
+	"Apply Abnormity to an enemy. NL Exhaust . Association ."
+    },
+    "HagoromoMizu":{
+      "NAME": "Rec\"Veils Like Water\"",
+      "DESCRIPTION": 
+	"Gain !B! Block , NL deal !D! damage."
+    },
+    "InscribeRedSoul": {
+      "NAME": "Rec\"Inscribe Red Soul\"",
+      "DESCRIPTION": 
+	"Deal !D! to ALL enemies, and apply !M! Vulnerable.",
+      "EXTENDED_DESCRIPTION": [
+        "Rec\"Soul Sculpture\""
+      ]
+    },
+    "JyouchiJin": {
+      "NAME": "Rec\"Permanent Border\"",
+      "DESCRIPTION": 
+	"When you are attacked, deal 8 damage and apply !M! Weak to the attacker. NL Association ."
+    },
+    "KeiseiJin": {
+      "NAME": "Rec\"Cautionary Border\"",
+      "DESCRIPTION": 
+	"Gain !B! Block, apply !M! Weak to an enemy. NL Association ."
+    },
+    "KinbakuJin": {
+      "NAME": "Rec\"Binding Border\"",
+      "DESCRIPTION": 
+	"Apply !M! Weal and Vulnerable to ALL enemies. NL Association ."
+    },
+    "KochyouYume": {
+      "NAME": "回忆\"蝴蝶梦之舞\"",
+      "DESCRIPTION": 
+	"获得1层 擦弹 ,对目标敌人造成 !D! 点伤害."
+    },
+    "MagicStarsSword": {
+      "NAME": "回忆\"Magic Stars Sword\"",
+      "DESCRIPTION": 
+	"对所有敌人造成 !D! 伤害2次."
+    },
+    "MakuraSeki": {
+      "NAME": "Rec\"Rest on Stone, Rinse in Rivers\"",
+      "DESCRIPTION": 
+	"Gain !B! Block. NL If you are attacked in this turn, add one \"Rinse with Stone, Rest in Rivers\" to your hand at next turn's start."
+    },
+    "Melting": {
+      "NAME": "Rec\"Melting Pummel Kick\"",
+      "DESCRIPTION": 
+	"Remove all Block from an enemy. NL Deal !D! damage."
+    },
+    "Mishyaguji": {
+      "NAME": "Rec\"Mishaguji Scourge\"",
+      "DESCRIPTION": 
+	"Whenever any enemy attack, apply 1 Vulnerable to the attacker. NL Exhaust. Association."
+    },
+    "PerfectMaid": {
+      "NAME": "Rec\"Perfect Maid\"",
+      "DESCRIPTION": 
+	"Dodge next 1 attack. NL Deal 1 Static damage to the attacker for 10 times. NL Association."
+    },
+    "RikonNoKama": {
+      "NAME": "Rec\"Spirit-Detaching Scythe\"",
+      "DESCRIPTION": 
+	"Deal !D! damage. NL Make you keep healing !M! HP for 3 turns. NL Association."
+    },
+  "Sabishigari": {
+    "NAME": "Rec\"Lonely Bound Spirit\"",
+    "DESCRIPTION":
+    "Make an enemy binding by 1 Bound Spirit. NL Association."
+  },
+    "Strike_Komeiji": {
+      "NAME": "Spirit Strike",
+      "DESCRIPTION": 
+	"Deal !D! damage.",
+      "UPGRADE_DESCRIPTION": 
+	"Deal !D! damage."
+    },
+    "SuitokuNoKyoryu": {
+      "NAME": "Rec\"Able-Swimming Dragon Fish\"",
+      "DESCRIPTION": 
+	"Gain !M! Dexterity."
+    },
+    "VanishingEverything": {
+      "NAME": "Rec\"Vanishing Everything\"",
+      "DESCRIPTION": 
+	"Gain 1 Graze. NL Draw 2 cards. NL Association."
+    },
+
+
+
+    "DemonsDinnerFork":{
+      "NAME": "Rec\"Demon's Dinner Fork\"",
+      "DESCRIPTION": 
+	"Add 3 \"Dinner Fork\" to your hand.(a 0 cost Attack)",
+      "UPGRADE_DESCRIPTION":
+      "Add 3 \"Dinner Fork +\" to your hand.(a 0 cost Attack)"
+    },
+    "FreezeToughMe":{
+      "NAME": "Rec\"Freeze Tough Me\"",
+      "DESCRIPTION": 
+	"Gain !B! Block. NL Whenever you are attacked this turn, deal !M! damage to the attacker.",
+      "EXTENDED_DESCRIPTION": [
+        "Rec\"Freeze Atmosphere\""
+      ]
+    },
+    "GasuOrimono":{
+      "NAME": "Rec\"Orb of Gas-Treated Weave\"",
+      "DESCRIPTION": 
+	"At the start of your turn, apply !M! Poison to ALL enemies."
+    },
+    "GroundStardust":{
+      "NAME": "Rec\"Ground Stardust\"",
+      "DESCRIPTION": 
+	" Charge. NL Deal Static damage equal to 8+4×turns to ALL enemies, NL Exhaust. Association.",
+      "EXTENDED_DESCRIPTION":[
+        "I'm on charging."
+      ]
+    },
+    "HenyouMirume":{
+      "NAME": "Rec\"Eyes that View Change\"",
+      "DESCRIPTION": 
+	"Next 1 Attack you played will increase 10 Static damage."
+    },
+    "HisouNoKen":{
+      "NAME": "Rec\"Sword of Scarlet Perception\"",
+      "DESCRIPTION": 
+	"Deal !D! damage to ALL enemies X times.",
+      "EXTENDED_DESCRIPTION": [
+        "Rec\"Sword of Ebullience\""
+      ]
+    },
+    "KimairaNoYoku":{
+      "NAME": "Rec\"Chimera's Wings\"",
+      "DESCRIPTION": 
+	"Choose a card from your draw pile and place it into your hand. NL Exhaust.",
+      "UPGRADE_DESCRIPTION":
+      " Innate. NL Choose a card from your draw pile and place it into your hand. NL Exhaust.",
+      "EXTENDED_DESCRIPTION":[
+        "There is no card in my Draw Pile."
+      ]
+    },
+    "KoKei":{
+      "NAME": "Rec\"Tiger Chi Release\"",
+      "DESCRIPTION": 
+	"The next Attack you played will deal double damage. NL Association."
+    },
+    "KokorosuKi":{
+      "NAME": "Rec\"Heart Excerpt Slash\"",
+      "DESCRIPTION": 
+	"Deal !D! damage to ALL enemies. NL Association."
+    },
+    "KouPou":{
+      "NAME": "Rec\"Red Cannon\"",
+      "DESCRIPTION": 
+	"Deal !D! damage. NL Association."
+    },
+    "MajikuruSanhai":{
+      "NAME": "Rec\"Magical Waste-Recycling Bomb\"",
+      "DESCRIPTION": 
+	"Deal 15 Static damage to ALL enemies. NL Add 1 Dazed to your Draw Pile. NL Exhaust. Association."
+    },
+    "MissingPower":{
+      "NAME": "Rec\"Missing Power\"",
+      "DESCRIPTION": 
+	"Gain !M! Strength in this turn."
+    },
+    "MusuNoYume":{
+      "NAME": "Rec\"Ageless Dream\"",
+      "DESCRIPTION": 
+	"Deal !M! Static damage to an enemy. End when you lose HP, at most 3 turns."
+    },
+    "NarrowSpark":{
+      "NAME": "Rec\"Narrow Spark\"",
+      "DESCRIPTION": 
+	"Deal !D! damage to ALL enemies. NL Strength will affects !M! times.",
+      "EXTENDED_DESCRIPTION": [
+        "Rec\"Master Spark\""
+      ]
+    },
+    "RoshinSou": {
+      "NAME": "Rec\"Six Earthquakes -Signs-\"",
+      "DESCRIPTION": 
+	"Deal !D! to ALL enemies. NL Do no effect to Flight unit. NL Association."
+    },
+    "SatsujinDooru": {
+      "NAME": "Rec\"Killing Doll\"",
+      "DESCRIPTION": 
+	"At the start of next turn, deal !M! Static damage to ALL enemies.",
+      "EXTENDED_DESCRIPTION": [
+        "Rec\"Phantomic Killer in Night Mist\""
+      ]
+    },
+  "SeishiRoten": {
+    "NAME": "Rec\"Transmigration Slash\"",
+    "DESCRIPTION":
+    " Echo. NL Deal !D! damage. ALL Transmigration Slash's damage increase 2 in this turn. NL Exhaust. Association."
+  },
+  "SelfTokamak": {
+    "NAME": "Rec\"Self Tokamak\"",
+    "DESCRIPTION":
+    "Lose 3 HP, gain [R] at the start of turn for !M! turns, NL Exhaust."
+  },
+  "SenseofElegance": {
+    "NAME": "Rec\"Sense of Elegance\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL Can be upgraded any number of times."
+  },
+  "SenyouGoraku": {
+    "NAME": "Rec\"Sword of Pleasure After Hardship\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Costs 1 less [R] NL for each time you lose HP in combat. NL Association."
+  },
+  "ShyakuBuku": {
+    "NAME": "Rec\"Preaching Avici\"",
+    "DESCRIPTION":
+    "Deal 0 Static damage. NL Play !M! card on the top of your Draw Pile for no cost."
+  },
+  "TenguNoTaiko": {
+    "NAME": "Rec\"Tengu's Drumbeats\"",
+    "DESCRIPTION":
+    "Draw 1 card. NL Choose 1 card from 3 derivation card and place it to your hand.",
+    "UPGRADE_DESCRIPTION":
+    "Draw 1 card. NL Choose 1 card from 3 upgraded derivation card and place it to your hand."
+  },
+  "VampireKiss": {
+    "NAME": "Rec\"Vampire Kiss\"",
+    "DESCRIPTION":
+    "Deal !D! damage 3 times. NL Heal HP equal to half of unblocked damage. NL Exhaust."
+  },
+  "EnMu": {
+    "NAME": "Rec\"Unpleasant Mist\"",
+    "DESCRIPTION":
+    "Gain 1 Intangible, !M! Vulnerable and Weak. NL Exhaust. Association."
+  },
+  "YoukiSo": {
+    "NAME": "Rec\"Spectre -Sparse-\"",
+    "DESCRIPTION":
+    "Discard !M! a random card. NL Gain [R]  [R] . NL Association."
+  },
+
+
+
+  "AbyssNova": {
+    "NAME": "Rec\"Abyss Nova\"",
+    "DESCRIPTION":
+    "After 3 turns, Deal 60 Static damage to ALL enemies. NL Add 1 Burn to your Discard Pile. NL Exhaust."
+  },
+  "EverywhereHibernate": {
+    "NAME": "Rec\"Can Always Hibernate\"",
+    "DESCRIPTION":
+    "In 3 turns, gain Intangible. NL And keep healing !M! HP, skip your turn."
+  },
+  "HagoromoKu": {
+    "NAME": "Rec\"Veils Like Sky\"",
+    "DESCRIPTION":
+    "Whenever you play a Skill, Gain !M! Block."
+  },
+  "HisouTensoku": {
+    "NAME": "Rec\"Scarlet Weather Stimulation\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL gain 1 a random Weather."
+  },
+  "IceTornado": {
+    "NAME": "Rec\"Ice Tornado\"",
+    "DESCRIPTION":
+    "Gain 2 Intangible. NL At the end of turn, deal !M! /(!M!+2) Static damage to ALL enemies in 2 turns. NL Ethereal."
+  },
+  "JigokuNoTaiyou": {
+    "NAME": "Rec\"Hell's Artificial Sun\"",
+    "DESCRIPTION":
+    " Exhaust your hand. NL Deal !D! damage for each Exhausted card. NL Exhaust."
+  },
+    "LunaDial":{
+      "NAME": "Rec\"Luna Dial\"",
+      "DESCRIPTION": 
+	"Stop an enemy's time. NL Exhaust.",
+      "UPGRADE_DESCRIPTION":
+      "Remove target's Artifact. NL Stop its time. NL Exhaust."
+    },
+  "LunaticRedEyes": {
+    "NAME": "Rec\"Stare of the Hazy Phantom Moon\"",
+    "DESCRIPTION":
+    "Whenever you play a card without P point cost. NL Make a copy with Exhaust and Ethereal, place it into your hand. NL (Won't work with derivation card)",
+    "UPGRADE_DESCRIPTION":
+    "Innate. NL Whenever you play a card without P point cost. NL Make a copy with Exhaust and Ethereal, place it to your hand. NL (Won't work with derivation card)"
+  },
+  "MunenMusou": {
+    "NAME": "Rec\"State of Freedom from Worldly Thoughts\"",
+    "DESCRIPTION":
+    "Gain !B! Block. NL Remove your debuff, Exhaust ALL Curses and Status. NL Draw 1 card for each Exhausted card.",
+    "UPGRADE_DESCRIPTION":
+    "Gain !B! Block. NL Remove your debuff, Exhaust ALL Curses and Status. NL Draw 1 card for each Exhausted card. NL Gain 3 Artifact."
+  },
+  "MusouMyousyu": {
+    "NAME": "Rec\"Fantasy Orb\"",
+    "DESCRIPTION":
+    "Deal !D! to a random enemy for 7 times.",
+    "EXTENDED_DESCRIPTION": [
+      "Rec\"Fantasy Seal\""
+    ]
+  },
+  "TenguhouSokujitsuken": {
+    "NAME": "Rec\"Tengu Newspaper Deadline Day\"",
+    "DESCRIPTION":
+    "At the start of turn, Draw !M! card."
+  },
+  "TerribleSouvenir": {
+    "NAME": "Rec\"Terrible Souvenir\"",
+    "DESCRIPTION":
+    "Apply !M! Weak, Vulnerable and Frail to ALL enemies. NL And they lose !M! Strength and Dexterity. NL Exhaust."
+  },
+  "WumiGaWareru": {
+    "NAME": "Rec\"The Day the Sea Split\"",
+    "DESCRIPTION":
+    "At the start of turn in !M! turns. NL Deal !D! damage to ALL enemies."
+  },
+  "YuumeiNoKurin": {
+    "NAME": "Rec\"Wheel of Pain of the Living and Dead\"",
+    "DESCRIPTION":
+    "In !M! turns. NL Whenever you play Attack,play it twice. NL Apply 1 Weak when use. NL Can be upgraded any number of times.",
+    "EXTENDED_DESCRIPTION": [
+      "Rec\"Dharma of Gumonji Wisdom of the Living and Dead\""
+    ]
+  },
+
+
+
+    "ReiGeki": {
+      "NAME": "Spiritual Strike Talisman",
+      "DESCRIPTION": 
+	" Exhaust ALL the Curses and Status, then draw same number cards. NL cost 1P."
+    },
+    "MajikkuPosyun": {
+      "NAME": "Magic Potion",
+      "DESCRIPTION": 
+	"Gain [R] . NL cost 1P."
+    },
+    "ByoukiHeiyu": {
+      "NAME": "Illness Recovery Charm",
+      "DESCRIPTION": 
+	"At the end of turn, heal 2 HP. NL End when you lose HP, at most 5 turns. NL cost 1P."
+    },
+    "HisouNoKenItem": {
+      "NAME": "Sword of Scarlet Perception",
+      "DESCRIPTION": 
+	"Deal 0 Static damage, gain 1 a random Weather . NL cost 1P."
+    },
+    "Namazu": {
+      "NAME": "Catfish's Great Earthquake",
+      "DESCRIPTION": 
+	"Deal 3 Static damage to yourself, deal 10 Static damage to ALL enemies. NL cost 1P."
+    },
+    "FusyokuKusuri": {
+      "NAME": "符蚀药",
+      "DESCRIPTION": 
+	"随机改变指定敌人的 意图 . NL cost 1P."
+    },
+    "IbukiHisyaku": {
+      "NAME": "Ibuki Gourd",
+      "DESCRIPTION": 
+	"Draw 2 cards. NL cost 1P."
+    },
+    "RyuuSei": {
+      "NAME": "Dragon Star",
+      "DESCRIPTION": 
+	"Gain 1 Artifact. NL cost 1P."
+    },
+    "SanbutsuTenmizu": {
+      "NAME": "Three Heavenly Drops",
+      "DESCRIPTION": 
+	"Gain 1 Heavenly Drop... NL cost 1P."
+    },
+    "SaSen": {
+      "NAME": "Left-Handed Folding Fan",
+      "DESCRIPTION": 
+	"Remove all Block from an enemy. NL cost 1P."
+    },
+    "SeigyoBou": {
+      "NAME": "Control Rod",
+      "DESCRIPTION": 
+	"Gain 3 Strength, but lose 1 Dexterity . NL cost 1P."
+    },
+    "SutoppuWocchi": {
+      "NAME": "Stopwatch",
+      "DESCRIPTION": 
+	"Stop all enemies' time for 1 turn, but you can't attack when time stopping. NL cost 1P."
+    },
+
+
+
+  "BurariHaieki": {
+    "NAME": "Rec\"Aimless Journey to the Abandoned Station\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies !M! times. NL cost 5P."
+  },
+  "DaiesanShikkaiKoroshi": {
+    "NAME": "Rec\"Complete Massacre on Mt.Ooe\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL cost 5P."
+  },
+  "DeepEcologicalBomb": {
+    "NAME": "Rec\"Deep Ecological Bomb\"",
+    "DESCRIPTION":
+    "Deal 25 Static damage to ALL enemies. NL Replace. cost 4P."
+  },
+  "DraculaCradle": {
+    "NAME": "Rec\"Dracula Cradle\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL Draw !M! card. NL Replace. cost 5P."
+  },
+  "EasyMasterSpark": {
+    "NAME": "Rec\"Easy Master Spark\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Strength will affect !M! times. NL Replace. cost 5P."
+  },
+  "EnshinRoten": {
+    "NAME": "Rec\"Slash of Circular Vicissitude\"",
+    "DESCRIPTION":
+    "Deal !D! damage !M! times. NL Replace. cost 3P."
+  },
+  "FinalSpark": {
+    "NAME": "Rec\"Final Spark\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Strength will affect !M! times. NL Replace. cost 3P."
+  },
+    "FusekiShinmei": {
+      "NAME": "Rec\"Unvalued Life, Valued Life\"",
+      "DESCRIPTION": 
+	"Change percentage of HP with an enemy. NL cost 5P."
+    },
+  "FuumaJin": {
+    "NAME": "Rec\"Evil Sealing Circle\"",
+    "DESCRIPTION":
+    "Deal !D! damage and apply !M! Weak to ALL enemies. NL Replace. cost 2P."
+  },
+  "GensouFuubi": {
+    "NAME": "Rec\"Illusionary Dominance\"",
+    "DESCRIPTION":
+    "Add 1 \"Illusionary Strike\" to your hand. NL Apply Illusionary Dominance Power. NL cost 5P."
+  },
+  "HagoromoToki": {
+    "NAME": "Rec\"Veils Like Time\"",
+    "DESCRIPTION":
+    "Gain !B! Block. NL Then you can discard 1 card to deal !D! damage. NL Replace. cost 1P."
+  },
+  "HangonChyou": {
+    "NAME": "Rec\"Resurrection Butterfly\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL When played, permanently upgrade this card (At most 8 times). NL cost 3P.",
+    "EXTENDED_DESCRIPTION": [
+      "Rec\"Resurrection Butterfly -10% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -20% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -30% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -40% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -50% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -60% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -70% Reflowering-\"",
+      "Rec\"Resurrection Butterfly -80% Reflowering-\"",
+      "Rec\"Saigyouji Flawless Nirvana\""
+    ]
+  },
+  "HappouKibaku": {
+    "NAME": "Rec\"Omnidirectional Demon-Binding Circle\"",
+    "DESCRIPTION":
+    "Gain 1 Intangible. NL Deal !D! damage and apply !M! Weak to ALL enemies. NL Replace. cost 4P."
+  },
+  "HeartBreak": {
+    "NAME": "Rec\"Heart Break\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Increase !M! damage for each enemy be penetrated. NL Replace. cost 2P."
+  },
+  "Kamaitachi": {
+    "NAME": "Rec\"Sickle Weasel Veiling\"",
+    "DESCRIPTION":
+    "In this turn. NL Whenever you play 1 Attack, draw 1 card. NL cost 2P."
+  },
+  "KokushiMusou": {
+    "NAME": "Rec\"Peerless Patriot's Elixir\"",
+    "DESCRIPTION":
+    "Gain 2 Strength and Dexterity. NL cost 3P."
+  },
+  "KyoufuSaimin": {
+    "NAME": "Rec\"Terrifying Hypnotism\"",
+    "DESCRIPTION":
+    "Apply !M! Weak, Vulnerable, Frail and 1 Terrifying Hypnotism to ALL enemies. NL And they lose !M! Strength and Dexterity. NL Replace. cost 5P."
+  },
+  "Mireniamu": {
+    "NAME": "Rec\"Millennium Vampire\"",
+    "DESCRIPTION":
+    "Lose !M! Dexterity. NL Your Attack will make you heal HP equal to a quarter of damage. NL Replace. cost 4P."
+  },
+  "MirenKamai": {
+    "NAME": "Rec\"Regretful Bound Spirits\"",
+    "DESCRIPTION":
+    "Make an enemy binding by !M! Bound Spirit. NL Replace. cost 3P."
+  },
+  "MissingPurplePower": {
+    "NAME": "Rec\"Missing Purple Power\"",
+    "DESCRIPTION":
+    "In 3 turns. Gain 12 Strength. NL You can't gain Block. Remove your debuff. NL Replace. cost 4P."
+  },
+  "MoozeNoKiseki": {
+    "NAME": "Rec\"Moses's Miracle\"",
+    "DESCRIPTION":
+    "After 1 turn's Chant. Apply !M! Intangible. NL And keep dealing !D! damage at the start of turn for !M! turns. NL Replace. cost 5P."
+  },
+  "MoukoNaikei": {
+    "NAME": "Rec\"Fierce Tiger Energy Release\"",
+    "DESCRIPTION":
+    "In next turn, your Attack will deal double damage. NL Replace. cost 4P."
+  },
+  "MusouTensei": {
+    "NAME": "Rec\"Fantasy Nature\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies !M! times. NL Replace. cost 5P."
+  },
+  "MusuNoTegata": {
+    "NAME": "Rec\"Ticket to the Ageless Land\"",
+    "DESCRIPTION":
+    "After 3 turns, deal 30 Static damage to ALL enemies. NL End whenever you lose HP. NL Replace. cost 4P."
+  },
+  "RapurasuNoMa": {
+    "NAME": "Rec\"Laplace's Demon\"",
+    "DESCRIPTION":
+    "In this turn. NL Every Attack you played will increase 10 Static damage. NL Replace. cost 3P."
+  },
+  "RokkonShyoujyou": {
+    "NAME": "Rec\"Slash Clearing the Six Senses\"",
+    "DESCRIPTION":
+    "Defend next 1 Attack. NL Deal !D! damage to ALL enemies and remove their buff. NL cost 5P."
+  },
+  "SakuraHirame": {
+    "NAME": "Rec\"Cherry Blossom Flashing\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Replace. cost 3P."
+  },
+  "SakuyaNoSekai": {
+    "NAME": "Rec\"Sakuya's World\"",
+    "DESCRIPTION":
+    "After 1 turn, stop ALL enemies's time for 1 turn. NL Replace. cost 5P."
+  },
+  "SeikonRyuuri": {
+    "NAME": "Rec\"Scythe of Roaming Spirits\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL Keep healing !M! HP for 6 turns. NL Replace. cost 4P."
+  },
+  "SenseofCherryBlossom": {
+    "NAME": "Rec\"Sense of Cherry Blossom\"",
+    "DESCRIPTION":
+    "Deal !D! to ALL enemies. NL Replace. cost 5P."
+  },
+  "SpeartheGungnir": {
+    "NAME": "Rec\"Spear the Gungnir\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Increase !M! damage for each enemy be penetrated. NL Replace. cost 4P."
+  },
+  "TaihouKen": {
+    "NAME": "Rec\"Roc Fist\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL Draw !M! cards. NL Replace. cost 3P."
+  },
+  "TaihouTsuigeki": {
+    "NAME": "Rec\"Roc-Killing Fist\"",
+    "DESCRIPTION":
+    "Deal 3/6 Static damage. NL Then deal !D! damage and draw !M! card. NL Replace. cost 5P."
+  },
+  "TenkeiKisyou": {
+    "NAME": "Rec\"Sword of Meteorological Revelation\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL If you have Weather, will cost it to deal 15 Static damage. NL Replace. cost 4P."
+  },
+  "YomeiIkubaku": {
+    "NAME": "Rec\"Your Days Are Numbered\"",
+    "DESCRIPTION":
+    "Make 1 enemy's HP reduce to half. NL cost 5P."
+  },
+
+
+
+  "DemonsFork": {
+    "NAME": "Dinner Fork",
+    "DESCRIPTION":
+    "Deal !D! to ALL enemies. NL Exhaust, Ethereal."
+  },
+  "FuubiStrike": {
+    "NAME": "Illusionary Strike",
+    "DESCRIPTION":
+    "Deal !D! damage. NL Exhaust, Ethereal. NL Has Echo when you have Illusionary Dominance power."
+  },
+    "SouSeki": {
+      "NAME": "Rec\"Rinse with Stone, Rest in Rivers\"",
+      "DESCRIPTION": 
+	"Deal !D! damage. NL Exhaust, Ethereal."
+    },
+  "Stardust": {
+    "NAME": "Trigger",
+    "DESCRIPTION":
+    "Deal Static damage equal to 8+4×turns to ALL enemies. NL Exhaust, Ethereal. NL （Deal !M! damage.）",
+    "EXTENDED_DESCRIPTION": [
+      " NL （Deal !M! damage.）"
+      ]
+  },
+  "TaikoStrike": {
+    "NAME": "Rec\"Tengu's Drumbeats-A\"",
+    "DESCRIPTION":
+    "Deal !D! damage. NL Exhaust, Ethereal."
+  },
+  "TaikoDefend": {
+    "NAME": "Rec\"Tengu's Drumbeats-B\"",
+    "DESCRIPTION":
+    "Gain !B! Block. NL Exhaust, Ethereal."
+  },
+  "TaikoAoe": {
+    "NAME": "Rec\"Tengu's Drumbeats-C\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL Exhaust, Ethereal."
+  },
+  "Thrasher": {
+    "NAME": "Trigger",
+    "DESCRIPTION":
+    "Deal !D! damage to a random enemy !M! times. NL Exhaust, Ethereal."
+  },
+  "Torch": {
+    "NAME": "Torch",
+    "DESCRIPTION":
+    "Some comfort in darkness of despair...",
+    "EXTENDED_DESCRIPTION":[
+      "The unyielding fire desire to continue...",
+      "Light the torch, bring you hope...",
+      "Dancing blaze scatters the darkness...",
+      "Beacon of light tells you the way it is!"
+    ]
+  },
+  "MixedItem": {
+    "NAME": "Combined device",
+    "DESCRIPTION":
+    ""
+  },
+
+
+  "Nothing": {
+    "NAME": "List of Easter Eggs",
+    "DESCRIPTION":
+    "Hey! You can check the Easter Eggs you had found there."
+  },
+  "TheWorld": {
+    "NAME": "The World!",
+    "DESCRIPTION":
+    "Heard \"The World!\" when use time stopping."
+  },
+  "SpontaneousDetonation": {
+    "NAME": "Peerless Patriot's Elixir!!!!",
+    "DESCRIPTION":
+    "Explode after drink 4 \"Peerless Patriot's Elixir\"."
+  },
+  "Scarlet": {
+    "NAME": "Defeat Scarlet",
+    "DESCRIPTION":
+    "Summoned and defeat Scarlet."
+  },
+  "MuyoNehan": {
+    "NAME": "Flawless Nirvana",
+    "DESCRIPTION":
+    "Use \"Resurrection Butterfly\" for 8 times."
+  },
+  "THsWorld": {
+    "NAME": "Welcome to the world of SL",
+    "DESCRIPTION":
+    "Obtain the Relic\"Reverse Watch\"."
+  },
+  "ScarletsBlessing": {
+    "NAME": "Blessing of Scarlet",
+    "DESCRIPTION":
+    "Obtain Blessing card: Scarlet."
+  },
+  "RakuenSaibancyou": {
+    "NAME": "Supreme Judge of Paradise",
+    "DESCRIPTION":
+    "Meet Shikieiki."
+  },
+  "Innocent": {
+    "NAME": "Innocent",
+    "DESCRIPTION":
+    "Remit by Shikieiki."
+  },
+  "CheckPenglai": {
+    "NAME": "\"Sensitive Words\" Event",
+    "DESCRIPTION":
+    "Read the last page of \"Mysterious Book\"."
+  },
+
+
+  "RidiculousThoughts": {
+    "NAME": "Ridiculous Thoughts",
+    "DESCRIPTION":
+    "At the start of turn. Add !M! Association card to your hand. NL It costs 0 this turn."
+  },
+  "ThoughtExtend": {
+    "NAME": "Thoughts Extend",
+    "DESCRIPTION":
+    "Whenever you play !M! Association card. Gain [R] and draw 1 card."
+  },
+
+
+  "MiserableFate": {
+    "NAME": "Rec\"Miserable Fate\"",
+    "DESCRIPTION":
+    "Absorb !M! Strength and apply 99 Weak and Vulnerable to an enemy. NL Exhaust."
+  },
+  "ScarletDevil": {
+  "NAME": "Rec\"Scarlet Devil\"",
+  "DESCRIPTION":
+  "Deal !D! to ALL enemies for !M! times. NL Exhaust."
+},
+  "RemiliaStretch": {
+    "NAME": "Rec\"Remilia Stretch\"",
+    "DESCRIPTION":
+    "Deal !D! Purely Damage. NL Exhaust."
+  },
+
+
+  "NingyouFukuhei": {
+    "NAME": "Rec\"Doll Ambush\"",
+    "DESCRIPTION":
+    "Choose 1 Doll and Gain: Spear Doll, Shield Doll, Archer Doll. NL Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose 1 Doll",
+      "Spear Doll","Obtain 1 Spear Doll .",
+      "Shield Doll","Obtain 1 Shield Doll .",
+      "Archer Doll","Obtain 1 Archer Doll ."
+    ]
+  },
+  "NingyouKisou": {
+    "NAME": "Rec\"Returning Dolls\"",
+    "DESCRIPTION":
+    "Deal !D! damage to ALL enemies. NL  Gain 1 Doll. NL Association."
+  },
+  "NingyouShinki": {
+    "NAME": "Rec\"Doll Activation\"",
+    "DESCRIPTION":
+    "Choose most 3 Doll to Evoke. Deal damage equal to 6×each Doll be Evoked to ALL enemies. NL Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose most 3 Doll",
+      "Doll","Simple Doll.",
+      "Spear Doll"," Spear Doll.",
+      "Shield Doll"," Shield Doll.",
+      "Archer Doll"," Archer Doll.",
+      "ShangHai"," ShangHai Doll.",
+      "PengLai"," PengLai Doll.",
+      "HeLan"," HeLan Doll."
+    ]
+  },
+  "NingyouSousou":{
+    "NAME": "Rec\"Doll Placement\"",
+    "DESCRIPTION":
+    "Gain !B! Block. Deal !D! damage. NL  Gain 1 Doll. NL Association."
+  },
+  "NingyouSP":{
+    "NAME": "Rec\"SP Doll\"",
+    "DESCRIPTION":
+    "Gain most !M! Doll. NL Association."
+  },
+  "SeekerWire":{
+    "NAME": "Rec\"Seeker Wire\"",
+    "DESCRIPTION":
+    "Gain !M! slots. NL Ethereal. Association."
+  },
+
+  "ArtfulChanter":{
+    "NAME": "Rec\"Artful Chanter\"",
+    "DESCRIPTION":
+    " Evoke 1 Doll. Draw !M! cards.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose 1 Doll to Evoke"
+    ]
+  },
+  "LittleLegion":{
+    "NAME": "Rec\"Little Legion\"",
+    "DESCRIPTION":
+    " Arm ALL Simple Doll. NL Exhaust.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose one kind of Doll to Arm to",
+      "Spear Doll","Arm to Spear Doll .",
+      "Shield Doll","Arm to Shield Doll .",
+      "Archer Doll","Arm to Archer Doll ."
+    ]
+  },
+  "NingyouChiyari":{
+    "NAME": "Rec\"Thousand Spear Dolls\"",
+    "DESCRIPTION":
+    "Choose most 3 Doll to Arm to Spear Doll. NL Exhaust. Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose most 3 Doll to Arm"
+    ]
+  },
+  "NingyouKasou":{
+    "NAME": "Rec\"Doll Cremation\"",
+    "DESCRIPTION":
+    " Evoke 1 Doll. Deal !D! damage and draw !M! card. NL Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose 1 Doll to Evoke"
+    ]
+  },
+  "NingyouMusou":{
+    "NAME": "Rec\"Doll Negation\"",
+    "DESCRIPTION":
+    " Evoke most 2 Doll. Gain [R] for each Doll be Evoked. NL Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose most 2 Doll to Evoke"
+    ]
+  },
+  "NingyouOkisou":{
+    "NAME": "Rec\"Doll Arrangement\"",
+    "DESCRIPTION":
+    "Choose most 3 Doll to Arm to Shield Doll. NL Exhaust. Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose most 3 Doll to Arm"
+    ]
+  },
+  "NingyouYunhei":{
+    "NAME": "Rec\"Doll Archers\"",
+    "DESCRIPTION":
+    "Choose most 3 Doll to Arm to Archer Doll. NL Exhaust. Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose most 3 Doll to Arm"
+    ]
+  },
+  "OoedoNingyou":{
+    "NAME": "Rec\"Ooedo Explosive Marionette\"",
+    "DESCRIPTION":
+    " Evoke 1 Doll. Deal !D! damage. NL Association.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose 1 Doll to Evoke"
+    ]
+  },
+  "SeekerDolls":{
+    "NAME": "Rec\"Seeker Dolls\"",
+    "DESCRIPTION":
+    "Gain 1 Doll. NL Gain buff according to enemy's #bIntents.",
+    "UPGRADE_DESCRIPTION":
+    "Gain 1 Doll. NL Gain higher buff according to enemy's #bIntents."
+  },
+
+  "HelanNingyou":{
+    "NAME": "Rec\"Helan Doll\"",
+    "DESCRIPTION":
+    "Gain 1 Helan Doll. NL Ethereal .",
+    "UPGRADE_DESCRIPTION":
+    "Gain 1 Helan Doll."
+  },
+  "MiraiBunraku":{
+    "NAME": "Rec\"Futuristic Bunraku\"",
+    "DESCRIPTION":
+    "Apply !M! Focus."
+  },
+  "SemiAutomaton":{
+    "NAME": "Rec\"Semi-Automaton\"",
+    "DESCRIPTION":
+    "Apply !M! Semi-Automaton. It will cost remainder [R] to make Doll do Extra Action.",
+    "UPGRADE_DESCRIPTION":
+    "Innate. NL Apply !M! Semi-Automaton. It will cost remainder [R] to make Doll do Extra Action."
+  },
+  "ShanghaiNingyou":{
+    "NAME": "Rec\"Shanghai Doll\"",
+    "DESCRIPTION":
+    "Gain 1 Shanghai Doll. NL Ethereal .",
+    "UPGRADE_DESCRIPTION":
+    "Gain 1 Shanghai Doll."
+  },
+
+  "CuteOchiyari":{
+    "NAME": "Rec\"Cutie Phalanx\"",
+    "DESCRIPTION":
+    "Deal damage equal to !D! × number of Spear Doll. NL cost 3P."
+  },
+  "DollofRoundTable":{
+    "NAME": "Rec\"Doll of Round Table\"",
+    "DESCRIPTION":
+    "Apply Doll of Round Table power. NL It will make Shield Doll gain !M! more Block for you at the end of turn.(Can be increased by Dexterity) NL cost 3P."
+  },
+  "DollsWar":{
+    "NAME": "Rec\"Doll's War\"",
+    "DESCRIPTION":
+    "Apply Strength equal to !M! × number of Archer Doll. NL cost 4P."
+  },
+  "LemmingsParade":{
+    "NAME": "Rec\"Lemmings' Parade\"",
+    "DESCRIPTION":
+    "Evoke ALL Doll. Deal damage equal to !D! × each Doll be Evoked to ALL enemies. NL cost 5P."
+  },
+  "PenglaiNingyou":{
+    "NAME": "Rec\"Penglai Doll\"",
+    "DESCRIPTION":
+    "Gain 1 Penglai Doll. NL cost 4P."
+  },
+  "ReturnInanimateness":{
+    "NAME": "Rec\"Return Inanimateness\"",
+    "DESCRIPTION":
+    " Evoke 1 Doll. Deal !D! damage and Draw !M! cards. NL cost 3P.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose 1 Doll to Evoke"
+    ]
+  },
+  "TripWire":{
+    "NAME": "Rec\"Trip Wire\"",
+    "DESCRIPTION":
+    "Gain Block equal to !B! × number of Doll. NL cost 2P."
+  },
+  "FocusManipulate":{
+    "NAME": "Rec\"Focus Manipulate\"",
+    "DESCRIPTION":
+    "Lose 1 slot. Apply !M! Focus. NL cost 2P."
+  },
+
+
+  "CondensedBubble":{
+    "NAME": "Rec\"Condensed Bubble\"",
+    "DESCRIPTION":
+    " Element Water. NL Gain !M! Plated Armor. NL Association."
+  },
+  "StickyBubble":{
+    "NAME": "Rec\"Sticky Bubble\"",
+    "DESCRIPTION":
+    " Element Water. NL Apply !M! Sticky Bubble to an enemy. NL Echo . Association."
+  },
+  "SummerFlame":{
+    "NAME": "Rec\"Summer Flame\"",
+    "DESCRIPTION":
+    " Element Fire. NL Deal !D! damage to ALL enemies. NL Association."
+  },
+  "SummerRed":{
+    "NAME": "Rec\"Summer Red\"",
+    "DESCRIPTION":
+    " Element Fire, Innate. NL Deal !D! damage. NL Association."
+  },
+  "WinterElement":{
+    "NAME": "Rec\"Winter Element\"",
+    "DESCRIPTION":
+    " Element Water. NL Deal !D! damage and apply !M! Weak to an enemy. NL Association."
+  },
+  "WipeMoisture":{
+    "NAME": "Rec\"Wipe Moisture\"",
+    "DESCRIPTION":
+    " Element Fire. NL Deal !D! damage. NL Echo . Association."
+  },
+
+
+  "AutumnBlades":{
+    "NAME": "Rec\"Autumn Blades\"",
+    "DESCRIPTION":
+    " Element Metal. NL Deal !D! damage and apply !M! Vulnerable to ALL enemies. NL Association."
+  },
+  "AutumnEdge":{
+    "NAME": "Rec\"Autumn Edge\"",
+    "DESCRIPTION":
+    " Element Metal. NL Deal !D! damage to a random enemy for !M! times. NL Association."
+  },
+  "DiamondHardness":{
+    "NAME": "Rec\"Diamond Hardness\"",
+    "DESCRIPTION":
+    " Element Earth. NL Defend next 1 Attack. NL Association."
+  },
+  "EmeraldCity":{
+    "NAME": "Rec\"Emerald City\"",
+    "DESCRIPTION":
+    " Element Earth. NL Gain !B! Block. Then deal damage equal your Block. NL Association.",
+    "UPGRADE_DESCRIPTION":
+    " NL (Deal !D! damage)"
+  },
+  "FallThrasher":{
+    "NAME": "Rec\"Fall Thrasher\"",
+    "DESCRIPTION":
+    " Element Metal. Charge. NL Deal !M! damage to a random enemy for (turns of Charging) times. NL Association."
+  },
+  "FlashOfSpring":{
+    "NAME": "Rec\"Flash Of Spring\"",
+    "DESCRIPTION":
+    " Element Wood. NL Deal !D! damage and draw !M! card. NL Association."
+  },
+  "MidautumnSpear":{
+    "NAME": "Rec\"Midautumn Spear\"",
+    "DESCRIPTION":
+    " Element Earth. NL Deal !D! damage and deal same damage at the start of next turn. NL Association."
+  },
+  "SpringWind":{
+    "NAME": "Rec\"Spring Wind\"",
+    "DESCRIPTION":
+    " Element Wood. NL Draw !M! card and gain !B! Block. NL Association."
+  },
+  "StaticGreen":{
+    "NAME": "Rec\"Static Green\"",
+    "DESCRIPTION":
+    " Element Wood. NL Gain !M! [R]. NL Association."
+  },
+
+
+  "ElementInvoke":{
+    "NAME": "\"Element Invoke\"",
+    "DESCRIPTION":
+    "Gain a random Element orb, until your slots are full. NL Ethereal.",
+    "UPGRADE_DESCRIPTION":
+    "Gain a random Element orb, until your slots are full."
+  },
+  "ElementMix":{
+    "NAME": "\"Element Fuse\"",
+    "DESCRIPTION":
+    "Choose 2 Element orbs. NL Add a Spell Card base on them. NL Exhaust.",
+    "UPGRADE_DESCRIPTION":
+    "Choose 2 Element orbs. NL Add a Spell Card base on them.",
+    "EXTENDED_DESCRIPTION":[
+      "Choose 2 Element orbs",
+      "Earth","Element Earth.",
+      "Fire","Element Fire",
+      "Luna","Element Luna",
+      "Metal","Element Metal",
+      "Sun","Element Sun",
+      "Water","Element Water",
+      "Wood","Element Wood"
+    ]
+  },
+  "RoyalFlare":{
+    "NAME": "Rec\"Royal Flare\"",
+    "DESCRIPTION":
+    " Element Sun. NL Deal !D! damage to ALL enemies."
+  },
+  "SilentSelene":{
+    "NAME": "Rec\"Silent Selene\"",
+    "DESCRIPTION":
+    " Element Luna. NL Apply 1 Intangible. In this turn, whenever you be attacked, deal !M! Static damage to the attacker. NL Exhaust."
+  },
+
+
+  "ElementalHarvester":{
+    "NAME": "Rec\"Elemental Harvester\"",
+    "DESCRIPTION":
+    " Element Metal&Wood. NL Gain !B! Block and draw !M! cards."
+  },
+  "ElementExtend":{
+    "NAME": "Rec\"Element Extend\"",
+    "DESCRIPTION":
+    "Gain !M! slots. NL Exhaust 2P."
+  },
+  "EmeraldMegalopolis":{
+    "NAME": "Rec\"Emerald Megalopolis\"",
+    "DESCRIPTION":
+    " Element Earth&Metal. NL Your Block no longer expires at the start of turn."
+  },
+  "ForestBlaze":{
+    "NAME": "Rec\"Forest Blaze\"",
+    "DESCRIPTION":
+    " Element Wood&Fire. NL Element cards cost 0. NL Whenever you play a Element card, Exhaust it."
+  },
+  "HydrogenousProminence":{
+    "NAME": "Rec\"Hydrogenous Prominence\"",
+    "DESCRIPTION":
+    " Element Sun&Water. NL Deal 3 damage to a random enemy for each Element orb Gained this combat..",
+    "EXTENDED_DESCRIPTION":[
+    " NL (For !M! times)"
+      ]
+  },
+  "JellyfishPrincess":{
+    "NAME": "Rec\"Jellyfish Princess\"",
+    "DESCRIPTION":
+    " Element Water. NL Apply !M! Plated Armor. NL Replace. cost 3P."
+  },
+  "KenjiaNoSeki":{
+    "NAME": "Rec\"贤者之石\"",
+    "DESCRIPTION":
+    " Element Fire&Water&Wood&Metal&Earth. NL At the start of turn, gain Dimensity of Fire/Wood/Metal/Earth/Water Element. For 5 turns."
+  },
+  "LavaCromlech":{
+    "NAME": "Rec\"Lava Cromlech\"",
+    "DESCRIPTION":
+    " Element Fire&Earth. NL Whenever you play 1 Attack, gain !M! Block."
+  },
+  "MercuryPoison":{
+    "NAME": "Rec\"Mercury Poison\"",
+    "DESCRIPTION":
+    " Element Metal&Water. NL Apply !D! Poison, !M! Weak and Vulnerable to ALL enemies.."
+  },
+  "NoachianDeluge":{
+    "NAME": "Rec\"Noachian Deluge\"",
+    "DESCRIPTION":
+    " Element Earth&Water. NL Deal !D! damage to a random !M! times."
+  },
+  "PhlogisticPillar":{
+    "NAME": "Rec\"Phlogistic Pillar\"",
+    "DESCRIPTION":
+    " Element Fire&Water. NL Deal !D! damage and apply !M! Weak to ALL enemies."
+  },
+  "Photosynthesis":{
+    "NAME": "Rec\"Photosynthesis\"",
+    "DESCRIPTION":
+    " Element Sun&Wood. NL At the start of turn, gain [R] ."
+  },
+  "RoyalDiamondRing":{
+    "NAME": "Rec\"Royal Diamond Ring\"",
+    "DESCRIPTION":
+    " Element Sun&Luna. NL Evoke ALL Element orb, deal damage equal to the number of Evoked Element orb to ALL enemies for 10 times."
+  },
+  "SatelliteHimawari":{
+    "NAME": "Rec\"Satellite Himawari\"",
+    "DESCRIPTION":
+    " Element Luna&Wood. NL At the start of turn. Add a Element card with Exhaust and Ethereal add to your hand, it cost 0."
+  },
+  "StElmoPillar":{
+    "NAME": "Rec\"St. Elmo Pillar\"",
+    "DESCRIPTION":
+    " Element Fire&Metal. NL Deal !D! damage and apply !M! Vulnerable to an enemy."
+  },
+  "SunshineReflector":{
+    "NAME": "Rec\"Sunshine Reflector\"",
+    "DESCRIPTION":
+    " Element Luna&Metal. NL In this turn, whenever you are attacked, deal same damage to the attacker."
+  },
+  "WaterElf":{
+    "NAME": "Rec\"Water Elf\"",
+    "DESCRIPTION":
+    " Element Water&Wood. NL ALL enemies lose !M! Strength."
+  },
+  "ElementInflux":{
+    "NAME": "Rec\"Mana Influx\"",
+    "DESCRIPTION":
+    "Lose 3 slots. At the start of turn, gain [R] . NL Exhaust 2P."
+  },
+
+
+  "Fetter":{
+    "NAME": "Fetter of Fate",
+    "DESCRIPTION":
+    "You can never get rid of..."
+  },
+  "Confused":{
+    "NAME": "Confused",
+    "DESCRIPTION":
+    "Exhaust when you draw this. Then apply !M! Weak and Vulnerable to you."
+  },
+  "Exhaustion":{
+    "NAME": "Exhaustion",
+    "DESCRIPTION":
+    "Exhaust when you draw this. Then apply !M! Constricted to you."
+  },
+
+
+  "BlessingOfTime":{
+    "NAME": "Time",
+    "DESCRIPTION":
+    " Blessing, Permanent. NL Draw !M! card."
+  },
+  "BlessingOfScarlet":{
+    "NAME": "Scarlet",
+    "DESCRIPTION":
+    " Blessing. NL Apply !M! Strength. NL Draw !M! card."
+  },
+  "Determination":{
+    "NAME": "Determination",
+    "DESCRIPTION":
+    " Blessing. NL Heal !M! HP. NL Draw !M! card."
+  },
+  "Remission":{
+    "NAME": "Remission",
+    "DESCRIPTION":
+    " Blessing . NL Remove your debuff. NL Draw !M! card."
+  },
+
+
+  "WeatherTest":{
+    "NAME": "WeatherTest",
+    "DESCRIPTION":
+    ""
+  },
+
+
+
+
+    "SpellCards": {
+     "EXTENDED_DESCRIPTION": [
+       "Recollect 1 Spell Card...",
+       "Choose next action",
+       "Choose specification",
+       "Choose a fitting",
+       "I don't have enough P point."
+    ]
+  }
+  }

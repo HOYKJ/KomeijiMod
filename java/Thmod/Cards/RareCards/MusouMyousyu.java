@@ -17,6 +17,7 @@ public class MusouMyousyu extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 3;
     private static final int ATTACK_DMG = 5;
 
@@ -38,7 +39,7 @@ public class MusouMyousyu extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「梦想封印」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeDamage(1);
             this.timesUpgraded += 1;
@@ -50,5 +51,6 @@ public class MusouMyousyu extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("MusouMyousyu");
         NAME = MusouMyousyu.cardStrings.NAME;
         DESCRIPTION = MusouMyousyu.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = MusouMyousyu.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

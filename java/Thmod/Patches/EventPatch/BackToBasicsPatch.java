@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.events.thecity.BackToBasics", method="upgradeStrikeAndDefends")
+@SpirePatch(cls="com.megacrit.cardcrawl.events.city.BackToBasics", method="upgradeStrikeAndDefends")
 public class BackToBasicsPatch
 {
     @SpireInsertPatch(rloc=0)

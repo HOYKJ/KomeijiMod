@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.GameCursor;
 import com.megacrit.cardcrawl.core.Settings;
@@ -812,19 +813,21 @@ public class CustomRelicViewScreen
                 }
                 oriFound = true;
             }
-            HashMap<String, HashMap<String, AbstractRelic>> tmpmap = BaseMod.getAllCustomRelics();
+            HashMap<AbstractCard.CardColor, HashMap<String, AbstractRelic>> tmpmap = BaseMod.getAllCustomRelics();
+            Color tmpcolor = new Color();
             boolean found = false;
             for (Iterator localIterator2 = tmpmap.keySet().iterator(); localIterator2.hasNext();)
             {
-                String c = (String)localIterator2.next();
+                AbstractCard.CardColor c = (AbstractCard.CardColor)localIterator2.next();
                 for (String rn : (tmpmap.get(c)).keySet()) {
-                    if ((tmpmap.get(c)).get(rn) == r)
+                    if (((HashMap)tmpmap.get(c)).get(rn) == r)
                     {
+                        tmpcolor = BaseMod.getFrameOutlineColor(c);
                         found = true;
                     }
                 }
             }
-
+            AbstractCard.CardColor c;
             if (found)
             {
                 if (UnlockTracker.isRelicLocked(r.relicId)) {

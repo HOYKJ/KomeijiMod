@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
 
+import Thmod.Cards.SpellCards.AbstractSpellCards;
+
 public class JellyfishPrincess extends AbstractElementSpellCards {
     public static final String ID = "JellyfishPrincess";
     private static final CardStrings cardStrings;
@@ -42,7 +44,7 @@ public class JellyfishPrincess extends AbstractElementSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

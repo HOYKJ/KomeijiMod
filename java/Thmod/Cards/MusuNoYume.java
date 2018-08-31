@@ -25,7 +25,7 @@ public class MusuNoYume extends AbstractKomeijiCards {
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new MusuNoYumePower(m,this.magicNumber)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new MusuNoYumePower(m,this.magicNumber),3));
     }
 
     public AbstractCard makeCopy() {
@@ -35,7 +35,7 @@ public class MusuNoYume extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(2);
+            this.upgradeMagicNumber(3);
         }
     }
 

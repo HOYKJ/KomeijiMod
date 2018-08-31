@@ -14,6 +14,12 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+
+import Thmod.Relics.BookofPenglai;
+import Thmod.Relics.FamiliarSpoon;
+import Thmod.ThMod;
 
 public class MindReadingPower extends AbstractPower {
     public static final String POWER_ID = "MindReadingPower";
@@ -34,6 +40,34 @@ public class MindReadingPower extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/MindReadingPower.png");
         this.type = PowerType.BUFF;
+    }
+
+    public void atStartOfTurn() {
+        if (AbstractDungeon.player.hasRelic("Strange Spoon")) {
+            AbstractDungeon.player.loseRelic("Strange Spoon");
+            AbstractRelic relic = new FamiliarSpoon();
+            UnlockTracker.markRelicAsSeen(relic.relicId);
+            relic.obtain();
+            relic.isObtained = true;
+            relic.isAnimating = false;
+            relic.isDone = false;
+        }
+        if (ThMod.blessingOfDetermination == 2){
+            boolean giveBook = true;
+            for (AbstractRelic r : p.relics){
+                if(r instanceof BookofPenglai) {
+                    giveBook = false;
+                    break;
+                }
+            }
+            if(giveBook) {
+                AbstractRelic relic = new BookofPenglai();
+                relic.obtain();
+                relic.isObtained = true;
+                relic.isAnimating = false;
+                relic.isDone = false;
+            }
+        }
     }
 
     public void atStartOfTurnPostDraw() {

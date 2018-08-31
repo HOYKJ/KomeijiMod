@@ -30,16 +30,16 @@ public class Judgement extends AbstractPower {
         this.img = ImageMaster.loadImage("images/power/32/Judgement.png");
         this.type = PowerType.BUFF;
         this.turnToJudge = false;
-        this.desForTurn = "技能";
+        this.desForTurn = DESCRIPTIONS[3];
         updateDescription();
     }
 
     public void atStartOfTurn() {
         this.turnToJudge = !this.turnToJudge;
         if(this.turnToJudge)
-            this.desForTurn = "攻击";
+            this.desForTurn = DESCRIPTIONS[2];
         else
-            this.desForTurn = "技能";
+            this.desForTurn = DESCRIPTIONS[3];
         updateDescription();
     }
 

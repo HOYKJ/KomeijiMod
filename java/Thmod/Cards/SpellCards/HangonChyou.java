@@ -18,6 +18,7 @@ public class HangonChyou extends AbstractSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 1;
     private int pointcost;
 
@@ -28,34 +29,34 @@ public class HangonChyou extends AbstractSpellCards {
         this.pointcost = 3;
         switch (Times){
             case 0:
-                this.name = "回忆「反魂蝶 -一分咲-」";
+                this.name = EXTENDED_DESCRIPTION[0];
                 break;
             case 1:
-                this.name = "回忆「反魂蝶  -贰分咲-」";
+                this.name = EXTENDED_DESCRIPTION[1];
                 break;
             case 2:
-                this.name = "回忆「反魂蝶  -参分咲-」";
+                this.name = EXTENDED_DESCRIPTION[2];
                 break;
             case 3:
-                this.name = "回忆「反魂蝶  -肆分咲-」";
+                this.name = EXTENDED_DESCRIPTION[3];
                 break;
             case 4:
-                this.name = "回忆「反魂蝶  -伍分咲-」";
+                this.name = EXTENDED_DESCRIPTION[4];
                 break;
             case 5:
-                this.name = "回忆「反魂蝶  -陆分咲-」";
+                this.name = EXTENDED_DESCRIPTION[5];
                 break;
             case 6:
-                this.name = "回忆「反魂蝶  -柒分咲-」";
+                this.name = EXTENDED_DESCRIPTION[6];
                 break;
             case 7:
-                this.name = "回忆「反魂蝶  -八分咲-」";
+                this.name = EXTENDED_DESCRIPTION[7];
                 break;
             case 8:
-                this.name = "回忆「西行寺无余涅槃」";
+                this.name = EXTENDED_DESCRIPTION[8];
                 break;
             default:
-                this.name = "「反魂蝶 -一分咲-」";
+                this.name = EXTENDED_DESCRIPTION[0];
                 break;
         }
         initializeTitle();
@@ -81,7 +82,7 @@ public class HangonChyou extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 
@@ -99,5 +100,6 @@ public class HangonChyou extends AbstractSpellCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("HangonChyou");
         NAME = HangonChyou.cardStrings.NAME;
         DESCRIPTION = HangonChyou.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = HangonChyou.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

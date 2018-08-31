@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import Thmod.Actions.common.ChangeOrbAction;
 import Thmod.Actions.common.MoveOrbAction;
+import Thmod.Actions.unique.ResonateAction;
 import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Orbs.ElementOrb.EarthOrb;
 import Thmod.Orbs.ElementOrb.FireOrb;
@@ -65,31 +66,38 @@ public abstract class AbstractElementCards extends CustomCard {
                 if (this.elementType != null) {
                     switch (this.elementType) {
                         case Earth:
-                            AbstractOrb orb = new EarthOrb();
+                            AbstractElementOrb orb = new EarthOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                         case Fire:
                             orb = new FireOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                         case Luna:
                             orb = new LunaOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                         case Metal:
                             orb = new MetalOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                         case Sun:
                             orb = new SunOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                         case Water:
                             orb = new WaterOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                         case Wood:
                             orb = new WoodOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ResonateAction(orb));
                             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                             break;
                     }

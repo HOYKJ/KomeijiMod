@@ -3,11 +3,14 @@ package Thmod.Relics;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.unique.RemoveDebuffsAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -41,6 +44,11 @@ public class ThirstyCross extends AbstractThRelic {
     public void onPlayerEndTurn() {
         if(this.pulse){
             AbstractDungeon.actionManager.addToTop(new DamageAction(p, new DamageInfo(p, 3, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            if(p.hasPower("DashPower")){
+                AbstractPower reapply = p.getPower("DashPower");
+                AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p,p,"DashPower"));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,reapply));
+            }
         }
     }
 

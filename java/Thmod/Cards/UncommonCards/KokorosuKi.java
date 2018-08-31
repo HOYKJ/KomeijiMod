@@ -25,7 +25,7 @@ public class KokorosuKi extends AbstractSweepCards {
 
     public KokorosuKi() {
         super("KokorosuKi", KokorosuKi.NAME,  1, KokorosuKi.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
-        this.baseDamage = 7;
+        this.baseDamage = 9;
         this.isMultiDamage = true;
     }
 

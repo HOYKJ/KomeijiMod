@@ -28,6 +28,7 @@ public class EnMu extends AbstractSweepCards {
         this.upgraded = true;
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

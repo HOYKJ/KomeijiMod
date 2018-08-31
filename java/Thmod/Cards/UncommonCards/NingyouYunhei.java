@@ -31,6 +31,7 @@ public class NingyouYunhei extends AbstractSweepCards {
 
     public NingyouYunhei() {
         super("NingyouYunhei", NingyouYunhei.NAME,  1, NingyouYunhei.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

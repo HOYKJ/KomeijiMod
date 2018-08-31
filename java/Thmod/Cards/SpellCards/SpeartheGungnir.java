@@ -31,7 +31,7 @@ public class SpeartheGungnir extends AbstractSpellCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
-                for (int i = 0; i <= AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                     AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
@@ -50,7 +50,7 @@ public class SpeartheGungnir extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

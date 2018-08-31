@@ -25,7 +25,9 @@ import com.megacrit.cardcrawl.powers.MetallicizePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
@@ -248,7 +250,7 @@ public class Remiria extends AbstractMonster {
                             AbstractDungeon.getCurrRoom().addGoldToRewards(100);
                         }
                         if (torchNum <= 2) {
-                            AbstractDungeon.getCurrRoom().addRelicToRewards(AbstractDungeon.returnRandomRelicTier());
+                            AbstractDungeon.getCurrRoom().addRelicToRewards(AbstractRelic.RelicTier.RARE);
                         }
                         if (torchNum <= 1) {
                             AbstractDungeon.getCurrRoom().addGoldToRewards(300);

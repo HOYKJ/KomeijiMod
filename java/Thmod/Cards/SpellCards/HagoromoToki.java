@@ -30,23 +30,19 @@ public class HagoromoToki extends AbstractSpellCards {
     private static final int ATTACK_DMG = 5;
     private static final int BLOCK_AMT = 5;
     private int pointcost;
-    public static boolean discarded;
 
     public HagoromoToki() {
         super("HagoromoToki", HagoromoToki.NAME,  1, HagoromoToki.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF_AND_ENEMY);
         this.baseDamage = 12;
         this.baseBlock = 12;
         this.pointcost = 1;
-        discarded = false;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
-                AbstractDungeon.actionManager.addToTop(new DiscardAndDamageAction(p));
-                if (discarded)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                AbstractDungeon.actionManager.addToTop(new DiscardAndDamageAction(p,m,new DamageInfo(p,this.damage,this.damageTypeForTurn)));
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }
         }
@@ -59,7 +55,7 @@ public class HagoromoToki extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

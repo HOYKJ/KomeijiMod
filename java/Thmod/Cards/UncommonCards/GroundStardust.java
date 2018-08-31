@@ -24,6 +24,7 @@ public class GroundStardust extends AbstractSweepCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 1;
 
     public GroundStardust() {
@@ -33,7 +34,7 @@ public class GroundStardust extends AbstractSweepCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new StardustAccumulate(p)));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Stardust(1), false));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Stardust(0), false));
     }
 
     @Override
@@ -46,7 +47,7 @@ public class GroundStardust extends AbstractSweepCards {
     public boolean canUse(AbstractPlayer p, AbstractMonster m){
         super.canUse(p,m);
         if (p.hasPower("StardustAccumulate")) {
-            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,"我已经在蓄力了"));
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,EXTENDED_DESCRIPTION[0]));
             return false;
         }
         return true;
@@ -66,5 +67,6 @@ public class GroundStardust extends AbstractSweepCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("GroundStardust");
         NAME = GroundStardust.cardStrings.NAME;
         DESCRIPTION = GroundStardust.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = GroundStardust.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

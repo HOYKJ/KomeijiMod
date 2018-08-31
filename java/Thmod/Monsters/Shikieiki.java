@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import Thmod.Actions.unique.HPlossAction;
 import Thmod.Cards.BlessingCards.Remission;
@@ -51,6 +52,7 @@ public class Shikieiki extends AbstractMonster {
         CardCrawlGame.music.silenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("TH_BGM_SHIKIERIKI");
+        UnlockTracker.unlockCard("RakuenSaibancyou");
     }
 
     protected void getMove(int num) {
@@ -105,18 +107,18 @@ public class Shikieiki extends AbstractMonster {
                 break;
             case 2:
                 if (this.damage1 < 10)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage1, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 else
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage1, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 if ((this.turns == 8) && (this.loseHealth == 0))
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BarricadePower(p)));
                 this.nums1 -= 0.15;
                 break;
             case 3:
                 if (this.damage2 < 10)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage2, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 else
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage2, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 if (this.turns == 3) {
                     for (AbstractCard c : p.hand.group) {
                         if (c.type == AbstractCard.CardType.POWER) {
@@ -157,14 +159,16 @@ public class Shikieiki extends AbstractMonster {
                 break;
             case 6:
                 if (this.cursesNum < 4)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (6 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (4 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 else
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (6 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                if((this.loseHealth == 0) && (ThMod.blessingOfRemission < 2)) {
-                    if (this.currentHealth > 70)
-                        AbstractDungeon.actionManager.addToBottom(new HPlossAction(this, 70));
-                    else
-                        this.die();
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (4 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                if(AbstractDungeon.player instanceof KomeijiSatori) {
+                    if ((this.loseHealth == 0) && (ThMod.blessingOfRemission < 2)) {
+                        if (this.currentHealth > 70)
+                            AbstractDungeon.actionManager.addToBottom(new HPlossAction(this, 70));
+                        else
+                            this.die();
+                    }
                 }
                 break;
             default:
@@ -192,6 +196,7 @@ public class Shikieiki extends AbstractMonster {
             if(this.loseHealth == 0){
                 if(AbstractDungeon.player instanceof KomeijiSatori) {
                     AbstractDungeon.player.masterDeck.group.add(new Remission());
+                    UnlockTracker.unlockCard("Innocent");
                     if(ThMod.blessingOfRemission == 1)
                         ThMod.blessingOfRemission += 1;
                 }

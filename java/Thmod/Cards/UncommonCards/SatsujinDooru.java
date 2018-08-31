@@ -17,6 +17,7 @@ public class SatsujinDooru extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 1;
 
     public SatsujinDooru() {
@@ -36,7 +37,7 @@ public class SatsujinDooru extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            this.name = "回忆「夜雾幻影杀人鬼」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeMagicNumber(5);
             this.timesUpgraded += 1;
@@ -48,5 +49,6 @@ public class SatsujinDooru extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("SatsujinDooru");
         NAME = SatsujinDooru.cardStrings.NAME;
         DESCRIPTION = SatsujinDooru.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = SatsujinDooru.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

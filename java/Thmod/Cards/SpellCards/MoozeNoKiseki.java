@@ -23,7 +23,7 @@ public class MoozeNoKiseki extends AbstractSpellCards {
     public MoozeNoKiseki() {
         super("MoozeNoKiseki", MoozeNoKiseki.NAME,  3, MoozeNoKiseki.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 12;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 5;
     }
@@ -44,7 +44,7 @@ public class MoozeNoKiseki extends AbstractSpellCards {
                 return true;
             }
         }
-        this.cantUseMessage = "我没有足够的P点";
+        this.cantUseMessage = AbstractSpellCards.EXTENDED_DESCRIPTION[4];
         return false;
     }
 

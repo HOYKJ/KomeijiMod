@@ -14,20 +14,19 @@ import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 
 import Thmod.Cards.AbstractKomeijiCards;
 
-import static Thmod.ThMod.AllzhsOpen;
-
 public class NarrowSpark extends AbstractKomeijiCards {
     public static final String ID = "NarrowSpark";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION;
     private static final int COST = 1;
     private static final int ATTACK_DMG = 3;
     private boolean addDone;
 
     public NarrowSpark() {
         super("NarrowSpark", NarrowSpark.NAME,  1, NarrowSpark.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
-        this.baseDamage = 3;
+        this.baseDamage = 6;
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
@@ -62,13 +61,10 @@ public class NarrowSpark extends AbstractKomeijiCards {
 
     public void upgrade() {
         if (!(this.upgraded)) {
-            if(AllzhsOpen)
-                this.name = "回忆「极限火花」";
-            else
-                this.name = "回忆「Master Spark」";
+            this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
-            this.upgradeMagicNumber(1);
-            this.upgradeDamage(5);
+            this.upgradeMagicNumber(2);
+            this.upgradeDamage(6);
             this.upgradeBaseCost(2);
             this.timesUpgraded += 1;
             this.upgraded = true;
@@ -79,5 +75,6 @@ public class NarrowSpark extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("NarrowSpark");
         NAME = NarrowSpark.cardStrings.NAME;
         DESCRIPTION = NarrowSpark.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = NarrowSpark.cardStrings.EXTENDED_DESCRIPTION;
     }
 }
