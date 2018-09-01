@@ -1,5 +1,5 @@
-# Please download this mod from wiki:
-There is the link: [Download](https://github.com/HOYKJ/TouhouMod/wiki/Download)  
+# Please check the supported version from wiki:
+There is the link: [Supported version](https://github.com/HOYKJ/KomeijiMod/wiki/Supported-version)
 
 ## And you can get more information from wiki  
   
