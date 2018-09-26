@@ -287,7 +287,9 @@
   "HagoromoKu": {
     "NAME": "Rec\"Veils Like Sky\"",
     "DESCRIPTION":
-    "Whenever you play a Skill, Gain !M! Block."
+    "Whenever you play a Skill, Gain !M! Block.",
+    "UPGRADE_DESCRIPTION":
+    "Innate. Whenever you play a Skill, Gain !M! Block."
   },
   "HisouTensoku": {
     "NAME": "Rec\"Scarlet Weather Stimulation\"",
@@ -670,6 +672,11 @@
     "DESCRIPTION":
     ""
   },
+  "Boundaries": {
+    "NAME": "Boundaries",
+    "DESCRIPTION":
+    "Make you able to reach your target which in Boundaries..."
+  },
 
 
   "Nothing": {
@@ -722,6 +729,11 @@
     "DESCRIPTION":
     "Read the last page of \"Mysterious Book\"."
   },
+  "Peep": {
+    "NAME": "Peep",
+    "DESCRIPTION":
+    "Defeat(?) Yukari."
+  },
 
 
   "RidiculousThoughts": {
@@ -750,6 +762,11 @@
     "NAME": "Rec\"Remilia Stretch\"",
     "DESCRIPTION":
     "Deal !D! Purely Damage. NL Exhaust."
+  },
+  "RanYakumo": {
+    "NAME": "Shikigami \"Ran Yakumo\"",
+    "DESCRIPTION":
+    "Summon the Ran."
   },
 
 

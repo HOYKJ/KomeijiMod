@@ -51,7 +51,7 @@ public class Shikieiki extends AbstractMonster {
     public void usePreBattleAction() {
         CardCrawlGame.music.silenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
-        AbstractDungeon.getCurrRoom().playBgmInstantly("TH_BGM_SHIKIERIKI");
+        AbstractDungeon.getCurrRoom().playBgmInstantly("审判.mp3");
         UnlockTracker.unlockCard("RakuenSaibancyou");
     }
 
@@ -159,9 +159,9 @@ public class Shikieiki extends AbstractMonster {
                 break;
             case 6:
                 if (this.cursesNum < 4)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (4 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (2 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 else
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (4 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, (2 + this.cursesNum), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 if(AbstractDungeon.player instanceof KomeijiSatori) {
                     if ((this.loseHealth == 0) && (ThMod.blessingOfRemission < 2)) {
                         if (this.currentHealth > 70)

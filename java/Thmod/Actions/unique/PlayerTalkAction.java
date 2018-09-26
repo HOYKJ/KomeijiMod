@@ -32,7 +32,7 @@ public class PlayerTalkAction extends AbstractGameAction
 
     public void update() {
         if (!this.used) {
-            AbstractDungeon.effectList.add(new SpeechBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0f, this.msg, true));
+            AbstractDungeon.effectList.add(new SpeechBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, this.bubbleDuration, this.msg, true));
             this.used = true;
         }
         this.tickDuration();

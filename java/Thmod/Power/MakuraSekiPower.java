@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
+import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.DeriveCards.AbstractDeriveCards;
 import Thmod.Cards.DeriveCards.SouSeki;
 
@@ -46,10 +47,14 @@ public class MakuraSekiPower extends AbstractPower {
 
     public void atStartOfTurnPostDraw() {
         if(this.attacked){
-            c = new SouSeki();
-            if(this.uped)
-                c.upgrade();
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
+            if(AbstractDungeon.player.hand.size() >= 10)
+                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,PointPower.DESCRIPTIONS[1]));
+            else {
+                c = new SouSeki();
+                if (this.uped)
+                    c.upgrade();
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
+            }
             this.attacked = false;
         }
         AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this.ID));

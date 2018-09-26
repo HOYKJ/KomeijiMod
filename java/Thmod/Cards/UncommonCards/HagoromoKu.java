@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.Cards.Demotivation;
 import Thmod.Power.HagoromoKuPower;
 
 public class HagoromoKu extends AbstractKomeijiCards {
@@ -16,6 +17,7 @@ public class HagoromoKu extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION ;
     private static final int COST = 1;
 
     public HagoromoKu() {
@@ -35,7 +37,9 @@ public class HagoromoKu extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(1);
+            this.isInnate = true;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 
@@ -43,5 +47,6 @@ public class HagoromoKu extends AbstractKomeijiCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("HagoromoKu");
         NAME = HagoromoKu.cardStrings.NAME;
         DESCRIPTION = HagoromoKu.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = HagoromoKu.cardStrings.UPGRADE_DESCRIPTION;
     }
 }

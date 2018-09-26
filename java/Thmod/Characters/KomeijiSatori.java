@@ -2,6 +2,8 @@ package Thmod.Characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
@@ -34,7 +36,11 @@ public class KomeijiSatori extends CustomPlayer {
         AbstractCard.orb_red = ThMod.orbAtlas.findRegion("komeiji");
         ImageMaster.RED_ORB = ThMod.orbAtlas.findRegion("komeiji");
 
-        this.initializeClass("images/characters/komeiji/main.png", "images/characters/komeiji/shoulder.png", "images/characters/komeiji/shoulder2.png", "images/characters/komeiji/corpse.png", getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN));
+        this.initializeClass(null, "images/characters/komeiji/shoulder.png", "images/characters/komeiji/shoulder2.png", "images/characters/komeiji/corpse.png", getLoadout(), 0.0F, 5.0F, 240.0F, 300.0F, new EnergyManager(ENERGY_PER_TURN));
+        loadAnimation("images/characters/komeiji/Komeiji.atlas", "images/characters/komeiji/Komeiji.json", 1.0F);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Normal", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+        e.setTimeScale(1.0F);
     }
 
     public static ArrayList<String> getStartingDeck() {

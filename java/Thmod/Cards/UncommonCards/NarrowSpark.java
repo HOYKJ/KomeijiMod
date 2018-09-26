@@ -50,7 +50,7 @@ public class NarrowSpark extends AbstractKomeijiCards {
     public void use(AbstractPlayer p, AbstractMonster m)
     {
         AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new MindblastEffect(p.dialogX, (p.dialogY - 100F)), 0.10000000149011612F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new MindblastEffect(p.dialogX, (p.dialogY - 100F),p.flipHorizontal), 0.10000000149011612F));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         this.addDone = false;
     }

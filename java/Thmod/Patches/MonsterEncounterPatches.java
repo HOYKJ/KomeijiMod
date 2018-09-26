@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 
 import Thmod.Monsters.Remiria;
 import Thmod.Monsters.Shikieiki;
+import Thmod.Monsters.Yukari;
 
 @SpirePatch(cls="com.megacrit.cardcrawl.helpers.MonsterHelper", method="getEncounter")
 public class MonsterEncounterPatches {
@@ -16,6 +17,8 @@ public class MonsterEncounterPatches {
             return new MonsterGroup(new AbstractMonster[] { new Remiria(-110.0F,-10.0F) });
         if (key.equals("Shikieiki"))
             return new MonsterGroup(new AbstractMonster[] { new Shikieiki(-110.0F,-10.0F) });
+        if (key.equals("Yukari"))
+            return new MonsterGroup(new AbstractMonster[] { new Yukari(150.0F,-10.0F) });
         return __result;
     }
 }

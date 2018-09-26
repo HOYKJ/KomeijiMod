@@ -539,6 +539,28 @@
     "DESCRIPTIONS": [
       "强力的穿刺击穿护甲,直抵血肉..."
     ]
+  },
+  "ActivationPower": {
+    "NAME": "准备",
+    "DESCRIPTIONS": [
+      "还需要使用 #b",
+      " 张 #y攻击 和 #b",
+      " 张 #y技能 来解锁「隙间」."
+    ]
+  },
+  "BoundariesPower": {
+    "NAME": "隙间",
+    "DESCRIPTIONS": [
+      "隐匿于隙间之中"
+    ]
+  },
+  "LanPower": {
+    "NAME": "式神",
+    "DESCRIPTIONS": [
+      "给予你 #b10 点 #y格挡 ,给予所有敌人 #b2 层 #y虚弱 .",
+      "给予你 #b10 点 #y格挡 ,给予所有敌人 #b2 层 #y易伤 .",
+      "给予你 #b10 点 #y格挡 和 #b2 点 #y力量 ."
+    ]
   }
   
   }

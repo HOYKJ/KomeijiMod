@@ -3,6 +3,7 @@ package Thmod.Power;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -38,7 +39,7 @@ public class LagDamagePower extends AbstractPower {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new LagDamagePower(this.owner, -this.amount), -this.amount));
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this));
     }
 
     public void updateDescription()

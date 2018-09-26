@@ -73,6 +73,7 @@ import Thmod.Cards.SpellCards.TaihouTsuigeki;
 import Thmod.Cards.SpellCards.TenkeiKisyou;
 import Thmod.Cards.SpellCards.TripWire;
 import Thmod.Cards.SpellCards.YomeiIkubaku;
+import Thmod.Power.PointPower;
 import Thmod.Relics.SpellCardsRule;
 import Thmod.ThMod;
 import Thmod.Utils;
@@ -399,52 +400,55 @@ public class CardSelectAction extends AbstractGameAction
         final boolean randomSpot = true;
         boolean canRep = false;
         boolean given = false;
-        for (final AbstractCard c : this.cardsToShuffle) {
-            c.unhover();
-            ThMod.removedcardids.clear();
-            if (this.powercount >= 1) {
-                label1:
-                for (Iterator Iterator = ThMod.upcardids.iterator(); Iterator.hasNext(); ) {
-                    this.testid = (String) Iterator.next();
-                    if (c.cardID.equals(this.testid)){
-                        label2:
-                        for (Iterator Iterator2 = ThMod.fightids.iterator(); Iterator2.hasNext(); ) {
-                            this.testid2 = (String) Iterator2.next();
-                            for (final AbstractCard cd : AbstractDungeon.player.hand.group) {
-                                if (cd.cardID.equals((this.testid2))) {
-                                    DevConsole.logger.info("remove" + ThMod.removemap.get(cd.cardID));
-                                    DevConsole.logger.info("up" + ThMod.upcardmap.get(c.cardID));
-                                    if (ThMod.removemap.get(cd.cardID).equals(ThMod.upcardmap.get(c.cardID))) {
-                                        ThMod.removedcardids.clear();
-                                        ThMod.removedcardids.put(c.cardID, cd);
-                                        this.deletecard = cd;
-                                        given = true;
-                                        canRep = true;
-                                        break label2;
+        if(AbstractDungeon.player.hand.size() >= 10)
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player, PointPower.DESCRIPTIONS[1]));
+        else {
+            for (final AbstractCard c : this.cardsToShuffle) {
+                c.unhover();
+                ThMod.removedcardids.clear();
+                if (this.powercount >= 1) {
+                    label1:
+                    for (Iterator Iterator = ThMod.upcardids.iterator(); Iterator.hasNext(); ) {
+                        this.testid = (String) Iterator.next();
+                        if (c.cardID.equals(this.testid)) {
+                            label2:
+                            for (Iterator Iterator2 = ThMod.fightids.iterator(); Iterator2.hasNext(); ) {
+                                this.testid2 = (String) Iterator2.next();
+                                for (final AbstractCard cd : AbstractDungeon.player.hand.group) {
+                                    if (cd.cardID.equals((this.testid2))) {
+                                        DevConsole.logger.info("remove" + ThMod.removemap.get(cd.cardID));
+                                        DevConsole.logger.info("up" + ThMod.upcardmap.get(c.cardID));
+                                        if (ThMod.removemap.get(cd.cardID).equals(ThMod.upcardmap.get(c.cardID))) {
+                                            ThMod.removedcardids.clear();
+                                            ThMod.removedcardids.put(c.cardID, cd);
+                                            this.deletecard = cd;
+                                            given = true;
+                                            canRep = true;
+                                            break label2;
+                                        }
                                     }
                                 }
                             }
-                        }
-                        if (!(canRep)) {
-                            AbstractDungeon.actionManager.addToBottom(new PlayerTalkAction(AbstractDungeon.player, TEXT[0]));
-                            given = true;
-                            break label1;
-                        } else {
-                            AbstractDungeon.player.hand.removeCard(this.deletecard);
-                            AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
-                            SpellCardsRule.selected = true;
-                            given = true;
-                            break label1;
+                            if (!(canRep)) {
+                                AbstractDungeon.actionManager.addToBottom(new PlayerTalkAction(AbstractDungeon.player, TEXT[0]));
+                                given = true;
+                                break label1;
+                            } else {
+                                AbstractDungeon.player.hand.removeCard(this.deletecard);
+                                AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
+                                SpellCardsRule.selected = true;
+                                given = true;
+                                break label1;
+                            }
                         }
                     }
-                }
-                if(!(given)) {
-                    AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
-                    SpellCardsRule.selected = true;
-                }
+                    if (!(given)) {
+                        AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c));
+                        SpellCardsRule.selected = true;
+                    }
+                } else if (this.powercount == -1)
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
             }
-            else if(this.powercount == -1)
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
         }
         this.cardsToShuffle.clear();
     }

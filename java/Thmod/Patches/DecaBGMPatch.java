@@ -15,7 +15,7 @@ public class DecaBGMPatch {
     {
         if(ThMod.MusicOpen) {
             CardCrawlGame.music.silenceTempBgmInstantly();
-            AbstractDungeon.getCurrRoom().playBgmInstantly("TH_BGM_DECADONU");
+            AbstractDungeon.getCurrRoom().playBgmInstantly("狂気.mp3");
         }
     }
 }

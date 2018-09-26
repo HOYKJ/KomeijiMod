@@ -1,5 +1,6 @@
 package Thmod.Patches;
 
+import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,12 +15,9 @@ public class DeathScreenPatch
 {
     public static final Logger logger = LogManager.getLogger(DeathScreenPatch.class);
 
-    @SpireInsertPatch(rloc=106)
-    public static void Insert(DeathScreen _inst, MonsterGroup m)
+    @SpireInsertPatch(rloc=109, localvars={"bgmKey"})
+    public static void Insert(DeathScreen _inst, MonsterGroup m, @ByRef String[] bgmKey)
     {
-        logger.info(DeathScreen.STINGER_KEY);
-        logger.info(Long.valueOf(DeathScreen.STINGER_ID));
-        DeathScreen.STINGER_KEY = "playerScore";
-        Settings.hideCombatElements = false;
+        bgmKey[0] = "playerScore.mp3";
     }
 }

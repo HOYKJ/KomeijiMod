@@ -63,6 +63,7 @@ public class Ferry extends AbstractImageEvent {
                         break;
                     case 1:
                         this.screen = CurScreen.LEAVE;
+                        AbstractDungeon.player.loseGold((AbstractDungeon.player.gold / 2));
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
                         this.imageEventText.updateDialogOption(0, OPTIONS[7]);
                         this.imageEventText.clearRemainingOptions();

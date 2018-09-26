@@ -29,6 +29,37 @@
       "To your #rguilt , NL  ~how~  ~ much~  ~ do~  ~ you~  ~ cognize?~ "
     ]
   },
+  "Cheng": {
+    "MOVES": [
+      "Flight of Idaten",
+      "Gouhou-Tendou's Wild Dance"
+    ],
+    "NAME": "Chen",
+    "DIALOG": [
+    ]
+  },
+  "Lan": {
+    "MOVES": [
+      "Shikigami \"Chen\"",
+      "Protection of Zenki and Goki",
+      "Ultimate Buddhist",
+      "Banquet of Twelve General Gods"
+    ],
+    "NAME": "Ran",
+    "DIALOG": [
+    ]
+  },
+  "Yukari": {
+    "MOVES": [
+      "Shikigami \"Ran Yakumo\"",
+      "Yukari Yakumo's Spiriting Away",
+      "Profound Danmaku Barrier -Phantasm, Foam and Shadow-"
+    ],
+    "NAME": "Yukari",
+    "DIALOG": [
+      " #p~...~ "
+    ]
+  },
   "FromDeckToHandAction": {
     "TEXT": [
       "Choose a card and please it into your hand."

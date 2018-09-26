@@ -55,7 +55,7 @@ public class EasyMasterSpark extends AbstractSpellCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new MindblastEffect(p.dialogX, (p.dialogY - 100F)), 0.10000000149011612F));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new MindblastEffect(p.dialogX, (p.dialogY - 100F),p.flipHorizontal), 0.10000000149011612F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }

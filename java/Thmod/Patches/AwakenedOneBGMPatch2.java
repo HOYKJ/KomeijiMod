@@ -17,7 +17,7 @@ public class AwakenedOneBGMPatch2
         if(ThMod.MusicOpen) {
             if (_inst.nextMove == 3) {
                 CardCrawlGame.music.silenceTempBgmInstantly();
-                AbstractDungeon.getCurrRoom().playBgmInstantly("TH_BGM_AWAKEN2");
+                AbstractDungeon.getCurrRoom().playBgmInstantly("MysteriousMountain2.mp3");
             }
         }
     }

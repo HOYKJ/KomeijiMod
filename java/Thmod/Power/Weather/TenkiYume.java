@@ -33,7 +33,7 @@ public class TenkiYume extends AbstractPower {
 
     public float modifyBlock(float blockAmount) {
         int roll = MathUtils.random(5);
-        flash();
+//        flash();
         DevConsole.logger.info("Tenkiyume" + blockAmount);
         return (blockAmount + roll - 2);
     }

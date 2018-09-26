@@ -287,7 +287,9 @@
   "HagoromoKu": {
     "NAME": "回忆「羽衣若空」",
     "DESCRIPTION":
-    "每当你使用一张技能卡,获得 !M! 点 格挡 ."
+    "每当你使用一张技能卡,获得 !M! 点 格挡 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .每当你使用一张技能卡,获得 !M! 点 格挡 ."
   },
   "HisouTensoku": {
     "NAME": "回忆「绯想天促」",
@@ -670,6 +672,11 @@
     "DESCRIPTION":
     ""
   },
+  "Boundaries": {
+    "NAME": "隙间",
+    "DESCRIPTION":
+    "使你可以攻击隙间中的目标..."
+  },
 
 
   "Nothing": {
@@ -722,6 +729,11 @@
     "DESCRIPTION":
     "看到「神秘的书」的末页."
   },
+  "Peep": {
+    "NAME": "窥视",
+    "DESCRIPTION":
+    "击败(?)紫."
+  },
 
 
   "RidiculousThoughts": {
@@ -750,6 +762,11 @@
     "NAME": "回忆「蕾米莉亚伸展」",
     "DESCRIPTION":
     "对所有敌人造成 !D! 点 纯粹伤害 , 消耗 ."
+  },
+  "RanYakumo": {
+    "NAME": "式神「八云蓝」",
+    "DESCRIPTION":
+    "召唤八云蓝."
   },
 
 

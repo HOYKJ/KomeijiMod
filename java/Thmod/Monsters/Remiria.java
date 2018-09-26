@@ -142,7 +142,7 @@ public class Remiria extends AbstractMonster {
         {
             AbstractDungeon.actionManager.addToBottom(new TalkAction(this, DIALOG[0], 0.5F, 2.0F));
             AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
-            AbstractDungeon.getCurrRoom().playBgmInstantly("TH_BGM_REMIRIA");
+            AbstractDungeon.getCurrRoom().playBgmInstantly("七重奏.mp3");
             this.firstTurn = false;
         }
         switch (this.nextMove)

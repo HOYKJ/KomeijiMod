@@ -16,7 +16,7 @@ public class TimeEaterBGMPatch
     {
         if(ThMod.MusicOpen) {
             CardCrawlGame.music.silenceTempBgmInstantly();
-            AbstractDungeon.getCurrRoom().playBgmInstantly("TH_BGM_TIMEEATER");
+            AbstractDungeon.getCurrRoom().playBgmInstantly("LunaDial.mp3");
         }
     }
 }

@@ -45,7 +45,6 @@ public class GateofTheMinistry extends AbstractImageEvent {
                         this.screen = CurScreen.BATTLE;
                         AbstractDungeon.getCurrRoom().monsters = MonsterHelper.getEncounter("Shikieiki");
                         AbstractDungeon.getCurrRoom().rewards.clear();
-                        AbstractMonster.preloadBossStinger();
                         enterCombatFromImage();
                         break;
                     case 1:

@@ -6,9 +6,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.neow.NeowRoom;
 
-import Thmod.Power.Weather.TenkiYume;
+import Thmod.Actions.unique.PlotTalkAction;
+import Thmod.Power.LanPower;
+import Thmod.Room.NewVictoryRoom;
 
 public class WeatherTest extends AbstractDeriveCards {
     public static final String ID = "WeatherTest";
@@ -22,7 +26,10 @@ public class WeatherTest extends AbstractDeriveCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new TenkiYume(p)));
+        MapRoomNode node = new MapRoomNode(-1, 15);
+        node.room = new NeowRoom(true);
+        AbstractDungeon.nextRoom = node;
+        AbstractDungeon.nextRoomTransitionStart();
     }
 
     public AbstractCard makeCopy() {

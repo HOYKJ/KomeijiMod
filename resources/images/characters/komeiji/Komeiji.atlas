@@ -1,0 +1,83 @@
+
+Komeiji.png
+size: 240,275
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+KomeijiNew/yy
+  rotate: false
+  xy: 1, 172
+  size: 164, 31
+  orig: 164, 31
+  offset: 0, 0
+  index: -1
+KomeijiNew11/bt
+  rotate: false
+  xy: 1, 1
+  size: 88, 148
+  orig: 88, 148
+  offset: 0, 0
+  index: -1
+KomeijiNew11/leg
+  rotate: false
+  xy: 91, 1
+  size: 70, 105
+  orig: 70, 105
+  offset: 0, 0
+  index: -1
+KomeijiNew11/leftLine
+  rotate: false
+  xy: 55, 205
+  size: 58, 51
+  orig: 58, 51
+  offset: 0, 0
+  index: -1
+KomeijiNew11/rightLine
+  rotate: false
+  xy: 163, 1
+  size: 75, 73
+  orig: 75, 73
+  offset: 0, 0
+  index: -1
+KomeijiNew11/qz
+  rotate: false
+  xy: 91, 108
+  size: 113, 62
+  orig: 113, 62
+  offset: 0, 0
+  index: -1
+KomeijiNew11/right2
+  rotate: false
+  xy: 206, 76
+  size: 23, 37
+  orig: 23, 37
+  offset: 0, 0
+  index: -1
+KomeijiNew11/right
+  rotate: false
+  xy: 1, 205
+  size: 52, 68
+  orig: 52, 68
+  offset: 0, 0
+  index: -1
+KomeijiNew11/left
+  rotate: false
+  xy: 167, 172
+  size: 53, 77
+  orig: 53, 77
+  offset: 0, 0
+  index: -1
+KomeijiNew11/yp2
+  rotate: false
+  xy: 163, 91
+  size: 26, 13
+  orig: 26, 13
+  offset: 0, 0
+  index: -1
+KomeijiNew11/yp
+  rotate: false
+  xy: 163, 76
+  size: 27, 13
+  orig: 27, 13
+  offset: 0, 0
+  index: -1

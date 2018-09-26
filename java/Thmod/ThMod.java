@@ -46,6 +46,7 @@ import Thmod.Cards.DemonLordCradle;
 import Thmod.Cards.DeriveCards.EasterEgg.CheckPenglai;
 import Thmod.Cards.DeriveCards.EasterEgg.Innocent;
 import Thmod.Cards.DeriveCards.EasterEgg.MuyoNehan;
+import Thmod.Cards.DeriveCards.EasterEgg.Peep;
 import Thmod.Cards.DeriveCards.EasterEgg.RakuenSaibancyou;
 import Thmod.Cards.DeriveCards.EasterEgg.Scarlet;
 import Thmod.Cards.DeriveCards.EasterEgg.ScarletsBlessing;
@@ -123,6 +124,7 @@ import Thmod.Cards.RareCards.MiraiBunraku;
 import Thmod.Cards.RareCards.SemiAutomaton;
 import Thmod.Cards.RareCards.ShanghaiNingyou;
 import Thmod.Cards.RewardCards.MiserableFate;
+import Thmod.Cards.RewardCards.RanYakumo;
 import Thmod.Cards.RewardCards.RemiliaStretch;
 import Thmod.Cards.RewardCards.ScarletDevil;
 import Thmod.Cards.RikonNoKama;
@@ -295,6 +297,12 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean TheCollector ;
     public static boolean AwakenedOne ;
     public static boolean TimeEater ;
+    public static boolean firstAnswer;
+    public static boolean canDetBle;
+    public static boolean canScaBle;
+    public static boolean canRemBle;
+    public static boolean defeatYukari;
+    public static int HeartScreen = 0;
     public static ArrayList saveCard = new ArrayList<>() ;
     private float X;
     private float Y;
@@ -505,6 +513,10 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("TheCollector", "false");
             defaults.setProperty("AwakenedOne", "false");
             defaults.setProperty("TimeEater", "false");
+            defaults.setProperty("firstAnswer", "false");
+            defaults.setProperty("canDetBle", "false");
+            defaults.setProperty("canScaBle", "false");
+            defaults.setProperty("canRemBle", "false");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             ThMod.AliceOpen = config.getBool("AliceOpen");
             ThMod.SoundOpen = config.getBool("SoundOpen");
@@ -523,6 +535,10 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             ThMod.TheCollector = config.getBool("TheCollector");
             ThMod.AwakenedOne = config.getBool("AwakenedOne");
             ThMod.TimeEater = config.getBool("TimeEater");
+            ThMod.firstAnswer = config.getBool("firstAnswer");
+            ThMod.canDetBle = config.getBool("canDetBle");
+            ThMod.canScaBle = config.getBool("canScaBle");
+            ThMod.canRemBle = config.getBool("canRemBle");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -597,6 +613,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("blessingOfTime", "0");
             defaults.setProperty("blessingOfDetermination", "0");
             defaults.setProperty("blessingOfRemission", "0");
+            defaults.setProperty("defeatYukari", "false");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             SpellCardsRule.pointcount.clear();
             SpellCardsRule.pointcount.add(config.getInt("PointPower"));
@@ -605,12 +622,14 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             ThMod.blessingOfTime = config.getInt("blessingOfTime");
             ThMod.blessingOfDetermination = config.getInt("blessingOfDetermination");
             ThMod.blessingOfRemission = config.getInt("blessingOfRemission");
+            ThMod.defeatYukari = config.getBool("defeatYukari");
         }
         catch (IOException e) {
             e.printStackTrace();
         }
         DevConsole.logger.info("=========================数据载入也o了=========================");
         Settings.hideCombatElements = false;
+        HeartScreen = 0;
     }
 
     public void receiveEditCharacters() {
@@ -759,6 +778,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new RakuenSaibancyou());
         BaseMod.addCard(new Innocent());
         BaseMod.addCard(new CheckPenglai());
+        BaseMod.addCard(new Peep());
 
         BaseMod.addCard(new RidiculousThoughts());
         BaseMod.addCard(new ThoughtExtend());
@@ -774,6 +794,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new MiserableFate());
         BaseMod.addCard(new RemiliaStretch());
         BaseMod.addCard(new ScarletDevil());
+        BaseMod.addCard(new RanYakumo());
 
 
 //        BaseMod.addCard(new WeatherTest());
@@ -1281,6 +1302,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         config.setBool("TheCollector",  ThMod.TheCollector);
         config.setBool("AwakenedOne",  ThMod.AwakenedOne);
         config.setBool("TimeEater",  ThMod.TimeEater);
+        config.setBool("firstAnswer",  ThMod.firstAnswer);
+        config.setBool("canDetBle",  ThMod.canDetBle);
+        config.setBool("canScaBle",  ThMod.canScaBle);
+        config.setBool("canRemBle",  ThMod.canRemBle);
+        config.setBool("defeatYukari",  ThMod.defeatYukari);
         config.save();
     }
 
@@ -1310,6 +1336,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.TheCollector = false;
         ThMod.AwakenedOne = false;
         ThMod.TimeEater = false;
+        ThMod.firstAnswer = false;
+        ThMod.canDetBle = false;
+        ThMod.canScaBle = false;
+        ThMod.canRemBle = false;
+        ThMod.defeatYukari = false;
     }
 
 }

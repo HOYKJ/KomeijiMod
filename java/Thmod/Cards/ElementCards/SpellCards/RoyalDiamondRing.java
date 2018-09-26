@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import Thmod.Actions.common.ChangeOrbAction;
+import basemod.DevConsole;
 
 public class RoyalDiamondRing extends AbstractElementSpellCards {
     public static final String ID = "RoyalDiamondRing";
@@ -36,8 +37,9 @@ public class RoyalDiamondRing extends AbstractElementSpellCards {
             }
         }
         for(int i1 = 0;i1 < this.magicNumber;i1++) {
-            for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
-                AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.getCurrRoom().monsters.monsters.get(i), new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+                DevConsole.logger.info("damage" + this.damage);
             }
         }
     }

@@ -51,5 +51,54 @@
       "Special efficiency: almost nothing",
       "All English Mode"
     ]
+  },
+  "SpireHeartPatch": {
+    "TEXT": [
+      "You feel something #pstrange . You had been there before? NL A unknown power force you to look back...",
+      "[Look Back]",
+      "[Ignore]"
+    ]
+  },
+  "PlotTalkAction": {
+    "TEXT": [
+      "Before battle, I want to ask you some questions.",
+      "Do you know. What makes everything here?",   "I know","No",
+      "That's for sure.",
+      "This question is just kidding myself.",
+      "This question is just kidding myself.",
+      "But to my surprise, you are so #bcooperate .",
+      "Ne. The closer to the truth, the more dangerous it is.",
+      "I think. It's not good to know too much, isn't it?",  "I agree","Not so",
+      "So you just go on.",
+      "I won't impede you.",
+      "I don't believe.",
+      "After ALL, you have come to this step.",
+      "So, do you think. You can reach those #balleged truth?",  "Of course","No",
+      "Keep this #gDetermination is not bad.",
+      "Advance despite difficulties?",
+      "Or, you just arrive here for no reason?",  "Yes","No",
+      "You are more and more like #bher .",
+      "I don't care whatever your purpose is.",
+      "Time, will bring pain. Isn't it?",  "I agree","Not so",
+      "Reality is just so cruel.",
+      "Something, will never change with time goes.",
+      "So can time heal the scar it brings?",  "Can","Cannot",
+      "I can still see the #rScarlet outflow form the scar...",
+      "I think you know the answer.",
+      "You think what it is. Is what you own now?",  "Yea","No",
+      "So lamentable...",
+      "You own nothing.",
+      "It is said, everyone will meet the judgement in the end. Do you believe it?",  "Believe","Doubt",
+      "That's what you are facing now.",
+      "Someone, maybe can be #gRemission .",
+      "You think. Person, or mystic apparition,",
+      "Can be change?",  "Can","Cannot",
+      "I hope so.",
+      "So there is nothing to be told.",
+
+      "I finished. Let me see your performance!",
+
+      "Before battle, I want to ask you some questions."
+    ]
   }
 }

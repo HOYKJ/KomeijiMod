@@ -56,8 +56,10 @@ public class Kourindou extends AbstractImageEvent {
 
         for (int i = 0; i < relics.size(); i++) {
             this.choice = (relics.get(i));
-            if (this.choice.tier != AbstractRelic.RelicTier.STARTER)
+            if (this.choice.tier != AbstractRelic.RelicTier.STARTER){
+                this.noRelic = true;
                 break;
+            }
             this.noRelic = false;
         }
 
