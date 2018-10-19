@@ -40,10 +40,10 @@ public class WocchiPower extends AbstractPower {
 
     public void atStartOfTurnPostDraw() {
         flash();
-        if ((AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite) || (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss))
+//        if ((AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite) || (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss))
             CardCrawlGame.music.silenceTempBgmInstantly();
-        else
-            CardCrawlGame.music.silenceBGM();
+//        else
+            CardCrawlGame.music.silenceBGMInstantly();
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY,true), 2F));
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);

@@ -7,21 +7,20 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
+import com.megacrit.cardcrawl.screens.custom.CustomModeCharacterButton;
 
+import Thmod.Characters.KomeijiSatori;
 import Thmod.ThMod;
 import basemod.DevConsole;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.screens.charSelect.CharacterOption", method="updateHitbox")
+@SpirePatch(cls="com.megacrit.cardcrawl.screens.custom.CustomModeCharacterButton", method="updateHitbox")
 public class CharacterOptionPatch {
-    @SpireInsertPatch(rloc = 64)
-    public static void Insert(final CharacterOption obj_instance) {
-        AbstractPlayer.PlayerClass ch = obj_instance.c;
-        switch (ch.ordinal()) {
-            case 3:
-                if(ThMod.SoundOpen)
-                    CardCrawlGame.sound.playA("select00", MathUtils.random(-0.2F, 0.2F));
-                CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
-                break;
-        }
+    @SpireInsertPatch(rloc=0)
+    public static void Postfix(final CustomModeCharacterButton obj_instance) {
+        AbstractPlayer ch = obj_instance.c;
+//        if(ch instanceof KomeijiSatori) {
+//            if (ThMod.SoundOpen)
+//                CardCrawlGame.sound.playA("select00", MathUtils.random(-0.2F, 0.2F));
+//        }
     }
 }

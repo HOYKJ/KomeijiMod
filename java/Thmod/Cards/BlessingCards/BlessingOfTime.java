@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -39,7 +40,12 @@ public class BlessingOfTime extends AbstractBlessingCard
         specialCard.cards.add(new BlessingOfScarlet());
         if(ThMod.blessingOfTime < 3)
             ThMod.blessingOfTime += 1;
-        AbstractDungeon.actionManager.addToBottom(new TalkAction(AbstractDungeon.getCurrRoom().monsters.monsters.get(0), "停止这无意义的争斗吧...", 0.5F, 2.0F));
+        String text;
+        if(Settings.language == Settings.GameLanguage.ENG)
+            text = "Stop this meaningless fight...";
+        else
+            text = "停止这无意义的争斗吧...";
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(AbstractDungeon.getCurrRoom().monsters.monsters.get(0), text, 0.5F, 2.0F));
         AbstractDungeon.getCurrRoom().rewards.clear();
         AbstractDungeon.getCurrRoom().addCardReward(specialCard);
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {

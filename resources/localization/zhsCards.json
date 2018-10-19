@@ -746,6 +746,16 @@
     "DESCRIPTION":
     "每当你使用 !M! 张 联想 卡,获得1点 [R] 并抽1张卡."
   },
+  "GradualImprovement": {
+    "NAME": "循序渐进",
+    "DESCRIPTION":
+    " 增幅 , 虚无 . NL 造成 !D! 点伤害.使用后将1张此卡的复制加入弃牌堆."
+  },
+  "Muse": {
+    "NAME": "沉思",
+    "DESCRIPTION":
+    " 增幅 , 消耗 . NL 获得 !B! 格挡 .回合结束将1张此卡的复制加入弃牌堆. 想起 ."
+  },
 
 
   "MiserableFate": {
@@ -766,7 +776,7 @@
   "RanYakumo": {
     "NAME": "式神「八云蓝」",
     "DESCRIPTION":
-    "召唤八云蓝."
+    "召唤八云蓝.每次使用消耗在本场战斗中增加 [R] . 虚无 ."
   },
 
 

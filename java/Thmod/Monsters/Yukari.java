@@ -24,6 +24,8 @@ import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ShiftingPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.VictoryRoom;
 import com.megacrit.cardcrawl.screens.DeathScreen;
@@ -54,7 +56,7 @@ public class Yukari extends AbstractMonster {
         super(NAME, "Yukari", 510, -10.0F, 0.0F, 280.0F, 350.0F, "images/monsters/Yukari/Main.png", x, y);
         this.firstTurn = true;
         this.attacked = false;
-        this.damages = 20;
+        this.damages = 17;
         this.cardsNeedUse = 2;
         this.dialogX = (-100.0F * Settings.scale);
         this.dialogY = (10.0F * Settings.scale);
@@ -68,7 +70,7 @@ public class Yukari extends AbstractMonster {
             AbstractDungeon.actionManager.addToBottom(new PlotTalkAction(this,53,false));
         else
             AbstractDungeon.actionManager.addToBottom(new PlotTalkAction(this,0,false));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ShiftingPower(this)));
+//        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ShiftingPower(this)));
     }
 
     protected void getMove(int num) {
@@ -77,36 +79,43 @@ public class Yukari extends AbstractMonster {
         if(firstTurn){
             setMove(MOVES[0], (byte) 1, Intent.UNKNOWN);
         }
+        else if(lastMove((byte)6)){
+            if(!(attacked)){
+                setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damages, 3, true);
+                attacked = true;
+            }
+            else {
+                setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
+                attacked = false;
+            }
+        }
         else {
             for (AbstractPower power : this.powers) {
                 if (power instanceof BoundariesPower) {
                     hasBoundaries = true;
                 }
             }
-            if (!(hasBoundaries)) {
-                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        if (target.id.equals(Lan.ID))
-                            hasLan = true;
-                    }
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                    if (target.id.equals(Lan.ID))
+                        hasLan = true;
                 }
+            }
+            if (!(hasBoundaries)) {
                 if (hasLan) {
                     setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
                 }
                 else {
-                    if(!(attacked)){
-                        setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damages, 3, true);
-                        attacked = true;
-                    }
-                    else {
-                        setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
-                        attacked = false;
-                    }
+                    setMove((byte) 6, Intent.DEFEND_DEBUFF);
                 }
             }
             else {
-                setMove((byte)4, AbstractMonster.Intent.BUFF);
+                if(hasLan){
+                    setMove((byte)5, Intent.ATTACK_BUFF,this.damages);
+                }
+                else
+                    setMove((byte)4, Intent.BUFF);
             }
         }
     }
@@ -138,7 +147,7 @@ public class Yukari extends AbstractMonster {
                 for (int i = 0; i < 3; i++) {
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damages, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 }
-                this.damages += 5;
+                this.damages += 3;
                 this.attacked = true;
                 break;
             case 4:
@@ -146,23 +155,72 @@ public class Yukari extends AbstractMonster {
                     if ((!m.isDying) && (!m.isEscaping)) {
                         AbstractDungeon.actionManager.addToBottom(new HealAction(m, this, 17));
                     }
-                    AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
-                    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
                 }
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
+                AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
+                break;
+            case 5:
+                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                    if ((!m.isDying) && (!m.isEscaping)) {
+                        AbstractDungeon.actionManager.addToBottom(new HealAction(m, this, 17));
+                    }
+                }
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
+                AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damages, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                this.damages += 3;
+                break;
+            case 6:
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new VulnerablePower(p, 2, true), 2));
                 break;
             default:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                     if ((!m.isDying) && (!m.isEscaping)) {
                         AbstractDungeon.actionManager.addToBottom(new HealAction(m, this, 18));
                     }
-                    AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
+                    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,18));
                 }
+                AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
     }
 
+    public void changeIntend(){
+        boolean hasLan = false;
+        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+            if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                if (target.id.equals(Lan.ID))
+                    hasLan = true;
+            }
+        }
+        if (hasLan) {
+            setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
+        }
+        else {
+            if(!(attacked)){
+                setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damages, 3, true);
+                attacked = true;
+            }
+            else {
+                setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
+                attacked = false;
+            }
+        }
+    }
+
     public void changeImg(){
         this.img = ImageMaster.loadImage("images/monsters/Yukari/Main.png");
+    }
+
+    public void damage(DamageInfo info)
+    {
+        if(this.hasPower(BoundariesPower.POWER_ID)){
+            info.base = 0;
+        }
+        super.damage(info);
     }
 
     public void die() {

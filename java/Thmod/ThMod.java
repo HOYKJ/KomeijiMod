@@ -38,6 +38,8 @@ import Thmod.Cards.BlessingCards.BlessingOfScarlet;
 import Thmod.Cards.BlessingCards.BlessingOfTime;
 import Thmod.Cards.BlessingCards.Determination;
 import Thmod.Cards.BlessingCards.Remission;
+import Thmod.Cards.ColorlessCards.GradualImprovement;
+import Thmod.Cards.ColorlessCards.Muse;
 import Thmod.Cards.ColorlessCards.RidiculousThoughts;
 import Thmod.Cards.ColorlessCards.ThoughtExtend;
 import Thmod.Cards.Curses.Confused;
@@ -54,7 +56,6 @@ import Thmod.Cards.DeriveCards.EasterEgg.SpontaneousDetonation;
 import Thmod.Cards.DeriveCards.EasterEgg.THsWorld;
 import Thmod.Cards.DeriveCards.EasterEgg.TheWorld;
 import Thmod.Cards.DeriveCards.Nothing;
-import Thmod.Cards.DeriveCards.WeatherTest;
 import Thmod.Cards.DochyakuKami;
 import Thmod.Cards.ElementCards.CondensedBubble;
 import Thmod.Cards.ElementCards.RareCards.ElementInvoke;
@@ -239,6 +240,7 @@ import Thmod.Relics.BookofPenglai;
 import Thmod.Relics.ColorfulQuillpen;
 import Thmod.Relics.CrystalBall;
 import Thmod.Relics.FamiliarSpoon;
+import Thmod.Relics.GoodDreamPillow;
 import Thmod.Relics.Grimoire;
 import Thmod.Relics.JyouHari;
 import Thmod.Relics.KoishisEye;
@@ -271,7 +273,6 @@ import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.StartGameSubscriber;
 
-import static basemod.BaseMod.EventPool.THE_BEYOND;
 import static basemod.DevConsole.logger;
 
 
@@ -307,7 +308,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     private float X;
     private float Y;
     private float IntervalY;
-    private static final Color 古明地觉 = CardHelper.getColor(232, 123, 169);
+    public static final Color 古明地觉 = CardHelper.getColor(232, 123, 169);
     private static final Color Sp符卡 = CardHelper.getColor(239, 169, 23);
     private static final Color Item符卡 = CardHelper.getColor(231, 34, 0);
     private static final Color 彩蛋 = CardHelper.getColor(147, 147, 147);
@@ -638,8 +639,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         logger.info("add " + CharacterEnum.KomeijiSatori.toString());
 
         BaseMod.addCharacter(
-                KomeijiSatori.class, "古明地 觉", "CharacterName class string",
-                AbstractCardEnum.古明地觉,"古明地 觉","images/ui/charSelect/komeijiButton.png", "images/ui/charSelect/komeijiPortrait.jpg",
+                new KomeijiSatori("Komeiji"),"images/ui/charSelect/komeijiButton.png", "images/ui/charSelect/komeijiPortrait.jpg",
                 CharacterEnum.KomeijiSatori);
 
         logger.info("========================注入Mod人物信息成功========================");
@@ -782,6 +782,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         BaseMod.addCard(new RidiculousThoughts());
         BaseMod.addCard(new ThoughtExtend());
+        BaseMod.addCard(new GradualImprovement());
+        BaseMod.addCard(new Muse());
 
         BaseMod.addCard(new BlessingOfTime());
         BaseMod.addCard(new BlessingOfScarlet());
@@ -1102,20 +1104,22 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         });
         settingsPanel.addUIElement(AllzhsOpen);
 
-        final ModLabeledToggleButton AllengOpen = new ModLabeledToggleButton(TEXT[16], this.X + 250, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.AllzhsOpen , settingsPanel, label -> {}, button -> {
-            spireConfig.setBool("AllengOpen", ThMod.AllengOpen = button.enabled);
-            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
-            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
+        ThMod.AllengOpen = Settings.language == Settings.GameLanguage.ENG;
 
-            try {
-                spireConfig.save();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            return;
-        });
-        settingsPanel.addUIElement(AllengOpen);
+//        final ModLabeledToggleButton AllengOpen = new ModLabeledToggleButton(TEXT[16], this.X + 250, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.AllzhsOpen , settingsPanel, label -> {}, button -> {
+//            spireConfig.setBool("AllengOpen", ThMod.AllengOpen = button.enabled);
+//            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
+//            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
+//
+//            try {
+//                spireConfig.save();
+//            }
+//            catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            return;
+//        });
+//        settingsPanel.addUIElement(AllengOpen);
 
         Texture badgeTexture = new Texture(Gdx.files.internal("images/ThMod.png"));
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
@@ -1167,6 +1171,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         RelicLibrary.add(new KyoryuNoHagoromo());
         RelicLibrary.add(new JyouHari());
         RelicLibrary.add(new NitorisBag());
+//        RelicLibrary.add(new GoodDreamPillow());
 
         BaseMod.addEvent(RoomOfDemon.ID, RoomOfDemon.class, Exordium.ID);
         BaseMod.addEvent(RoomOfTime.ID, RoomOfTime.class, TheCity.ID);
@@ -1259,6 +1264,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addKeyword(new String[]{"祝福","祝福"}, "祝福卡会在抽到的时候  #y消耗 ,并发动效果");
         BaseMod.addKeyword(new String[]{"永恒","永恒"}, "此卡/遗物如果不在你的牌库/遗物列表,将会在战斗开始时加入你的牌库/遗物列表,包括下一场游戏(只能被特殊方法消除)");
         BaseMod.addKeyword(new String[]{"共鸣","共鸣"}, "当你拥有2或更多同属性的 #y元素 球(除了日月),且打出相同属性的 #y元素 卡时, #y消耗 2个 #y元素 球,触发 #b1 次 #y共鸣 效果");
+        BaseMod.addKeyword(new String[]{"增幅","增幅"}, "在你的抽牌堆/手牌/弃牌堆中,每有1张此卡的同名卡,这种卡的效果增加1");
+        BaseMod.addKeyword(new String[]{"想起","想起"}, "当你打出此卡时,如果你的抽牌堆中有此卡的同名卡,抽那张卡");
 
         BaseMod.addKeyword(new String[]{"Graze","graze"}, "Dodge Damage");
         BaseMod.addKeyword(new String[]{"Spell Card Rule","spell card rule"}, "1.At the start of your turn, you could get SP card, it base on your #rp point. NL 2.The SP card you can get also base on the card in your hand. NL 3.All the SP card has #yExhaust and #yEthereal . NL 4.The rest of rule need yourself to find it out!");

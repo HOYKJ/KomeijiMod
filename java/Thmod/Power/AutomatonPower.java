@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import Thmod.Orbs.Helan;
@@ -53,8 +54,11 @@ public class AutomatonPower extends AbstractPower {
                             YumiNum += 1;
                     }
                     p.loseEnergy(1);
-                    for (int i = 0; i < YariNum; i++)
-                        AbstractDungeon.actionManager.addToTop(new DamageAction(AbstractDungeon.getMonsters().getRandomMonster(true), new DamageInfo(p, 3, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                    for (int i = 0; i < YariNum; i++) {
+                        AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
+                        if(m != null)
+                            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, 3, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                    }
                     for (int i = 0; i < TateNum; i++)
                         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 2, true));
                     for (int i = 0; i < YumiNum; i++) {

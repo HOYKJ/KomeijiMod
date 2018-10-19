@@ -39,30 +39,43 @@ public class LanPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        switch (this.amount){
+        int newAmount = this.amount%3;
+        switch (newAmount) {
             case 3:
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,10));
-                for(AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new WeakPower(m,2,false),2));
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
                 }
                 this.amount -= 1;
                 this.description = DESCRIPTIONS[1];
-                this.updateDescription();
+
                 break;
             case 2:
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,10));
-                for(AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new VulnerablePower(m,2,false),2));
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), 2));
                 }
                 this.amount -= 1;
                 this.description = DESCRIPTIONS[2];
-                this.updateDescription();
+
                 break;
             case 1:
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,10));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,2),2));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this));
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2), 2));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, this));
                 break;
+            default:
+                if(this.amount == 0) {
+                    AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, this));
+                }
+                else {
+                    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
+                    for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
+                    }
+                    this.amount -= 1;
+                    this.description = DESCRIPTIONS[1];
+                }
         }
     }
 

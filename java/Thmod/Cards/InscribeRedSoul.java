@@ -12,11 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
-
-import java.util.Iterator;
-
-import static Thmod.ThMod.AllzhsOpen;
 
 public class InscribeRedSoul extends AbstractKomeijiCards {
     public static final String ID = "InscribeRedSoul";

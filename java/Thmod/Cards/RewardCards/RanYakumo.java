@@ -16,15 +16,17 @@ public class RanYakumo extends AbstractKomeijiCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 3;
+    private static final int COST = 2;
 
     public RanYakumo() {
-        super("RanYakumo", RanYakumo.NAME,  3, RanYakumo.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE);
+        super("RanYakumo", RanYakumo.NAME,  3, RanYakumo.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
         this.upgraded = true;
+        this.isEthereal = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new LanPower(p,3)));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new LanPower(p,3),3));
+        this.modifyCostForCombat(1);
     }
 
     public boolean canUpgrade()

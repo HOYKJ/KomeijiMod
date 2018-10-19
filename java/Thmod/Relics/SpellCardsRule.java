@@ -73,6 +73,32 @@ public class SpellCardsRule extends AbstractThRelic {
             }
         }
 
+        if (AbstractDungeon.player.hasRelic("Strange Spoon")) {
+            AbstractDungeon.player.loseRelic("Strange Spoon");
+            AbstractRelic relic = new FamiliarSpoon();
+            UnlockTracker.markRelicAsSeen(relic.relicId);
+            relic.obtain();
+            relic.isObtained = true;
+            relic.isAnimating = false;
+            relic.isDone = false;
+        }
+        if (ThMod.blessingOfDetermination == 2){
+            boolean giveBook = true;
+            for (AbstractRelic r : p.relics){
+                if(r instanceof BookofPenglai) {
+                    giveBook = false;
+                    break;
+                }
+            }
+            if(giveBook) {
+                AbstractRelic relic = new BookofPenglai();
+                relic.obtain();
+                relic.isObtained = true;
+                relic.isAnimating = false;
+                relic.isDone = false;
+            }
+        }
+
 
         try {
             ThMod.SavePointPower();

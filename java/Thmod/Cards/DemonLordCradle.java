@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import static Thmod.ThMod.AllzhsOpen;
-
 public class DemonLordCradle extends AbstractKomeijiCards {
     public static final String ID = "DemonLordCradle";
     private static final CardStrings cardStrings;

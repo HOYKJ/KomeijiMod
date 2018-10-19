@@ -47,7 +47,7 @@ public class TimeLockPower extends AbstractPower {
             m.createIntent();
             AbstractDungeon.actionManager.addToBottom(new SetMoveAction(m, a, AbstractMonster.Intent.STUN));
         }
-        if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")) && !(owner.id.equals("Remiria")) && !(owner.id.equals("Shikieiki")) && !(owner.id.equals("Kedama_Monster"))) {
+        if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")) && !(owner.id.equals("Remiria")) && !(owner.id.equals("Shikieiki")) && !(owner.id.equals("Kedama_Monster")) && !(owner.id.equals("Yukari")) && !(owner.id.equals("Lan")) && !(owner.id.equals("Cheng"))) {
             STC = owner.state.getTimeScale();
             owner.state.setTimeScale(0F);
         }

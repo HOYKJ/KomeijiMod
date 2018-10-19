@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
@@ -50,7 +51,9 @@ public class YumiNingyou extends AbstractOrb {
     {
         AbstractPlayer p = AbstractDungeon.player;
 
-        AbstractDungeon.actionManager.addToTop(new DamageAction(AbstractDungeon.getMonsters().getRandomMonster(true), new DamageInfo(p, this.passiveAmount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
+        if(m != null)
+            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.passiveAmount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public void onEvoke() {

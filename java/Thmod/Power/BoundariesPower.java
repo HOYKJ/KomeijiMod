@@ -62,6 +62,7 @@ public class BoundariesPower extends AbstractPower {
         }
         AbstractMonster monster = (AbstractMonster) this.owner;
         ((Yukari) monster).changeImg();
+        ((Yukari) monster).changeIntend();
     }
 
     public void updateDescription()

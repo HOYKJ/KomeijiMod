@@ -140,7 +140,7 @@ public class PointPower extends AbstractPower {
         }
         if(YariNum > 2)
             cardid.add(new CuteOchiyari());
-        if((TateNum > 2) && ((!p.hasPower("RoundTable"))))
+        if((TateNum > 2) && (!(p.hasPower("RoundTable"))))
             cardid.add(new DollofRoundTable());
         if(YumiNum > 2)
             cardid.add(new DollsWar());

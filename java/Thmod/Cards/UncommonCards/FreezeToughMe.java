@@ -12,8 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Power.FreezePower;
 
-import static Thmod.ThMod.AllzhsOpen;
-
 public class FreezeToughMe extends AbstractKomeijiCards {
     public static final String ID = "FreezeToughMe";
     private static final CardStrings cardStrings;
