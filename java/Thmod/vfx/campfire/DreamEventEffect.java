@@ -14,11 +14,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.MathHelper;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.relics.Omamori;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.ui.DialogWord;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
@@ -28,9 +31,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import Thmod.Cards.DeriveCards.EasterEgg.SingleWing;
 import Thmod.Relics.GoodDreamPillow;
 import Thmod.ui.Buttons.DreamButton;
 import Thmod.vfx.DreamFogCoverEffect;
+import basemod.DevConsole;
 
 
 public class DreamEventEffect extends AbstractGameEffect
@@ -148,7 +153,7 @@ public class DreamEventEffect extends AbstractGameEffect
                         updateDreamText(TEXT[14]);
                         updateDreamOption(0,TEXT[5]);
                         updateDreamOption(1,TEXT[6]);
-                        changeImage(4);
+                        changeImage(5);
                         Screen += 1;
                         break;
                 }
@@ -198,12 +203,14 @@ public class DreamEventEffect extends AbstractGameEffect
                             changeImage(2);
                             CardCrawlGame.music.silenceTempBgmInstantly();
                             AbstractDungeon.getCurrRoom().playBgmInstantly("月人.mp3");
+                            UnlockTracker.unlockCard(SingleWing.ID);
                             this.Screen += 1;
                         }
                         else{
                             updateDreamText(TEXT[17]);
                             updateDreamOption(0,TEXT[3]);
                             updateDreamOption(1,TEXT[7]);
+                            changeImage(4);
                             this.Screen = 20;
                         }
                         break;
@@ -222,12 +229,14 @@ public class DreamEventEffect extends AbstractGameEffect
                             changeImage(2);
                             CardCrawlGame.music.silenceTempBgmInstantly();
                             AbstractDungeon.getCurrRoom().playBgmInstantly("月人.mp3");
+                            UnlockTracker.unlockCard(SingleWing.ID);
                             this.Screen += 1;
                         }
                         else{
                             updateDreamText(TEXT[17]);
                             updateDreamOption(0,TEXT[3]);
                             updateDreamOption(1,TEXT[7]);
+                            changeImage(4);
                             this.Screen = 20;
                         }
                         break;
@@ -293,9 +302,9 @@ public class DreamEventEffect extends AbstractGameEffect
                                 for(AbstractCard card : AbstractDungeon.player.masterDeck.group){
                                     if(card.type == AbstractCard.CardType.CURSE){
                                         AbstractDungeon.player.masterDeck.removeCard(card);
-                                        break;
                                     }
                                 }
+                                AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, RelicLibrary.getRelic(Omamori.ID).makeCopy());
                                 break;
                         }
                         this.Screen = 88;
@@ -322,50 +331,14 @@ public class DreamEventEffect extends AbstractGameEffect
                         updateDreamText(TEXT[18]);
                         updateDreamOption(0,TEXT[2]);
                         updateDreamOption(1,TEXT[2]);
-                        AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-                        ArrayList<AbstractCard> upgradableCards = new ArrayList();
-                        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
-                            if (c.canUpgrade()) {
-                                upgradableCards.add(c);
-                            }
-                        }
-                        Collections.shuffle(upgradableCards, new java.util.Random(AbstractDungeon.miscRng.randomLong()));
-                        if (!upgradableCards.isEmpty()) {
-                            if (upgradableCards.size() == 1) {
-                                (upgradableCards.get(0)).upgrade();
-                                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
-                                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(0)).makeStatEquivalentCopy()));
-                            }
-                            else if(upgradableCards.size() == 2) {
-                                (upgradableCards.get(0)).upgrade();
-                                (upgradableCards.get(1)).upgrade();
-                                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
-                                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(1));
-                                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(0)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F - 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-
-                                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(1)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-                            }
-                            else {
-                                (upgradableCards.get(0)).upgrade();
-                                (upgradableCards.get(1)).upgrade();
-                                (upgradableCards.get(2)).upgrade();
-                                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
-                                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(1));
-                                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(2));
-                                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(0)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F - 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-
-                                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(1)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-
-                                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(2)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
-                            }
-                        }
+                        upgradeCards();
                         this.Screen = 88;
                         break;
                 }
                 break;
             case 88:
                 updateDreamText(TEXT[29]);
-                changeImage(4);
+                changeImage(5);
                 CardCrawlGame.music.silenceTempBgmInstantly();
                 this.Screen = 99;
                 break;
@@ -433,6 +406,9 @@ public class DreamEventEffect extends AbstractGameEffect
                 this.img = ImageMaster.loadImage("images/events/GoodDream4.png" );
                 break;
             case 4:
+                this.img = ImageMaster.loadImage("images/events/GoodDream5.png" );
+                break;
+            case 5:
                 this.img = ImageMaster.loadImage("images/events/GoodDream.png" );
                 break;
         }
@@ -537,6 +513,46 @@ public class DreamEventEffect extends AbstractGameEffect
             {
                 this.textDone = true;
                 this.s.close();
+            }
+        }
+    }
+
+    private void upgradeCards() {
+        AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+        ArrayList<AbstractCard> upgradableCards = new ArrayList();
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if (c.canUpgrade()) {
+                upgradableCards.add(c);
+            }
+        }
+        Collections.shuffle(upgradableCards, new java.util.Random(AbstractDungeon.miscRng.randomLong()));
+        if (!upgradableCards.isEmpty()) {
+            if (upgradableCards.size() == 1) {
+                (upgradableCards.get(0)).upgrade();
+                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
+                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(0)).makeStatEquivalentCopy()));
+            }
+            else if(upgradableCards.size() == 2) {
+                (upgradableCards.get(0)).upgrade();
+                (upgradableCards.get(1)).upgrade();
+                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
+                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(1));
+                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(0)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F - 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
+
+                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect((upgradableCards.get(1)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + 190.0F * Settings.scale, Settings.HEIGHT / 2.0F));
+            }
+            else {
+                (upgradableCards.get(0)).upgrade();
+                (upgradableCards.get(1)).upgrade();
+                (upgradableCards.get(2)).upgrade();
+                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
+                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(1));
+                AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(2));
+                AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect((upgradableCards.get(0)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F - 380.0F * Settings.scale, Settings.HEIGHT / 2.0F));
+
+                AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect((upgradableCards.get(1)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
+
+                AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect((upgradableCards.get(2)).makeStatEquivalentCopy(), Settings.WIDTH / 2.0F + 380.0F * Settings.scale, Settings.HEIGHT / 2.0F));
             }
         }
     }

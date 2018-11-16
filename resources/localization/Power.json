@@ -63,7 +63,7 @@
   "HenyouMirumePower": {
     "NAME": "静观其变之眼",
     "DESCRIPTIONS": [
-      "在你攻击后追加 #b10 点伤害."
+      "在你攻击后追加 #b15 点伤害."
     ]
   },
   "HibernatePower": {
@@ -87,7 +87,8 @@
   "JyouchiRei": {
     "NAME": "紧缚灵",
     "DESCRIPTIONS": [
-      "在受到伤害后爆发."
+      "在回合结束或攻击时流失 #b",
+      " 点生命"
     ]
   },
   "KamaitachiPower": {

@@ -13,9 +13,9 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 
 import Thmod.Relics.GoodDreamPillow;
 
-public class DouremisStore extends AbstractImageEvent {
-    public static final String ID = "DouremisStore";
-    private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString("SpiritSuffering");
+public class DoremisStore extends AbstractImageEvent {
+    public static final String ID = "DoremisStore";
+    private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString("DoremisStore");
     public static final String NAME = eventStrings.NAME;
     public static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     public static final String[] OPTIONS = eventStrings.OPTIONS;
@@ -34,7 +34,7 @@ public class DouremisStore extends AbstractImageEvent {
         private CurScreen() {}
     }
 
-    public DouremisStore(){
+    public DoremisStore(){
         super(NAME, INTRO_MSG, "images/events/Ring.png");
         this.imageEventText.setDialogOption(OPTIONS[0]);
         this.imageEventText.setDialogOption(OPTIONS[1]);
@@ -61,16 +61,25 @@ public class DouremisStore extends AbstractImageEvent {
                 switch (buttonPressed) {
                     case 0:
                         this.screen = CurScreen.CONTINUE;
-                        this.imageEventText.loadImage("images/events/DouremisStore.jpg");
+                        this.imageEventText.loadImage("images/events/DoremisStore.png");
                         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
-                        if(p.gold >= 123) {
-                            this.imageEventText.updateDialogOption(0, OPTIONS[2]);
-                        }
-                        for(AbstractCard card:p.masterDeck.group){
-                            if(card.type == AbstractCard.CardType.CURSE){
-                                this.imageEventText.updateDialogOption(1, OPTIONS[3]);
-                                break;
+                        label2:
+                        {
+                            if (p.gold >= 123) {
+                                this.imageEventText.updateDialogOption(0, OPTIONS[2]);
+                                break label2;
                             }
+                            this.imageEventText.updateDialogOption(0, OPTIONS[5],true);
+                        }
+                        label2:
+                        {
+                            for (AbstractCard card : p.masterDeck.group) {
+                                if (card.type == AbstractCard.CardType.CURSE) {
+                                    this.imageEventText.updateDialogOption(1, OPTIONS[3]);
+                                    break label2;
+                                }
+                            }
+                            this.imageEventText.updateDialogOption(1, OPTIONS[6], true);
                         }
                         this.imageEventText.setDialogOption(OPTIONS[4]);
                         break;
@@ -108,6 +117,7 @@ public class DouremisStore extends AbstractImageEvent {
                         break;
                     case 2:
                         this.screen = CurScreen.LEAVE;
+                        AbstractDungeon.player.heal(15);
                         this.imageEventText.updateBodyText(DESCRIPTIONS[4]);
                         this.imageEventText.updateDialogOption(0, OPTIONS[1]);
                         this.imageEventText.clearRemainingOptions();

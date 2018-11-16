@@ -70,7 +70,7 @@ public class Kourindou extends AbstractImageEvent {
 
         this.upcard = CardHelper.hasUpgradedCard();
         if (this.upcard) {
-            this.upCard = CardHelper.returnUpgradedCard();
+            this.upCard = CardHelper.returnUpgradedCard(AbstractDungeon.eventRng);
             switch (this.upCard.rarity) {
                 case BASIC:
                     this.getRelic = AbstractDungeon.returnRandomRelic(AbstractRelic.RelicTier.COMMON);

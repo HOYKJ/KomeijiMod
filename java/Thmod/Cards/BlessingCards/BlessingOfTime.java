@@ -34,6 +34,8 @@ public class BlessingOfTime extends AbstractBlessingCard
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
+        boolean remove = false;
+        AbstractCard card = null;
         RewardItem specialCard = new RewardItem();
         specialCard.type = RewardItem.RewardType.CARD;
         specialCard.cards.clear();
@@ -49,9 +51,13 @@ public class BlessingOfTime extends AbstractBlessingCard
         AbstractDungeon.getCurrRoom().rewards.clear();
         AbstractDungeon.getCurrRoom().addCardReward(specialCard);
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
-            if (c instanceof BlessingOfTime)
-                AbstractDungeon.player.masterDeck.group.remove(c);
+            if (c instanceof BlessingOfTime) {
+                remove = true;
+                card = c;
+            }
         }
+        if(remove)
+            AbstractDungeon.player.masterDeck.group.remove(card);
         UnlockTracker.unlockCard("ScarletsBlessing");
         AbstractDungeon.actionManager.addToBottom(new EndBattleAction());
     }

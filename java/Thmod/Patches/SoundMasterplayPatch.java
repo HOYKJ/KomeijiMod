@@ -36,5 +36,8 @@ public class SoundMasterplayPatch
         map.put("world_ot", load("world_ot.ogg"));
         map.put("Fire_Remnant1", load("Fire_Remnant1.ogg"));
         map.put("Fire_Remnant2", load("Fire_Remnant2.ogg"));
+        map.put("graze", load("graze.ogg"));
+        map.put("power0", load("power0.ogg"));
+        map.put("nep00", load("nep00.ogg"));
     }
 }

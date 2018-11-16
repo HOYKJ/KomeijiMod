@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
@@ -52,10 +53,12 @@ import Thmod.Cards.DeriveCards.EasterEgg.Peep;
 import Thmod.Cards.DeriveCards.EasterEgg.RakuenSaibancyou;
 import Thmod.Cards.DeriveCards.EasterEgg.Scarlet;
 import Thmod.Cards.DeriveCards.EasterEgg.ScarletsBlessing;
+import Thmod.Cards.DeriveCards.EasterEgg.SingleWing;
 import Thmod.Cards.DeriveCards.EasterEgg.SpontaneousDetonation;
 import Thmod.Cards.DeriveCards.EasterEgg.THsWorld;
 import Thmod.Cards.DeriveCards.EasterEgg.TheWorld;
 import Thmod.Cards.DeriveCards.Nothing;
+import Thmod.Cards.DeriveCards.WeatherTest;
 import Thmod.Cards.DochyakuKami;
 import Thmod.Cards.ElementCards.CondensedBubble;
 import Thmod.Cards.ElementCards.RareCards.ElementInvoke;
@@ -227,7 +230,9 @@ import Thmod.Cards.UncommonCards.TenguNoTaiko;
 import Thmod.Cards.UncommonCards.VampireKiss;
 import Thmod.Cards.RewardCards.VanishingEverything;
 import Thmod.Cards.UncommonCards.YoukiSo;
+import Thmod.Cards.VictoryCards.Searching;
 import Thmod.Characters.KomeijiSatori;
+import Thmod.Events.DoremisStore;
 import Thmod.Events.Ferry;
 import Thmod.Events.GateofTheMinistry;
 import Thmod.Events.Kourindou;
@@ -236,7 +241,11 @@ import Thmod.Events.RoomOfTime;
 import Thmod.Events.SpiritSuffering;
 import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
+import Thmod.Potion.CalmPotion;
+import Thmod.Potion.ExcitationPotion;
+import Thmod.Potion.PpointPotion;
 import Thmod.Relics.BookofPenglai;
+import Thmod.Relics.Clue;
 import Thmod.Relics.ColorfulQuillpen;
 import Thmod.Relics.CrystalBall;
 import Thmod.Relics.FamiliarSpoon;
@@ -303,6 +312,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean canScaBle;
     public static boolean canRemBle;
     public static boolean defeatYukari;
+    public static int numOfClue = 1;
     public static int HeartScreen = 0;
     public static ArrayList saveCard = new ArrayList<>() ;
     private float X;
@@ -342,6 +352,10 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
     public static String statusCardImage(final String id) {
         return "images/cards/status/" + id + ".png";
+    }
+
+    public static String victoryCardImage(final String id) {
+        return "images/cards/victory/" + id + ".png";
     }
 
     public static String komeijiRelicImage(final String id) {
@@ -779,11 +793,14 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new Innocent());
         BaseMod.addCard(new CheckPenglai());
         BaseMod.addCard(new Peep());
+        BaseMod.addCard(new SingleWing());
 
         BaseMod.addCard(new RidiculousThoughts());
         BaseMod.addCard(new ThoughtExtend());
         BaseMod.addCard(new GradualImprovement());
         BaseMod.addCard(new Muse());
+
+        BaseMod.addCard(new Searching());
 
         BaseMod.addCard(new BlessingOfTime());
         BaseMod.addCard(new BlessingOfScarlet());
@@ -1171,7 +1188,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         RelicLibrary.add(new KyoryuNoHagoromo());
         RelicLibrary.add(new JyouHari());
         RelicLibrary.add(new NitorisBag());
-//        RelicLibrary.add(new GoodDreamPillow());
+        RelicLibrary.add(new Clue());
+        RelicLibrary.add(new GoodDreamPillow());
 
         BaseMod.addEvent(RoomOfDemon.ID, RoomOfDemon.class, Exordium.ID);
         BaseMod.addEvent(RoomOfTime.ID, RoomOfTime.class, TheCity.ID);
@@ -1181,6 +1199,12 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         else
             BaseMod.addEvent(GateofTheMinistry.ID, GateofTheMinistry.class, TheCity.ID);
         BaseMod.addEvent(Kourindou.ID, Kourindou.class, TheBeyond.ID);
+        BaseMod.addEvent(DoremisStore.ID, DoremisStore.class);
+
+        BaseMod.addPotion(ExcitationPotion.class,Color.CORAL.cpy(),Color.SCARLET.cpy(),null,ExcitationPotion.POTION_ID);
+        BaseMod.addPotion(CalmPotion.class,Color.SKY.cpy(),Color.NAVY.cpy(),null,CalmPotion.POTION_ID);
+//        BaseMod.addPotion(RecallPotion.class,CardHelper.getColor(102, 176, 216),古明地觉,null,RecallPotion.POTION_ID);
+        BaseMod.addPotion(PpointPotion.class,Color.SCARLET.cpy(),Color.RED.cpy(),null,PpointPotion.POTION_ID, CharacterEnum.KomeijiSatori);
     }
 
     public void receiveEditStrings()
@@ -1223,6 +1247,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
             String monsterStrings = Gdx.files.internal("localization/Monster.json").readString(String.valueOf(StandardCharsets.UTF_8));
             BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
+            String potionStrings = Gdx.files.internal("localization/Potion.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
         }
 
         DevConsole.logger.info("========================================================================");
@@ -1247,7 +1273,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addKeyword(new String[]{"回响","回响"}, "这张卡在消耗后会将一张复制加入你的手牌");
         BaseMod.addKeyword(new String[]{"蓄力","蓄力"}, "这张卡在使用后不会立刻触发效果,而是由你选择触发");
         BaseMod.addKeyword(new String[]{"固定","固定"}, "不受任何加成");
-        BaseMod.addKeyword(new String[]{"紧缚灵","紧缚灵"}, "在它受到伤害时,每只紧缚灵会对它造成10点伤害并消失");
+        BaseMod.addKeyword(new String[]{"紧缚灵","紧缚灵"}, "在回合结束或拥有者攻击时,使它流失等同层数的生命");
         BaseMod.addKeyword(new String[]{"天气","天气"}, "天气将为你提供额外效果");
         BaseMod.addKeyword(new String[]{"人偶","人偶"}, "爱丽丝制作的人偶,为什么会出现在这呢?");
         BaseMod.addKeyword(new String[]{"武装","武装"}, "普通人偶可以武装为枪兵,盾兵或弓兵.");
@@ -1266,6 +1292,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addKeyword(new String[]{"共鸣","共鸣"}, "当你拥有2或更多同属性的 #y元素 球(除了日月),且打出相同属性的 #y元素 卡时, #y消耗 2个 #y元素 球,触发 #b1 次 #y共鸣 效果");
         BaseMod.addKeyword(new String[]{"增幅","增幅"}, "在你的抽牌堆/手牌/弃牌堆中,每有1张此卡的同名卡,这种卡的效果增加1");
         BaseMod.addKeyword(new String[]{"想起","想起"}, "当你打出此卡时,如果你的抽牌堆中有此卡的同名卡,抽那张卡");
+        BaseMod.addKeyword(new String[]{"激活","激活"}, "右键点击生效");
 
         BaseMod.addKeyword(new String[]{"Graze","graze"}, "Dodge Damage");
         BaseMod.addKeyword(new String[]{"Spell Card Rule","spell card rule"}, "1.At the start of your turn, you could get SP card, it base on your #rp point. NL 2.The SP card you can get also base on the card in your hand. NL 3.All the SP card has #yExhaust and #yEthereal . NL 4.The rest of rule need yourself to find it out!");

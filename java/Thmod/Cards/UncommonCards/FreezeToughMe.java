@@ -31,7 +31,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
     public void use(AbstractPlayer p, AbstractMonster m)
     {
         AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new FreezePower(p,this.magicNumber)));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p,p,new FreezePower(p,this.magicNumber),this.magicNumber));
     }
 
     public AbstractCard makeCopy() {

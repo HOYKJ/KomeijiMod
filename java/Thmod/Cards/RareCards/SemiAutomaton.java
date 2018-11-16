@@ -36,9 +36,7 @@ public class SemiAutomaton extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.isInnate = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeBaseCost(2);
         }
     }
 

@@ -107,15 +107,15 @@ public class Yukari extends AbstractMonster {
                     setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
                 }
                 else {
-                    setMove((byte) 6, Intent.DEFEND_DEBUFF);
+                    setMove((byte)6, Intent.DEFEND_DEBUFF);
                 }
             }
             else {
                 if(hasLan){
-                    setMove((byte)5, Intent.ATTACK_BUFF,this.damages);
+                    setMove((byte)4, Intent.BUFF);
                 }
                 else
-                    setMove((byte)4, Intent.BUFF);
+                    setMove((byte)5, Intent.ATTACK_BUFF,this.damages);
             }
         }
     }
@@ -158,6 +158,7 @@ public class Yukari extends AbstractMonster {
                 }
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
                 AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
+                this.damages += 3;
                 break;
             case 5:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
@@ -226,7 +227,7 @@ public class Yukari extends AbstractMonster {
     public void die() {
         UnlockTracker.unlockCard("Peep");
         MapRoomNode node = new MapRoomNode(-1, 15);
-        node.room = new NewVictoryRoom();
+        node.room = new NewVictoryRoom(VictoryRoom.EventType.HEART);
         AbstractDungeon.nextRoom = node;
         ThMod.defeatYukari = true;
         try {

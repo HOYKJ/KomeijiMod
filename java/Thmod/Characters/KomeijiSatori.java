@@ -37,6 +37,7 @@ public class KomeijiSatori extends CustomPlayer {
     public static final int ENERGY_PER_TURN = 3;
     public static final String[] orbTextures;
     public static final String orbVfx;
+    public static TextureAtlas.AtlasRegion orb_Komeiji;
 
     public KomeijiSatori(final String name) {
         super(name, CharacterEnum.KomeijiSatori, orbTextures, orbVfx, (String) null, null);
@@ -204,7 +205,7 @@ public class KomeijiSatori extends CustomPlayer {
 
     public TextureAtlas.AtlasRegion getOrb()
     {
-        return AbstractCard.orb_blue;
+        return AbstractCard.orb_red;
     }
 
     public Color getSlashAttackColor()
@@ -219,7 +220,7 @@ public class KomeijiSatori extends CustomPlayer {
             Description = "";
         else
             Description = "NL 你将你的精神紧绷到极限……";
-        return com.megacrit.cardcrawl.events.beyond.SpireHeart.DESCRIPTIONS[10];
+        return Description;
     }
 
     static {

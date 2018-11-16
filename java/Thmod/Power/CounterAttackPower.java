@@ -13,6 +13,10 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import java.util.ArrayList;
+
+import Thmod.Actions.common.RoundDiggerAction;
+
 public class CounterAttackPower extends AbstractPower {
     public static final String POWER_ID = "CounterAttackPower";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("CounterAttackPower");
@@ -35,8 +39,9 @@ public class CounterAttackPower extends AbstractPower {
         {
             if(damageAmount > 0) {
                 flash();
-                for (int i = 0; i < 10; i++)
-                    AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, 1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                ArrayList<AbstractCreature> target = new ArrayList<>();
+                target.add(info.owner);
+                AbstractDungeon.effectList.add(new RoundDiggerAction(10,false,target));
                 if (!(this.owner.hasPower("PointPower"))) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
                 } else if (this.owner.getPower("PointPower").amount < 5) {

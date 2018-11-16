@@ -3,6 +3,7 @@ package Thmod.Power;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +13,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import Thmod.Actions.common.DashAction;
 
 public class DashPower extends AbstractPower {
     public static final String POWER_ID = "DashPower";
@@ -54,6 +57,7 @@ public class DashPower extends AbstractPower {
                 damageAmount = 0;
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
             }
+            CardCrawlGame.sound.play("graze");
         }
         return damageAmount;
     }
@@ -67,6 +71,7 @@ public class DashPower extends AbstractPower {
                 } else if (p.getPower("PointPower").amount < 5) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
                 }
+                CardCrawlGame.sound.play("graze");
             }
             return 0;
         }

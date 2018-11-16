@@ -31,5 +31,7 @@ public class SoundMasterplayPatchA
         map.put("select00", load("select00.ogg"));
         map.put("world", load("world.ogg"));
         map.put("world_ot", load("world_ot.ogg"));
+        map.put("power0", load("power0.ogg"));
+        map.put("nep00", load("nep00.ogg"));
     }
 }

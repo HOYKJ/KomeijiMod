@@ -22,8 +22,7 @@ public class CampfireUIPatch {
     public static void Postfix(Object meObj)
     {
         CampfireUI campfire = (CampfireUI)meObj;
-        try
-        {
+        try {
             ArrayList campfireButtons = (ArrayList) ReflectionHacks.getPrivate(campfire, CampfireUI.class, "buttons");
             String cardid;
 
@@ -31,55 +30,65 @@ public class CampfireUIPatch {
             int wide = 950;
             if (campfireButtons.size() > 3) {
                 height = 180;
-            }
-            else if(campfireButtons.size() == 3) {
+            } else if (campfireButtons.size() == 3) {
+                wide = 1110;
+            } else if (campfireButtons.size() == 1) {
+                height = 720;
                 wide = 1110;
             }
 
             SweepOption button = new SweepOption(true);
 
             label0:
-            for (Iterator<AbstractCard> localIterator = AbstractDungeon.player.masterDeck.group.iterator(); localIterator.hasNext();) {
+            for (Iterator<AbstractCard> localIterator = AbstractDungeon.player.masterDeck.group.iterator(); localIterator.hasNext(); ) {
                 AbstractCard c = localIterator.next();
 //                for (Iterator Iterator = ThMod.campids.iterator(); Iterator.hasNext(); ) {
 //                    cardid = (String) Iterator.next();
-                    if ((c instanceof AbstractSweepCards) || (c instanceof AbstractElementSweepCards)) {
-                        campfireButtons.add(button);
-                        if(campfireButtons.size() == 4){
+                if ((c instanceof AbstractSweepCards) || (c instanceof AbstractElementSweepCards)) {
+                    campfireButtons.add(button);
+                    if (campfireButtons.size() == 4) {
+                        ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(800.0F * Settings.scale, height * Settings.scale);
+                    } else if (campfireButtons.size() == 6) {
+                        ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 4)).setPosition(650.0F * Settings.scale, 450.0F * Settings.scale);
+                        ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 3)).setPosition(950.0F * Settings.scale, 450.0F * Settings.scale);
+                        ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(1250.0F * Settings.scale, 450.0F * Settings.scale);
+                    } else if (campfireButtons.size() == 2) {
+                        ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(800.0F * Settings.scale, height * Settings.scale);
+                    }
+                    ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 1)).setPosition(wide * Settings.scale, height * Settings.scale);
+                    break label0;
+                }
+            }
+//            }
+
+
+            if (AbstractDungeon.player.hasRelic(GoodDreamPillow.ID)) {
+                if (AbstractDungeon.player.getRelic(GoodDreamPillow.ID).counter == 1) {
+                    height = 450;
+                    wide = 950;
+                    if (campfireButtons.size() == 4) {
+                        height = 180;
+                    } else if (campfireButtons.size() == 3) {
+                        wide = 1110;
+                    } else if (campfireButtons.size() == 5) {
+                        height = 180;
+                        wide = 1110;
+                    }
+
+                    GoodDreamOption button1 = new GoodDreamOption(true);
+
+                    if (AbstractDungeon.player.hasRelic(GoodDreamPillow.ID)) {
+                        campfireButtons.add(button1);
+                        if (campfireButtons.size() == 4) {
+                            ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(800.0F * Settings.scale, height * Settings.scale);
+                        } else if (campfireButtons.size() == 6) {
                             ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(800.0F * Settings.scale, height * Settings.scale);
                         }
                         ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 1)).setPosition(wide * Settings.scale, height * Settings.scale);
-                        break label0;
                     }
+
                 }
-//            }
-
-            height = 450;
-            wide = 950;
-            if (campfireButtons.size() == 4) {
-                height = 180;
             }
-            else if(campfireButtons.size() == 3) {
-                wide = 1110;
-            }
-            else if(campfireButtons.size() == 5){
-                height = 180;
-                wide = 1110;
-            }
-
-            GoodDreamOption button1 = new GoodDreamOption(true);
-
-//            if(AbstractDungeon.player.hasRelic(""))
-            if(AbstractDungeon.player.hasRelic(GoodDreamPillow.ID)) {
-                campfireButtons.add(button1);
-                if (campfireButtons.size() == 4) {
-                    ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(800.0F * Settings.scale, height * Settings.scale);
-                } else if (campfireButtons.size() == 6) {
-                    ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 2)).setPosition(800.0F * Settings.scale, height * Settings.scale);
-                }
-                ((AbstractCampfireOption) campfireButtons.get(campfireButtons.size() - 1)).setPosition(wide * Settings.scale, height * Settings.scale);
-            }
-
         }
         catch (java.lang.IllegalArgumentException e)
         {

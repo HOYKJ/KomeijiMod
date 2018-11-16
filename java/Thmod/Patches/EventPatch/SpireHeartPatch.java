@@ -38,21 +38,10 @@ public class SpireHeartPatch {
                         AbstractDungeon.nextRoom = node;
                         AbstractDungeon.closeCurrentScreen();
                         AbstractDungeon.nextRoomTransitionStart();
-//                        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMBAT;
-//                        AbstractDungeon.getCurrRoom().monsters.init();
-//                        AbstractRoom.waitTimer = 0.1F;
-//                        AbstractDungeon.player.preBattlePrep();
-//                        GenericEventDialog.hide();
-//                        CardCrawlGame.fadeIn(1.5F);
+
                         ThMod.HeartScreen = 0;
                         break;
-//                    case 1:
-//                        AbstractDungeon.player.isDying = true;
-//                        _obj_instance.hasFocus = false;
-//                        _obj_instance.roomEventText.hide();
-//                        AbstractDungeon.player.isDead = true;
-//                        AbstractDungeon.deathScreen = new DeathScreen(null);
-//                        break;
+
                     default:
                         if(ThMod.HeartScreen == 1){
                             ThMod.HeartScreen += 1;
@@ -66,7 +55,4 @@ public class SpireHeartPatch {
             }
         }
     }
-    @SpirePrefixPatch
-    public static void Prefix(SpireHeart _obj_instance, int buttonPressed){
-        }
 }

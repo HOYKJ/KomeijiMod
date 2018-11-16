@@ -14,14 +14,20 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import java.util.ArrayList;
+
+import Thmod.Actions.common.RoundDiggerAction;
+
 public class LagDamagePower extends AbstractPower {
     public static final String POWER_ID = "LagDamagePower";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("LagDamagePower");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private AbstractPlayer p = AbstractDungeon.player;
+    private boolean isRed;
+    private ArrayList<AbstractCreature> target = new ArrayList<>();
 
-    public LagDamagePower(AbstractCreature owner, int amount) {
+    public LagDamagePower(AbstractCreature owner, int amount,boolean isRed) {
         this.name = NAME;
         this.ID = "LagDamagePower";
         this.owner = owner;
@@ -29,16 +35,18 @@ public class LagDamagePower extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/LagDamagePower.png");
         this.type = PowerType.BUFF;
+        this.isRed = isRed;
     }
 
     public void atStartOfTurn() {
         for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
             AbstractMonster target =AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                flash();
-                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                this.target.add(target);
             }
         }
+        flash();
+        AbstractDungeon.effectList.add(new RoundDiggerAction(amount,this.isRed,target));
         AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this));
     }
 

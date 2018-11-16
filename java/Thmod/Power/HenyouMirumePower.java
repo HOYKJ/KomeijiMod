@@ -33,12 +33,12 @@ public class HenyouMirumePower extends AbstractPower {
     {
         if (this.amount > 0) {
             //AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, "HenyouMirumePower", 1));
-            return (damage + 10);
+            return (damage + 15);
         }
         else if(this.amount == 0)
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"HenyouMirumePower"));
         else if(this.amount == -1)
-            return (damage + 10);
+            return (damage + 15);
         return damage;
     }
 

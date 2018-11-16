@@ -28,7 +28,7 @@ public class SatsujinDooru extends AbstractKomeijiCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LagDamagePower(p, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LagDamagePower(p, this.magicNumber,this.upgraded), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
     }
 
     public AbstractCard makeCopy() {

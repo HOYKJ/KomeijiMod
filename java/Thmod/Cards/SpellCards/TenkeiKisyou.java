@@ -36,7 +36,7 @@ public class TenkeiKisyou extends AbstractSpellCards {
                     String weatherid = ThMod.weathers.get(i);
                     if(p.hasPower(weatherid)) {
                         AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p, p, weatherid));
-                        this.damage += 15;
+                        this.damage += 45;
                         break;
                     }
                 }

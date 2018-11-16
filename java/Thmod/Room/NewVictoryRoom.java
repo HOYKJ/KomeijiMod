@@ -6,6 +6,10 @@ import com.megacrit.cardcrawl.rooms.VictoryRoom;
 import com.megacrit.cardcrawl.screens.DeathScreen;
 
 public class NewVictoryRoom extends VictoryRoom{
+    public NewVictoryRoom(EventType type){
+        super(type);
+    }
+
     @Override
     public void onPlayerEntry() {
         super.onPlayerEntry();

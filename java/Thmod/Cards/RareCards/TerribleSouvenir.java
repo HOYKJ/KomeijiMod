@@ -1,5 +1,7 @@
 package Thmod.Cards.RareCards;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +14,7 @@ import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import Thmod.Cards.AbstractKomeijiCards;
 
@@ -30,6 +33,8 @@ public class TerribleSouvenir extends AbstractKomeijiCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new ShockWaveEffect(p.hb.cX, p.hb.cY, Color.PURPLE.cpy(), ShockWaveEffect.ShockWaveType.CHAOTIC), 0.5F));
+
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {

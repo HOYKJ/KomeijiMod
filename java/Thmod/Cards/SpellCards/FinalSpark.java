@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 import Thmod.Cards.UncommonCards.NarrowSpark;
 import Thmod.Power.PointPower;
 import Thmod.ThMod;
+import Thmod.vfx.SparkEffect;
 
 public class FinalSpark extends AbstractSpellCards {
     public static final String ID = "FinalSpark";
@@ -55,7 +56,7 @@ public class FinalSpark extends AbstractSpellCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new MindblastEffect(p.dialogX, (p.dialogY - 100F),p.flipHorizontal), 0.10000000149011612F));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new SparkEffect(p.dialogX, (p.dialogY + 50F),p.flipHorizontal,2.0F,1), 0.1F));
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
             }

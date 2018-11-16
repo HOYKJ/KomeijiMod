@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 
+import Thmod.Relics.GoodDreamPillow;
 import Thmod.vfx.DreamFogCoverEffect;
 import Thmod.vfx.campfire.DreamEventEffect;
 
@@ -15,7 +16,7 @@ public class GoodDreamOption extends AbstractCampfireOption {
 
     public static Texture GetUpgradeOptionTexture()
     {
-        return new Texture("images/ui/SweepOption.png");
+        return new Texture("images/ui/DreamOption.png");
     }
 
     public GoodDreamOption(boolean active)
@@ -35,6 +36,7 @@ public class GoodDreamOption extends AbstractCampfireOption {
         for (int i = 0; i < 56; i++) {
             AbstractDungeon.effectList.add(new DreamFogCoverEffect());
         }
+        AbstractDungeon.player.getRelic(GoodDreamPillow.ID).counter = 0;
         DreamEventEffect Dream = new DreamEventEffect();
         AbstractDungeon.effectList.add(Dream);
         Dream.updateDreamText(TEXT[11]);

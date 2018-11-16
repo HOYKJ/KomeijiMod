@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.vfx.SparkEffect;
 
 public class NarrowSpark extends AbstractKomeijiCards {
     public static final String ID = "NarrowSpark";
@@ -50,7 +51,10 @@ public class NarrowSpark extends AbstractKomeijiCards {
     public void use(AbstractPlayer p, AbstractMonster m)
     {
         AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new MindblastEffect(p.dialogX, (p.dialogY - 100F),p.flipHorizontal), 0.10000000149011612F));
+        if(this.upgraded)
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new SparkEffect(p.dialogX, (p.dialogY + 50F),p.flipHorizontal,2.0F,0), 0.1F));
+        else
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new SparkEffect(p.dialogX, (p.dialogY + 50F),p.flipHorizontal,2.0F,-1), 0.1F));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         this.addDone = false;
     }

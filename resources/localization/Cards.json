@@ -100,7 +100,7 @@
   "Sabishigari": {
     "NAME": "回忆「寂寞之人的紧缚灵」",
     "DESCRIPTION":
-    "使指定敌人被 紧缚灵 缠绕. 联想 ."
+    "使指定敌人被 !M! 层 紧缚灵 缠绕. 联想 ."
   },
     "Strike_Komeiji": {
       "NAME": "精神打击",
@@ -153,7 +153,7 @@
     "HenyouMirume":{
       "NAME": "回忆「静观其变之眼」",
       "DESCRIPTION": 
-	"你的下1次攻击会追加 固定 10点额外伤害."
+	"你的下1次攻击会追加 固定 15点额外伤害."
     },
     "HisouNoKen":{
       "NAME": "回忆「绯想之剑」",
@@ -558,7 +558,7 @@
   "RapurasuNoMa": {
     "NAME": "回忆「拉普拉斯之妖」",
     "DESCRIPTION":
-    "你本回合内的攻击将追加 固定 10点额外伤害. 替换 . NL 消耗3P."
+    "你本回合内的攻击将追加 固定 15点额外伤害. 替换 . NL 消耗3P."
   },
   "RokkonShyoujyou": {
     "NAME": "回忆「六根清净斩」",
@@ -734,6 +734,11 @@
     "DESCRIPTION":
     "击败(?)紫."
   },
+  "SingleWing": {
+    "NAME": "孤翼的白鹭",
+    "DESCRIPTION":
+    "见到探女."
+  },
 
 
   "RidiculousThoughts": {
@@ -755,6 +760,11 @@
     "NAME": "沉思",
     "DESCRIPTION":
     " 增幅 , 消耗 . NL 获得 !B! 格挡 .回合结束将1张此卡的复制加入弃牌堆. 想起 ."
+  },
+  "Searching": {
+    "NAME": "搜寻",
+    "DESCRIPTION":
+    "不能被打出,在战斗结束后获得更好的奖励.奖励系数 !M! ."
   },
 
 

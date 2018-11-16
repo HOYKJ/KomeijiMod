@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
+import Thmod.Actions.common.ShivWeaveAction;
+
 public class InscribeRedSoul extends AbstractKomeijiCards {
     public static final String ID = "InscribeRedSoul";
     private static final CardStrings cardStrings;
@@ -38,7 +40,7 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new VulnerablePower(target, this.magicNumber, false), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+        AbstractDungeon.effectsQueue.add(new ShivWeaveAction(this.multiDamage,this.upgraded));
     }
 
     public AbstractCard makeCopy() {

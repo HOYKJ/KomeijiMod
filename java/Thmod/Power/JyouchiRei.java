@@ -29,17 +29,29 @@ public class JyouchiRei extends AbstractPower {
         this.type = PowerType.DEBUFF;
     }
 
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if(info.type != DamageInfo.DamageType.HP_LOSS) {
-            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(p, (this.amount * 10), DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
-            flash();
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "JyouchiRei"));
-        }
-        return damageAmount;
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(p, this.amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
     }
+
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        super.onAttack(info, damageAmount, target);
+        AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(p, this.amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+    }
+
+//    public int onAttacked(DamageInfo info, int damageAmount) {
+//        if(info.type != DamageInfo.DamageType.HP_LOSS) {
+//            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(p, (this.amount * 10), DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+//            flash();
+//            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "JyouchiRei"));
+//        }
+//        return damageAmount;
+//    }
 
     public void updateDescription()
     {
-        this.description = DESCRIPTIONS[0];
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 }

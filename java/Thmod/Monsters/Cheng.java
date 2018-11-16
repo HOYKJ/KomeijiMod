@@ -24,7 +24,7 @@ public class Cheng extends AbstractMonster {
     private int attackTimes;
 
     public Cheng(float x, float y) {
-        super(NAME, "Cheng", 50, 10.0F, 0.0F, 200.0F, 275.0F, "images/monsters/Cheng/Main.png", x, y);
+        super(NAME, "Cheng", 100, 10.0F, 0.0F, 200.0F, 275.0F, "images/monsters/Cheng/Main.png", x, y);
         this.attackTimes = 2;
     }
 

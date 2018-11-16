@@ -1,0 +1,31 @@
+﻿{
+  "ExcitationPotion": {
+    "NAME": "兴奋剂",
+    "DESCRIPTIONS": [
+      "你的所有带层数的状态增加 #b",
+      " 层."
+    ]
+  },
+  "CalmPotion": {
+    "NAME": "镇静剂",
+    "DESCRIPTIONS": [
+      "你的所有带层数的状态减少 #b",
+      " 层."
+    ]
+  },
+  "RecallPotion": {
+    "NAME": "回忆",
+    "DESCRIPTIONS": [
+      "唤醒一个本属于你的回忆",
+      "唤醒回忆",
+      "立刻进入一场战斗.而你面对的敌人是..."
+    ]
+  },
+  "PpointPotion": {
+    "NAME": "P点药",
+    "DESCRIPTIONS": [
+      "获得 #b",
+      " 点P点(不能超过上限)"
+    ]
+  }
+}
