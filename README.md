@@ -18,6 +18,6 @@ And there are 12 cards for events, include 3 Curses(You can get these Curses thr
 She has 10 relics for common deck, 3 relics for Alice extend deck, 3 relics for Patchouli extend deck.  
 And has other 6 relics unexclusive(You can get them even play other characters)  
   
-And there is 2 colorless cards now(Colorless cards is for ALL characters)  
+And there is 4 colorless cards now(Colorless cards is for ALL characters)  
   
 _More detailed information will supply in wiki._
