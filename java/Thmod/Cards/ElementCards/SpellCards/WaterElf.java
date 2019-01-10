@@ -14,11 +14,11 @@ public class WaterElf extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public WaterElf() {
-        super("WaterElf", WaterElf.NAME,  2, WaterElf.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY,ElementType.Wood,ElementType.Water);
-        this.baseMagicNumber = 6;
+        super("WaterElf", WaterElf.NAME,  1, WaterElf.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY,ElementType.Wood,ElementType.Water);
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
     }
 

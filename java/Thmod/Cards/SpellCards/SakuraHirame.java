@@ -21,7 +21,7 @@ public class SakuraHirame extends AbstractSpellCards {
 
     public SakuraHirame() {
         super("SakuraHirame", SakuraHirame.NAME,  1, SakuraHirame.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseDamage = 15;
+        this.baseDamage = 16;
         this.isMultiDamage = true;
         this.pointcost = 3;
     }

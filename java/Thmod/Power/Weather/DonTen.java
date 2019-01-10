@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import Thmod.Power.PointPower;
 
 public class DonTen extends AbstractPower {
-    public static final String POWER_ID = "KaiSei";
+    public static final String POWER_ID = "DonTen";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("DonTen");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

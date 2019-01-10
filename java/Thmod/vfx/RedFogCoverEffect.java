@@ -82,6 +82,10 @@ public class RedFogCoverEffect extends AbstractGameEffect
         } else if ((!this.flipY) && (this.img.isFlipY())) {
             this.img.flip(false, true);
         }
-        sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale, this.scale, this.rotation);
+        sb.draw(this.img, this.x, this.y,
+                this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight,
+                this.scale, this.scale, this.rotation);
     }
+
+    public void dispose(){}
 }

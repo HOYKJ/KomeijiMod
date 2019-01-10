@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.screens.DeathScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import Thmod.ThMod;
+
 @SpirePatch(cls="com.megacrit.cardcrawl.screens.DeathScreen", method="<ctor>")
 public class DeathScreenPatch
 {
@@ -19,6 +21,7 @@ public class DeathScreenPatch
     @SpireInsertPatch(rloc=86, localvars={"bgmKey"})
     public static void Insert(DeathScreen _inst, MonsterGroup m, @ByRef String[] bgmKey)
     {
-        bgmKey[0] = "playerScore.mp3";
+        if(ThMod.MusicOpen)
+            bgmKey[0] = "playerScore.mp3";
     }
 }

@@ -17,6 +17,12 @@
         "Dodge next #b1 Damage, and deal damage to attacker, gain #b1  #rP ."
       ]
     },
+  "DeepSleep": {
+    "NAME": "Deep Sleep",
+    "DESCRIPTIONS": [
+      "Sh..."
+    ]
+  },
   "DashPower": {
     "NAME": "Graze!",
     "DESCRIPTIONS": [
@@ -87,7 +93,8 @@
   "JyouchiRei": {
     "NAME": "Bound Spirit",
     "DESCRIPTIONS": [
-      "Burst when be attacked."
+      "Lose #b",
+      " HP at the end of turn or attack."
     ]
   },
   "KamaitachiPower": {
@@ -117,7 +124,7 @@
   "LunaticRedEyesPower": {
     "NAME": "Lunatic Red Eyes",
     "DESCRIPTIONS": [
-      "Whenever you play a card without P point cost, make #b1 copy of card played with Exhaust and Ethereal ,then add to your hand.",
+      "Whenever you play a card without P point cost(except derive card), make #b1 copy of card played with Exhaust and Ethereal ,then add to your hand.",
       " Exhaust .",
       " Ethereal .",
       "My hand is full."
@@ -208,6 +215,18 @@
 	"Its time is locked."
       ]
     },
+  "UndeadPower": {
+    "NAME": "Undead",
+    "DESCRIPTIONS": [
+      "Your HP at least 1."
+    ]
+  },
+  "VampirePower": {
+    "NAME": "Vampire",
+    "DESCRIPTIONS": [
+      "When you deal damage, heal HP equal to 1/4 of damage."
+    ]
+  },
     "WocchiPower": {
       "NAME": "Stopwatch",
       "DESCRIPTIONS": [
@@ -226,6 +245,12 @@
     "NAME": "Half Phantoms",
     "DESCRIPTIONS": [
       "Whenever you play a #yAttack, it will play twice."
+    ]
+  },
+  "MyWorldPower": {
+    "NAME": "The World!",
+    "DESCRIPTIONS": [
+      "Stop the time！"
     ]
   },
 

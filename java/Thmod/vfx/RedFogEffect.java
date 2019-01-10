@@ -50,4 +50,6 @@ public class RedFogEffect extends AbstractGameEffect
         sb.setColor(this.screenColor);
         sb.draw(ImageMaster.WHITE_SQUARE_IMG, 0.0F, 0.0F, Settings.WIDTH, Settings.HEIGHT);
     }
+
+    public void dispose(){}
 }

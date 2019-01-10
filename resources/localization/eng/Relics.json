@@ -3,7 +3,7 @@
       "NAME": "Spell Card Rule Manual",
       "FLAVOR": "A mysterious power keeps Spell Card Rule's work.",
       "DESCRIPTIONS": [
-        "With this, you can use the #ySpell #yCard #yRule. Right click to get a SP card. (Every turn limit #b1).",
+        "With this, you can use the #ySpell #yCard #yRule. #yActivate: get a SP card. (Every turn limit #b1).",
         "Don't continuous click please.",
         "I don't have enough P point.",
         "It's not my turn.",
@@ -70,7 +70,7 @@
     "NAME": "Reverse Watch",
     "FLAVOR": "There is several words on its back: As long as you keep pushing beyond yourself, there will be light in the front.",
     "DESCRIPTIONS": [
-      "Right click it in your turn, will make every unit's HP back to last turn, it is of no effect to dead or Minion.(Every combat limit #b1 time)",
+      " #yActivate: it in your turn, will make every unit's HP back to last turn, it is of no effect to dead or Minion.(Every combat limit #b1 time)",
       "I can't use it yet!"
     ]
   },
@@ -85,7 +85,7 @@
     "NAME": "Closed Satori's Eye",
     "FLAVOR": "*****",
     "DESCRIPTIONS": [
-      "Start each combat with #b2 #yStrength and #yDexterity . You can no longer see enemy #bIntents and ALL units' status."
+      "Start each combat with #b5 #yStrength and #yDexterity . You can no longer see enemy #bIntents and ALL units' status."
     ]
   },
   "JyouHari": {
@@ -106,7 +106,7 @@
     "NAME": "Crystal Ball",
     "FLAVOR": "By pour mana into this,you can make element magic work easily.",
     "DESCRIPTIONS": [
-      "Right click to choose #b1 #yElement #yOrb to gain (Except Luna and Sun).Every turn limit #1 time.",
+      " #yActivate: choose #b1 #yElement #yOrb to gain (Except Luna and Sun).Every turn limit #1 time.",
       "Choose an Element Orb",
       "Don't continuous click please.",
       "It's not my turn.",
@@ -124,7 +124,7 @@
     "NAME": "Mysterious Book",
     "FLAVOR": "There is no word on its cover...",
     "DESCRIPTIONS": [
-      " #yPermanent Right click to browse this book...",
+      " #yPermanent #yActivate: browse this book...",
       "Choose one page.",
       "First page","Read first page",
       "Second page","Read second page",
@@ -136,7 +136,6 @@
       "Eighth page","Read eighth page",
       "Ninth page","Read ninth page",
       "Last page","Read last page",
-
 
       "The remaining pages are all blank...",
       "What does it main...",
@@ -160,7 +159,7 @@
     "NAME": "General Service Bag",
     "FLAVOR": "There are various items in the bag,you can assemble them optionally.",
     "DESCRIPTIONS": [
-      "Right click to create #b1 card and add to your draw pile.(Every combat limit #b1 time)",
+      " #yActivate: create #b1 card and add to your draw pile.(Every combat limit #b1 time)",
       "Assemle fittings",
       "Specification:Small device","cost 1",
       "Specification:Middle device","cost 2",
@@ -215,7 +214,7 @@
     "NAME": "Staff",
     "FLAVOR": "Formidable magician can conjure without tool. But to those new magicians, they can only ues senior magic with a staff.",
     "DESCRIPTIONS": [
-      "Right click to add #b1 Spell Card to your hand. This card base on #b2 next #yElement orb.(Every turn limit #b1 time)",
+      " #yActivate: add #b1 Spell Card to your hand. This card base on #b2 next #yElement orb.(Every turn limit #b1 time)",
       "I had used it before.",
       "It's not my turn.",
       "I had used it before.",
@@ -226,7 +225,7 @@
     "NAME": "Colorful Quill-pen",
     "FLAVOR": "This miraculous quill-pen can overwrite the Manual partly...",
     "DESCRIPTIONS": [
-      "Right click to refresh the Spell Card you can choose.(Every combat limit #b1 time)",
+      " #yActivate: refresh the Spell Card you can choose.(Every combat limit #b1 time)",
       "I don't need to use it now.",
       "I had used it before."
     ]
@@ -235,9 +234,24 @@
     "NAME": "Ring of Dollmaker",
     "FLAVOR": "It's almost a essential tool to Dollmakers. Even a Dollmaker attained perfection in skill, he still will use it.",
     "DESCRIPTIONS": [
-      "Right click to fill your slot with #yDoll. At most #3.(Every combat limit #b1 time)",
+      " #yActivate: fill your slot with #yDoll. At most #3.(Every combat limit #b1 time)",
       "It's not my turn.",
       "I had used it before."
+    ]
+  },
+  "GoodDreamPillow": {
+    "NAME": "Dream Soul Pillow",
+    "FLAVOR": "A pillow with Dream Soul as the model sample. It's very very soft, sleep with it will be very comfortable.",
+    "DESCRIPTIONS": [
+      "Can make you have a good dream. A tag on it write:",
+      "It seems do no effect anymore, but still comfortable."
+    ]
+  },
+  "Clue": {
+    "NAME": "Slip of Paper",
+    "FLAVOR": "The handwriting on it is very illegible",
+    "DESCRIPTIONS": [
+      " #yActivate: See the content on the slip."
     ]
   }
   }

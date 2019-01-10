@@ -1,4 +1,4 @@
-package Thmod.Cards;
+package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Power.MakuraSekiPower;
 
 public class MakuraSeki extends AbstractKomeijiCards {

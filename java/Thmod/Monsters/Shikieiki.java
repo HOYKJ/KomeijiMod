@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
+import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import Thmod.Actions.unique.HPlossAction;
@@ -189,6 +190,7 @@ public class Shikieiki extends AbstractMonster {
 
     public void die()
     {
+        super.die();
         if (!AbstractDungeon.getCurrRoom().cannotLose)
         {
             AbstractDungeon.getCurrRoom().rewards.clear();
@@ -201,11 +203,10 @@ public class Shikieiki extends AbstractMonster {
                         ThMod.blessingOfRemission += 1;
                 }
             }
-
+            //AbstractDungeon.currMapNode.room = new MonsterRoom();
             useFastShakeAnimation(5.0F);
             CardCrawlGame.screenShake.rumble(4.0F);
             this.deathTimer += 1.5F;
-            super.die();
             onBossVictoryLogic();
         }
     }

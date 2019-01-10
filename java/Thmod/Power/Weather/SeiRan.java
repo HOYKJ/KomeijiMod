@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class SeiRan extends AbstractPower {
-    public static final String POWER_ID = "KaiSei";
+    public static final String POWER_ID = "SeiRan";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("SeiRan");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

@@ -29,7 +29,7 @@ public class SeikonRyuuri extends AbstractSpellCards {
     public SeikonRyuuri() {
         super("SeikonRyuuri", SeikonRyuuri.NAME,  1, SeikonRyuuri.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.baseDamage = 12;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;
     }
@@ -38,7 +38,7 @@ public class SeikonRyuuri extends AbstractSpellCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SoulPower(p, 6, this.magicNumber), 6));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SoulPower(p, 4, this.magicNumber), 4));
                 AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, "PointPower", this.pointcost));
             }
         }

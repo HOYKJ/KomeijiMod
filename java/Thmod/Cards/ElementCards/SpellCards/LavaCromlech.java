@@ -19,7 +19,7 @@ public class LavaCromlech extends AbstractElementSpellCards {
 
     public LavaCromlech() {
         super("LavaCromlech", LavaCromlech.NAME,  1, LavaCromlech.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE,ElementType.Earth,ElementType.Fire);
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
     }
 

@@ -17,6 +17,12 @@
         "闪避下 #b1 次攻击,并对攻击者造成伤害,获得 #b1  #rP ."
       ]
     },
+  "DeepSleep": {
+    "NAME": "沉睡",
+    "DESCRIPTIONS": [
+      "嘘..."
+    ]
+  },
   "DashPower": {
     "NAME": "擦弹!",
     "DESCRIPTIONS": [
@@ -118,7 +124,7 @@
   "LunaticRedEyesPower": {
     "NAME": "幻陇月睨",
     "DESCRIPTIONS": [
-      "当你使用一张不消耗P点的卡后,将 #b1 张带有 消耗 和 虚无 的复制加入你的手牌.",
+      "当你使用一张不消耗P点的卡(衍生卡除外)后,将 #b1 张带有 消耗 和 虚无 的复制加入你的手牌.",
       " 消耗 .",
       " 虚无 .",
       "我的手牌满了"
@@ -209,12 +215,24 @@
 	"它的时间被锁定了"
       ]
     },
-    "WocchiPower": {
-      "NAME": "停表",
-      "DESCRIPTIONS": [
-	"下个回合开始时,将时间停止."
-      ]
-    },
+  "UndeadPower": {
+    "NAME": "不死",
+    "DESCRIPTIONS": [
+      "你的生命最少为1."
+    ]
+  },
+  "VampirePower": {
+    "NAME": "吸血鬼",
+    "DESCRIPTIONS": [
+      "你将恢复造成的伤害的1/4的生命."
+    ]
+  },
+  "WocchiPower": {
+    "NAME": "停表",
+    "DESCRIPTIONS": [
+      "下个回合开始时,将时间停止."
+    ]
+  },
   "WumiGaWareruPower": {
     "NAME": "开海",
     "DESCRIPTIONS": [
@@ -227,6 +245,12 @@
     "NAME": "半灵",
     "DESCRIPTIONS": [
       "你的 #y攻击 将被再次打出"
+    ]
+  },
+  "MyWorldPower": {
+    "NAME": "The World!",
+    "DESCRIPTIONS": [
+      "時を止まれ！"
     ]
   },
 

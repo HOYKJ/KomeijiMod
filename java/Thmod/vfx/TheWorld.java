@@ -44,8 +44,8 @@ public class TheWorld extends AbstractGameEffect
                 }
                 //CardCrawlGame.sound.playA("ATTACK_HEAVY", -0.5F);
 
-                AbstractDungeon.effectsQueue.add(new RoomTintEffect(Color.DARK_GRAY.cpy(), 0.8F,4F,true));
-                AbstractDungeon.effectsQueue.add(new BorderVeryLongFlashEffect(new Color(1061109759)));
+//                AbstractDungeon.effectsQueue.add(new RoomTintEffect(Color.DARK_GRAY.cpy(), 0.8F,4F,true));
+//                AbstractDungeon.effectsQueue.add(new BorderVeryLongFlashEffect(new Color(1061109759)));
             }
 
             //AbstractDungeon.effectsQueue.add(new CollectorStakeEffect(this.x + MathUtils.random(-50.0F, 50.0F) * Settings.scale, this.y + MathUtils.random(-60.0F, 60.0F) * Settings.scale));
@@ -59,4 +59,6 @@ public class TheWorld extends AbstractGameEffect
     public void render(SpriteBatch sb)
     {
     }
+
+    public void dispose(){}
 }

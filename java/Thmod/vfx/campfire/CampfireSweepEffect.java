@@ -138,5 +138,7 @@ public class CampfireSweepEffect extends AbstractGameEffect
             AbstractDungeon.gridSelectScreen.render(sb);
     }
 
+    public void dispose(){}
+
     //&& (AbstractDungeon.gridSelectScreen.forUpgrade)
 }

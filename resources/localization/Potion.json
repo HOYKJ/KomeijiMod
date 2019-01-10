@@ -27,5 +27,23 @@
       "获得 #b",
       " 点P点(不能超过上限)"
     ]
+  },
+  "RedTea": {
+    "NAME": "红茶",
+    "DESCRIPTIONS": [
+      "红茶有助于睡眠"
+    ]
+  },
+  "UndeadPotion": {
+    "NAME": "不死药",
+    "DESCRIPTIONS": [
+      "失去 #b10 点生命上限,在本场战斗中生命最少为 #b1 .(不能在BOSS战中使用)"
+    ]
+  },
+  "JyouchiReiPotion": {
+    "NAME": "瓶装紧缚灵",
+    "DESCRIPTIONS": [
+      "使目标被 #b3 只紧缚灵缠绕"
+    ]
   }
 }

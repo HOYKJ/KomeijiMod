@@ -1,5 +1,6 @@
 package Thmod.Cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import java.util.ArrayList;
+
+import Thmod.vfx.KinbakuCrushEffect;
 
 public class KeiseiJin extends AbstractSweepCards{
     public static final String ID = "KeiseiJin";
@@ -30,6 +33,7 @@ public class KeiseiJin extends AbstractSweepCards{
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber,false), this.magicNumber));
+        AbstractDungeon.effectList.add(new KinbakuCrushEffect(m.hb.cX, m.hb.cY, Color.SKY.cpy(), true));
     }
 
     @Override

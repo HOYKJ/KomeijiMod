@@ -235,6 +235,7 @@ public class Remiria extends AbstractMonster {
 
     public void die()
     {
+        super.die();
         if (!AbstractDungeon.getCurrRoom().cannotLose)
         {
             RoomOfDemon.torchDone = false;
@@ -267,7 +268,6 @@ public class Remiria extends AbstractMonster {
             useFastShakeAnimation(5.0F);
             CardCrawlGame.screenShake.rumble(4.0F);
             this.deathTimer += 1.5F;
-            super.die();
             onBossVictoryLogic();
         }
     }

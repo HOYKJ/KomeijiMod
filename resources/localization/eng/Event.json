@@ -131,5 +131,25 @@
       "[Continue]",
       "[Leave]"
     ]
+  },
+  "DoremisStore": {
+    "NAME": "Store of Dream",
+    "DESCRIPTIONS": [
+      "You enter a room with #bpeculiar atmosphere, there is nobody here. NL You find a #bbell on the table, you hesitate whether to ring it.",
+      "You ring the #bbell, but it don't make any sound. NL Suddenly, a voice come from above.\"Alala, it's custom.\" NL Then a girl who wear a clothes like bedgown, floats in front of you. NL \"Which service do you want?\" And point to a list",
+      "\" ~Aiheyhey~ \"Girl take the Gold and give you a #bpillow with strange shape. NL This pillow feels so ~soft~ , that makes you want to sleep with it.",
+      "\"Well, please lie there\"You lie down and close your eyes. NL You feel much relaxed when you wake up. NL \"Thank you for patronage\"Girl send you away with smile",
+      "\"Ah, So you can sleep there\"Girl point to a bed which seems very comfortable, NL You lie down on it and have a good sleep.",
+      "You worried if will happen something bad, NL so just look about this room, but didn't find anything else, you leave."
+    ],
+    "OPTIONS": [
+      "[Ring]",
+      "[Leave]",
+      "[Buy a Pillow] #rLose #r123 #rGold, #gObtain\"Dream #gSoul #gPillow\".",
+      "[Expel Nightmare] #gRemove #g1 #gCurse.",
+      "[Good Dream] #gHeal #g15 #gHP.",
+      "[Locked] Requires: 123 Gold.",
+      "[Locked] Requires: Curse."
+    ]
   }
 }

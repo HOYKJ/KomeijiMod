@@ -74,4 +74,6 @@ public class AgararetaCoverEffect extends AbstractGameEffect
         }
         sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale, this.scale, this.rotation);
     }
+
+    public void dispose(){}
 }

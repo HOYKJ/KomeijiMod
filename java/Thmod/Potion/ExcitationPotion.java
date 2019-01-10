@@ -18,7 +18,7 @@ public class ExcitationPotion extends AbstractPotion
 
     public ExcitationPotion()
     {
-        super(NAME, "ExcitationPotion", PotionRarity.UNCOMMON, PotionSize.T, PotionColor.ATTACK);
+        super(NAME, "ExcitationPotion", PotionRarity.RARE, PotionSize.T, PotionColor.ATTACK);
         this.potency = getPotency();
         this.description = (DESCRIPTIONS[0] + this.potency + DESCRIPTIONS[1]);
         this.isThrown = false;

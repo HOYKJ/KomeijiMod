@@ -4,8 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -17,6 +20,8 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.Keyword;
+import com.megacrit.cardcrawl.localization.KeywordStrings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
@@ -29,6 +34,7 @@ import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -100,7 +106,7 @@ import Thmod.Cards.ElementCards.WipeMoisture;
 import Thmod.Cards.HagoromoMizu;
 import Thmod.Cards.Dash_Komeiji;
 import Thmod.Cards.Defend_Komeiji;
-import Thmod.Cards.InscribeRedSoul;
+import Thmod.Cards.UncommonCards.InscribeRedSoul;
 import Thmod.Cards.ItemCards.ByoukiHeiyu;
 import Thmod.Cards.ItemCards.FusyokuKusuri;
 import Thmod.Cards.ItemCards.HisouNoKenItem;
@@ -116,7 +122,7 @@ import Thmod.Cards.ItemCards.SutoppuWocchi;
 import Thmod.Cards.JyouchiJin;
 import Thmod.Cards.KeiseiJin;
 import Thmod.Cards.KinbakuJin;
-import Thmod.Cards.MakuraSeki;
+import Thmod.Cards.UncommonCards.MakuraSeki;
 import Thmod.Cards.Melting;
 import Thmod.Cards.NingyouFukuhei;
 import Thmod.Cards.NingyouKisou;
@@ -243,7 +249,10 @@ import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
 import Thmod.Potion.CalmPotion;
 import Thmod.Potion.ExcitationPotion;
+import Thmod.Potion.JyouchiReiPotion;
 import Thmod.Potion.PpointPotion;
+import Thmod.Potion.RedTea;
+import Thmod.Potion.UndeadPotion;
 import Thmod.Relics.BookofPenglai;
 import Thmod.Relics.Clue;
 import Thmod.Relics.ColorfulQuillpen;
@@ -516,7 +525,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("StartSelectOpen", "true");
             defaults.setProperty("MusicOpen", "true");
             defaults.setProperty("AllzhsOpen", "false");
-            defaults.setProperty("AllengOpen", "false");
+            //defaults.setProperty("AllengOpen", "false");
             defaults.setProperty("blessingOfTime", "0");
             defaults.setProperty("blessingOfDetermination", "0");
             defaults.setProperty("blessingOfRemission", "0");
@@ -538,7 +547,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             ThMod.StartSelectOpen = config.getBool("StartSelectOpen");
             ThMod.MusicOpen = config.getBool("MusicOpen");
             ThMod.AllzhsOpen = config.getBool("AllzhsOpen");
-            ThMod.AllengOpen = config.getBool("AllengOpen");
+            //ThMod.AllengOpen = config.getBool("AllengOpen");
             ThMod.blessingOfTime = config.getInt("blessingOfTime");
             ThMod.blessingOfDetermination = config.getInt("blessingOfDetermination");
             ThMod.blessingOfRemission = config.getInt("blessingOfRemission");
@@ -667,28 +676,22 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public void receiveEditCards() {
         logger.info("=========================正在加载新的卡牌内容=========================");
 
+        BaseMod.addCard(new Dash_Komeiji());
         BaseMod.addCard(new Strike_Komeiji());
         BaseMod.addCard(new Defend_Komeiji());
-        BaseMod.addCard(new Dash_Komeiji());
+        BaseMod.addCard(new DochyakuKami());
+        BaseMod.addCard(new Sabishigari());
+        BaseMod.addCard(new JyouchiJin());
+        BaseMod.addCard(new DemonLordCradle());
+        BaseMod.addCard(new ShyakuBuku());
+        BaseMod.addCard(new MusuNoYume());
+        BaseMod.addCard(new Melting());
+        BaseMod.addCard(new RikonNoKama());
+        BaseMod.addCard(new KinbakuJin());
         BaseMod.addCard(new HagoromoMizu());
         BaseMod.addCard(new KeiseiJin());
-        BaseMod.addCard(new KinbakuJin());
-        BaseMod.addCard(new JyouchiJin());
-//        BaseMod.addCard(new KochyouYume());
         BaseMod.addCard(new Agarareta());
-        BaseMod.addCard(new DemonLordCradle());
-//        BaseMod.addCard(new Demotivation());
-        BaseMod.addCard(new DochyakuKami());
-        BaseMod.addCard(new HagoromoMizu());
-        BaseMod.addCard(new InscribeRedSoul());
-//        BaseMod.addCard(new MagicStarsSword());
-        BaseMod.addCard(new MakuraSeki());
-        BaseMod.addCard(new Melting());
-        BaseMod.addCard(new Sabishigari());
-        BaseMod.addCard(new RikonNoKama());
         BaseMod.addCard(new Mishyaguji());
-        BaseMod.addCard(new SuitokuNoKyoryu());
-        BaseMod.addCard(new ShyakuBuku());
 
 
         BaseMod.addCard(new DemonsDinnerFork());
@@ -696,31 +699,31 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new FreezeToughMe());
         BaseMod.addCard(new GasuOrimono());
         BaseMod.addCard(new GroundStardust());
+        BaseMod.addCard(new HagoromoKu());
         BaseMod.addCard(new HenyouMirume());
         BaseMod.addCard(new HisouNoKen());
+        BaseMod.addCard(new InscribeRedSoul());
         BaseMod.addCard(new KimairaNoYoku());
         BaseMod.addCard(new KoKei());
         BaseMod.addCard(new KokorosuKi());
         BaseMod.addCard(new KouPou());
         BaseMod.addCard(new MajikuruSanhai());
+        BaseMod.addCard(new MakuraSeki());
         BaseMod.addCard(new MissingPower());
-        BaseMod.addCard(new MusuNoYume());
         BaseMod.addCard(new NarrowSpark());
-        BaseMod.addCard(new PerfectMaid());
         BaseMod.addCard(new RoshinSou());
         BaseMod.addCard(new SatsujinDooru());
         BaseMod.addCard(new SeishiRoten());
         BaseMod.addCard(new SelfTokamak());
         BaseMod.addCard(new SenseofElegance());
         BaseMod.addCard(new SenyouGoraku());
+        BaseMod.addCard(new SuitokuNoKyoryu());
         BaseMod.addCard(new TenguNoTaiko());
         BaseMod.addCard(new VampireKiss());
-        BaseMod.addCard(new VanishingEverything());
         BaseMod.addCard(new YoukiSo());
 
         BaseMod.addCard(new AbyssNova());
         BaseMod.addCard(new EverywhereHibernate());
-        BaseMod.addCard(new HagoromoKu());
         BaseMod.addCard(new HisouTensoku());
         BaseMod.addCard(new IceTornado());
         BaseMod.addCard(new JigokuNoTaiyou());
@@ -738,7 +741,6 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new SutoppuWocchi());
         BaseMod.addCard(new SaSen());
         BaseMod.addCard(new ByoukiHeiyu());
-        BaseMod.addCard(new FusyokuKusuri());
         BaseMod.addCard(new HisouNoKenItem());
         BaseMod.addCard(new IbukiHisyaku());
         BaseMod.addCard(new Namazu());
@@ -751,7 +753,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new DeepEcologicalBomb());
         BaseMod.addCard(new DraculaCradle());
         BaseMod.addCard(new EasyMasterSpark());
-        BaseMod.addCard(new EnshinRoten());
+        BaseMod.addCard(new EnshinRoten(false));
         BaseMod.addCard(new FinalSpark());
         BaseMod.addCard(new FusekiShinmei());
         BaseMod.addCard(new FuumaJin());
@@ -814,9 +816,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new RemiliaStretch());
         BaseMod.addCard(new ScarletDevil());
         BaseMod.addCard(new RanYakumo());
+        BaseMod.addCard(new VanishingEverything());
+        BaseMod.addCard(new PerfectMaid());
 
 
-//        BaseMod.addCard(new WeatherTest());
+        //BaseMod.addCard(new WeatherTest());
 
 
         if(ThMod.AliceOpen){
@@ -1121,7 +1125,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         });
         settingsPanel.addUIElement(AllzhsOpen);
 
-        ThMod.AllengOpen = Settings.language == Settings.GameLanguage.ENG;
+
+        DevConsole.logger.info(Settings.language == Settings.GameLanguage.ENG);
 
 //        final ModLabeledToggleButton AllengOpen = new ModLabeledToggleButton(TEXT[16], this.X + 250, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.AllzhsOpen , settingsPanel, label -> {}, button -> {
 //            spireConfig.setBool("AllengOpen", ThMod.AllengOpen = button.enabled);
@@ -1205,11 +1210,16 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addPotion(CalmPotion.class,Color.SKY.cpy(),Color.NAVY.cpy(),null,CalmPotion.POTION_ID);
 //        BaseMod.addPotion(RecallPotion.class,CardHelper.getColor(102, 176, 216),古明地觉,null,RecallPotion.POTION_ID);
         BaseMod.addPotion(PpointPotion.class,Color.SCARLET.cpy(),Color.RED.cpy(),null,PpointPotion.POTION_ID, CharacterEnum.KomeijiSatori);
+        BaseMod.addPotion(RedTea.class,Color.ORANGE.cpy(),Color.SCARLET.cpy(),null, RedTea.POTION_ID);
+        BaseMod.addPotion(UndeadPotion.class,Color.GREEN.cpy(),Color.CHARTREUSE.cpy(),null, UndeadPotion.POTION_ID);
+        BaseMod.addPotion(JyouchiReiPotion.class,Color.BLUE.cpy(),Color.WHITE.cpy(),null, JyouchiReiPotion.POTION_ID);
     }
 
     public void receiveEditStrings()
     {
         DevConsole.logger.info("========================= 正在加载文本信息 =========================");
+
+        ThMod.AllengOpen = Settings.language == Settings.GameLanguage.ENG;
 
         if(AllengOpen){
             String cardStrings = Gdx.files.internal("localization/eng/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
@@ -1226,6 +1236,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
             String monsterStrings = Gdx.files.internal("localization/eng/Monster.json").readString(String.valueOf(StandardCharsets.UTF_8));
             BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
+            String potionStrings = Gdx.files.internal("localization/eng/Potion.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
         }
         else {
             if (AllzhsOpen) {
@@ -1253,71 +1265,41 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         DevConsole.logger.info("========================================================================");
 
-        if(BaseMod.hasModID("UnlockEverythingMod:")) {
-            DevConsole.logger.info("Don't do it anymore!!!");
-            String fuckString = Gdx.files.internal("fuck you").readString(String.valueOf(StandardCharsets.UTF_8));
-        }
+//        if(BaseMod.hasModID("UnlockEverythingMod:")) {
+//            DevConsole.logger.info("Don't do it anymore!!!");
+//            String fuckString = Gdx.files.internal("fuck you").readString(String.valueOf(StandardCharsets.UTF_8));
+//        }
     }
     public void receivePostDungeonInitialize()
     {
 //        if (!(AbstractDungeon.player.hasRelic("Letter Opener")))
 //            new LetterOpener().instantObtain();
     }
+
+    class Keywords{
+        Keyword[] Keyword;
+    }
+
     public void receiveEditKeywords()
     {
         DevConsole.logger.info("========================= 正在加载特性文本信息 =========================");
-        BaseMod.addKeyword(new String[]{"擦弹","擦弹"}, "闪避伤害");
-        BaseMod.addKeyword(new String[]{"符卡规则","符卡规则"}, "1.每个回合开始时,你将根据你的 #rp 点来获取SP卡. NL 2.获得的SP卡和你的手牌有关. NL 3.所有符卡具有 #y消耗 与 #y虚无 . NL 4.剩下的就靠你自己来摸索吧!");
-        BaseMod.addKeyword(new String[]{"联想","联想"}, "这张卡不能被升级,但是可以在篝火处转换为另外的卡");
-        BaseMod.addKeyword(new String[]{"替换","替换"}, "这种卡将会替换你手中的一张卡,在消耗后恢复.");
-        BaseMod.addKeyword(new String[]{"回响","回响"}, "这张卡在消耗后会将一张复制加入你的手牌");
-        BaseMod.addKeyword(new String[]{"蓄力","蓄力"}, "这张卡在使用后不会立刻触发效果,而是由你选择触发");
-        BaseMod.addKeyword(new String[]{"固定","固定"}, "不受任何加成");
-        BaseMod.addKeyword(new String[]{"紧缚灵","紧缚灵"}, "在回合结束或拥有者攻击时,使它流失等同层数的生命");
-        BaseMod.addKeyword(new String[]{"天气","天气"}, "天气将为你提供额外效果");
-        BaseMod.addKeyword(new String[]{"人偶","人偶"}, "爱丽丝制作的人偶,为什么会出现在这呢?");
-        BaseMod.addKeyword(new String[]{"武装","武装"}, "普通人偶可以武装为枪兵,盾兵或弓兵.");
-        BaseMod.addKeyword(new String[]{"枪兵人偶","枪兵人偶"}, "枪兵人偶会使你获得 #y力量 加成");
-        BaseMod.addKeyword(new String[]{"盾兵人偶","盾兵人偶"}, "盾兵人偶会在回合结束提供格挡");
-        BaseMod.addKeyword(new String[]{"弓兵人偶","弓兵人偶"}, "弓兵人偶会在回合结束造成随机目标的伤害");
-        BaseMod.addKeyword(new String[]{"上海人偶","上海人偶"}, "上海人偶会使你获得 #y力量 加成,激发时造成全体伤害.(属于枪兵)");
-        BaseMod.addKeyword(new String[]{"蓬莱人偶","蓬莱人偶"}, "上海人偶会使你获得 #y力量 加成,激发时造成全体伤害.(属于枪兵)");
-        BaseMod.addKeyword(new String[]{"和兰人偶","和兰人偶"}, "和兰人偶会在回合结束提供格挡,激发后获得 #y多层护甲 .(属于盾兵)");
-        BaseMod.addKeyword(new String[]{"额外行动","额外行动"}, "枪兵:对随机敌人造成3点伤害. 盾兵:给予2点格挡. 弓兵:每2个弓兵将为你恢复1点生命");
-        BaseMod.addKeyword(new String[]{"元素","元素"}, "元素卡会生成或消耗相应的元素球.(多重元素即为消耗)");
-        BaseMod.addKeyword(new String[]{"魔石","魔石"}, "在你使用元素牌时,如果你拥有对应元素的  #y魔石 ,将消耗  #y魔石 ,将那张卡再打出一次(再打出的卡不会获得或消耗元素球)");
-        BaseMod.addKeyword(new String[]{"纯粹伤害","纯粹伤害"}, "纯粹伤害无视格挡,且不会受到反伤");
-        BaseMod.addKeyword(new String[]{"祝福","祝福"}, "祝福卡会在抽到的时候  #y消耗 ,并发动效果");
-        BaseMod.addKeyword(new String[]{"永恒","永恒"}, "此卡/遗物如果不在你的牌库/遗物列表,将会在战斗开始时加入你的牌库/遗物列表,包括下一场游戏(只能被特殊方法消除)");
-        BaseMod.addKeyword(new String[]{"共鸣","共鸣"}, "当你拥有2或更多同属性的 #y元素 球(除了日月),且打出相同属性的 #y元素 卡时, #y消耗 2个 #y元素 球,触发 #b1 次 #y共鸣 效果");
-        BaseMod.addKeyword(new String[]{"增幅","增幅"}, "在你的抽牌堆/手牌/弃牌堆中,每有1张此卡的同名卡,这种卡的效果增加1");
-        BaseMod.addKeyword(new String[]{"想起","想起"}, "当你打出此卡时,如果你的抽牌堆中有此卡的同名卡,抽那张卡");
-        BaseMod.addKeyword(new String[]{"激活","激活"}, "右键点击生效");
 
-        BaseMod.addKeyword(new String[]{"Graze","graze"}, "Dodge Damage");
-        BaseMod.addKeyword(new String[]{"Spell Card Rule","spell card rule"}, "1.At the start of your turn, you could get SP card, it base on your #rp point. NL 2.The SP card you can get also base on the card in your hand. NL 3.All the SP card has #yExhaust and #yEthereal . NL 4.The rest of rule need yourself to find it out!");
-        BaseMod.addKeyword(new String[]{"Association","association"}, "This card cannot be Upgraded, but can be Transform to other card at Rest Sites.");
-        BaseMod.addKeyword(new String[]{"Replace","replace"}, "This card need to Replace a particular card in your hand, it will back when this card be Exhausted.");
-        BaseMod.addKeyword(new String[]{"Echo","echo"}, "This card will add a copy to your hand when Exhausted");
-        BaseMod.addKeyword(new String[]{"Charge","charge"}, "This card would not work immediately when used,but you can choose the time to make it work.");
-        BaseMod.addKeyword(new String[]{"Static","static"}, "Will never change.");
-        BaseMod.addKeyword(new String[]{"Bound Spirit","bound spirit"}, "When its owner be attacked,each Bound Spirit will deal 10 damage to it and disappear.");
-        BaseMod.addKeyword(new String[]{"Weather","weather"}, "Weather power will provide extra effect for you.");
-        BaseMod.addKeyword(new String[]{"Arm","arm"}, "Simple Doll could be Armed to Spear Doll, Shield Doll or Archer Doll.");
-        BaseMod.addKeyword(new String[]{"Spear Doll","spear doll"}, "Spear Doll will provide Strength for you.");
-        BaseMod.addKeyword(new String[]{"Shield Doll","shield doll"}, "Shield Doll will gain Block for you at the end of turn.");
-        BaseMod.addKeyword(new String[]{"Archer Doll","Archer doll"}, "Archer Doll will deal damage to a a random enemy at the end of turn.");
-        BaseMod.addKeyword(new String[]{"ShangHai Doll","shanghai doll"}, "ShangHai Doll will provide Strength for you. When it be Evoked, will deal damage to all enemy. (Belong to Spear Doll)");
-        BaseMod.addKeyword(new String[]{"PengLai Doll","penglai doll"}, "PengLai Doll will provide Strength for you. When it be Evoked, will deal damage to all enemy. (Belong to Spear Doll)");
-        BaseMod.addKeyword(new String[]{"HeLan Doll","helan doll"}, "HeLan Doll will gain Block for you at the end of turn. When it be Evoked, will gain #yPlated #yArmor for you. (Belong to Shield Doll)");
-        BaseMod.addKeyword(new String[]{"Extra Action","extra action"}, "Spear Doll: Deal 3 damage to a random enemy. Shield Doll: Gain 2 Block for you. Archer Doll: Every 2 Archer Doll will heal 1 HP for you.");
-        BaseMod.addKeyword(new String[]{"Element","element"}, "Element Card will produce or consume corresponding Element Orb. (Multiple Element means consume)");
-        BaseMod.addKeyword(new String[]{"Dimensity","dimensity"}, "When you play a Element Card, if you have the  #yDimensity with corresponding element,consume it/them, play this card again. (But won't produce or consume corresponding Element Orb)");
-        BaseMod.addKeyword(new String[]{"Purely Damage","purely damage"}, "Purely Damage will ignore target's Block,and won't be thorns.");
-        BaseMod.addKeyword(new String[]{"Blessing","blessing"}, "Blessing Card will  #yExhaust when it be drew,then works.");
-        BaseMod.addKeyword(new String[]{"Permanent","permanent"}, "If this card/relic is not in your deck/relic list, it will add to your deck/relic list,include next game. (only can be removed by special condition)");
-        BaseMod.addKeyword(new String[]{"Resonance","resonance"}, "When you have 2 or more #yElement orb of same #yElement(Except Luna and Sun), and you play a #yElement card with same #yElement. #yExhaust 2 #yElement orb, trigger #yResonance effect.");
-        BaseMod.addKeyword(new String[]{"Sticky Bubble","sticky bubble"}, "Its owner lose 1 Strength for each Sticky Bubble, take effect at the end of turn. NL reduce 1 at the start of turn.");
+        ThMod.AllengOpen = Settings.language == Settings.GameLanguage.ENG;
+
+        Gson gson = new Gson();
+        Keywords keywords;
+        if(AllengOpen){
+            keywords = gson.fromJson(Gdx.files.internal("localization/eng/Keyword.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords.class);
+        }
+        else {
+            keywords = gson.fromJson(Gdx.files.internal("localization/Keyword.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords.class);
+        }
+
+        for(Keyword key:keywords.Keyword){
+            BaseMod.addKeyword(key.NAMES,key.DESCRIPTION);
+            DevConsole.logger.info(key.DESCRIPTION);
+        }
+
     }
 
     public static void SavePointPower() throws IOException {
@@ -1358,7 +1340,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.StartSelectOpen = true;
         ThMod.MusicOpen = true;
         ThMod.AllzhsOpen = false;
-        ThMod.AllengOpen = false;
+        //ThMod.AllengOpen = false;
         ThMod.blessingOfTime = 0;
         ThMod.blessingOfDetermination = 0;
         ThMod.blessingOfRemission = 0;

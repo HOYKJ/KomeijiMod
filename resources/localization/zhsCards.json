@@ -153,7 +153,7 @@
     "HenyouMirume":{
       "NAME": "回忆「静观其变之眼」",
       "DESCRIPTION": 
-	"你的下1次攻击会追加 固定 15点额外伤害."
+	"本回合内你的下1次攻击会追加 固定 15点额外伤害."
     },
     "HisouNoKen":{
       "NAME": "回忆「绯想之剑」",
@@ -247,6 +247,8 @@
   "ShyakuBuku": {
     "NAME": "回忆「折伏无间」",
     "DESCRIPTION":
+    "造成0点 固定 伤害.打出牌堆顶的 !M! 张卡. 消耗 .",
+    "UPGRADE_DESCRIPTION":
     "造成0点 固定 伤害.打出牌堆顶的 !M! 张卡."
   },
   "TenguNoTaiko": {
@@ -348,7 +350,7 @@
   "WumiGaWareru": {
     "NAME": "回忆「海水分开之日」",
     "DESCRIPTION":
-    "在 !M! 回合内,对所有敌人造成 !D! 点伤害."
+    "在 !M! 回合内,每回合对所有敌人造成 !D! 点伤害."
   },
   "YuumeiNoKurin": {
     "NAME": "回忆「幽明之苦轮」",
@@ -452,7 +454,7 @@
   "EnshinRoten": {
     "NAME": "回忆「圆心流转斩」",
     "DESCRIPTION":
-    "造成 !D! 点伤害 !M! 次. 替换 . NL 消耗3P."
+    "造成 !D! 点伤害,这张卡会打出 !M! 次. 替换 . NL 消耗3P."
   },
   "FinalSpark": {
     "NAME": "回忆「究极火花」",

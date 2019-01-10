@@ -51,4 +51,6 @@ public class NewStrikeEffect extends AbstractGameEffect {
 
     public void render(SpriteBatch sb) {
     }
+
+    public void dispose(){}
 }

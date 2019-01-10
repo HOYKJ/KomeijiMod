@@ -127,4 +127,6 @@ public class TorchUnactivated extends AbstractGameEffect
     public void render(SpriteBatch sb)
     {
     }
+
+    public void dispose(){}
 }

@@ -299,10 +299,14 @@ public class DreamEventEffect extends AbstractGameEffect
                                 break;
                             case 4:
                                 updateDreamText(TEXT[28]);
+                                ArrayList<AbstractCard> moving = new ArrayList<>();
                                 for(AbstractCard card : AbstractDungeon.player.masterDeck.group){
                                     if(card.type == AbstractCard.CardType.CURSE){
-                                        AbstractDungeon.player.masterDeck.removeCard(card);
+                                        moving.add(card);
                                     }
+                                }
+                                for(AbstractCard card : moving){
+                                    AbstractDungeon.player.masterDeck.removeCard(card);
                                 }
                                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, RelicLibrary.getRelic(Omamori.ID).makeCopy());
                                 break;
@@ -519,7 +523,7 @@ public class DreamEventEffect extends AbstractGameEffect
 
     private void upgradeCards() {
         AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-        ArrayList<AbstractCard> upgradableCards = new ArrayList();
+        ArrayList<AbstractCard> upgradableCards = new ArrayList<>();
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
             if (c.canUpgrade()) {
                 upgradableCards.add(c);
@@ -595,4 +599,6 @@ public class DreamEventEffect extends AbstractGameEffect
             b.render(sb);
         }
     }
+
+    public void dispose(){}
 }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.Special.MusouFuuyinAction;
 import Thmod.Actions.common.RandomAttackAction;
 import Thmod.Cards.AbstractKomeijiCards;
 
@@ -30,7 +31,7 @@ public class MusouMyousyu extends AbstractKomeijiCards {
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
-        AbstractDungeon.actionManager.addToBottom(new RandomAttackAction(AbstractDungeon.getMonsters().getRandomMonster(true), new DamageInfo(p, this.baseDamage), this.magicNumber, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.effectList.add(new MusouFuuyinAction(this.magicNumber, new DamageInfo(p,this.damage), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public AbstractCard makeCopy() {

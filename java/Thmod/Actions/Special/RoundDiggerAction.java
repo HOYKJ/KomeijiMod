@@ -1,4 +1,4 @@
-package Thmod.Actions.common;
+package Thmod.Actions.Special;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -61,4 +61,6 @@ public class RoundDiggerAction extends AbstractGameEffect {
     {
 
     }
+
+    public void dispose(){}
 }

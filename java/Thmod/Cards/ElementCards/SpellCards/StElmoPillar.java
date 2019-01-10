@@ -21,7 +21,7 @@ public class StElmoPillar extends AbstractElementSpellCards {
 
     public StElmoPillar() {
         super("StElmoPillar", StElmoPillar.NAME,  2, StElmoPillar.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY,ElementType.Metal,ElementType.Fire);
-        this.baseDamage = 20;
+        this.baseDamage = 24;
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
     }

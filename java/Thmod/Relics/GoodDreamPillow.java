@@ -47,7 +47,7 @@ public class GoodDreamPillow extends AbstractThRelic {
         }
         else {
             if(number.get(1) == 0){
-                number.add(1);
+                number.add(0);
             }
             else {
                 number.add(number.get(1) - MathUtils.random(number.get(1) - 1) - 1);
@@ -63,7 +63,7 @@ public class GoodDreamPillow extends AbstractThRelic {
         }
         else {
             if(number.get(2) == 0){
-                number.add(2);
+                number.add(0);
             }
             else {
                 number.add(number.get(2) - MathUtils.random(number.get(2) - 1) - 1);

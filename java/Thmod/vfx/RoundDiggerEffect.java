@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.AdditiveSlashImpactEffect;
 
-import Thmod.Actions.common.NewDamageAction;
+import Thmod.Actions.Special.NewDamageAction;
 
 public class RoundDiggerEffect extends AbstractGameEffect
 {
@@ -108,4 +108,6 @@ public class RoundDiggerEffect extends AbstractGameEffect
 
         sb.setBlendFunction(770, 771);
     }
+
+    public void dispose(){}
 }

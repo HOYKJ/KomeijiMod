@@ -1,10 +1,7 @@
-package Thmod.Cards;
+package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,7 +10,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-import Thmod.Actions.common.ShivWeaveAction;
+import Thmod.Actions.Special.ShivWeaveAction;
+import Thmod.Cards.AbstractKomeijiCards;
 
 public class InscribeRedSoul extends AbstractKomeijiCards {
     public static final String ID = "InscribeRedSoul";
@@ -52,7 +50,7 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
             this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeMagicNumber(1);
-            this.upgradeDamage(3);
+            this.upgradeDamage(2);
             this.timesUpgraded += 1;
             this.upgraded = true;
         }

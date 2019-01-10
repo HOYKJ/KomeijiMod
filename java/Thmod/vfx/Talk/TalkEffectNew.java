@@ -164,4 +164,6 @@ public class TalkEffectNew extends AbstractGameEffect {
         ADJUST_X = 170.0F * Settings.scale;
         ADJUST_Y = 116.0F * Settings.scale;
     }
+
+    public void dispose(){}
 }

@@ -164,4 +164,6 @@ public class CeremonialTorchEffect  extends AbstractGameEffect
 
         this.hb.render(sb);
     }
+
+    public void dispose(){}
 }

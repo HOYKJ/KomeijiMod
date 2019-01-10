@@ -26,4 +26,6 @@ public class CeremonyAction extends AbstractGameEffect {
     {
 
     }
+
+    public void dispose(){}
 }

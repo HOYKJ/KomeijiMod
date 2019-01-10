@@ -1,6 +1,7 @@
 package Thmod.Power;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -20,7 +21,7 @@ public class TimeLockPower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private byte moveByte;
     private AbstractMonster.Intent moveIntent;
-    float STC;
+    private float STC;
 
     public TimeLockPower(AbstractCreature owner)
     {
@@ -75,5 +76,11 @@ public class TimeLockPower extends AbstractPower {
         if (!(owner.id.equals("Hexaghost")) && !(owner.id.equals("BronzeOrb")) && !(owner.id.equals("Remiria")) && !(owner.id.equals("Shikieiki")) && !(owner.id.equals("Kedama_Monster")))
             owner.state.setTimeScale(STC);
         this.owner.tint.changeColor(Color.WHITE.cpy());
+    }
+
+    @Override
+    public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
+        super.renderIcons(sb, x, y, c);
+        this.owner.tint.color = Color.GRAY.cpy();
     }
 }

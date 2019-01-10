@@ -58,4 +58,6 @@ public class ClueEffect extends AbstractGameEffect{
 //        sb.draw(this.Img, 600.0F * Settings.scale - 300.0F, 340.0F * Settings.scale -150.0F, Settings.WIDTH, Settings.HEIGHT);
         sb.draw(this.Img, 900.0F * Settings.scale - 300.0F, 500.0F * Settings.scale -150.0F, 300.0F, 150.0F, 600.0F, 300.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 600, 300, false, false);
     }
+
+    public void dispose(){}
 }

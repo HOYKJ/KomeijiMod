@@ -1,5 +1,6 @@
 package Thmod.Cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +12,8 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import java.util.ArrayList;
+
+import Thmod.vfx.KinbakuCrushEffect;
 
 public class KinbakuJin extends AbstractSweepCards{
     public static final String ID = "KinbakuJin";
@@ -31,6 +34,7 @@ public class KinbakuJin extends AbstractSweepCards{
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new WeakPower(target, this.magicNumber,false), this.magicNumber));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new VulnerablePower(target, this.magicNumber,false), this.magicNumber));
+                AbstractDungeon.effectList.add(new KinbakuCrushEffect(target.hb.cX, target.hb.cY, Color.SKY.cpy()));
             }
         }
     }

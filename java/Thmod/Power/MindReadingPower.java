@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
+import Thmod.Actions.unique.GetFamiliarSpoon;
 import Thmod.Relics.BookofPenglai;
 import Thmod.Relics.FamiliarSpoon;
 import Thmod.ThMod;
@@ -44,13 +45,8 @@ public class MindReadingPower extends AbstractPower {
 
     public void atStartOfTurn() {
         if (AbstractDungeon.player.hasRelic("Strange Spoon")) {
-            AbstractDungeon.player.loseRelic("Strange Spoon");
-            AbstractRelic relic = new FamiliarSpoon();
-            UnlockTracker.markRelicAsSeen(relic.relicId);
-            relic.obtain();
-            relic.isObtained = true;
-            relic.isAnimating = false;
-            relic.isDone = false;
+            //AbstractDungeon.player.loseRelic("Strange Spoon");
+//            AbstractDungeon.actionManager.addToBottom(new GetFamiliarSpoon());
         }
         if (ThMod.blessingOfDetermination == 2){
             boolean giveBook = true;

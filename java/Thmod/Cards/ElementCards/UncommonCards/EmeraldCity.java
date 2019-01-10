@@ -33,7 +33,7 @@ public class EmeraldCity extends AbstractElementSweepCards {
         super.use(p,m);
         AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
 
-        this.baseDamage = (p.currentBlock + 6);
+        this.baseDamage = (p.currentBlock + this.block);
         calculateCardDamage(m);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
@@ -43,7 +43,7 @@ public class EmeraldCity extends AbstractElementSweepCards {
 
     public void applyPowers()
     {
-        this.baseDamage = (AbstractDungeon.player.currentBlock + 6);
+        this.baseDamage = (AbstractDungeon.player.currentBlock + this.block);
         super.applyPowers();
 
         this.rawDescription = DESCRIPTION;

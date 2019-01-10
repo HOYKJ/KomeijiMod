@@ -20,9 +20,9 @@ public class PhlogisticPillar extends AbstractElementSpellCards {
 
     public PhlogisticPillar() {
         super("PhlogisticPillar", PhlogisticPillar.NAME,  2, PhlogisticPillar.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY,ElementType.Fire,ElementType.Water);
-        this.baseDamage = 12;
+        this.baseDamage = 16;
         this.isMultiDamage = true;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
     }
 

@@ -16,16 +16,11 @@ import basemod.DevConsole;
 
 @SpirePatch(cls="com.megacrit.cardcrawl.monsters.AbstractMonster", method="renderTip")
 public class IntentPatch {
-    @SpireInsertPatch(rloc=4, localvars={"tips"})
+    @SpireInsertPatch(rloc=12, localvars={"tips"})
     public static void Insert(AbstractMonster _inst,SpriteBatch sb,ArrayList<PowerTip> tips)
     {
         if(AbstractDungeon.player.hasRelic("KoishisEye")){
-            if(!(AbstractDungeon.player.hasRelic("Runic Dome"))){
                 tips.clear();
-//                for(int i = 0;i < tips.size();i++){
-//                    DevConsole.logger.info(i + tips.get(i).header);
-//                }
-            }
         }
     }
 }

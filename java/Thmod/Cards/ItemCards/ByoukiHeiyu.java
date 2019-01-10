@@ -26,7 +26,7 @@ public class ByoukiHeiyu extends AbstractItemCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= 1) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new HeiyuPower(p)));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new HeiyuPower(p),5));
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }

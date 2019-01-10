@@ -139,4 +139,6 @@ public class SparkEffect extends AbstractGameEffect {
 
         sb.setBlendFunction(770, 771);
     }
+
+    public void dispose(){}
 }

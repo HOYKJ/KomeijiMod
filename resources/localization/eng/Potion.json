@@ -1,0 +1,49 @@
+﻿{
+  "ExcitationPotion": {
+    "NAME": "Excitation Potion",
+    "DESCRIPTIONS": [
+      "ALL your power with level increase by #b",
+      " ."
+    ]
+  },
+  "CalmPotion": {
+    "NAME": "Calm Potion",
+    "DESCRIPTIONS": [
+      "ALL your power with level reduce by #b",
+      " ."
+    ]
+  },
+  "RecallPotion": {
+    "NAME": "Recall Potion",
+    "DESCRIPTIONS": [
+      "Recall a memory belong to you",
+      "Recall",
+      "Into a combat immediately. And you will face..."
+    ]
+  },
+  "PpointPotion": {
+    "NAME": "P point potion",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " P point(can't exceed limit)"
+    ]
+  },
+  "RedTea": {
+    "NAME": "Red Tea",
+    "DESCRIPTIONS": [
+      "Red Tea is helpful for sleep."
+    ]
+  },
+  "UndeadPotion": {
+    "NAME": "Undead Potion",
+    "DESCRIPTIONS": [
+      "Lose #b10 Max HP, your HP in this combat at least 1.(Can't use in Boss combat)"
+    ]
+  },
+  "JyouchiReiPotion": {
+    "NAME": "Bound Spirit In a Jar",
+    "DESCRIPTIONS": [
+      "Apply #b3 Bound Spirit to an enemy."
+    ]
+  }
+}

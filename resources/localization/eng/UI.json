@@ -11,6 +11,40 @@
       "Choose one card to transform"
     ]
   },
+  "GoodDreamOption": {
+    "TEXT": [
+      "Good Dream",
+      "Have a good dream...",
+      "[Continue]",
+      "[Join]",
+      "[Turn]",
+      "[Left]",
+      "[Right]",
+      "[Dumplings]",
+      "[...]",
+      "[Try]",
+      "[No]",
+      "You arrive a place you never been, is there your dream?",
+      "You keep walking, then see two rabbits are dancing. NL You don't know why call them rabbits, they seems are inviting you.",
+      "You dance with them, feel full of #gPotentiality .",
+      "You turn to find other way",
+      "You walk left for a while, then find you back there...",
+      "You right left for a while, then find you back there...",
+      "\"Oh, you walk for so long, you have no place to go, do you?\", NL A rabbit take out some #bdumplings , NL \"If you don't to dance with us, just take these.\"",
+      "You eat these dumplings, it taste well. At the same time, you feel #gStrength crowd out",
+      "You see a strange person with a single wing.",
+      "...",
+      "......",
+      ".........",
+      "\"Ah,it's #ySagume sahib!\"A rabbit appear from somewhere. NL \"This visitor, #ySagume sahib can #pspeak #pill #pof you for #bfree~~\"",
+      "\"Ah--you don't want?\"The rabbit looks very despair.",
+      "\"You will #pscarred \"You feel your wound #gheal...",
+      "\"You will #ppoor \"You feel your pocket become #yheavy ...",
+      "\"You will #pfail \"You feel full of #gStrength ...",
+      "\"You will #pcurse \"You feel be #gPurged...",
+      "Wake up..."
+    ]
+  },
   "isSeedAction": {
     "TEXT": [
       "My hand is full"
@@ -45,10 +79,10 @@
       "No English Change Log till now.",
       "Current rate of progress:",
       "Deck: almost done.",
-      "Relic: finished some of them",
-      "Art: finished a little of them",
+      "Relic: finished most of them",
+      "Art: finished a part of them",
       "Debug: doing now",
-      "Special efficiency: almost nothing",
+      "Special efficiency: doing now",
       "All English Mode"
     ]
   },

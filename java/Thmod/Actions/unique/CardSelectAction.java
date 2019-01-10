@@ -161,7 +161,7 @@ public class CardSelectAction extends AbstractGameAction
                     CardSelectAction.SpellCards.addToTop(new FinalSpark());
                 }
                 if (Cardid.cardID.equals("SeishiRoten")) {
-                    CardSelectAction.SpellCards.addToTop(new EnshinRoten());
+                    CardSelectAction.SpellCards.addToTop(new EnshinRoten(false));
                 }
                 if (Cardid.cardID.equals("KokorosuKi")) {
                     CardSelectAction.SpellCards.addToTop(new SakuraHirame());

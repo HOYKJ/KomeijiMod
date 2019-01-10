@@ -1,0 +1,193 @@
+﻿{
+  "Keyword":[
+    {
+      "NAMES": [
+        "Graze",
+        "graze"
+      ],
+      "DESCRIPTION": "Dodge Damage."
+    },
+    {
+      "NAMES": [
+        "Spell Card Rule",
+        "spell card rule"
+      ],
+      "DESCRIPTION": "1.At the start of your turn, you could get SP card, it base on your #rp point. NL 2.The SP card you can get also base on the card in your hand. NL 3.All the SP card has #yExhaust and #yEthereal . NL 4.The rest of rule need yourself to find it out!"
+    },
+    {
+      "NAMES": [
+        "Association",
+        "association"
+      ],
+      "DESCRIPTION": "This card cannot be Upgraded, but can be Transform to other card at Rest Sites."
+    },
+    {
+      "NAMES": [
+        "Replace",
+        "replace"
+      ],
+      "DESCRIPTION": "This card need to Replace a particular card in your hand, it will back when this card be Exhausted."
+    },
+    {
+      "NAMES": [
+        "Echo",
+        "echo"
+      ],
+      "DESCRIPTION": "This card will add a copy to your hand when Exhausted"
+    },
+    {
+      "NAMES": [
+        "Charge",
+        "charge"
+      ],
+      "DESCRIPTION": "This card would not work immediately when used,but you can choose the time to make it work."
+    },
+    {
+      "NAMES": [
+        "Static",
+        "static"
+      ],
+      "DESCRIPTION": "Will never change."
+    },
+    {
+      "NAMES": [
+        "Bound Spirit",
+        "bound Spirit"
+      ],
+      "DESCRIPTION": "When a turn ends or its owner attack, make the owner loss hp equal to its level."
+    },
+    {
+      "NAMES": [
+        "Weather",
+        "weather"
+      ],
+      "DESCRIPTION": "Weather power will provide extra effect for you."
+    },
+    {
+      "NAMES": [
+        "Arm",
+        "Arm"
+      ],
+      "DESCRIPTION": "Simple Doll could be Armed to Spear Doll, Shield Doll or Archer Doll."
+    },
+    {
+      "NAMES": [
+        "Spear Doll",
+        "spear doll"
+      ],
+      "DESCRIPTION": "Spear Doll will provide #yStrength for you."
+    },
+    {
+      "NAMES": [
+        "Shield Doll",
+        "shield doll"
+      ],
+      "DESCRIPTION": "Shield Doll will gain #yBlock for you at the end of turn."
+    },
+    {
+      "NAMES": [
+        "Archer Doll",
+        "archer doll"
+      ],
+      "DESCRIPTION": "Archer Doll will deal damage to a a random enemy at the end of turn."
+    },
+    {
+      "NAMES": [
+        "ShangHai Doll",
+        "shangHai doll"
+      ],
+      "DESCRIPTION": "ShangHai Doll will provide Strength for you. When it be Evoked, will deal damage to all enemy. (Belong to Spear Doll)"
+    },
+    {
+      "NAMES": [
+        "PengLai Doll",
+        "pengLai doll"
+      ],
+      "DESCRIPTION": "PengLai Doll will provide Strength for you. When it be Evoked, will deal damage to all enemy. (Belong to Spear Doll)"
+    },
+    {
+      "NAMES": [
+        "HeLan Doll",
+        "heLan doll"
+      ],
+      "DESCRIPTION": "HeLan Doll will gain Block for you at the end of turn. When it be Evoked, will gain #yPlated #yArmor for you. (Belong to Shield Doll)"
+    },
+    {
+      "NAMES": [
+        "Extra Action",
+        "extra action"
+      ],
+      "DESCRIPTION": "Spear Doll: Deal 3 damage to a random enemy. Shield Doll: Gain 2 Block for you. Archer Doll: Every 2 Archer Doll will heal 1 HP for you."
+    },
+    {
+      "NAMES": [
+        "Element",
+        "element"
+      ],
+      "DESCRIPTION": "Element Card will produce or consume corresponding Element Orb. (Multiple Element means consume)"
+    },
+    {
+      "NAMES": [
+        "Dimensity",
+        "dimensity"
+      ],
+      "DESCRIPTION": "When you play a Element Card, if you have the  #yDimensity with corresponding element,consume it/them, play this card again. (But won't produce or consume corresponding Element Orb)"
+    },
+    {
+      "NAMES": [
+        "Purely Damage",
+        "purely damage"
+      ],
+      "DESCRIPTION": "Purely Damage will ignore target's Block,and won't be thorns."
+    },
+    {
+      "NAMES": [
+        "Blessing",
+        "blessing"
+      ],
+      "DESCRIPTION": "Blessing Card will  #yExhaust when it be drew,then works."
+    },
+    {
+      "NAMES": [
+        "Permanent",
+        "permanent"
+      ],
+      "DESCRIPTION": "If this card/relic is not in your deck/relic list, it will add to your deck/relic list,include next game. (only can be removed by special condition)"
+    },
+    {
+      "NAMES": [
+        "Resonance",
+        "resonance"
+      ],
+      "DESCRIPTION": "When you have 2 or more #yElement orb of same #yElement(Except Luna and Sun), and you play a #yElement card with same #yElement. #yExhaust 2 #yElement orb, trigger #yResonance effect."
+    },
+    {
+      "NAMES": [
+        "Sticky Bubble",
+        "sticky bubble"
+      ],
+      "DESCRIPTION": "Its owner lose 1 Strength for each Sticky Bubble, take effect at the end of turn. NL reduce 1 at the start of turn."
+    },
+    {
+      "NAMES": [
+        "Increaseble",
+        "increaseble"
+      ],
+      "DESCRIPTION": "Every same name card in your draw pile/hand/discard pile will increase its effect by 1."
+    },
+    {
+      "NAMES": [
+        "Recall",
+        "recall"
+      ],
+      "DESCRIPTION": "If you have same name card in your draw pile when you play this card, draw that card."
+    },
+    {
+      "NAMES": [
+        "Activate",
+        "activate"
+      ],
+      "DESCRIPTION": "Right click to make it take effect"
+    }
+    ]
+}

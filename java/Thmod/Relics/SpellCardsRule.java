@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Thmod.Actions.common.MoveOrbAction;
+import Thmod.Actions.unique.GetFamiliarSpoon;
 import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.Cards.BlessingCards.BlessingOfTime;
 import Thmod.Cards.DeriveCards.FuubiStrike;
@@ -74,13 +75,8 @@ public class SpellCardsRule extends AbstractThRelic {
         }
 
         if (AbstractDungeon.player.hasRelic("Strange Spoon")) {
-            AbstractDungeon.player.loseRelic("Strange Spoon");
-            AbstractRelic relic = new FamiliarSpoon();
-            UnlockTracker.markRelicAsSeen(relic.relicId);
-            relic.obtain();
-            relic.isObtained = true;
-            relic.isAnimating = false;
-            relic.isDone = false;
+            //AbstractDungeon.player.loseRelic("Strange Spoon");
+            AbstractDungeon.actionManager.addToBottom(new GetFamiliarSpoon());
         }
         if (ThMod.blessingOfDetermination == 2){
             boolean giveBook = true;

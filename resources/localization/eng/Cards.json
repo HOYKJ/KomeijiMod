@@ -153,7 +153,7 @@
     "HenyouMirume":{
       "NAME": "Rec\"Eyes that View Change\"",
       "DESCRIPTION": 
-	"Next 1 Attack you played will increase 10 Static damage."
+	"Next 1 Attack you played in this turn will increase 15 Static damage."
     },
     "HisouNoKen":{
       "NAME": "Rec\"Sword of Scarlet Perception\"",
@@ -247,6 +247,8 @@
   "ShyakuBuku": {
     "NAME": "Rec\"Preaching Avici\"",
     "DESCRIPTION":
+    "Deal 0 Static damage. NL Play !M! card on the top of your Draw Pile for no cost. Exhaust.",
+    "UPGRADE_DESCRIPTION":
     "Deal 0 Static damage. NL Play !M! card on the top of your Draw Pile for no cost."
   },
   "TenguNoTaiko": {
@@ -452,7 +454,7 @@
   "EnshinRoten": {
     "NAME": "Rec\"Slash of Circular Vicissitude\"",
     "DESCRIPTION":
-    "Deal !D! damage !M! times. NL Replace. cost 3P."
+    "Deal !D! damage, this card will play !M! times. NL Replace. cost 3P."
   },
   "FinalSpark": {
     "NAME": "Rec\"Final Spark\"",
@@ -734,6 +736,11 @@
     "DESCRIPTION":
     "Defeat(?) Yukari."
   },
+  "SingleWing": {
+    "NAME": "Egret with single wing",
+    "DESCRIPTION":
+    "Meet Sagume."
+  },
 
 
   "RidiculousThoughts": {
@@ -745,6 +752,21 @@
     "NAME": "Thoughts Extend",
     "DESCRIPTION":
     "Whenever you play !M! Association card. Gain [R] and draw 1 card."
+  },
+  "GradualImprovement": {
+    "NAME": "Gradual Improvement",
+    "DESCRIPTION":
+    "Increase, Ethereal. NL Deal !D! damage. Add a copy of this card into your discard pile."
+  },
+  "Muse": {
+    "NAME": "Muse",
+    "DESCRIPTION":
+    "Increase, Exhaust. NL Gain !B! Block . At the end of turn, add a copy of this card into your discard pile. Recall ."
+  },
+  "Searching": {
+    "NAME": "Searching",
+    "DESCRIPTION":
+    "Unplayable, Gain better reward when combat ends. Coefficient of reward: !M! ."
   },
 
 
@@ -1104,7 +1126,7 @@
   "HydrogenousProminence":{
     "NAME": "Rec\"Hydrogenous Prominence\"",
     "DESCRIPTION":
-    " Element Sun&Water. NL Deal 3 damage to a random enemy for each Element orb Gained this combat..",
+    " Element Sun&Water. NL Deal 3 Static damage to a random enemy for each Element orb Gained this combat.",
     "EXTENDED_DESCRIPTION":[
     " NL (For !M! times)"
       ]
@@ -1115,7 +1137,7 @@
     " Element Water. NL Apply !M! Plated Armor. NL Replace. cost 3P."
   },
   "KenjiaNoSeki":{
-    "NAME": "Rec\"贤者之石\"",
+    "NAME": "Rec\"Philosopher's Stone\"",
     "DESCRIPTION":
     " Element Fire&Water&Wood&Metal&Earth. NL At the start of turn, gain Dimensity of Fire/Wood/Metal/Earth/Water Element. For 5 turns."
   },

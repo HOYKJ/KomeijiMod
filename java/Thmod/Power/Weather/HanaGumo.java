@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 
+import Thmod.Power.DashPower;
 import Thmod.Power.PointPower;
 
 public class HanaGumo extends AbstractPower {
@@ -32,7 +33,7 @@ public class HanaGumo extends AbstractPower {
     }
 
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if((power.ID == "DashPower")&&(target == p)) {
+        if((power.ID.equals(DashPower.POWER_ID))&&(target == p)) {
             AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p,p,"DashPower",1));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1), 1));
             flash();

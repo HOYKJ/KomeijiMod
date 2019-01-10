@@ -23,7 +23,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
 
     public FreezeToughMe() {
         super("FreezeToughMe", FreezeToughMe.NAME,  2, FreezeToughMe.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseBlock = 15;
+        this.baseBlock = 12;
         this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
     }
@@ -43,7 +43,7 @@ public class FreezeToughMe extends AbstractKomeijiCards {
             this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
             this.upgradeMagicNumber(3);
-            this.upgradeBlock(5);
+            this.upgradeBlock(4);
             this.timesUpgraded += 1;
             this.upgraded = true;
         }

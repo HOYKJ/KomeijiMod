@@ -42,4 +42,6 @@ public class BorderVeryLongFlashEffect extends AbstractGameEffect
         sb.draw(this.img, 0F, 0F, Settings.WIDTH, Settings.HEIGHT);
         sb.setBlendFunction(770, 771);
     }
+
+    public void dispose(){}
 }

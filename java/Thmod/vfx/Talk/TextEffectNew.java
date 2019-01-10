@@ -256,4 +256,6 @@ public class TextEffectNew extends AbstractGameEffect {
         LINE_SPACING = 15.0F * Settings.scale;
         CHAR_SPACING = 8.0F * Settings.scale;
     }
+
+    public void dispose(){}
 }

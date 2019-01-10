@@ -34,8 +34,8 @@ public class KoishisEye extends AbstractThRelic {
         if(!(Settings.hideCombatElements))
             Settings.hideCombatElements = true;
         AbstractPlayer p = AbstractDungeon.player;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,3),3));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,3),3));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,5),5));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,5),5));
     }
 
     protected  void onRightClick(){

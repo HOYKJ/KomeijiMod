@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class RetsuJitsu extends AbstractPower {
-    public static final String POWER_ID = "KaiSei";
+    public static final String POWER_ID = "RetsuJitsu";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("RetsuJitsu");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
