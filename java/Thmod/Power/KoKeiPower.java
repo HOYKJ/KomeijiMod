@@ -47,6 +47,11 @@ public class KoKeiPower extends AbstractPower {
         return damage;
     }
 
+    public void atEndOfTurn(boolean isPlayer) {
+        if((isPlayer))
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner,this.owner,this));
+    }
+
     public void updateDescription()
     {
         this.description = DESCRIPTIONS[0];

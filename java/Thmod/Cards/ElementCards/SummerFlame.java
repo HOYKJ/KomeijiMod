@@ -10,22 +10,32 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
+
+import Thmod.vfx.CardFeedBack;
+
 public class SummerFlame extends AbstractElementSweepCards {
     public static final String ID = "SummerFlame";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 1;
 
     public SummerFlame() {
         super("SummerFlame", SummerFlame.NAME,  1, SummerFlame.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY,ElementType.Fire);
-        this.baseDamage = 8;
+        this.baseDamage = 6;
         this.isMultiDamage = true;
+        this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         super.use(p,m);
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        AbstractDungeon.effectList.add(new CardFeedBack(1f));
+        for(AbstractCard card : p.drawPile.group){
+            if(card.baseDamage > 0){
+                card.baseDamage += this.magicNumber;
+            }
+        }
     }
 
     @Override

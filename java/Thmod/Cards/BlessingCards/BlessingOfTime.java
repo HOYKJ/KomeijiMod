@@ -36,20 +36,7 @@ public class BlessingOfTime extends AbstractBlessingCard
     {
         boolean remove = false;
         AbstractCard card = null;
-        RewardItem specialCard = new RewardItem();
-        specialCard.type = RewardItem.RewardType.CARD;
-        specialCard.cards.clear();
-        specialCard.cards.add(new BlessingOfScarlet());
-        if(ThMod.blessingOfTime < 3)
-            ThMod.blessingOfTime += 1;
-        String text;
-        if(Settings.language == Settings.GameLanguage.ENG)
-            text = "Stop this meaningless fight...";
-        else
-            text = "停止这无意义的争斗吧...";
-        AbstractDungeon.actionManager.addToBottom(new TalkAction(AbstractDungeon.getCurrRoom().monsters.monsters.get(0), text, 0.5F, 2.0F));
-        AbstractDungeon.getCurrRoom().rewards.clear();
-        AbstractDungeon.getCurrRoom().addCardReward(specialCard);
+        ((Remiria)AbstractDungeon.getCurrRoom().monsters.monsters.get(0)).overByTime();
         for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
             if (c instanceof BlessingOfTime) {
                 remove = true;
@@ -58,8 +45,6 @@ public class BlessingOfTime extends AbstractBlessingCard
         }
         if(remove)
             AbstractDungeon.player.masterDeck.group.remove(card);
-        UnlockTracker.unlockCard("ScarletsBlessing");
-        AbstractDungeon.actionManager.addToBottom(new EndBattleAction());
     }
 
     public void triggerWhenDrawn()

@@ -1,53 +1,31 @@
 package Thmod.Cards.ItemCards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.city.Mugger;
 
-import Thmod.Power.PointPower;
-import Thmod.Power.WocchiPower;
+import Thmod.Actions.unique.DeleteSpellAction;
 
 public class FusyokuKusuri extends AbstractItemCards {
     public static final String ID = "FusyokuKusuri";
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 0;
+    public static final String[] EXTENDED_DESCRIPTION;
 
     public FusyokuKusuri() {
-        super("FusyokuKusuri", FusyokuKusuri.NAME,  0, FusyokuKusuri.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ENEMY);
+        super("FusyokuKusuri", FusyokuKusuri.NAME,  0, FusyokuKusuri.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (p.hasPower("PointPower")) {
-            if (p.getPower("PointPower").amount >= 1) {
-                AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-                    public void update() {
-                        m.rollMove();
-                        AbstractDungeon.getMonsters().showIntent();
-                        this.isDone = true;
-                    }
-                });
-//                if((m.id.equals("Mugger")) || (m.id.equals("Looter"))){
-//                    AbstractDungeon.actionManager.addToBottom(new AbstractGameAction()
-//                    {
-//                        public void update()
-//                        {
-//                            Mugger.this.stolenGold = (Mugger.this.stolenGold + Math.min(15, AbstractDungeon.player.gold));
-//                            this.isDone = true;
-//                        }
-//                    });
-//                }
-                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
-            }
-        }
+        AbstractDungeon.actionManager.addToBottom(new DeleteSpellAction(EXTENDED_DESCRIPTION[0]));
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m){
+        return true;
     }
 
     public AbstractCard makeCopy() {
@@ -64,5 +42,6 @@ public class FusyokuKusuri extends AbstractItemCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("FusyokuKusuri");
         NAME = FusyokuKusuri.cardStrings.NAME;
         DESCRIPTION = FusyokuKusuri.cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = FusyokuKusuri.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

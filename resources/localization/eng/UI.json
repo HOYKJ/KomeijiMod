@@ -8,7 +8,8 @@
   "SweepOption": {
     "TEXT": [
       "Association",
-      "Choose one card to transform"
+      "Choose one card to transform and heal ",
+      " hp."
     ]
   },
   "GoodDreamOption": {
@@ -24,24 +25,24 @@
       "[...]",
       "[Try]",
       "[No]",
-      "You arrive a place you never been, is there your dream?",
-      "You keep walking, then see two rabbits are dancing. NL You don't know why call them rabbits, they seems are inviting you.",
-      "You dance with them, feel full of #gPotentiality .",
-      "You turn to find other way",
-      "You walk left for a while, then find you back there...",
-      "You right left for a while, then find you back there...",
-      "\"Oh, you walk for so long, you have no place to go, do you?\", NL A rabbit take out some #bdumplings , NL \"If you don't to dance with us, just take these.\"",
-      "You eat these dumplings, it taste well. At the same time, you feel #gStrength crowd out",
-      "You see a strange person with a single wing.",
+      "You arrive a place you never seen before, is this your dream?",
+      "You keep walking, then see two rabbits are dancing cheerfully. NL You don't know why call them rabbits. They seems to be inviting you.",
+      "You dance with them, feel yourself filled with #gPotentiality .",
+      "You turn away to find other ways",
+      "You walk left, then found you back at this place again soon...",
+      "You walk right, then found you back at this place again soon...",
+      "\"Oh, seeing that you've been walking for so long, you must have no place to go, do you?\", NL A rabbit take out some #bdangos , NL \"If you don't to dance with us, then take these.\"",
+      "You eat these dangos, they taste great. NL At the same time, you feel #gStrength flooding out from inside your body.",
+      "You see a strange person with a single wing on her back.",
       "...",
       "......",
       ".........",
-      "\"Ah,it's #ySagume sahib!\"A rabbit appear from somewhere. NL \"This visitor, #ySagume sahib can #pspeak #pill #pof you for #bfree~~\"",
-      "\"Ah--you don't want?\"The rabbit looks very despair.",
-      "\"You will #pscarred \"You feel your wound #gheal...",
-      "\"You will #ppoor \"You feel your pocket become #yheavy ...",
+      "\"Ah,it's #ySagume Sama!\"A rabbit appear out from somewhere. NL \"This visitor, #ySagume Sama can #pspeak #pill #pof you for #bfree~~\"",
+      "\"Ah--you don't want?\"The rabbit looks very disapointed.",
+      "\"You will be #pscarred \"You feel your wounds are #ghealed...",
+      "\"You will be #ppoor \"You feel your pocket become #yheavier ...",
       "\"You will #pfail \"You feel full of #gStrength ...",
-      "\"You will #pcurse \"You feel be #gPurged...",
+      "\"You will be #pcurse \"You feel being #gPurified...",
       "Wake up..."
     ]
   },
@@ -52,7 +53,7 @@
   },
   "CardSelectAction": {
     "TEXT": [
-      "There is no card can be replaced in my hand."
+      "There is no replaceable card in my hand."
     ]
   },
   "DiscardAndDamageAction": {
@@ -80,59 +81,88 @@
       "Current rate of progress:",
       "Deck: almost done.",
       "Relic: finished most of them",
-      "Art: finished a part of them",
+      "Art: finished a part of them(Need help...)",
       "Debug: doing now",
       "Special efficiency: doing now",
-      "All English Mode"
+      "Test Art Mode(need restart)",
+      "Allow to see the description of some unknown effects(need restart)",
+      "View Association",
+      "View Association2"
     ]
   },
   "SpireHeartPatch": {
     "TEXT": [
-      "You feel something #pstrange . You had been there before? NL A unknown power force you to look back...",
+      "You feel something #punnatural . You had been there before? NL A unknown power force you to look back...",
       "[Look Back]",
       "[Ignore]"
     ]
   },
   "PlotTalkAction": {
     "TEXT": [
-      "Before battle, I want to ask you some questions.",
+      "Before the battle, I want to ask you some questions.",
       "Do you know. What makes everything here?",   "I know","No",
       "That's for sure.",
-      "This question is just kidding myself.",
-      "This question is just kidding myself.",
-      "But to my surprise, you are so #bcooperate .",
+      "Asking this question is just lying to myself.",
+      "Although this question is just lies to myself.",
+      "But to my surprise, you are so #bcooperative .",
       "Ne. The closer to the truth, the more dangerous it is.",
       "I think. It's not good to know too much, isn't it?",  "I agree","Not so",
-      "So you just go on.",
+      "So just keep going then.",
       "I won't impede you.",
-      "I don't believe.",
-      "After ALL, you have come to this step.",
-      "So, do you think. You can reach those #balleged truth?",  "Of course","No",
-      "Keep this #gDetermination is not bad.",
+      "I don't know if that came from your heart.",
+      "After ALL, you reached here.",
+      "So, do you think. You can reach those #bso #bcalled truth?",  "Of course","No",
+      "Keeping this #gDetermination is not a bad thing.",
       "Advance despite difficulties?",
-      "Or, you just arrive here for no reason?",  "Yes","No",
-      "You are more and more like #bher .",
-      "I don't care whatever your purpose is.",
+      "Or, did you just wandered here aimlessly?",  "Yeah...","No",
+      "You resemble #bher even more now.",
+      "I don't care what your purpose is.",
       "Time, will bring pain. Isn't it?",  "I agree","Not so",
-      "Reality is just so cruel.",
-      "Something, will never change with time goes.",
+      "Reality is indeed very cruel.",
+      "Some things, will never change with time goes.",
       "So can time heal the scar it brings?",  "Can","Cannot",
-      "I can still see the #rScarlet outflow form the scar...",
+      "I can still see the #rScarlet outflowing form the scar...",
       "I think you know the answer.",
-      "You think what it is. Is what you own now?",  "Yea","No",
+      "What do you think it is, is what you own now?",  "Yea","No",
       "So lamentable...",
       "You own nothing.",
-      "It is said, everyone will meet the judgement in the end. Do you believe it?",  "Believe","Doubt",
+      "Some say that everyone will meet their judgement eventually. Do you believe it?",  "Believe","Doubt",
       "That's what you are facing now.",
-      "Someone, maybe can be #gRemission .",
-      "You think. Person, or mystic apparition,",
-      "Can be change?",  "Can","Cannot",
+      "Some people, might get their #gRemission .",
+      "You think. Human, or youkai,",
+      "Can it be changed?",  "Can","Cannot",
       "I hope so.",
       "So there is nothing to be told.",
 
-      "I finished. Let me see your performance!",
+      "I have no more questions. Let me see your performance!",
 
       "Before battle, I want to ask you some questions."
+    ]
+  },
+  "Dialogs": {
+    "TEXT": [
+      "~How~ ~much~ #b~secrets~ in you.",
+      " ~...~ ",
+      "It's ALL @because@ #r@YOU@ @...@ ",
+      "Don't want to understand #rin #rvain , NL Don't want to unscramble #rin #rvain.",
+      "Your #bmemories could be a valuable #yCollection of mine.",
+      " #b~Time~ ~won't~ ~solve~ ~all~ ~the~ ~problems.~ ",
+      " #r@Warning!@ Keep out! ",
+      " @Only@ @this@ @and@ @nothing@ @more!@"
+    ]
+  },
+  "TheLibraryPatch": {
+    "TEXT": [
+      "Your sight sweep through lines of books, want to see if there have anything special. NL You find a battered old #bphoto #bframe between two books... NL Do you want to pull out and watch it?",
+      "It's a group photo, the person in the middle... NL ~Is~ ~yourself?~ NL So these people by your side are? You rack your brains, want to recall something about this...",
+      "You can only recall some #bfragments #bof #bmemories , and this makes you feel your head is #psplitting . NL But these memories, is enough for you to recall a #ycard ...",
+      "[Observe]",
+      "[Watch]",
+      "[Ignore]",
+      "[Recall] #rLose #r5 #rMax #rHP. #gChoose #ga #gcard #gfrom #g3 #gspecial #gcards #gand #gObtain.",
+      "[Leave]",
+      "Choose 1 card and obtain",
+      "You decide to ignore it. NL You may as well to read a book or have a sleep."
     ]
   }
 }

@@ -10,6 +10,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.unique.PlayerTalkAction;
+import Thmod.Cards.RareCards.LunaDial;
+import Thmod.Power.MyWorldPower;
 import Thmod.Power.PointPower;
 import Thmod.Power.WocchiPower;
 
@@ -31,6 +34,15 @@ public class SutoppuWocchi extends AbstractItemCards {
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",1));
             }
         }
+    }
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        if(p.hasPower(MyWorldPower.POWER_ID)){
+            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player, LunaDial.EXTENDED_DESCRIPTION[0]));
+            return false;
+        }
+        return super.canUse(p, m);
     }
 
     public AbstractCard makeCopy() {

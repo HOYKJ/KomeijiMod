@@ -23,7 +23,7 @@ public class ScarletDevil extends AbstractKomeijiCards {
     private static final int COST = 3;
 
     public ScarletDevil() {
-        super("ScarletDevil", ScarletDevil.NAME,  3, ScarletDevil.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
+        super("ScarletDevil", ScarletDevil.NAME,  3, ScarletDevil.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY, CardSet_k.OTHER);
         this.baseDamage = 8;
         this.isMultiDamage = true;
         this.baseMagicNumber = 6;

@@ -51,8 +51,8 @@ public class DreamEventEffect extends AbstractGameEffect
     private float animateTimer2 = 1F;
     private boolean addButton = false;
     private float wordTimer = 0.5F;
-    private ArrayList<DialogWord> words = new ArrayList();
-    public static ArrayList<DreamButton> optionList = new ArrayList();
+    private ArrayList<DialogWord> words = new ArrayList<>();
+    public static ArrayList<DreamButton> optionList = new ArrayList<>();
     private boolean textDone = true;
     public static boolean waitForInput = true;
     private Scanner s;
@@ -285,6 +285,7 @@ public class DreamEventEffect extends AbstractGameEffect
                         switch (roll){
                             case 1:
                                 updateDreamText(TEXT[25]);
+                                AbstractDungeon.player.maxHealth += 10;
                                 AbstractDungeon.player.heal(AbstractDungeon.player.maxHealth);
                                 break;
                             case 2:

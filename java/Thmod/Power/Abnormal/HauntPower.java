@@ -1,5 +1,6 @@
 package Thmod.Power.Abnormal;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -28,8 +29,22 @@ public class HauntPower extends AbstractPower {
     }
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if(target == AbstractDungeon.player)
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new VulnerablePower(this.owner, 1, true), 1, true, AbstractGameAction.AttackEffect.NONE));
+        if(target == AbstractDungeon.player) {
+            int roll = MathUtils.random(2);
+            switch (roll){
+                case 0:
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new RedAbnormity(this.owner, 2), 2));
+                    break;
+                case 1:
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new GreenAbnormity(this.owner, 2), 2));
+                    break;
+                case 2:
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new BlueAbnormity(this.owner, 2), 2));
+                    break;
+                default:
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new RedAbnormity(this.owner, 2), 2));
+            }
+        }
     }
 
     public void updateDescription()

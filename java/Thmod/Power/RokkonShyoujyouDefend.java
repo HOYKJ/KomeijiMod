@@ -23,10 +23,15 @@ public class RokkonShyoujyouDefend extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("RokkonShyoujyouDefend");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private AbstractPlayer p = AbstractDungeon.player;
+    private AbstractPlayer p;
     private int damage;
+    private boolean isEnemy;
 
     public RokkonShyoujyouDefend(AbstractCreature owner, int Amount) {
+        this(owner, Amount, false);
+    }
+
+    public RokkonShyoujyouDefend(AbstractCreature owner, int Amount, boolean isEnemy) {
         this.name = NAME;
         this.ID = "RokkonShyoujyouDefend";
         this.owner = owner;
@@ -35,29 +40,37 @@ public class RokkonShyoujyouDefend extends AbstractPower {
         this.img = ImageMaster.loadImage("images/power/32/RokkonShyoujyouDefend.png");
         this.type = PowerType.BUFF;
         this.damage = Amount;
+        this.isEnemy = isEnemy;
+        this.p = AbstractDungeon.player;
     }
 
     public int onAttacked(DamageInfo info, int damageAmount)
     {
-        if ((info.type != DamageInfo.DamageType.HP_LOSS) && (info.owner != null) && (info.owner != this.owner))
-        {
-            if(damageAmount > 0) {
+        if ((info.type != DamageInfo.DamageType.HP_LOSS) && (info.owner != null) && (info.owner != this.owner)) {
+            if (damageAmount > 0) {
                 flash();
-                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        AbstractDungeon.actionManager.addToBottom(new RemoveBuffsAction(target));
-                        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                if(!this.isEnemy) {
+                    for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                        if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                            AbstractDungeon.actionManager.addToBottom(new RemoveBuffsAction(target));
+                            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(this.p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                        }
+                    }
+                    if (!(p.hasPower("PointPower"))) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.p, this.p, new PointPower(this.p, 1), 1));
+                    } else if (p.getPower("PointPower").amount < 5) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.p, this.p, new PointPower(this.p, 1), 1));
                     }
                 }
-                if (!(p.hasPower("PointPower"))) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
-                } else if (p.getPower("PointPower").amount < 5) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+                else {
+                    AbstractDungeon.actionManager.addToBottom(new RemoveBuffsAction(p));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(this.p, new DamageInfo(this.p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 }
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+                return 0;
             }
-            return 0;
+            return damageAmount;
         }
         return damageAmount;
     }

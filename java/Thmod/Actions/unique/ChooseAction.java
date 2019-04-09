@@ -22,6 +22,7 @@ public class ChooseAction extends AbstractGameAction
     private String message;
     private boolean canCancel;
     private int chooseNum;
+    private boolean oneAndCancel;
 
     public ChooseAction(final AbstractCard baseCard, final AbstractMonster target, final String message,final boolean canCancel,final int chooceNum) {
         this.choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
@@ -34,11 +35,52 @@ public class ChooseAction extends AbstractGameAction
         this.canCancel = canCancel;
         this.chooseNum = chooceNum;
         this.target = target;
+        this.oneAndCancel = false;
+    }
+
+    public ChooseAction(final AbstractCard baseCard, final AbstractMonster target, final String message,final boolean canCancel,final int chooceNum, final boolean oneAndCancel) {
+        this.choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        this.actions = new ArrayList<>();
+        this.setValues(AbstractDungeon.player, AbstractDungeon.player, 1);
+        this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
+        this.baseCard = baseCard;
+        this.message = message;
+        this.duration = Settings.ACTION_DUR_FASTER;
+        this.canCancel = canCancel;
+        this.chooseNum = chooceNum;
+        this.target = target;
+        this.oneAndCancel = oneAndCancel;
     }
 
     public void add(final String name, final String description, final Runnable action) {
         final AbstractCard choice = this.baseCard.makeStatEquivalentCopy();
         choice.name = name;
+        choice.rawDescription = description;
+        choice.initializeDescription();
+        if (this.target != null) {
+            choice.calculateCardDamage(this.target);
+        }
+        else {
+            choice.applyPowers();
+        }
+        this.choices.addToTop(choice);
+        this.actions.add(action);
+    }
+
+    public void add(final AbstractCard card, final Runnable action) {
+        final AbstractCard choice = card.makeStatEquivalentCopy();
+        if (this.target != null) {
+            choice.calculateCardDamage(this.target);
+        }
+        else {
+            choice.applyPowers();
+        }
+        this.choices.addToTop(choice);
+        this.actions.add(action);
+    }
+
+    public void add(final AbstractCard card, final String description, final Runnable action) {
+        final AbstractCard choice = card.makeStatEquivalentCopy();
         choice.rawDescription = description;
         choice.initializeDescription();
         if (this.target != null) {
@@ -74,10 +116,29 @@ public class ChooseAction extends AbstractGameAction
             this.tickDuration();
             return;
         }
-        if (this.choices.size() > 1) {
-            AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum, this.canCancel,this.message);
-            this.tickDuration();
-            return;
+        if(!this.oneAndCancel) {
+            if (this.choices.size() > 1) {
+                //AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum,this.message,false, false, this.canCancel, false);
+                if (this.canCancel) {
+                    AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum, true, this.message);
+                } else {
+                    AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum, this.message, false, false, true, false);
+                }
+                this.tickDuration();
+                return;
+            }
+        }
+        else {
+            if (this.choices.size() > 0) {
+                //AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum,this.message,false, false, this.canCancel, false);
+                if (this.canCancel) {
+                    AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum, true, this.message);
+                } else {
+                    AbstractDungeon.gridSelectScreen.open(this.choices, this.chooseNum, this.message, false, false, true, false);
+                }
+                this.tickDuration();
+                return;
+            }
         }
 //        for(int i = 0;i < this.actions.size();i++)
             this.actions.get(0).run();

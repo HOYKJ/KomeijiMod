@@ -15,10 +15,9 @@ public class Photosynthesis extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
 
     public Photosynthesis() {
-        super("Photosynthesis", Photosynthesis.NAME,  2, Photosynthesis.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE,ElementType.Sun,ElementType.Wood);
+        super("Photosynthesis", Photosynthesis.NAME,  1, Photosynthesis.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE,ElementType.Sun,ElementType.Wood);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }

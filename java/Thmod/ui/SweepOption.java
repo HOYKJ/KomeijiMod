@@ -11,6 +11,7 @@ import Thmod.vfx.campfire.CampfireSweepEffect;
 public class SweepOption extends AbstractCampfireOption {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("SweepOption");
     public static final String[] TEXT = uiStrings.TEXT;
+    private int healAmt;
 
     public static Texture GetUpgradeOptionTexture()
     {
@@ -19,18 +20,20 @@ public class SweepOption extends AbstractCampfireOption {
 
     public SweepOption(boolean active)
     {
+        this.healAmt = (int)(AbstractDungeon.player.maxHealth * 0.1F);
         this.label = TEXT[0];
         this.usable = active;
         if (active) {
-            this.description = TEXT[1];
+            this.description = TEXT[1] + this.healAmt + TEXT[2];
             this.img = GetUpgradeOptionTexture();
         } else {
-            this.description = TEXT[1];
+            this.description = TEXT[1] + this.healAmt + TEXT[2];
             this.img = GetUpgradeOptionTexture();
         }
     }
+
     public void useOption()
     {
-        AbstractDungeon.effectList.add(new CampfireSweepEffect());
+        AbstractDungeon.effectList.add(new CampfireSweepEffect(this.healAmt));
     }
 }

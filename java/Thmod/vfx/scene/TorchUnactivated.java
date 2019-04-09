@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import java.util.ArrayList;
 
+import Thmod.ThMod;
+
 public class TorchUnactivated extends AbstractGameEffect
 {
     private static final float HEAL_AMOUNT = 0.05F;
@@ -120,7 +122,29 @@ public class TorchUnactivated extends AbstractGameEffect
                 }
                 done9 = true;
             }
-            this.isDone = true;
+            if(ThMod.blessingOfTime != 3)
+                this.isDone = true;
+        }
+        else if(this.duration > (this.startingDuration - 1.0F)){
+            if(ThMod.blessingOfTime == 3){
+                for(int i = 0;i < 9;i++) {
+                    for (int i1 = 0; i1 < 9; i1++) {
+                        if (((i == 0) && ((i1 == 2) || (i1 == 6)))
+                                || ((i == 1) && ((i1 == 2) || (i1 == 3) || (i1 == 5) || (i1 == 6)))
+                                || ((i == 2) && ((i1 == 2) || (i1 == 3) || (i1 == 4) || (i1 == 5) || (i1 == 6)))
+                                || ((i == 3) && ((i1 == 1) || (i1 == 2) || (i1 == 6) || (i1 == 7)))
+                                || ((i == 4) && ((i1 == 0) || (i1 == 2) || (i1 == 6) || (i1 == 8)))
+                                || ((i == 5) && ((i1 == 1) || (i1 == 2) || (i1 == 6) || (i1 == 7)))
+                                || ((i == 6) && ((i1 == 2) || (i1 == 3) || (i1 == 4) || (i1 == 5) || (i1 == 6)))
+                                || ((i == 7) && ((i1 == 2) || (i1 == 3) || (i1 == 5) || (i1 == 6)))
+                                || ((i == 8) && ((i1 == 2) || (i1 == 6)))) {
+                            int i2 = (i * 9 + i1);
+                            this.torchToDone.get(i2).setActivated(false);
+                        }
+                    }
+                }
+                this.isDone = true;
+            }
         }
     }
 

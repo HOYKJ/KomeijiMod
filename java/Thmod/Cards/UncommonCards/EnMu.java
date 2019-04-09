@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class EnMu extends AbstractSweepCards {
     private static final int COST = 0;
 
     public EnMu() {
-        super("EnMu", EnMu.NAME,  0, EnMu.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super("EnMu", EnMu.NAME,  0, EnMu.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.SUIKA);
         this.upgraded = true;
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
@@ -34,7 +35,7 @@ public class EnMu extends AbstractSweepCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1), 1));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, this.magicNumber,false), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FrailPower(p, this.magicNumber,false), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WeakPower(p, this.magicNumber,false), this.magicNumber));
     }
 
     @Override

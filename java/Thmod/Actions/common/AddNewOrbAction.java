@@ -8,6 +8,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 
 import Thmod.Actions.unique.ChooseAction;
+import Thmod.Cards.DeriveCards.ArcherDoll;
+import Thmod.Cards.DeriveCards.HeLanDoll;
+import Thmod.Cards.DeriveCards.NormalDoll;
+import Thmod.Cards.DeriveCards.PengLaiDoll;
+import Thmod.Cards.DeriveCards.ShangHaiDoll;
+import Thmod.Cards.DeriveCards.ShieldDoll;
+import Thmod.Cards.DeriveCards.SpearDoll;
 import Thmod.Cards.NingyouShinki;
 import Thmod.Orbs.Helan;
 import Thmod.Orbs.NingyouOrb;
@@ -37,37 +44,37 @@ public class AddNewOrbAction extends AbstractGameAction {
             orbnum.clear();
             orbnum.add(i);
             if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[1], NingyouShinki.EXTENDED_DESCRIPTION[2], () -> {
+                choice.add(new NormalDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }
             if (AbstractDungeon.player.orbs.get(i) instanceof YariNingyou) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[3], NingyouShinki.EXTENDED_DESCRIPTION[4], () -> {
+                choice.add(new SpearDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }
             if (AbstractDungeon.player.orbs.get(i) instanceof TateNingyou) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[5], NingyouShinki.EXTENDED_DESCRIPTION[6], () -> {
+                choice.add(new ShieldDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }
             if (AbstractDungeon.player.orbs.get(i) instanceof YumiNingyou) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[7], NingyouShinki.EXTENDED_DESCRIPTION[8], () -> {
+                choice.add(new ArcherDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }
             if (AbstractDungeon.player.orbs.get(i) instanceof Shanghai) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[9], NingyouShinki.EXTENDED_DESCRIPTION[10], () -> {
+                choice.add(new ShangHaiDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }
             if (AbstractDungeon.player.orbs.get(i) instanceof Penglai) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[11], NingyouShinki.EXTENDED_DESCRIPTION[12], () -> {
+                choice.add(new PengLaiDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }
             if (AbstractDungeon.player.orbs.get(i) instanceof Helan) {
-                choice.add(NingyouShinki.EXTENDED_DESCRIPTION[13], NingyouShinki.EXTENDED_DESCRIPTION[14], () -> {
+                choice.add(new HeLanDoll(), () -> {
                     AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0),this.ningyouNum));
                 });
             }

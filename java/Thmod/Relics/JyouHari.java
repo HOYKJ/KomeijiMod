@@ -16,14 +16,20 @@ public class JyouHari extends AbstractThRelic {
     }
 
     public void atTurnStart() {
+
+    }
+
+    @Override
+    public void atTurnStartPostDraw() {
+        super.atTurnStartPostDraw();
         flash();
         for(AbstractMonster m:AbstractDungeon.getCurrRoom().monsters.monsters){
             if (!(m.isDeadOrEscaped())) {
                 if (m.intent == AbstractMonster.Intent.ATTACK || m.intent == AbstractMonster.Intent.ATTACK_BUFF || m.intent == AbstractMonster.Intent.ATTACK_DEBUFF || m.intent == AbstractMonster.Intent.ATTACK_DEFEND){
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,m,new WeakPower(m,1,false),1));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,m,new VulnerablePower(m,1,false),1));
                 }
                 else {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,m,new VulnerablePower(m,1,false),1));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,m,new WeakPower(m,1,false),1));
                 }
             }
         }

@@ -20,7 +20,6 @@ public class HydrogenousProminence extends AbstractElementSpellCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
-    private static final int COST = 2;
 
     public HydrogenousProminence() {
         super("HydrogenousProminence", HydrogenousProminence.NAME,  2, HydrogenousProminence.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY,ElementType.Sun,ElementType.Water);

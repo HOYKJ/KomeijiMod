@@ -35,17 +35,18 @@ public class TheWorld extends AbstractGameEffect
             if (this.count == 13) {
                 int roll = (MathUtils.random(99) + 1);
                 if(ThMod.SoundOpen){
-                    if ((roll == 1) && (this.stop)) {
-                        CardCrawlGame.sound.play("world_ot");
-                        UnlockTracker.unlockCard("TheWorld");
+                    if(this.stop) {
+                        if ((roll == 1)) {
+                            CardCrawlGame.sound.play("world_ot");
+                            UnlockTracker.unlockCard("TheWorld");
+                        } else
+                            CardCrawlGame.sound.play("world");
                     }
-                    else
-                        CardCrawlGame.sound.play("world");
                 }
                 //CardCrawlGame.sound.playA("ATTACK_HEAVY", -0.5F);
 
-//                AbstractDungeon.effectsQueue.add(new RoomTintEffect(Color.DARK_GRAY.cpy(), 0.8F,4F,true));
-//                AbstractDungeon.effectsQueue.add(new BorderVeryLongFlashEffect(new Color(1061109759)));
+                AbstractDungeon.effectsQueue.add(new RoomTintEffect(Color.DARK_GRAY.cpy(), 0.8F,4F,true));
+                AbstractDungeon.effectsQueue.add(new BorderVeryLongFlashEffect(new Color(1061109759)));
             }
 
             //AbstractDungeon.effectsQueue.add(new CollectorStakeEffect(this.x + MathUtils.random(-50.0F, 50.0F) * Settings.scale, this.y + MathUtils.random(-60.0F, 60.0F) * Settings.scale));

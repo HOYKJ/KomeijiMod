@@ -24,8 +24,10 @@ public class NingyouKisou extends AbstractSweepCards {
     private static final int COST = 1;
 
     public NingyouKisou() {
-        super("NingyouKisou", NingyouKisou.NAME,  1, NingyouKisou.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        this.baseDamage = 7;
+        super("NingyouKisou", NingyouKisou.NAME,  1, NingyouKisou.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY, CardSet_k.ALICE);
+        this.baseDamage = 4;
+        this.baseMagicNumber = 2;
+        this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
     }
 
@@ -39,7 +41,9 @@ public class NingyouKisou extends AbstractSweepCards {
             AbstractOrb orb = new NingyouOrb();
             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
         }
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        for(int i = 0; i < this.magicNumber; i ++) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        }
     }
 
     @Override

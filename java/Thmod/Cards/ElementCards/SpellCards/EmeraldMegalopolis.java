@@ -17,7 +17,6 @@ public class EmeraldMegalopolis extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
 
     public EmeraldMegalopolis() {
         super("EmeraldMegalopolis", EmeraldMegalopolis.NAME,  2, EmeraldMegalopolis.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF,ElementType.Metal,ElementType.Earth);

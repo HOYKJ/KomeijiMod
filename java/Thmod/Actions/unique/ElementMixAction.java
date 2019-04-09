@@ -11,17 +11,32 @@ import Thmod.Relics.SpellCardsRule;
 public class ElementMixAction extends AbstractGameAction {
     private static final float startingDuration = 0.5f;
     private AbstractElementOrb orb;
+    private AbstractElementOrb orb2;
 
     public ElementMixAction(AbstractElementOrb orb){
         this.duration = 0.5f;
         this.orb = orb;
+        this.orb2 = null;
+    }
+
+    public ElementMixAction(){
+        this.duration = 0.5f;
+        this.orb = null;
+        this.orb2 = null;
+    }
+
+    public void addOrb(AbstractElementOrb orb){
+        if(this.orb == null){
+            this.orb = orb;
+        }
+        else {
+            this.orb2 = orb;
+        }
     }
 
     public void update() {
         if (this.duration == 0.5f) {
-            if(SpellCardsRule.orbToMix.size() == 0)
-                SpellCardsRule.orbToMix.add(this.orb);
-            else {
+            if(this.orb2 != null){
                 AbstractPlayer p = AbstractDungeon.player;
                 PointPower pointPower = new PointPower(p, 0);
                 boolean earth = false;
@@ -31,7 +46,7 @@ public class ElementMixAction extends AbstractGameAction {
                 boolean sun = false;
                 boolean water = false;
                 boolean wood = false;
-                switch (SpellCardsRule.orbToMix.get(0).elementType) {
+                switch (this.orb.elementType) {
                     case Earth:
                         earth = true;
                         break;
@@ -54,7 +69,7 @@ public class ElementMixAction extends AbstractGameAction {
                         wood = true;
                         break;
                 }
-                switch (this.orb.elementType) {
+                switch (this.orb2.elementType) {
                     case Earth:
                         earth = true;
                         break;

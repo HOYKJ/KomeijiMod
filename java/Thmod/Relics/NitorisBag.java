@@ -193,7 +193,7 @@ public class NitorisBag extends AbstractThRelic {
                             DevConsole.logger.info("run_26");
                         });
                         choice.add(this.DESCRIPTIONS[54], this.DESCRIPTIONS[55], () -> {
-                            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, 3));
+                            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, 6));
                             DevConsole.logger.info("run_27");
                         });
 
@@ -269,7 +269,7 @@ public class NitorisBag extends AbstractThRelic {
                             DevConsole.logger.info("run_39");
                         });
                         choice.add(this.DESCRIPTIONS[80], this.DESCRIPTIONS[81], () -> {
-                            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, 3));
+                            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, 9));
                             DevConsole.logger.info("run_40");
                         });
 

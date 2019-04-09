@@ -6,4 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 public class CharacterEnum {
     @SpireEnum
     public static AbstractPlayer.PlayerClass KomeijiSatori;
+    @SpireEnum
+    public static AbstractPlayer.PlayerClass RemiriaScarlet;
 }

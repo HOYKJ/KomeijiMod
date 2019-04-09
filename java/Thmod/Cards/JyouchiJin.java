@@ -22,7 +22,7 @@ public class JyouchiJin extends AbstractSweepCards{
     private static final int COST = 1;
 
     public JyouchiJin() {
-        super("JyouchiJin", JyouchiJin.NAME,  1, JyouchiJin.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super("JyouchiJin", JyouchiJin.NAME,  1, JyouchiJin.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY, CardSet_k.REIMU);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

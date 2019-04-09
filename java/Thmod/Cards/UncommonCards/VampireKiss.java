@@ -23,7 +23,7 @@ public class VampireKiss extends AbstractKomeijiCards {
     private static final int ATTACK_DMG = 2;
 
     public VampireKiss() {
-        super("VampireKiss", VampireKiss.NAME,  1, VampireKiss.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super("VampireKiss", VampireKiss.NAME,  1, VampireKiss.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, CardSet_k.REMIRIA);
         this.baseDamage = 2;
         this.exhaust = true;
     }

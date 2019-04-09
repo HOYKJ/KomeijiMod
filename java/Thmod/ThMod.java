@@ -4,14 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.utils.Array;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
@@ -21,47 +21,74 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.Keyword;
-import com.megacrit.cardcrawl.localization.KeywordStrings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.rewards.RewardSave;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.TreeMap;
 
+import Thmod.Cards.AbstractSetCards;
 import Thmod.Cards.Agarareta;
+import Thmod.Cards.BlessingCards.AbstractBlessingCard;
 import Thmod.Cards.BlessingCards.BlessingOfScarlet;
 import Thmod.Cards.BlessingCards.BlessingOfTime;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Aya;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Cirno;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Iku;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Komachi;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Marisa;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Meirin;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Reimu;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Reisen;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Remiria;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Sakuya;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Suika;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Suwako;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Tenshi;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Utsuho;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Youmu;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Yukari;
+import Thmod.Cards.BlessingCards.CardSetBlessing.CS_Yuyuko;
 import Thmod.Cards.BlessingCards.Determination;
 import Thmod.Cards.BlessingCards.Remission;
 import Thmod.Cards.ColorlessCards.GradualImprovement;
 import Thmod.Cards.ColorlessCards.Muse;
+import Thmod.Cards.ColorlessCards.PreThought;
 import Thmod.Cards.ColorlessCards.RidiculousThoughts;
 import Thmod.Cards.ColorlessCards.ThoughtExtend;
 import Thmod.Cards.Curses.Confused;
 import Thmod.Cards.Curses.Exhaustion;
+import Thmod.Cards.Defend_Koishi;
 import Thmod.Cards.DemonLordCradle;
+import Thmod.Cards.DeriveCards.EasterEgg.CardSetForOne;
 import Thmod.Cards.DeriveCards.EasterEgg.CheckPenglai;
 import Thmod.Cards.DeriveCards.EasterEgg.Innocent;
 import Thmod.Cards.DeriveCards.EasterEgg.MuyoNehan;
 import Thmod.Cards.DeriveCards.EasterEgg.Peep;
 import Thmod.Cards.DeriveCards.EasterEgg.RakuenSaibancyou;
+import Thmod.Cards.DeriveCards.EasterEgg.RealHeartBreak;
 import Thmod.Cards.DeriveCards.EasterEgg.Scarlet;
 import Thmod.Cards.DeriveCards.EasterEgg.ScarletsBlessing;
 import Thmod.Cards.DeriveCards.EasterEgg.SingleWing;
 import Thmod.Cards.DeriveCards.EasterEgg.SpontaneousDetonation;
 import Thmod.Cards.DeriveCards.EasterEgg.THsWorld;
+import Thmod.Cards.DeriveCards.EasterEgg.TheHidden;
 import Thmod.Cards.DeriveCards.EasterEgg.TheWorld;
 import Thmod.Cards.DeriveCards.Nothing;
 import Thmod.Cards.DeriveCards.WeatherTest;
@@ -106,9 +133,15 @@ import Thmod.Cards.ElementCards.WipeMoisture;
 import Thmod.Cards.HagoromoMizu;
 import Thmod.Cards.Dash_Komeiji;
 import Thmod.Cards.Defend_Komeiji;
+import Thmod.Cards.RewardCards.IdRelease;
+import Thmod.Cards.ItemCards.FusyokuKusuri;
+import Thmod.Cards.RewardCards.MeltDown;
+import Thmod.Cards.RewardCards.NeedleMountain;
+import Thmod.Cards.RareCards.SubterraneanRose;
+import Thmod.Cards.SpellCards.RoseHell;
+import Thmod.Cards.Strike_Koishi;
 import Thmod.Cards.UncommonCards.InscribeRedSoul;
 import Thmod.Cards.ItemCards.ByoukiHeiyu;
-import Thmod.Cards.ItemCards.FusyokuKusuri;
 import Thmod.Cards.ItemCards.HisouNoKenItem;
 import Thmod.Cards.ItemCards.IbukiHisyaku;
 import Thmod.Cards.ItemCards.MajikkuPosyun;
@@ -210,7 +243,7 @@ import Thmod.Cards.UncommonCards.SeekerDolls;
 import Thmod.Cards.ShyakuBuku;
 import Thmod.Cards.UncommonCards.SuitokuNoKyoryu;
 import Thmod.Cards.UncommonCards.DemonsDinnerFork;
-import Thmod.Cards.UncommonCards.FreezeToughMe;
+import Thmod.Cards.UncommonCards.FreezeTouchMe;
 import Thmod.Cards.UncommonCards.GasuOrimono;
 import Thmod.Cards.UncommonCards.GroundStardust;
 import Thmod.Cards.UncommonCards.HenyouMirume;
@@ -238,6 +271,8 @@ import Thmod.Cards.RewardCards.VanishingEverything;
 import Thmod.Cards.UncommonCards.YoukiSo;
 import Thmod.Cards.VictoryCards.Searching;
 import Thmod.Characters.KomeijiSatori;
+import Thmod.Characters.RemiriaScarlet;
+import Thmod.DynamicVariables.NewDamage;
 import Thmod.Events.DoremisStore;
 import Thmod.Events.Ferry;
 import Thmod.Events.GateofTheMinistry;
@@ -245,8 +280,10 @@ import Thmod.Events.Kourindou;
 import Thmod.Events.RoomOfDemon;
 import Thmod.Events.RoomOfTime;
 import Thmod.Events.SpiritSuffering;
+import Thmod.Monsters.Remiria;
 import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
+import Thmod.Patches.CrystalPatch.RewardItemEnum;
 import Thmod.Potion.CalmPotion;
 import Thmod.Potion.ExcitationPotion;
 import Thmod.Potion.JyouchiReiPotion;
@@ -257,15 +294,20 @@ import Thmod.Relics.BookofPenglai;
 import Thmod.Relics.Clue;
 import Thmod.Relics.ColorfulQuillpen;
 import Thmod.Relics.CrystalBall;
+import Thmod.Relics.CrystalOfMemory;
 import Thmod.Relics.FamiliarSpoon;
 import Thmod.Relics.GoodDreamPillow;
 import Thmod.Relics.Grimoire;
+import Thmod.Relics.HoshigumaDish;
 import Thmod.Relics.JyouHari;
 import Thmod.Relics.KoishisEye;
 import Thmod.Relics.KomeijisEye;
 import Thmod.Relics.KyoryuNoHagoromo;
 import Thmod.Relics.LinkosWocchi;
+import Thmod.Relics.Memoirist;
 import Thmod.Relics.MigarariNingyou;
+import Thmod.Relics.MiracleMallet;
+import Thmod.Relics.MusicBox;
 import Thmod.Relics.MysticStaff;
 import Thmod.Relics.NitorisBag;
 import Thmod.Relics.ReiryokuShyu;
@@ -276,6 +318,10 @@ import Thmod.Relics.SpellExtend;
 import Thmod.Relics.SteinsOfFate;
 import Thmod.Relics.ThirstyCross;
 import Thmod.Relics.WordlessDocument;
+import Thmod.Relics.remiria.SpecialStopwatch;
+import Thmod.Rewards.AllUpgrade;
+import Thmod.Rewards.FullHealing;
+import Thmod.Rewards.RemoveCurse;
 import basemod.BaseMod;
 import basemod.DevConsole;
 import basemod.ModButton;
@@ -291,11 +337,11 @@ import basemod.interfaces.PostDungeonInitializeSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.StartGameSubscriber;
 
-import static basemod.DevConsole.logger;
-
 
 @SpireInitializer
-public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscriber, EditStringsSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,EditCharactersSubscriber,EditCardsSubscriber ,StartGameSubscriber {
+public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscriber, EditStringsSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,
+        EditCharactersSubscriber,EditCardsSubscriber ,StartGameSubscriber {
+    public static final Logger logger = LogManager.getLogger(ThMod.class.getName());
     private static final String MODNAME = "Touhou Mod";
     private static final String AUTHOR = "hoykj";
     private static final String DESCRIPTION = "2018.04.14";
@@ -305,6 +351,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean MusicOpen ;
     public static boolean AllzhsOpen ;
     public static boolean AllengOpen ;
+    public static boolean playerArt;
+    public static boolean unknownEffect;
     public static int blessingOfTime ;
     public static int blessingOfDetermination ;
     public static int blessingOfRemission ;
@@ -321,6 +369,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static boolean canScaBle;
     public static boolean canRemBle;
     public static boolean defeatYukari;
+    public static boolean defeatRemiria;
     public static int numOfClue = 1;
     public static int HeartScreen = 0;
     public static ArrayList saveCard = new ArrayList<>() ;
@@ -331,6 +380,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     private static final Color Sp符卡 = CardHelper.getColor(239, 169, 23);
     private static final Color Item符卡 = CardHelper.getColor(231, 34, 0);
     private static final Color 彩蛋 = CardHelper.getColor(147, 147, 147);
+    public static final Color Remiria = CardHelper.getColor(144, 8, 1);
     public static TextureAtlas orbAtlas;
     public static ArrayList<String> fightids = new ArrayList<>();
     public static ArrayList<String> upcardids = new ArrayList<>();
@@ -338,32 +388,65 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static HashMap<String,Integer> removemap = new HashMap<>();
     public static HashMap<String,Integer> upcardmap = new HashMap<>();
     public static HashMap<String,AbstractCard> removedcardids = new HashMap<>();
+    public static TreeMap<String,String> unknownKey = new TreeMap<>();
+    public static ArrayList<String> easterEgg = new ArrayList<>();
+    public static CardGroup soulSpellCard;
+    public static CardGroup soulSpellCardFor2;
+    public static CardGroup soulSpellCardFor3;
+    public static CardGroup soulSpellCardFor5;
+    public static CardGroup masterSpellCard;
+    public static CardGroup masterSpellCardFor2;
+    public static CardGroup masterSpellCardFor3;
+    public static CardGroup masterSpellCardFor5;
+    public static boolean cardFeedback = false;
 
-    public static String komeijiCardImage(final String id) {
+    public static HashMap<AbstractSetCards.CardSet_k, Integer> cardSetCheck = new HashMap<>();
+
+    public static HashMap<AbstractSetCards.CardSet_k, AbstractBlessingCard> cardSetReward = new HashMap<>();
+
+    public static String komeijiCardImage(final String id,boolean upgrade) {
+        if(ThMod.playerArt) {
+            return "images/cards/beta/komeiji/" + id + ".png";
+        }
+        else if(upgrade){
+            return "images/cards/komeiji/" + id + "_u.png";
+        }
         return "images/cards/komeiji/" + id + ".png";
     }
 
     public static String spellCardImage(final String id) {
+        if(ThMod.playerArt)
+            return "images/cards/beta/spcards/" + id + ".png";
         return "images/cards/spcards/" + id + ".png";
     }
 
     public static String itemCardImage(final String id) {
+        if(ThMod.playerArt)
+            return "images/cards/beta/itemcards/" + id + ".png";
         return "images/cards/itemcards/" + id + ".png";
     }
 
     public static String deriveCardImage(final String id) {
+        if(ThMod.playerArt)
+            return "images/cards/beta/derivecards/" + id + ".png";
         return "images/cards/derivecards/" + id + ".png";
     }
 
     public static String colorlessCardImage(final String id) {
+        if(ThMod.playerArt)
+            return "images/cards/beta/colorlesscards/" + id + ".png";
         return "images/cards/colorlesscards/" + id + ".png";
     }
 
     public static String statusCardImage(final String id) {
+        if(ThMod.playerArt)
+            return "images/cards/beta/status/" + id + ".png";
         return "images/cards/status/" + id + ".png";
     }
 
     public static String victoryCardImage(final String id) {
+        if(ThMod.playerArt)
+            return "images/cards/beta/victory/" + id + ".png";
         return "images/cards/victory/" + id + ".png";
     }
 
@@ -403,10 +486,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         fightids.add("HisouTensoku");
         fightids.add("WumiGaWareru");
         fightids.add("TerribleSouvenir");
+        fightids.add("SubterraneanRose");
         fightids.add("NingyouKasou");
         fightids.add("OoedoNingyou");
         fightids.add("ShanghaiNingyou");
         fightids.add("CondensedBubble");
+        fightids.add("Agarareta");
+        fightids.add("DochyakuKami");
 
         upcardids.add("FuumaJin");
         upcardids.add("HappouKibaku");
@@ -434,9 +520,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         upcardids.add("TenkeiKisyou");
         upcardids.add("MoozeNoKiseki");
         upcardids.add("KyoufuSaimin");
+        upcardids.add("RoseHell");
         upcardids.add("ReturnInanimateness");
         upcardids.add("PenglaiNingyou");
         upcardids.add("JellyfishPrincess");
+        upcardids.add("TatariKami");
 
         removemap.put("KeiseiJin",1);
         removemap.put("KinbakuJin",1);
@@ -466,6 +554,9 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         removemap.put("OoedoNingyou",23);
         removemap.put("ShanghaiNingyou",24);
         removemap.put("CondensedBubble",25);
+        removemap.put("Agarareta",26);
+        removemap.put("DochyakuKami",26);
+        removemap.put("SubterraneanRose",27);
 
         upcardmap.put("FuumaJin",1);
         upcardmap.put("HappouKibaku",1);
@@ -496,6 +587,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         upcardmap.put("ReturnInanimateness",23);
         upcardmap.put("PenglaiNingyou",24);
         upcardmap.put("JellyfishPrincess",25);
+        upcardmap.put("TatariKami",26);
+        upcardmap.put("RoseHell",27);
 
         weathers.add("KaiSei");
         weathers.add("KiriSame");
@@ -518,6 +611,24 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         weathers.add("Tsume");
         weathers.add("KyoKkou");
 
+        cardSetCheck.put(AbstractSetCards.CardSet_k.REIMU, 4);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.MARISA, 3);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.AYA, 2);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.KOMACHI, 2);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.MEIRIN, 2);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.SAKUYA, 3);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.YOUMU, 4);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.REMIRIA, 3);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.IKU, 3);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.TENSHI, 5);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.UTSUHO, 4);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.YUYUKO, 2);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.YUKARI, 3);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.SUIKA, 3);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.REISEN, 2);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.CIRNO, 2);
+        cardSetCheck.put(AbstractSetCards.CardSet_k.SUWAKO, 4);
+
         try {
             final Properties defaults = new Properties();
             defaults.setProperty("AliceOpen", "true");
@@ -525,6 +636,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("StartSelectOpen", "true");
             defaults.setProperty("MusicOpen", "true");
             defaults.setProperty("AllzhsOpen", "false");
+            defaults.setProperty("playerArt", "false");
+            defaults.setProperty("unknownEffect", "false");
             //defaults.setProperty("AllengOpen", "false");
             defaults.setProperty("blessingOfTime", "0");
             defaults.setProperty("blessingOfDetermination", "0");
@@ -541,12 +654,15 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             defaults.setProperty("canDetBle", "false");
             defaults.setProperty("canScaBle", "false");
             defaults.setProperty("canRemBle", "false");
+            defaults.setProperty("defeatRemiria", "false");
             final SpireConfig config = new SpireConfig("ThMod", "Common", defaults);
             ThMod.AliceOpen = config.getBool("AliceOpen");
             ThMod.SoundOpen = config.getBool("SoundOpen");
             ThMod.StartSelectOpen = config.getBool("StartSelectOpen");
             ThMod.MusicOpen = config.getBool("MusicOpen");
             ThMod.AllzhsOpen = config.getBool("AllzhsOpen");
+            ThMod.playerArt = config.getBool("playerArt");
+            ThMod.unknownEffect = config.getBool("unknownEffect");
             //ThMod.AllengOpen = config.getBool("AllengOpen");
             ThMod.blessingOfTime = config.getInt("blessingOfTime");
             ThMod.blessingOfDetermination = config.getInt("blessingOfDetermination");
@@ -563,10 +679,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             ThMod.canDetBle = config.getBool("canDetBle");
             ThMod.canScaBle = config.getBool("canScaBle");
             ThMod.canRemBle = config.getBool("canRemBle");
+            ThMod.defeatRemiria = config.getBool("defeatRemiria");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //ThMod.defeatRemiria = false;
 
         DevConsole.logger.info("=========================== 初始化ThMod成功 ===========================");
         logger.info("========================正在注入新卡片相关信息========================");
@@ -576,30 +693,38 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
                 "images/cardui/512/bg_attack_komeiji.png", "images/cardui/512/bg_skill_komeiji.png",
                 "images/cardui/512/bg_power_komeiji.png", "images/cardui/512/card_komeiji_orb.png",
                 "images/cardui/1024/bg_attack_komeiji.png", "images/cardui/1024/bg_skill_komeiji.png",
-                "images/cardui/1024/bg_power_komeiji.png", "images/cardui/1024/card_komeiji_orb.png");
+                "images/cardui/1024/bg_power_komeiji.png", "images/cardui/1024/card_komeiji_orb.png", "images/orbs/Komeiji/Komeiji.png");
 
         BaseMod.addColor(AbstractCardEnum.Sp符卡,
                 Sp符卡, Sp符卡, Sp符卡, Sp符卡, Sp符卡, Sp符卡, Sp符卡,
                 "images/cardui/512/bg_attack_spcard.png", "images/cardui/512/bg_skill_spcard.png",
                 "images/cardui/512/bg_power_spcard.png", "images/cardui/512/card_spcard_orb.png",
                 "images/cardui/1024/bg_attack_spcard.png", "images/cardui/1024/bg_skill_spcard.png",
-                "images/cardui/1024/bg_power_spcard.png", "images/cardui/1024/card_spcard_orb.png");
+                "images/cardui/1024/bg_power_spcard.png", "images/cardui/1024/card_spcard_orb.png", "images/orbs/Komeiji/Komeiji.png");
 
         BaseMod.addColor(AbstractCardEnum.Item符卡,
                 Item符卡, Item符卡, Item符卡, Item符卡, Item符卡, Item符卡, Item符卡,
                 "images/cardui/512/bg_attack_itemcard.png", "images/cardui/512/bg_skill_itemcard.png",
                 "images/cardui/512/bg_power_itemcard.png", "images/cardui/512/card_itemcard_orb.png",
                 "images/cardui/1024/bg_attack_itemcard.png", "images/cardui/1024/bg_skill_itemcard.png",
-                "images/cardui/1024/bg_power_itemcard.png", "images/cardui/1024/card_itemcard_orb.png");
+                "images/cardui/1024/bg_power_itemcard.png", "images/cardui/1024/card_itemcard_orb.png", "images/orbs/Komeiji/Komeiji.png");
 
         BaseMod.addColor(AbstractCardEnum.彩蛋,
                 彩蛋, 彩蛋, 彩蛋, 彩蛋, 彩蛋, 彩蛋, 彩蛋,
                 "images/cardui/512/bg_attack_derivecard.png", "images/cardui/512/bg_skill_derivecard.png",
                 "images/cardui/512/bg_power_derivecard.png", "images/cardui/512/card_derivecard_orb.png",
                 "images/cardui/1024/bg_attack_derivecard.png", "images/cardui/1024/bg_skill_derivecard.png",
-                "images/cardui/1024/bg_power_derivecard.png", "images/cardui/1024/card_derivecard_orb.png");
+                "images/cardui/1024/bg_power_derivecard.png", "images/cardui/1024/card_derivecard_orb.png", "images/orbs/Komeiji/Komeiji.png");
 
-
+        //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
+            BaseMod.addColor(AbstractCardEnum.Remiria,
+                    Remiria, Remiria, Remiria, Remiria, Remiria, Remiria, Remiria,
+                    "images/cardui/remiria/512/bg_attack_normal.png", "images/cardui/remiria/512/bg_skill_normal.png",
+                    "images/cardui/remiria/512/bg_power_normal.png", "images/cardui/remiria/512/card_normal_orb.png",
+                    "images/cardui/remiria/1024/bg_attack_normal.png", "images/cardui/remiria/1024/bg_skill_normal.png",
+                    "images/cardui/remiria/1024/bg_power_normal.png", "images/cardui/remiria/1024/card_normal_orb.png",
+                    "images/orbs/Remiria/Orb.png");
+        //}
 
         logger.info("========================注入新卡片相关信息成功========================");
     }
@@ -628,6 +753,11 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             }
             DevConsole.logger.info("==========================第一次载入初始化o了==========================");
         }
+//        else {
+//            if(AbstractDungeon.player instanceof RemiriaScarlet){
+//                ((RemiriaScarlet) AbstractDungeon.player).changedPosition = false;
+//            }
+//        }
         DevConsole.logger.info("=========================数据载入=========================");
         try {
             final Properties defaults = new Properties();
@@ -665,6 +795,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
                 new KomeijiSatori("Komeiji"),"images/ui/charSelect/komeijiButton.png", "images/ui/charSelect/komeijiPortrait.jpg",
                 CharacterEnum.KomeijiSatori);
 
+        //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
+            logger.info("add " + CharacterEnum.RemiriaScarlet.name());
+            BaseMod.addCharacter(
+                    new RemiriaScarlet("Remiria"), "images/ui/charSelect/RemiriaButton.png", "images/ui/charSelect/RemiriaPortrait.jpg",
+                    CharacterEnum.RemiriaScarlet);
+        //}
+
         logger.info("========================注入Mod人物信息成功========================");
     }
 
@@ -676,9 +813,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public void receiveEditCards() {
         logger.info("=========================正在加载新的卡牌内容=========================");
 
+        BaseMod.addDynamicVariable(new NewDamage());
+
         BaseMod.addCard(new Dash_Komeiji());
         BaseMod.addCard(new Strike_Komeiji());
         BaseMod.addCard(new Defend_Komeiji());
+        BaseMod.addCard(new Strike_Koishi());
+        BaseMod.addCard(new Defend_Koishi());
         BaseMod.addCard(new DochyakuKami());
         BaseMod.addCard(new Sabishigari());
         BaseMod.addCard(new JyouchiJin());
@@ -696,7 +837,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         BaseMod.addCard(new DemonsDinnerFork());
         BaseMod.addCard(new EnMu());
-        BaseMod.addCard(new FreezeToughMe());
+        BaseMod.addCard(new FreezeTouchMe());
         BaseMod.addCard(new GasuOrimono());
         BaseMod.addCard(new GroundStardust());
         BaseMod.addCard(new HagoromoKu());
@@ -733,6 +874,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new MusouMyousyu());
         BaseMod.addCard(new TenguhouSokujitsuken());
         BaseMod.addCard(new TerribleSouvenir());
+        BaseMod.addCard(new SubterraneanRose());
         BaseMod.addCard(new WumiGaWareru());
         BaseMod.addCard(new YuumeiNoKurin());
 
@@ -747,6 +889,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new RyuuSei());
         BaseMod.addCard(new SanbutsuTenmizu());
         BaseMod.addCard(new SeigyoBou());
+        BaseMod.addCard(new FusyokuKusuri());
 
         BaseMod.addCard(new BurariHaieki());
         BaseMod.addCard(new DaiesanShikkaiKoroshi());
@@ -765,6 +908,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new Kamaitachi());
         BaseMod.addCard(new KokushiMusou());
         BaseMod.addCard(new KyoufuSaimin());
+        BaseMod.addCard(new RoseHell());
         BaseMod.addCard(new Mireniamu());
         BaseMod.addCard(new MirenKamai());
         BaseMod.addCard(new MissingPurplePower());
@@ -796,11 +940,29 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new CheckPenglai());
         BaseMod.addCard(new Peep());
         BaseMod.addCard(new SingleWing());
+        BaseMod.addCard(new RealHeartBreak());
+        BaseMod.addCard(new CardSetForOne());
+        BaseMod.addCard(new TheHidden());
+        easterEgg.add(TheWorld.ID);
+        easterEgg.add(SpontaneousDetonation.ID);
+        easterEgg.add(Scarlet.ID);
+        easterEgg.add(MuyoNehan.ID);
+        easterEgg.add(THsWorld.ID);
+        easterEgg.add(ScarletsBlessing.ID);
+        easterEgg.add(RakuenSaibancyou.ID);
+        easterEgg.add(Innocent.ID);
+        easterEgg.add(CheckPenglai.ID);
+        easterEgg.add(Peep.ID);
+        easterEgg.add(SingleWing.ID);
+        easterEgg.add(RealHeartBreak.ID);
+        easterEgg.add(CardSetForOne.ID);
+        easterEgg.add(TheHidden.ID);
 
         BaseMod.addCard(new RidiculousThoughts());
         BaseMod.addCard(new ThoughtExtend());
         BaseMod.addCard(new GradualImprovement());
         BaseMod.addCard(new Muse());
+        BaseMod.addCard(new PreThought());
 
         BaseMod.addCard(new Searching());
 
@@ -808,6 +970,23 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new BlessingOfScarlet());
         BaseMod.addCard(new Determination());
         BaseMod.addCard(new Remission());
+        BaseMod.addCard(new CS_Aya());
+        BaseMod.addCard(new CS_Cirno());
+        BaseMod.addCard(new CS_Iku());
+        BaseMod.addCard(new CS_Komachi());
+        BaseMod.addCard(new CS_Marisa());
+        BaseMod.addCard(new CS_Meirin());
+        BaseMod.addCard(new CS_Reimu());
+        BaseMod.addCard(new CS_Reisen());
+        BaseMod.addCard(new CS_Remiria());
+        BaseMod.addCard(new CS_Sakuya());
+        BaseMod.addCard(new CS_Suika());
+        BaseMod.addCard(new CS_Suwako());
+        BaseMod.addCard(new CS_Tenshi());
+        BaseMod.addCard(new CS_Utsuho());
+        BaseMod.addCard(new CS_Youmu());
+        BaseMod.addCard(new CS_Yukari());
+        BaseMod.addCard(new CS_Yuyuko());
 
         BaseMod.addCard(new Confused());
         BaseMod.addCard(new Exhaustion());
@@ -818,7 +997,9 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addCard(new RanYakumo());
         BaseMod.addCard(new VanishingEverything());
         BaseMod.addCard(new PerfectMaid());
-
+        BaseMod.addCard(new NeedleMountain());
+        BaseMod.addCard(new IdRelease());
+        BaseMod.addCard(new MeltDown());
 
         //BaseMod.addCard(new WeatherTest());
 
@@ -890,7 +1071,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.addCard(new EmeraldCity());
             BaseMod.addCard(new FallThrasher());
             BaseMod.addCard(new FlashOfSpring());
-            BaseMod.addCard(new MidautumnSpear());
+            BaseMod.addCard(new MidautumnSpear(0));
             BaseMod.addCard(new SpringWind());
             BaseMod.addCard(new StaticGreen());
 
@@ -906,131 +1087,80 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.addRelicToCustomPool(new MysticStaff(), AbstractCardEnum.古明地觉);
         }
 
+        //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
+            RemiriaScarlet.addCards();
+        //}
+
         logger.info("=========================加载新的卡牌内容成功=========================");
 
         logger.info("=========================解锁卡牌=========================");
-        UnlockTracker.unlockCard("Strike_Komeiji");
-        UnlockTracker.unlockCard("Defend_Komeiji");
-        UnlockTracker.unlockCard("VanishingEverything");
-        UnlockTracker.unlockCard("PerfectMaid");
-        UnlockTracker.unlockCard("HagoromoMizu");
-        UnlockTracker.unlockCard("KeiseiJin");
-        UnlockTracker.unlockCard("KinbakuJin");
-        UnlockTracker.unlockCard("JyouchiJin");
-        UnlockTracker.unlockCard("Agarareta");
-        UnlockTracker.unlockCard("DemonLordCradle");
-        UnlockTracker.unlockCard("DochyakuKami");
-        UnlockTracker.unlockCard("HagoromoMizu");
-        UnlockTracker.unlockCard("InscribeRedSoul");
-        UnlockTracker.unlockCard("MakuraSeki");
-        UnlockTracker.unlockCard("Melting");
-        UnlockTracker.unlockCard("Sabishigari");
-        UnlockTracker.unlockCard("RikonNoKama");
-        UnlockTracker.unlockCard("Mishyaguji");
-        UnlockTracker.unlockCard("SuitokuNoKyoryu");
-
-        UnlockTracker.unlockCard("DemonsDinnerFork");
-        UnlockTracker.unlockCard("FreezeToughMe");
-        UnlockTracker.unlockCard("GasuOrimono");
-        UnlockTracker.unlockCard("GroundStardust");
-        UnlockTracker.unlockCard("HenyouMirume");
-        UnlockTracker.unlockCard("HisouNoKen");
-        UnlockTracker.unlockCard("KimairaNoYoku");
-        UnlockTracker.unlockCard("KoKei");
-        UnlockTracker.unlockCard("KokorosuKi");
-        UnlockTracker.unlockCard("KouPou");
-        UnlockTracker.unlockCard("MajikuruSanhai");
-        UnlockTracker.unlockCard("MissingPower");
-        UnlockTracker.unlockCard("MusuNoYume");
-        UnlockTracker.unlockCard("NarrowSpark");
-        UnlockTracker.unlockCard("RoshinSou");
-        UnlockTracker.unlockCard("SatsujinDooru");
-        UnlockTracker.unlockCard("SeishiRoten");
-        UnlockTracker.unlockCard("SelfTokamak");
-        UnlockTracker.unlockCard("SenseofElegance");
-        UnlockTracker.unlockCard("SenyouGoraku");
-        UnlockTracker.unlockCard("TenguNoTaiko");
-        UnlockTracker.unlockCard("VampireKiss");
-
-        UnlockTracker.unlockCard("AbyssNova");
-        UnlockTracker.unlockCard("EverywhereHibernate");
-        UnlockTracker.unlockCard("HagoromoKu");
-        UnlockTracker.unlockCard("HisouTensoku");
-        UnlockTracker.unlockCard("IceTornado");
-        UnlockTracker.unlockCard("JigokuNoTaiyou");
-        UnlockTracker.unlockCard("LunaDial");
-        UnlockTracker.unlockCard("LunaticRedEyes");
-        UnlockTracker.unlockCard("MunenMusou");
-        UnlockTracker.unlockCard("MusouMyousyu");
-        UnlockTracker.unlockCard("TenguhouSokujitsuken");
-        UnlockTracker.unlockCard("TerribleSouvenir");
-        UnlockTracker.unlockCard("WumiGaWareru");
-        UnlockTracker.unlockCard("YuumeiNoKurin");
-
-        UnlockTracker.unlockCard("ReiGeki");
-        UnlockTracker.unlockCard("MajikkuPosyun");
-        UnlockTracker.unlockCard("SutoppuWocchi");
-        UnlockTracker.unlockCard("SaSen");
-        UnlockTracker.unlockCard("ByoukiHeiyu");
-        UnlockTracker.unlockCard("FusyokuKusuri");
-        UnlockTracker.unlockCard("HisouNoKenItem");
-        UnlockTracker.unlockCard("IbukiHisyaku");
-        UnlockTracker.unlockCard("Namazu");
-        UnlockTracker.unlockCard("RyuuSei");
-        UnlockTracker.unlockCard("SanbutsuTenmizu");
-        UnlockTracker.unlockCard("SeigyoBou");
-
         UnlockTracker.unlockCard("Nothing");
 
-        UnlockTracker.unlockCard("RidiculousThoughts");
-
-        if(ThMod.AliceOpen) {
-            UnlockTracker.unlockCard("HelanNingyou");
-            UnlockTracker.unlockCard("MiraiBunraku");
-            UnlockTracker.unlockCard("SemiAutomaton");
-            UnlockTracker.unlockCard("ShanghaiNingyou");
-
-            UnlockTracker.unlockCard("ArtfulChanter");
-            UnlockTracker.unlockCard("LittleLegion");
-            UnlockTracker.unlockCard("NingyouChiyari");
-            UnlockTracker.unlockCard("NingyouKasou");
-            UnlockTracker.unlockCard("NingyouMusou");
-            UnlockTracker.unlockCard("NingyouOkisou");
-            UnlockTracker.unlockCard("NingyouYunhei");
-            UnlockTracker.unlockCard("OoedoNingyou");
-            UnlockTracker.unlockCard("SeekerDolls");
-
-            UnlockTracker.unlockCard("NingyouFukuhei");
-            UnlockTracker.unlockCard("NingyouKisou");
-            UnlockTracker.unlockCard("NingyouShinki");
-            UnlockTracker.unlockCard("NingyouSousou");
-            UnlockTracker.unlockCard("NingyouSP");
-            UnlockTracker.unlockCard("SeekerWire");
-        }
-        else{
-            UnlockTracker.unlockCard("ElementInvoke");
-            UnlockTracker.unlockCard("ElementMix");
-            UnlockTracker.unlockCard("RoyalFlare");
-            UnlockTracker.unlockCard("SilentSelene");
-
-            UnlockTracker.unlockCard("AutumnBlades");
-            UnlockTracker.unlockCard("AutumnEdge");
-            UnlockTracker.unlockCard("DiamondHardness");
-            UnlockTracker.unlockCard("EmeraldCity");
-            UnlockTracker.unlockCard("FallThrasher");
-            UnlockTracker.unlockCard("FlashOfSpring");
-            UnlockTracker.unlockCard("MidautumnSpear");
-            UnlockTracker.unlockCard("SpringWind");
-            UnlockTracker.unlockCard("StaticGreen");
-
-            UnlockTracker.unlockCard("CondensedBubble");
-            UnlockTracker.unlockCard("StickyBubble");
-            UnlockTracker.unlockCard("SummerFlame");
-            UnlockTracker.unlockCard("SummerRed");
-            UnlockTracker.unlockCard("WinterElement");
-            UnlockTracker.unlockCard("WipeMoisture");
-        }
+//        if(ThMod.AliceOpen) {
+//            UnlockTracker.unlockCard("HelanNingyou");
+//            UnlockTracker.unlockCard("MiraiBunraku");
+//            UnlockTracker.unlockCard("SemiAutomaton");
+//            UnlockTracker.unlockCard("ShanghaiNingyou");
+//
+//            UnlockTracker.unlockCard("ArtfulChanter");
+//            UnlockTracker.unlockCard("LittleLegion");
+//            UnlockTracker.unlockCard("NingyouChiyari");
+//            UnlockTracker.unlockCard("NingyouKasou");
+//            UnlockTracker.unlockCard("NingyouMusou");
+//            UnlockTracker.unlockCard("NingyouOkisou");
+//            UnlockTracker.unlockCard("NingyouYunhei");
+//            UnlockTracker.unlockCard("OoedoNingyou");
+//            UnlockTracker.unlockCard("SeekerDolls");
+//
+//            UnlockTracker.unlockCard("NingyouFukuhei");
+//            UnlockTracker.unlockCard("NingyouKisou");
+//            UnlockTracker.unlockCard("NingyouShinki");
+//            UnlockTracker.unlockCard("NingyouSousou");
+//            UnlockTracker.unlockCard("NingyouSP");
+//            UnlockTracker.unlockCard("SeekerWire");
+//        }
+//        else{
+//            UnlockTracker.unlockCard("ElementInvoke");
+//            UnlockTracker.unlockCard("ElementMix");
+//            UnlockTracker.unlockCard("RoyalFlare");
+//            UnlockTracker.unlockCard("SilentSelene");
+//
+//            UnlockTracker.unlockCard("AutumnBlades");
+//            UnlockTracker.unlockCard("AutumnEdge");
+//            UnlockTracker.unlockCard("DiamondHardness");
+//            UnlockTracker.unlockCard("EmeraldCity");
+//            UnlockTracker.unlockCard("FallThrasher");
+//            UnlockTracker.unlockCard("FlashOfSpring");
+//            UnlockTracker.unlockCard("MidautumnSpear");
+//            UnlockTracker.unlockCard("SpringWind");
+//            UnlockTracker.unlockCard("StaticGreen");
+//
+//            UnlockTracker.unlockCard("CondensedBubble");
+//            UnlockTracker.unlockCard("StickyBubble");
+//            UnlockTracker.unlockCard("SummerFlame");
+//            UnlockTracker.unlockCard("SummerRed");
+//            UnlockTracker.unlockCard("WinterElement");
+//            UnlockTracker.unlockCard("WipeMoisture");
+//        }
         logger.info("=========================解锁卡牌成功=========================");
+
+        cardSetReward.put(AbstractSetCards.CardSet_k.REIMU, new CS_Reimu());
+        cardSetReward.put(AbstractSetCards.CardSet_k.MARISA, new CS_Marisa());
+        cardSetReward.put(AbstractSetCards.CardSet_k.AYA, new CS_Aya());
+        cardSetReward.put(AbstractSetCards.CardSet_k.KOMACHI, new CS_Komachi());
+        cardSetReward.put(AbstractSetCards.CardSet_k.MEIRIN, new CS_Meirin());
+        cardSetReward.put(AbstractSetCards.CardSet_k.SAKUYA, new CS_Sakuya());
+        cardSetReward.put(AbstractSetCards.CardSet_k.YOUMU, new CS_Youmu());
+        cardSetReward.put(AbstractSetCards.CardSet_k.REMIRIA, new CS_Remiria());
+        cardSetReward.put(AbstractSetCards.CardSet_k.IKU, new CS_Iku());
+        cardSetReward.put(AbstractSetCards.CardSet_k.TENSHI, new CS_Tenshi());
+        cardSetReward.put(AbstractSetCards.CardSet_k.UTSUHO, new CS_Utsuho());
+        cardSetReward.put(AbstractSetCards.CardSet_k.YUYUKO, new CS_Yuyuko());
+        cardSetReward.put(AbstractSetCards.CardSet_k.YUKARI, new CS_Yukari());
+        cardSetReward.put(AbstractSetCards.CardSet_k.SUIKA, new CS_Suika());
+        cardSetReward.put(AbstractSetCards.CardSet_k.REISEN, new CS_Reisen());
+        cardSetReward.put(AbstractSetCards.CardSet_k.CIRNO, new CS_Cirno());
+        cardSetReward.put(AbstractSetCards.CardSet_k.SUWAKO, new CS_Suwako());
 
     }
 
@@ -1128,20 +1258,35 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         DevConsole.logger.info(Settings.language == Settings.GameLanguage.ENG);
 
-//        final ModLabeledToggleButton AllengOpen = new ModLabeledToggleButton(TEXT[16], this.X + 250, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.AllzhsOpen , settingsPanel, label -> {}, button -> {
-//            spireConfig.setBool("AllengOpen", ThMod.AllengOpen = button.enabled);
-//            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
-//            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
-//
-//            try {
-//                spireConfig.save();
-//            }
-//            catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return;
-//        });
-//        settingsPanel.addUIElement(AllengOpen);
+        final ModLabeledToggleButton playerArt = new ModLabeledToggleButton(TEXT[16], this.X + 250, this.Y + 7*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.playerArt , settingsPanel, label -> {}, button -> {
+            spireConfig.setBool("playerArt", ThMod.playerArt = button.enabled);
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
+
+            try {
+                spireConfig.save();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        });
+        settingsPanel.addUIElement(playerArt);
+
+        final ModLabeledToggleButton unknownEffect = new ModLabeledToggleButton(TEXT[17], this.X, this.Y + 11*this.IntervalY , Settings.CREAM_COLOR, FontHelper.charDescFont,ThMod.unknownEffect , settingsPanel, label -> {}, button -> {
+            spireConfig.setBool("unknownEffect", ThMod.unknownEffect = button.enabled);
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.clear();
+            CardCrawlGame.mainMenuScreen.optionPanel.effects.add(new RestartForChangesEffect());
+
+            try {
+                spireConfig.save();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        });
+        settingsPanel.addUIElement(unknownEffect);
 
         Texture badgeTexture = new Texture(Gdx.files.internal("images/ThMod.png"));
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
@@ -1158,7 +1303,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         }));
         settingsPanel.addUIElement(new ModLabel(TEXT[8], this.X, this.Y + 10*this.IntervalY,settingsPanel, (me) -> { }));
 //        settingsPanel.addLabel("适用版本: 1.游戏:7.13. 2.basemod:7.12. 3.ModTheSpire:2.8.0", this.X, this.Y + 11*this.IntervalY, (me) -> { });
-        settingsPanel.addUIElement(new ModLabel(TEXT[9], this.X, this.Y + 11*this.IntervalY,settingsPanel, (me) -> { }));
+        //settingsPanel.addUIElement(new ModLabel(TEXT[9], this.X, this.Y + 11*this.IntervalY,settingsPanel, (me) -> { }));
         settingsPanel.addUIElement(new ModLabel(TEXT[10], 1000f, this.Y + 3*this.IntervalY ,settingsPanel, (me) -> { }));
         settingsPanel.addUIElement(new ModLabel(TEXT[11], 1000f, this.Y + 4*this.IntervalY ,settingsPanel, (me) -> { }));
         settingsPanel.addUIElement(new ModLabel(TEXT[12], 1000f, this.Y + 5*this.IntervalY ,settingsPanel, (me) -> { }));
@@ -1167,6 +1312,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         settingsPanel.addUIElement(new ModLabel(TEXT[15], 1000f, this.Y + 8*this.IntervalY ,settingsPanel, (me) -> { }));
         //settingsPanel.addLabel("设计:hoykj  编程:hoykj  绘图:hoykj", 400.0f, 500.0f, (me) -> { });
     }
+
     public void receivePostInitialize() {
         DevConsole.logger.info("========================= receivePostInitialize =========================");
         // Mod badge
@@ -1187,6 +1333,9 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addRelicToCustomPool(new FamiliarSpoon(), AbstractCardEnum.古明地觉);
         BaseMod.addRelicToCustomPool(new BookofPenglai(), AbstractCardEnum.古明地觉);
         BaseMod.addRelicToCustomPool(new ColorfulQuillpen(), AbstractCardEnum.古明地觉);
+        BaseMod.addRelicToCustomPool(new MusicBox(), AbstractCardEnum.古明地觉);
+        BaseMod.addRelicToCustomPool(new Memoirist(), AbstractCardEnum.古明地觉);
+        BaseMod.addRelicToCustomPool(new CrystalOfMemory(), AbstractCardEnum.古明地觉);
         RelicLibrary.add(new SteinsOfFate());
         RelicLibrary.add(new ThirstyCross());
         RelicLibrary.add(new ShirouKen());
@@ -1195,6 +1344,13 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         RelicLibrary.add(new NitorisBag());
         RelicLibrary.add(new Clue());
         RelicLibrary.add(new GoodDreamPillow());
+        RelicLibrary.add(new MiracleMallet());
+        RelicLibrary.add(new HoshigumaDish());
+        RelicLibrary.add(new SpecialStopwatch());
+
+        //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
+            RemiriaScarlet.addRelics();
+        //}
 
         BaseMod.addEvent(RoomOfDemon.ID, RoomOfDemon.class, Exordium.ID);
         BaseMod.addEvent(RoomOfTime.ID, RoomOfTime.class, TheCity.ID);
@@ -1213,13 +1369,66 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.addPotion(RedTea.class,Color.ORANGE.cpy(),Color.SCARLET.cpy(),null, RedTea.POTION_ID);
         BaseMod.addPotion(UndeadPotion.class,Color.GREEN.cpy(),Color.CHARTREUSE.cpy(),null, UndeadPotion.POTION_ID);
         BaseMod.addPotion(JyouchiReiPotion.class,Color.BLUE.cpy(),Color.WHITE.cpy(),null, JyouchiReiPotion.POTION_ID);
+
+        soulSpellCard = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        soulSpellCardFor2 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        soulSpellCardFor3 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        soulSpellCardFor5 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        masterSpellCard = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        masterSpellCardFor2 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        masterSpellCardFor3 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        masterSpellCardFor5 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+
+        soulSpellCard.addToTop(new ReiGeki());
+        soulSpellCard.addToTop(new MajikkuPosyun());
+        soulSpellCard.addToTop(new SutoppuWocchi());
+        soulSpellCard.addToTop(new SaSen());
+        soulSpellCard.addToTop(new ByoukiHeiyu());
+        soulSpellCard.addToTop(new FusyokuKusuri());
+        soulSpellCard.addToTop(new HisouNoKenItem());
+        soulSpellCard.addToTop(new IbukiHisyaku());
+        soulSpellCard.addToTop(new Namazu());
+        soulSpellCard.addToTop(new RyuuSei());
+        soulSpellCard.addToTop(new SanbutsuTenmizu());
+        soulSpellCard.addToTop(new SeigyoBou());
+
+        soulSpellCardFor2.addToTop(new Kamaitachi());
+
+        soulSpellCardFor3.addToTop(new KokushiMusou());
+        soulSpellCardFor3.addToTop(new HangonChyou(0));
+
+        soulSpellCardFor5.addToTop(new YomeiIkubaku());
+        soulSpellCardFor5.addToTop(new FusekiShinmei());
+        soulSpellCardFor5.addToTop(new RokkonShyoujyou());
+        soulSpellCardFor5.addToTop(new BurariHaieki());
+        soulSpellCardFor5.addToTop(new DaiesanShikkaiKoroshi());
+        soulSpellCardFor5.addToTop(new GensouFuubi());
+
+        for(AbstractCard card : soulSpellCard.group) {
+            masterSpellCard.addToTop(card.makeCopy());
+        }
+        for(AbstractCard card : soulSpellCardFor2.group) {
+            masterSpellCardFor2.addToTop(card.makeCopy());
+        }
+        for(AbstractCard card : soulSpellCardFor3.group) {
+            masterSpellCardFor3.addToTop(card.makeCopy());
+        }
+        for(AbstractCard card : soulSpellCardFor5.group) {
+            masterSpellCardFor5.addToTop(card.makeCopy());
+        }
+
+        BaseMod.registerCustomReward(RewardItemEnum.FULL_HEAL, rewardSave -> new FullHealing(), customReward -> new RewardSave(customReward.type.toString(), null, 0, 0));
+        BaseMod.registerCustomReward(RewardItemEnum.ALL_UPGRADE, rewardSave -> new AllUpgrade(), customReward -> new RewardSave(customReward.type.toString(), null, 0, 0));
+        BaseMod.registerCustomReward(RewardItemEnum.REMOVE_CURSE, rewardSave -> new RemoveCurse(), customReward -> new RewardSave(customReward.type.toString(), null, 0, 0));
+
+        DevConsole.logger.info("========================================================================");
     }
 
     public void receiveEditStrings()
     {
         DevConsole.logger.info("========================= 正在加载文本信息 =========================");
 
-        ThMod.AllengOpen = Settings.language == Settings.GameLanguage.ENG;
+        ThMod.AllengOpen = !((Settings.language == Settings.GameLanguage.ZHS) || (Settings.language == Settings.GameLanguage.ZHT));
 
         if(AllengOpen){
             String cardStrings = Gdx.files.internal("localization/eng/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
@@ -1263,6 +1472,27 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
             BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
         }
 
+        //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
+            //RemiriaScarlet.addStrings();
+        if (AllzhsOpen) {
+            String cardStrings = Gdx.files.internal("localization/remiria/zhsCards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        } else {
+            String cardStrings = Gdx.files.internal("localization/remiria/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        }
+        String relicStrings = Gdx.files.internal("localization/remiria/Relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+        String powerStrings = Gdx.files.internal("localization/remiria/Power.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+        String uiStrings = Gdx.files.internal("localization/remiria/UI.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+        String eventStrings = Gdx.files.internal("localization/remiria/Event.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
+        String monsterStrings = Gdx.files.internal("localization/remiria/Monster.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
+        //}
+
         DevConsole.logger.info("========================================================================");
 
 //        if(BaseMod.hasModID("UnlockEverythingMod:")) {
@@ -1272,11 +1502,14 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     }
     public void receivePostDungeonInitialize()
     {
-//        if (!(AbstractDungeon.player.hasRelic("Letter Opener")))
-//            new LetterOpener().instantObtain();
+
     }
 
     class Keywords{
+        Keyword[] Keyword;
+    }
+
+    class Keywords2{
         Keyword[] Keyword;
     }
 
@@ -1284,22 +1517,45 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     {
         DevConsole.logger.info("========================= 正在加载特性文本信息 =========================");
 
-        ThMod.AllengOpen = Settings.language == Settings.GameLanguage.ENG;
+        ThMod.AllengOpen = (Settings.language != Settings.GameLanguage.ZHS) && (Settings.language != Settings.GameLanguage.ZHT);
 
         Gson gson = new Gson();
         Keywords keywords;
+        Keywords2 keywords2 = null;
         if(AllengOpen){
             keywords = gson.fromJson(Gdx.files.internal("localization/eng/Keyword.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords.class);
+            if(ThMod.unknownEffect)
+                keywords2 = gson.fromJson(Gdx.files.internal("localization/eng/Keyword2.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords2.class);
         }
         else {
             keywords = gson.fromJson(Gdx.files.internal("localization/Keyword.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords.class);
+            if(ThMod.unknownEffect)
+                keywords2 = gson.fromJson(Gdx.files.internal("localization/Keyword2.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords2.class);
         }
 
         for(Keyword key:keywords.Keyword){
             BaseMod.addKeyword(key.NAMES,key.DESCRIPTION);
-            DevConsole.logger.info(key.DESCRIPTION);
         }
 
+        if(ThMod.unknownEffect){
+            assert keywords2 != null;
+            for(Keyword key:keywords2.Keyword){
+                for(String name:key.NAMES){
+                    unknownKey.put(name, key.DESCRIPTION);
+                }
+            }
+        }
+
+        //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
+            //RemiriaScarlet.addKeywords();
+
+            Keywords keywords3;
+            keywords3 = gson.fromJson(Gdx.files.internal("localization/remiria/Keyword.json").readString(String.valueOf(StandardCharsets.UTF_8)), Keywords.class);
+
+            for(Keyword key:keywords3.Keyword){
+                BaseMod.addKeyword(key.NAMES,key.DESCRIPTION);
+            }
+        //}
     }
 
     public static void SavePointPower() throws IOException {
@@ -1323,6 +1579,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         config.setBool("canScaBle",  ThMod.canScaBle);
         config.setBool("canRemBle",  ThMod.canRemBle);
         config.setBool("defeatYukari",  ThMod.defeatYukari);
+        config.setBool("defeatRemiria",  ThMod.defeatRemiria);
         config.save();
     }
 
@@ -1340,6 +1597,8 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.StartSelectOpen = true;
         ThMod.MusicOpen = true;
         ThMod.AllzhsOpen = false;
+        ThMod.playerArt = false;
+        ThMod.unknownEffect = false;
         //ThMod.AllengOpen = false;
         ThMod.blessingOfTime = 0;
         ThMod.blessingOfDetermination = 0;
@@ -1357,6 +1616,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         ThMod.canScaBle = false;
         ThMod.canRemBle = false;
         ThMod.defeatYukari = false;
+        ThMod.defeatRemiria = false;
     }
 
 }

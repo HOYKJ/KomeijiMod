@@ -20,7 +20,7 @@ public class JigokuNoTaiyou extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public JigokuNoTaiyou() {
-        super("JigokuNoTaiyou", JigokuNoTaiyou.NAME,  1, JigokuNoTaiyou.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
+        super("JigokuNoTaiyou", JigokuNoTaiyou.NAME,  1, JigokuNoTaiyou.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY, CardSet_k.UTSUHO);
         this.exhaust = true;
         this.baseDamage = 5;
     }

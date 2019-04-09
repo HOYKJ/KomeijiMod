@@ -1,5 +1,7 @@
 package Thmod.Monsters;
 
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -23,6 +25,7 @@ import Thmod.Actions.unique.HPlossAction;
 import Thmod.Cards.BlessingCards.Remission;
 import Thmod.Characters.KomeijiSatori;
 import Thmod.Power.AtonePower;
+import Thmod.Power.DashPower;
 import Thmod.Power.FinalJudgement;
 import Thmod.Power.Judgement;
 import Thmod.Relics.JyouHari;
@@ -39,14 +42,20 @@ public class Shikieiki extends AbstractMonster {
     private boolean firstTurn = true;
     private int turns = 1;
     private double nums1 = 0.4;
-    private double nums2 = 1.0;
-    private int damage1;
-    private int damage2;
+    private double nums2 = 4.0;
     private int cursesNum = 0;
     private double loseHealth = 0;
 
     public Shikieiki(float x, float y) {
-        super(NAME, "Shikieiki", 345, 25.0F, -15.0F, 350.0F, 350.0F, "images/monsters/Shikieiki/Main.png", x, y);
+        super(NAME, "Shikieiki", 345, -10.0F, -175.0F, 320.0F, 400.0F, "images/monsters/Shikieiki/Main.png", x, y);
+        this.dialogX -= 50;
+        this.dialogY += 100;
+        loadAnimation("images/monsters/Shikieiki/normal/normal.atlas", "images/monsters/Shikieiki/normal/normal.json", 1.3F);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "normal", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+        this.stateData.setMix("hit", "normal", 0.2F);
+        this.damage.add(new DamageInfo(this, 0));
+        this.damage.add(new DamageInfo(this, 0));
     }
 
     public void usePreBattleAction() {
@@ -66,24 +75,19 @@ public class Shikieiki extends AbstractMonster {
             }
         }
         else if (lastMove((byte)1)){
-            this.damage1 = ((int)(this.loseHealth * this.nums1) + this.cursesNum);
-            setMove(MOVES[1],(byte)2, Intent.ATTACK,this.damage1);
+            this.damage.set(0, new DamageInfo(this, this.damage.get(0).base + (int)(this.loseHealth * this.nums1) + this.cursesNum));
+            setMove(MOVES[1],(byte)2, Intent.ATTACK,this.damage.get(0).base);
         }
         else if ((lastMove((byte)2)) && (this.turns != 10)){
-            this.damage2 = ((int)((p.getPower("Judgement").amount) * this.nums2) + this.cursesNum);
-            if(this.damage2 < 0)
-                this.damage2 = 0;
-            setMove(MOVES[2],(byte)3, Intent.ATTACK,this.damage2);
-            DevConsole.logger.info("damage2" + this.damage2);
+            this.damage.set(1, new DamageInfo(this, this.damage.get(0).base + (int)((p.getPower("Judgement").amount) * this.nums2) + this.cursesNum));
+            setMove(MOVES[2],(byte)3, Intent.ATTACK,this.damage.get(0).base);
         }
         else if ((lastMove((byte)3)) && (this.turns != 10)){
             setMove((byte)4, Intent.BUFF);
         }
         else if((lastMove((byte)4)) && (this.turns != 10)){
-            this.damage1 = ((int)(this.loseHealth * this.nums1) + this.cursesNum);
-            setMove(MOVES[1],(byte)2, Intent.ATTACK,this.damage1);
-            DevConsole.logger.info("nums1  " + this.nums1);
-            DevConsole.logger.info("damage1  " + this.damage1);
+            this.damage.set(0, new DamageInfo(this, this.damage.get(0).base + (int)(this.loseHealth * this.nums1) + this.cursesNum));
+            setMove(MOVES[1],(byte)2, Intent.ATTACK,this.damage.get(0).base);
         }
         else if(this.turns == 10){
             setMove(MOVES[3],(byte)5, Intent.DEBUFF);
@@ -107,19 +111,19 @@ public class Shikieiki extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new Judgement(p,0),0));
                 break;
             case 2:
-                if (this.damage1 < 10)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage1, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                if (this.damage.get(0).base < 10)
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 else
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage1, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 if ((this.turns == 8) && (this.loseHealth == 0))
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BarricadePower(p)));
                 this.nums1 -= 0.15;
                 break;
             case 3:
-                if (this.damage2 < 10)
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage2, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                if (this.damage.get(1).base < 10)
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 else
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damage2, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 if (this.turns == 3) {
                     for (AbstractCard c : p.hand.group) {
                         if (c.type == AbstractCard.CardType.POWER) {
@@ -137,7 +141,7 @@ public class Shikieiki extends AbstractMonster {
                         }
                     }
                 }
-                this.nums2 += 0.25;
+                this.nums2 += 1;
                 break;
             case 4:
                 if (this.turns == 4)
@@ -183,8 +187,15 @@ public class Shikieiki extends AbstractMonster {
     public void damage(DamageInfo info)
     {
         super.damage(info);
-        if(info.output > 0)
+        if(info.output > 0) {
             this.loseHealth += info.output;
+        }
+        if ((info.owner != null) && (info.type != DamageInfo.DamageType.THORNS) && (info.output > 0))
+        {
+            this.state.setAnimation(0, "hit", false);
+            this.state.setTimeScale(1.0F);
+            this.state.addAnimation(0, "normal", true, 0.0F);
+        }
         DevConsole.logger.info("loseHealth" + this.loseHealth);
     }
 

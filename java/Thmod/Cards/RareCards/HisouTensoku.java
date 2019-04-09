@@ -43,7 +43,7 @@ public class HisouTensoku extends AbstractKomeijiCards {
     private static final int COST = 2;
 
     public HisouTensoku() {
-        super("HisouTensoku", HisouTensoku.NAME,  2, HisouTensoku.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL);
+        super("HisouTensoku", HisouTensoku.NAME,  2, HisouTensoku.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL, CardSet_k.TENSHI);
         this.baseDamage = 15;
         this.isMultiDamage = true;
     }

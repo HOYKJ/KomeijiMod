@@ -56,11 +56,18 @@ public class KiriSame extends AbstractPower {
     public float atDamageGive(float damage, DamageInfo.DamageType type)
     {
         if (type == DamageInfo.DamageType.NORMAL) {
-            this.amount -= 1;
             return (damage * 1.25F);
         }
         else
             return damage;
+    }
+
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        super.onAttack(info, damageAmount, target);
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            this.amount -= 1;
+        }
     }
 
     public void atEndOfRound() {

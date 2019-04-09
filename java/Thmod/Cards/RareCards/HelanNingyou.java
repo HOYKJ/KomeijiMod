@@ -1,5 +1,6 @@
 package Thmod.Cards.RareCards;
 
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,7 +12,9 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import Thmod.Actions.common.AddNewOrbAction;
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.Cards.NingyouFukuhei;
 import Thmod.Orbs.Helan;
 
 public class HelanNingyou extends AbstractKomeijiCards {
@@ -23,7 +26,7 @@ public class HelanNingyou extends AbstractKomeijiCards {
     private static final int COST = 2;
 
     public HelanNingyou() {
-        super("HelanNingyou", HelanNingyou.NAME,  2, HelanNingyou.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super("HelanNingyou", HelanNingyou.NAME,  2, HelanNingyou.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE, CardSet_k.ALICE);
         this.isEthereal = true;
     }
 
@@ -38,7 +41,18 @@ public class HelanNingyou extends AbstractKomeijiCards {
             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
         }
         else {
-            AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",6));
+            AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this, NingyouFukuhei.EXTENDED_DESCRIPTION[0],6));
+        }
+
+        if(this.upgraded) {
+            final ChooseAction choice2 = new ChooseAction(this, m, NingyouFukuhei.EXTENDED_DESCRIPTION[1], false, 1);
+            choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2], NingyouFukuhei.EXTENDED_DESCRIPTION[3], () -> {
+                AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, p.discardPile));
+            });
+            choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2], NingyouFukuhei.EXTENDED_DESCRIPTION[4], () -> {
+
+            });
+            AbstractDungeon.actionManager.addToBottom(choice2);
         }
     }
 

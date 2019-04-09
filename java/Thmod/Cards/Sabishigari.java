@@ -20,13 +20,18 @@ public class Sabishigari extends AbstractSweepCards {
     private static final int COST = 1;
 
     public Sabishigari() {
-        super("Sabishigari", Sabishigari.NAME,  1, Sabishigari.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super("Sabishigari", Sabishigari.NAME,  1, Sabishigari.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.KOMACHI);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new JyouchiRei(m,2),2));
+        if(m.hasPower(JyouchiRei.POWER_ID)) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new JyouchiRei(m, this.magicNumber), this.magicNumber));
+        }
+        else {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new JyouchiRei(m, this.magicNumber + 2), this.magicNumber + 2));
+        }
     }
 
     @Override

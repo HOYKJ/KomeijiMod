@@ -40,6 +40,14 @@ public class BoundariesPower extends AbstractPower {
     }
 
     @Override
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
+        if (damage > 0.0F) {
+            damage = 0.0F;
+        }
+        return damage;
+    }
+
+    @Override
     public int onLoseHp(int damageAmount) {
         return 0;
     }

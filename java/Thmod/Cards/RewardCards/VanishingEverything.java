@@ -23,7 +23,7 @@ public class VanishingEverything extends AbstractSweepCards {
     private static final int COST = 2;
 
     public VanishingEverything() {
-        super("VanishingEverything", VanishingEverything.NAME,  2, VanishingEverything.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
+        super("VanishingEverything", VanishingEverything.NAME,  2, VanishingEverything.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardSet_k.OTHER);
         this.upgraded = true;
     }
 

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import Thmod.Actions.common.AddNewOrbAction;
+import Thmod.Cards.NingyouFukuhei;
 import Thmod.Orbs.Penglai;
 
 public class PenglaiNingyou extends AbstractSpellCards {
@@ -41,7 +42,7 @@ public class PenglaiNingyou extends AbstractSpellCards {
                     AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
                 }
                 else {
-                    AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",5));
+                    AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this, NingyouFukuhei.EXTENDED_DESCRIPTION[0],5));
                 }
             }
         }

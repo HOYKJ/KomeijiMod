@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import Thmod.Actions.Special.MusouFuuyinAction;
 import Thmod.Actions.common.RandomAttackAction;
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.ThMod;
 
 public class MusouMyousyu extends AbstractKomeijiCards {
     public static final String ID = "MusouMyousyu";
@@ -23,7 +24,7 @@ public class MusouMyousyu extends AbstractKomeijiCards {
     private static final int ATTACK_DMG = 5;
 
     public MusouMyousyu() {
-        super("MusouMyousyu", MusouMyousyu.NAME,  3, MusouMyousyu.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
+        super("MusouMyousyu", MusouMyousyu.NAME,  3, MusouMyousyu.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY, CardSet_k.REIMU);
         this.baseDamage = 5;
         this.baseMagicNumber = 7;
         this.magicNumber = this.baseMagicNumber;
@@ -45,6 +46,8 @@ public class MusouMyousyu extends AbstractKomeijiCards {
             this.upgradeDamage(1);
             this.timesUpgraded += 1;
             this.upgraded = true;
+            this.textureImg = ThMod.komeijiCardImage(this.cardID,true);
+            loadCardImage(this.textureImg);
         }
     }
 

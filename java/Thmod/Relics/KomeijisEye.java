@@ -13,7 +13,7 @@ import Thmod.Power.MindReadingPower;
 import basemod.DevConsole;
 
 public class KomeijisEye extends AbstractThRelic {
-    public static final String ID = "komeijisEye";
+    public static final String ID = "KomeijisEye";
     private int clicknum;
 
     public KomeijisEye()

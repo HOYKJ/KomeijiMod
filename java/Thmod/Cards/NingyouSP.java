@@ -1,5 +1,6 @@
 package Thmod.Cards;
 
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Orbs.NingyouOrb;
 import basemod.DevConsole;
 
@@ -24,7 +26,7 @@ public class NingyouSP extends AbstractSweepCards {
     private static final int COST = 1;
 
     public NingyouSP() {
-        super("NingyouSP", NingyouSP.NAME,  1, NingyouSP.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super("NingyouSP", NingyouSP.NAME,  1, NingyouSP.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE, CardSet_k.ALICE);
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
     }
@@ -42,6 +44,15 @@ public class NingyouSP extends AbstractSweepCards {
                 AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
             }
         }
+
+        final ChooseAction choice2 = new ChooseAction(this, m, NingyouFukuhei.EXTENDED_DESCRIPTION[1],false, 1);
+        choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2],NingyouFukuhei.EXTENDED_DESCRIPTION[3], () -> {
+            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, p.discardPile));
+        });
+        choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2],NingyouFukuhei.EXTENDED_DESCRIPTION[4], () -> {
+
+        });
+        AbstractDungeon.actionManager.addToBottom(choice2);
     }
 
     @Override

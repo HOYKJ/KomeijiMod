@@ -19,7 +19,7 @@ public class DemonsFork extends AbstractDeriveCards {
 
     public DemonsFork(int magicNum) {
         super("DemonsFork", DemonsFork.NAME,  0, DemonsFork.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseDamage = 3;
+        this.baseDamage = 2;
         this.isMultiDamage = true;
     }
 

@@ -20,11 +20,13 @@ public class Dash_Komeiji extends AbstractKomeijiCards{
     private static final int COST = 2;
 
     public Dash_Komeiji() {
-        super("Dash_Komeiji", Dash_Komeiji.NAME,  2, Dash_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.NONE);
+        super("Dash_Komeiji", Dash_Komeiji.NAME,  2, Dash_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.NONE, CardSet_k.SATORI);
+        this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DashPower(p, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DashPower(p, this.magicNumber), this.magicNumber));
     }
 
     public AbstractCard makeCopy() {

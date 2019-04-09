@@ -21,15 +21,15 @@ public class IceTornado extends AbstractKomeijiCards {
     private static final int COST = 3;
 
     public IceTornado() {
-        super("IceTornado", IceTornado.NAME,  3, IceTornado.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
-        this.baseMagicNumber = 6;
+        super("IceTornado", IceTornado.NAME,  3, IceTornado.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE, CardSet_k.CIRNO);
+        this.baseMagicNumber = 10;
         this.magicNumber = this.baseMagicNumber;
         this.isEthereal = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IceTornadoPower(p, this.magicNumber)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 2),2));
+        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 2),2));
     }
 
     public AbstractCard makeCopy() {
@@ -39,7 +39,7 @@ public class IceTornado extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(3);
+            this.upgradeMagicNumber(4);
         }
     }
 

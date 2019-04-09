@@ -42,6 +42,7 @@ public class AutomatonPower extends AbstractPower {
         int TateNum = 0;
         int YumiNum = 0;
         int HealNum = 0;
+        int handNum = p.hand.size();
         if(isPlayer){
             for(int i1 = 0;i1 < this.amount;i1++) {
                 if (p.energy.energy > 0) {
@@ -67,6 +68,32 @@ public class AutomatonPower extends AbstractPower {
                             HealNum = 0;
                         } else
                             HealNum += 1;
+                    }
+                }
+                else if(handNum > 0){
+                    for (int i = 0; i < p.orbs.size(); i++) {
+                        if ((p.orbs.get(i) instanceof YariNingyou) || (p.orbs.get(i) instanceof Shanghai) || (p.orbs.get(i) instanceof Penglai))
+                            YariNum += 1;
+                        if ((p.orbs.get(i) instanceof TateNingyou) || (p.orbs.get(i) instanceof Helan))
+                            TateNum += 1;
+                        if (p.orbs.get(i) instanceof YumiNingyou)
+                            YumiNum += 1;
+                    }
+                    handNum -= 1;
+                    for (int i = 0; i < YariNum; i++) {
+                        AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
+                        if(m != null)
+                            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, 4, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                    }
+                    for (int i = 0; i < TateNum; i++)
+                        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 2, true));
+                    for (int i = 0; i < YumiNum; i++) {
+//                        if (HealNum == 1) {
+//                            p.heal(1);
+//                            HealNum = 0;
+//                        } else
+//                            HealNum += 1;
+                        p.heal(1);
                     }
                 }
                 else

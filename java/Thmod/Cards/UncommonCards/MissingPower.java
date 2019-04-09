@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.EntanglePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import Thmod.Cards.AbstractKomeijiCards;
@@ -21,15 +22,28 @@ public class MissingPower extends AbstractKomeijiCards {
     private static final int STR_AMOUNT = 6;
 
     public MissingPower() {
-        super("MissingPower", MissingPower.NAME,  1, MissingPower.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseMagicNumber = 6;
+        super("MissingPower", MissingPower.NAME,  1, MissingPower.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.SUIKA);
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthEndPower(p, this.magicNumber), this.magicNumber));
+        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthEndPower(p, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EntanglePower(p)));
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m)
+    {
+        boolean canUse = super.canUse(p, m);
+        if (!canUse) {
+            return false;
+        }
+        if(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() > 0){
+            canUse = false;
+        }
+        return canUse;
     }
 
     public AbstractCard makeCopy() {
@@ -39,7 +53,7 @@ public class MissingPower extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(1);
         }
     }
 

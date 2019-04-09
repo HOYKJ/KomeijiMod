@@ -16,7 +16,6 @@ public class ElementExtend extends AbstractSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 0;
     private int pointcost;
 
     public ElementExtend() {

@@ -23,7 +23,7 @@ public class YoukiSo extends AbstractSweepCards {
     private static final int COST = 0;
 
     public YoukiSo() {
-        super("YoukiSo", YoukiSo.NAME,  0, YoukiSo.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super("YoukiSo", YoukiSo.NAME,  0, YoukiSo.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE, CardSet_k.SUIKA);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
         this.upgraded = true;

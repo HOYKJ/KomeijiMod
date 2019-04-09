@@ -34,19 +34,23 @@ public class CounterAttackPower extends AbstractPower {
     {
         if ((info.type != DamageInfo.DamageType.HP_LOSS) && (info.owner != null) && (info.owner != this.owner))
         {
-            if(damageAmount > 0) {
-                flash();
-                ArrayList<AbstractCreature> target = new ArrayList<>();
-                target.add(info.owner);
-                AbstractDungeon.effectList.add(new RoundDiggerAction(10,false,target));
-                if (!(this.owner.hasPower("PointPower"))) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
-                } else if (this.owner.getPower("PointPower").amount < 5) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
+            if(this.amount == -1) {
+                if (damageAmount > 0) {
+                    flash();
+                    ArrayList<AbstractCreature> target = new ArrayList<>();
+                    target.add(info.owner);
+                    AbstractDungeon.effectList.add(new RoundDiggerAction(10, false, target));
+                    if (!(this.owner.hasPower("PointPower"))) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
+                    } else if (this.owner.getPower("PointPower").amount < 5) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
+                    }
+                    AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "CounterAttackPower"));
                 }
-                AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "CounterAttackPower"));
+                this.amount -= 1;
+                return 0;
             }
-            return 0;
+            return damageAmount;
         }
         else
             return damageAmount;

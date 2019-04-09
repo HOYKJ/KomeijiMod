@@ -36,6 +36,7 @@ public class MusouFuuinEffect extends AbstractGameEffect
     private DamageInfo info;
     private AbstractGameAction.AttackEffect attackEffect;
     private boolean souDamage = true;
+    private Color setColor;
 
     public MusouFuuinEffect(float sX, float sY, Color color, DamageInfo info, AbstractGameAction.AttackEffect attackEffect)
     {
@@ -79,7 +80,7 @@ public class MusouFuuinEffect extends AbstractGameEffect
         this.duration = this.startingDuration;
 //        this.renderBehind = MathUtils.randomBoolean(0.2F);
 //        this.color = new Color(1.0F, 0.1F, MathUtils.random(0.2F, 0.5F), 1.0F);
-        this.color = color;
+        this.setColor = color;
 
         this.info = info;
         this.attackEffect = attackEffect;
@@ -145,13 +146,17 @@ public class MusouFuuinEffect extends AbstractGameEffect
 
     public void render(SpriteBatch sb)
     {
-        sb.setColor(this.color);
-        sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale * 4.0F, this.scale * 4.0F, this.rotation);
+        sb.setBlendFunction(770, 1);
+
+        sb.setColor(this.setColor);
+        sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale * 3.5F, this.scale * 3.5F, this.rotation);
 
         Color highLight = Color.WHITE.cpy();
         highLight.a = 0.3F;
         sb.setColor(highLight);
-        sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale * 4.0F, this.scale * 4.0F, this.rotation);
+        sb.draw(this.img, this.x, this.y, this.img.packedWidth / 2.0F, this.img.packedHeight / 2.0F, this.img.packedWidth, this.img.packedHeight, this.scale * 3.5F, this.scale * 3.5F, this.rotation);
+
+        sb.setBlendFunction(770, 771);
     }
 
     public void dispose(){}

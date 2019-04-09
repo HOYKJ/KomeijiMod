@@ -14,7 +14,7 @@
     "CounterAttackPower": {
       "NAME": "Perfact Maid",
       "DESCRIPTIONS": [
-        "Dodge next #b1 Damage, and deal damage to attacker, gain #b1  #rP ."
+        "The next time you take attack damage, dodge it, deal damage to the attacker and gain #b1 #rP ."
       ]
     },
   "DeepSleep": {
@@ -26,8 +26,8 @@
   "DashPower": {
     "NAME": "Graze!",
     "DESCRIPTIONS": [
-      "Dodge next #b1 Damage, gain #b1  #rP .",
-      "Dodge next #b"," Damage, gain #b1  #rP ."
+      "Dodge the next #b1 time you would lose HP and gain #b1  #rP .",
+      "Dodge the next #b"," times you would lose HP and gain #b1  #rP ."
     ]
   },
   "DemonsForkAccumulate": {
@@ -39,7 +39,7 @@
   "FreezePower": {
     "NAME": "Extremely cold",
     "DESCRIPTIONS": [
-      "You will be badly injured, only need one tough."
+      "You will be badly injured, with just one touch."
     ]
   },
   "FuubiPower": {
@@ -63,13 +63,14 @@
   "HeiyuPower": {
     "NAME": "Illness Recovery",
     "DESCRIPTIONS": [
-      "Heal #b2 HP at the end of turn. Stop as if you lose HP."
+      "Heal #b2 HP at the end of turn. Effect ends when you lose HP."
     ]
   },
   "HenyouMirumePower": {
     "NAME": "Eyes that View Change",
     "DESCRIPTIONS": [
-      "Deal #b10 damage to your target when you play a #yAttack."
+      "Your next #yAttack will deal #b",
+      " more #bstatic damage."
     ]
   },
   "HibernatePower": {
@@ -81,13 +82,13 @@
   "IceTornadoPower": {
     "NAME": "Ice Tornado",
     "DESCRIPTIONS": [
-      "Deal damage to ALL enemies."
+      "Deal damage to ALL enemies. Reduce your received damage."
     ]
   },
   "JyouchiPower": {
     "NAME": "Permanent Border",
     "DESCRIPTIONS": [
-      "Take effect after be attacked."
+      "Take effect after being attacked."
     ]
   },
   "JyouchiRei": {
@@ -106,11 +107,17 @@
   "KoKeiPower": {
     "NAME": "Tiger Chi Release",
     "DESCRIPTIONS": [
-      "Next #b1 #yAttack will deal double damage."
+      "Next #b1 #yAttack in this turn will deal double damage."
     ]
   },
   "KyoufuSaiminPower": {
     "NAME": "Terrifying Hypnotism",
+    "DESCRIPTIONS": [
+      "Record the damage received this #2 turns, lose same HP at this power's end."
+    ]
+  },
+  "RoseHellPower": {
+    "NAME": "Rose Hell",
     "DESCRIPTIONS": [
       "Record the damage received this #2 turns, lose same HP at this power's end."
     ]
@@ -139,32 +146,48 @@
     "MindReadingPower": {
       "NAME": "Mind Reading",
       "DESCRIPTIONS": [
-	"At the start of your turn, you will gain buff according to enemy's #bIntents."
+	"At the start of your turn, you will gain buff based on enemy's #bIntents."
       ]
     },
+  "MusouTenseiPower": {
+    "NAME": "Fantasy Nature",
+    "DESCRIPTIONS": [
+      "In #b",
+      " turns, play #b",
+      " #yAttack, deal #b",
+      " damage."
+    ]
+  },
   "MusuNoTegataPower": {
     "NAME": "Ticket to the Ageless Land",
     "DESCRIPTIONS": [
       "Deal damage after #b",
-      " turns. End when you lose HP."
+      " turns. Effect ends when you lose HP."
     ]
   },
   "MusuNoYumePower": {
     "NAME": "Ageless Dream",
     "DESCRIPTIONS": [
-      "Keep dealing damage, end when you lose HP."
+      "At the end of your turn, deals damage. Ends early if you lose HP"
     ]
   },
     "NingyouPower": {
-      "NAME": "人偶",
+      "NAME": "Doll",
       "DESCRIPTIONS": [
-	"爱丽丝做的人偶,为什么会出现在这呢?"
+	"A doll made by Alice, why is it here?"
       ]
     },
+  "PhlogisticPower": {
+    "NAME": "Phlogiston",
+    "DESCRIPTIONS": [
+      "Can't gain buff/debuff, can't heal. When take effect, lose #b",
+      " HP."
+    ]
+  },
   "PointPower": {
     "NAME": "P Point",
     "DESCRIPTIONS": [
-      "When you played #b4 #yAttacks,gain #b1 #rP Point",
+      "Every #b4 #yAttacks you played, gives you #b1 #rP Point",
       "My hand is full",
       "Fuse fail..."
     ]
@@ -178,7 +201,7 @@
   "SoulPower": {
     "NAME": "Spirit",
     "DESCRIPTIONS": [
-      "Keep healing #b",
+      "At the end of your turn, heal #b",
       " HP."
     ]
   },
@@ -218,7 +241,7 @@
   "UndeadPower": {
     "NAME": "Undead",
     "DESCRIPTIONS": [
-      "Your HP at least 1."
+      "Your HP cannot go beyond 1."
     ]
   },
   "VampirePower": {
@@ -230,21 +253,21 @@
     "WocchiPower": {
       "NAME": "Stopwatch",
       "DESCRIPTIONS": [
-	"At next turn's Start, stop the time."
+	"At the start of the next turn, stop the time."
       ]
     },
   "WumiGaWareruPower": {
     "NAME": "Sea Split",
     "DESCRIPTIONS": [
       "In #b",
-      " turns, keep dealing #b",
-      " damage."
+      " turns. At the end of your turn, deal #b",
+      " damage to ALL enemies."
     ]
   },
   "YuumeiPower": {
     "NAME": "Half Phantoms",
     "DESCRIPTIONS": [
-      "Whenever you play a #yAttack, it will play twice."
+      "Whenever you play a #yAttack, it will be played again."
     ]
   },
   "MyWorldPower": {
@@ -380,27 +403,27 @@
 
 
   "BlueAbnormity": {
-    "NAME": "Abnormity",
+    "NAME": "Abnormity[Blue]",
     "DESCRIPTIONS": [
-      "Effect unknown"
+      "Effect unknown. If has other Abnormity, this Abnormity's effect will increase."
     ]
   },
   "GreenAbnormity": {
-    "NAME": "Abnormity",
+    "NAME": "Abnormity[Green]",
     "DESCRIPTIONS": [
-      "Effect unknown"
+      "Effect unknown. If has other Abnormity, this Abnormity's effect will increase."
     ]
   },
   "RedAbnormity": {
-    "NAME": "Abnormity",
+    "NAME": "Abnormity[Red]",
     "DESCRIPTIONS": [
-      "Effect unknown"
+      "Effect unknown. If has other Abnormity, this Abnormity's effect will increase."
     ]
   },
   "HauntPower": {
     "NAME": "Abnormity",
     "DESCRIPTIONS": [
-      "Effect unknown"
+      "Gain an #yAbnormity with #yAstrict by #b2 after attack."
     ]
   },
 
@@ -424,8 +447,8 @@
   "BubblePower": {
     "NAME": "Sticky Bubble",
     "DESCRIPTIONS": [
-      "Its owner lose #b",
-      " #yStrength , take effect at the end of Turn. Reduce this by #b1 at start of turn."
+      "Lose #b",
+      " #yStrength , take effect at the end of Turn. Reduce this by #b1 at start of turn. If more than #b4 , Stun for #b1 turn."
     ]
   },
   "CromlechPower": {
@@ -464,8 +487,8 @@
   "NextSpear": {
     "NAME": "Midautumn Spear",
     "DESCRIPTIONS": [
-      "At start of turn, deal #b",
-      " damage."
+      "At start of turn, add a \"Midautumn Spear\" with extra #b",
+      " damage into your hand."
     ]
   },
   "PhotosynthesisPower": {
@@ -497,8 +520,8 @@
   "TokamakPower": {
     "NAME": "SelfTokamak",
     "DESCRIPTIONS": [
-      "Till #b",
-      " turns, gain [R] ."
+      "In #b",
+      " turns, gain [E] ."
     ]
   },
   "InfluxPower": {
@@ -520,8 +543,15 @@
   "ThoughtExtendPower": {
     "NAME": "Thoughts Extend",
     "DESCRIPTIONS": [
-      "Need play #b",
-      " #yAssociation card, gain [R] and draw #b1 card."
+      "After you play #b",
+      " #yAssociation card, gain [E] and draw #b1 card."
+    ]
+  },
+  "PreThgoughtPower": {
+    "NAME": "Preconceive",
+    "DESCRIPTIONS": [
+      "Next #b",
+      " #yAssociation cards you played, will play #b1 additional random associate card of it."
     ]
   },
 
@@ -536,7 +566,7 @@
     "NAME": "Judgement",
     "DESCRIPTIONS": [
       "Whenever you play #b1 #y",
-      " , gain #b1 #yguilt, and lose #b1 HP.",
+      " , gain #b1 #yguilt, and lose #b2 HP.",
       "Attack",
       "Skill"
     ]
@@ -570,7 +600,7 @@
     "DESCRIPTIONS": [
       "You need to use #b",
       " #yAttack 和 #b",
-      " #ySkill to make 「Boundaries」 can be use."
+      " #ySkill to make 「Boundaries」 available."
     ]
   },
   "BoundariesPower": {

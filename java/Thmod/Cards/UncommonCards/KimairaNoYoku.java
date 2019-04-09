@@ -22,7 +22,7 @@ public class KimairaNoYoku extends AbstractKomeijiCards {
     private static final int COST = 0;
 
     public KimairaNoYoku() {
-        super("KimairaNoYoku", KimairaNoYoku.NAME,  0, KimairaNoYoku.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super("KimairaNoYoku", KimairaNoYoku.NAME,  0, KimairaNoYoku.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE, CardSet_k.YUKARI);
         this.exhaust = true;
     }
 

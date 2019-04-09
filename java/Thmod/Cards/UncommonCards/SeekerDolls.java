@@ -26,7 +26,7 @@ public class SeekerDolls extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public SeekerDolls() {
-        super("SeekerDolls", SeekerDolls.NAME,  1, SeekerDolls.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super("SeekerDolls", SeekerDolls.NAME,  1, SeekerDolls.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.ALICE);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }
@@ -38,7 +38,7 @@ public class SeekerDolls extends AbstractKomeijiCards {
                 EmptyNum += 1;
         }
         if(EmptyNum > 0) {
-            int min = Math.min(this.magicNumber, EmptyNum);
+            int min = Math.min(1, EmptyNum);
             for(int i = 0;i < min;i++) {
                 AbstractOrb orb = new NingyouOrb();
                 AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));

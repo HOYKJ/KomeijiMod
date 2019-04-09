@@ -1,0 +1,809 @@
+﻿{
+  "Strike_Remiria": {
+    "NAME": "打击",
+    "DESCRIPTION":
+    "造成 !D! 点伤害.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外造成1次伤害."
+    ]
+  },
+  "Defend_Remirira": {
+    "NAME": "防御",
+    "DESCRIPTION":
+    "获得 !B! 点 格挡 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外获得1次 格挡 ."
+    ]
+  },
+  "Absorbed": {
+    "NAME": "专注",
+    "DESCRIPTION":
+    "解封 手中的2张随机卡.",
+    "UPGRADE_DESCRIPTION":
+    "解封 手中的2张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "抽1张卡.",
+      "选择."
+    ]
+  },
+  "Scratch": {
+    "NAME": "抓伤",
+    "DESCRIPTION":
+    "造成 !D! 点伤害,给予 !M! 层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外1倍 血痕 ."
+    ]
+  },
+  "BloodCleaner": {
+    "NAME": "清道夫",
+    "DESCRIPTION":
+    "造成 !D! 伤害 ,受 !M! 倍 血痕 加成.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外1倍 血痕 加成."
+    ]
+  },
+  "BloodCollect": {
+    "NAME": "鲜血汇集",
+    "DESCRIPTION":
+    "抽1张卡.减少目标 !M! 层 血痕 ,使你下1次伤害翻倍.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外触发1次."
+    ]
+  },
+  "BloodySuit": {
+    "NAME": "血色战衣",
+    "DESCRIPTION":
+    "获得 !B! 格挡 ,受 !M! 倍 血痕 加成.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外1倍 血痕 加成."
+    ]
+  },
+  "BodyStrengthen": {
+    "NAME": "肉体强化",
+    "DESCRIPTION":
+    "你在 !M! 回合内不会受到反伤或是生命流失. 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    "你在 !M! 回合内不会受到反伤或是生命流失.抽1张卡. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "保留."
+    ]
+  },
+  "Cripple": {
+    "NAME": "致残",
+    "DESCRIPTION":
+    "造成 !D! 伤害,移除最多 !M! 层 血痕 ,给予等量的 虚弱 与 易伤.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不再需要移除 血痕 ."
+    ]
+  },
+  "DamonLordCradle_Remiria": {
+    "NAME": "恶魔摇篮",
+    "DESCRIPTION":
+    "获得 !B! 点 格挡 .抽 !M! 张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外获得1次 格挡 .",
+      "德古拉摇篮"
+    ]
+  },
+  "DemonsDinnerFork_Remiria": {
+    "NAME": "恶魔餐叉",
+    "DESCRIPTION":
+    "获得2X张餐叉.",
+    "UPGRADE_DESCRIPTION":
+    "获得2X张餐叉+.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外获得X张餐叉.",
+      "餐叉",
+      "0消耗的攻击卡,对所有敌人造成伤害."
+    ]
+  },
+  "DoubleEdge": {
+    "NAME": "双刃剑",
+    "DESCRIPTION":
+    "给予所有人 !M! 层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "消耗此卡,将1张复制加入手牌."
+    ]
+  },
+  "FastHealing": {
+    "NAME": "快速愈合",
+    "DESCRIPTION":
+    "减少自身至多 !M! 层 血痕 ,并给予你等额的格挡.",
+    "UPGRADE_DESCRIPTION":
+    "减少自身至多 !M! 层 血痕 ,并给予你等额的格挡.可以选择1张卡 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "恢复等额生命."
+    ]
+  },
+  "Feint": {
+    "NAME": "佯攻",
+    "DESCRIPTION":
+    "造成 !D! 伤害,若这是本回合打出的第1张卡,选择1张攻击抽取.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "若手中没有其它攻击,额外选择1张攻击."
+    ]
+  },
+  "FierceSweep": {
+    "NAME": "猛扫",
+    "DESCRIPTION":
+    "造成 !D! 点伤害.选择 消耗 弃牌堆中的1张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外造成1次伤害."
+    ]
+  },
+  "RocketKickup": {
+    "NAME": "火箭上踢",
+    "DESCRIPTION":
+    "造成 !D! 点伤害.若目标身上有 血痕 ,减少1层 血痕 ,获得 [E] 并抽1张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "改为选1张卡抽取."
+    ]
+  },
+  "ServantFlier": {
+    "NAME": "辅助使魔",
+    "DESCRIPTION":
+    "给予你 !M! 层 使魔 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外给予2层."
+    ]
+  },
+  "StigmaNizer": {
+    "NAME": "罪诅之印",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 伤害,并给予 !M! 血痕 .被 消耗 时给予所有敌人 !M! 血痕 2次.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "抽1张卡."
+    ]
+  },
+  "TricksterDevil": {
+    "NAME": "诡计恶魔",
+    "DESCRIPTION":
+    " 命运 .打出1张随机卡.",
+    "UPGRADE_DESCRIPTION":
+    " 命运 .打出1张随机卡.抽 !M! 张卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "打出解封卡."
+    ]
+  },
+  "Warpath": {
+    "NAME": "战意",
+    "DESCRIPTION":
+    "你手中的所有攻击牌伤害加 !M! , 当你本回合未打出过攻击牌时才可打出.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "对抽牌堆/弃牌堆中的卡也有效."
+    ]
+  },
+
+
+
+  "BathedInBlood": {
+    "NAME": "浴血",
+    "DESCRIPTION":
+    "每当你给予自身 血痕 ,获得 !M! 力量 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .每当你给予自身 血痕 ,获得 !M! 力量 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "当此卡在你手中时具有相同效果."
+    ]
+  },
+  "BloodPact": {
+    "NAME": "鲜血契约",
+    "DESCRIPTION":
+    "移除自身除 血痕 外所有负面状态,消耗所有 状态 和 诅咒 ,给予自身 !M! 层 血痕 . 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "给予所有敌人一半的 血痕 ."
+    ]
+  },
+  "BloodSurge": {
+    "NAME": "血涌",
+    "DESCRIPTION":
+    "获得 [E] [E] 和 !M! 层 血痕 . 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    "获得 [E] [E] [E] 和 !M! 层 血痕 . 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "保留."
+    ]
+  },
+  "BloodyMagicSquare": {
+    "NAME": "嗜血魔方",
+    "DESCRIPTION":
+    "每回合开始时给予所有人 !M! 层 血痕 .(给予你一半)",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "立刻触发1次."
+    ]
+  },
+  "ChainGang": {
+    "NAME": "罪链之簇",
+    "DESCRIPTION":
+    "给予 !M! 层 虚弱 ,4层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "目标为所有敌人."
+    ]
+  },
+  "CombatMeter": {
+    "NAME": "战斗节拍",
+    "DESCRIPTION":
+    "你每回合打出的不同类型的第1张卡会给予你 !M! 格挡 ,这个数值会在1回合内递增.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "此卡会触发效果."
+    ]
+  },
+  "CruelSlaughter": {
+    "NAME": "残虐厮杀",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 伤害,若任何敌人死亡,则再次触发.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      " 保留 ."
+    ]
+  },
+  "Culling": {
+    "NAME": "淘汰",
+    "DESCRIPTION":
+    "造成 !D! 伤害,受 !M! 倍 血痕 加成.若杀死敌人,获得 [E] [E] [E] .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "若杀死敌人,抽3张卡."
+    ]
+  },
+  "CurseofVladTepes": {
+    "NAME": "弗拉德·特佩斯的诅咒",
+    "DESCRIPTION":
+    "每当你造成伤害,给予目标1层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "手中的随机卡本回合消耗为0."
+    ]
+  },
+  "DemonLordWalk": {
+    "NAME": "恶魔滑步",
+    "DESCRIPTION":
+    "获得 !B! 格挡 ,造成 !D! 点伤害,给予 !M! 层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "获得2 敏捷 ."
+    ]
+  },
+  "Exsanguinate": {
+    "NAME": "除血",
+    "DESCRIPTION":
+    "你至少有 !M! 层 血痕 才能打出,选择1种效果使用. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "解除限制.",
+      "将你的 血痕 (最多6)转移给目标,对其造成其 血痕 3倍的伤害.",
+      "将目标的 血痕 (最多6)转移给你,你恢复你 血痕 1.5倍的生命.",
+      "选择"
+    ]
+  },
+  "FateCollect": {
+    "NAME": "命运收束",
+    "DESCRIPTION":
+    "选择手中的1张卡,弃置类型不同的手牌,并抽1.5倍数量的卡. 虚无 . 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不再 消耗 .",
+      "攻击",
+      "技能",
+      "能力",
+      "状态",
+      "诅咒"
+    ]
+  },
+  "FateEnsemble": {
+    "NAME": "命运重奏",
+    "DESCRIPTION":
+    "造成 !D! 伤害,升级手中所有你牌组外的卡,然后使其余卡视为牌组外的卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "对牌组内的卡也有效."
+    ]
+  },
+  "FateMeister": {
+    "NAME": "命运之主",
+    "DESCRIPTION":
+    "每当你打出1张不属于你牌组的卡,获得 !M! 力量 .(1回合中打出的同名卡只计算1次)",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .每当你打出1张不属于你牌组的卡,获得 !M! 力量 .(1回合中打出的同名卡只计算1次)",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "抽2张卡."
+    ]
+  },
+  "Impregnable": {
+    "NAME": "不破之躯",
+    "DESCRIPTION":
+    "获得 !B! 格挡 ,受你手牌数加成.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "受力量加成."
+    ]
+  },
+  "LifeBreak": {
+    "NAME": "舍身重击",
+    "DESCRIPTION":
+    "造成 !D! 伤害,给予你 !M! 层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "给予目标同等的血痕."
+    ]
+  },
+  "NaturallyHealing": {
+    "NAME": "自然愈合",
+    "DESCRIPTION":
+    "回合结束时,你的每张剩余手牌将减少你 !M! 层 血痕 ,并给予你等额的格挡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "立刻触发1次."
+    ]
+  },
+  "NightDance": {
+    "NAME": "暗夜之舞",
+    "DESCRIPTION":
+    "获得 !B! 格挡 .这张卡在你手中时,你每打出1张非攻击卡获得 !M! 格挡 ,打出攻击卡时弃置.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "使用攻击卡时此卡不会被弃置."
+    ]
+  },
+  "Offensive": {
+    "NAME": "攻势",
+    "DESCRIPTION":
+    "造成 !D! 伤害,受你的所有正面状态加成.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "受目标的所有负面状态加成."
+    ]
+  },
+  "PainBurst": {
+    "NAME": "痛楚爆发",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 伤害,当你受到 血痕 的伤害时耗能减少 [E] .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "增加2倍于你 血痕 的伤害."
+    ]
+  },
+  "Paradox": {
+    "NAME": "悖论",
+    "DESCRIPTION":
+    "选择1张手牌,获得它的复制并为其指定类型. 消耗 . 虚无 .",
+    "UPGRADE_DESCRIPTION":
+    "选择1张手牌,获得它的复制并为其指定类型. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "保留.",
+      "视为攻击.",
+      "视为技能.",
+      "视为能力.",
+      "视为状态.",
+      "视为诅咒."
+    ]
+  },
+  "PartStrengthen": {
+    "NAME": "部分强化",
+    "DESCRIPTION":
+    "选择:获得 !M! 力量,获得 !M! 敏捷,获得3 金属化 .",
+    "UPGRADE_DESCRIPTION":
+    "选择:获得 !M! 力量,获得 !M! 敏捷,获得5 金属化 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "可以选择2项.",
+      "获得 力量 .",
+      "获得 敏捷 .",
+      "获得 金属化 .",
+      "力量强化",
+      "速度强化",
+      "韧性强化"
+    ]
+  },
+  "Rewrite": {
+    "NAME": "改写",
+    "DESCRIPTION":
+    "从你的抽牌堆/弃牌堆中,选择最多 !M! 张不属于你卡组的卡加入手牌,并选择等量卡丢弃(最多2).",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不再需要弃牌."
+    ]
+  },
+  "SealingFear": {
+    "NAME": "狩杀之惧",
+    "DESCRIPTION":
+    "给予 !M! 层 易伤 ,选择1张手牌置于牌顶并 解封 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "选择的卡打出前费用为0.",
+      "选择."
+    ]
+  },
+  "SeparateFleshBlood": {
+    "NAME": "血肉分离",
+    "DESCRIPTION":
+    "造成 !D! 伤害,移除目标 !M! 层 血痕 ,然后随机移除其1个buff.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不需移除 血痕 ."
+    ]
+  },
+  "ScarletNetherworld": {
+    "NAME": "红色的冥界",
+    "DESCRIPTION":
+    "获得 !B! 点 格挡 .减少至多 !M! 层血痕,获得等量的 荆棘 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "获得双倍的 荆棘 .",
+      "千根针的针山"
+    ]
+  },
+  "Tearing": {
+    "NAME": "撕裂",
+    "DESCRIPTION":
+    "造成 !D! 伤害,使目标每次攻击获得 !M! 层 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "获得1能量."
+    ]
+  },
+  "Tepes": {
+    "NAME": "穿刺",
+    "DESCRIPTION":
+    "造成 !D! 点生命流失,目标身上的负面效果层数+1,并使目标在 !M! 回合内无法恢复生命.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "移除目标的 格挡 ."
+    ]
+  },
+  "ThePrice": {
+    "NAME": "代价",
+    "DESCRIPTION":
+    "消耗最多 !M! 张手牌,随机 解封 等量的手牌. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "可以消耗抽牌堆/弃牌堆中的卡."
+    ]
+  },
+  "ThirstForBlood": {
+    "NAME": "嗜血渴望",
+    "DESCRIPTION":
+    "每有1个单位有 血痕 ,抽 !M! 张卡并获得 !M! 力量 . 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    "每有1个单位有 血痕 ,抽 !M! 张卡并获得 !M! 力量 . 保留 . 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不再 消耗 ."
+    ]
+  },
+  "TrickFate": {
+    "NAME": "戏命",
+    "DESCRIPTION":
+    "获得 !M! 层 残影 ,此卡视为你卡组外的卡.被 消耗 时给予你 !B! 格挡 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "本回合内所有卡均视为卡组外的卡."
+    ]
+  },
+  "VampireClaw": {
+    "NAME": "血族爪击",
+    "DESCRIPTION":
+    "造成 !D! 点伤害,若目标有 血痕 ,本场战斗中提升 !M! 伤害.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "若杀死带有血痕的敌人,本局游戏中提升6伤害."
+    ]
+  },
+  "VampireKiss_Remiria": {
+    "NAME": "吸血之吻",
+    "DESCRIPTION":
+    "造成 !D! 点伤害 !M! 次,消耗目标至多 !M! 层 血痕 ,每层为你恢复2生命. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "恢复改为未被 格挡 伤害的一半."
+    ]
+  },
+  "VampirishNight": {
+    "NAME": "吸血鬼之夜",
+    "DESCRIPTION":
+    "给予所有敌人 !M! 层血痕.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "消耗为0."
+    ]
+  },
+  "YoungDemonLord": {
+    "NAME": "年幼的恶魔之王",
+    "DESCRIPTION":
+    "获得 !B! 格挡 , !M! 力量 ,本局游戏中提升2点 格挡 . 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "本局游戏中提升1点 力量 ."
+    ]
+  },
+
+
+  "AllTheWorldInNightmare": {
+    "NAME": "全世界梦魇",
+    "DESCRIPTION":
+    "所有单位身上的 血痕 翻倍. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不再消耗."
+    ]
+  },
+  "BadLadyScramble": {
+    "NAME": "恶女置乱",
+    "DESCRIPTION":
+    "将X-1张卡置入你的手牌,它们在打出前0费. 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    "将X张卡置入你的手牌,它们在打出前0费. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "它们解封."
+    ]
+  },
+  "BloodCoagulation": {
+    "NAME": "凝血筑甲",
+    "DESCRIPTION":
+    "每当你给予 血痕 ,获得 !M! 倍于 血痕 层数的 格挡 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .每当你给予 血痕 ,获得 !M! 倍于 血痕 层数的 格挡 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "给予你等同场上 血痕 总层数的 格挡 ."
+    ]
+  },
+  "BombardNight": {
+    "NAME": "轰炸之夜",
+    "DESCRIPTION":
+    "造成 !D! 伤害 !M! 次(等同你消耗堆中卡的数量),清空你的消耗堆. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不清空消耗堆."
+    ]
+  },
+  "Coercion": {
+    "NAME": "威压",
+    "DESCRIPTION":
+    " 固有 . 命运 .你本回合不会受到伤害,打出攻击后结束. 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 . 命运 .你本回合不会受到伤害,打出攻击后结束.抽1张卡. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "打出攻击卡将不会结束此效果."
+    ]
+  },
+  "FateConcerto": {
+    "NAME": "命运协奏",
+    "DESCRIPTION":
+    "抽 !M! 张卡,消耗并打出其中不属于你牌组的卡.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "额外抽2张."
+    ]
+  },
+  "FateSonata": {
+    "NAME": "命运奏鸣曲",
+    "DESCRIPTION":
+    "造成 !D! 点伤害,抽1张卡, 消耗 .将1张「命运二部曲」加入你的弃牌堆.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "改为置于牌堆顶.",
+      "命运二部曲","获得 !B! 格挡 ,造成 !D! 点伤害,抽1张卡, 消耗 .将1张「命运诙谐曲」加入你的弃牌堆.",
+      "命运诙谐曲","获得 !B! 格挡 ,造成 !D! 点伤害,抽 !M! 张卡, 消耗 .将1张「命运回旋曲」加入你的弃牌堆.",
+      "命运回旋曲"," 解封 你的所有卡, 消耗 .",
+      "造成 !D! 点伤害,抽1张卡, 消耗 .将1张「命运二部曲+」加入你的弃牌堆",
+      "获得 !B! 格挡 ,造成 !D! 点伤害,抽1张卡, 消耗 .将1张「命运诙谐曲+」加入你的弃牌堆.",
+      "获得 !B! 格挡 ,造成 !D! 点伤害,抽 !M! 张卡, 消耗 .将1张「命运回旋曲」加入你的弃牌堆.",
+      " 解封 你的所有卡, 消耗 ",
+      "命运终乐章"
+    ]
+  },
+  "FitfulNightmare": {
+    "NAME": "断续的噩梦",
+    "DESCRIPTION":
+    "持续进入 猩红领主 状态,将1张诅咒加入你的抽牌堆.每隔1回合,在回合开始时选择:将1张 诅咒 加入你的弃牌堆;结束此状态.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "使用时不会给予 诅咒 ."
+    ]
+  },
+  "HeartBreak_Remiria": {
+    "NAME": "碎心之枪",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 伤害.选择:受到 !M! 倍 力量 加成;给予等同1.3倍 力量 的血痕.",
+    "UPGRADE_DESCRIPTION":
+    "对所有敌人造成 !D! 伤害.选择:受到 !M! 倍 力量 加成;给予等同2倍 力量 的血痕.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "同时触发两个效果.",
+      "冈格尼尔",
+      "额外 力量 加成.",
+      "给予 血痕 ."
+    ]
+  },
+  "MillenniumVampire": {
+    "NAME": "千年吸血鬼",
+    "DESCRIPTION":
+    "你对有 血痕 的单位额外造成25%伤害,当你杀死带有 血痕 的非爪牙敌人后恢复 !M! 生命.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "回复生命翻倍."
+    ]
+  },
+  "MiserableFate_Remiria": {
+    "NAME": "悲惨命运",
+    "DESCRIPTION":
+    "你所受到的所有负面效果会由随机敌人承受.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "回复1能量."
+    ]
+  },
+  "QueenOfMidnight": {
+    "NAME": "子夜女王",
+    "DESCRIPTION":
+    " 命运 . !M! 回合内进入 猩红领主 状态, 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    " 命运 . !M! 回合内进入 猩红领主 状态.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "获得3力量."
+    ]
+  },
+  "Reaper_Remiria": {
+    "NAME": "收割者",
+    "DESCRIPTION":
+    " 命运 .对所有单位造成 !M! 倍其 血痕 层数的伤害.若杀死任何敌人,倍数在本局游戏中加1.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不会对你造成伤害."
+    ]
+  },
+  "RedMagic": {
+    "NAME": "深红魔法",
+    "DESCRIPTION":
+    "你不会再因 血痕 流失生命.",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .你不会再因 血痕 流失生命.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "给予你6层 血痕 .",
+      "红色的幻想乡"
+    ]
+  },
+  "RedtheNightlessCastle": {
+    "NAME": "红不夜城",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 伤害 !M! 次.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "伤害次数翻倍.",
+      "绯红恶魔"
+    ]
+  },
+  "RemiliaStalker": {
+    "NAME": "蕾米莉亚潜行者",
+    "DESCRIPTION":
+    "你每回合打出的第1张卡若造成了伤害,给予你等同伤害值的 格挡 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .你每回合打出的第1张卡若造成了伤害,给予你等同伤害值的 格挡 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "使用后打出的第1张卡也可触发."
+    ]
+  },
+  "RemiliaStretch_Remiria": {
+    "NAME": "蕾米莉亚伸展",
+    "DESCRIPTION":
+    "在下回合结束对所有敌人造成 !D! 伤害,受 !M! 力量加成.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "本回合结束即触发."
+    ]
+  },
+  "ScarletDestiny": {
+    "NAME": "猩红幻想",
+    "DESCRIPTION":
+    "抽 !M! 张卡. 解封 你的所有手牌. 消耗 .",
+    "UPGRADE_DESCRIPTION":
+    "抽 !M! 张卡. 解封 你的所有手牌.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "保留."
+    ]
+  },
+  "Septette": {
+    "NAME": "七重奏",
+    "DESCRIPTION":
+    "抽卡直到你的手牌达到 !M! 张,本回合使你的手牌消费为0,你不能再抽卡. 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "你可以再抽卡."
+    ]
+  },
+  "StarOfDavid": {
+    "NAME": "大卫之星",
+    "DESCRIPTION":
+    "每回合开始时,选择至多 !M! 张手牌消耗,将等量的随机卡加入手牌并将它们 解封 .",
+    "UPGRADE_DESCRIPTION":
+    " 固有 .每回合开始时,选择至多 !M! 张手牌消耗,将等量的随机卡加入手牌并将它们 解封 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "立刻触发."
+    ]
+  },
+
+
+  "DemonsFork_Remiria": {
+    "NAME": "餐叉",
+    "DESCRIPTION":
+    "对所有敌人造成 !D! 伤害. 虚无 . 消耗 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "给予1血痕."
+    ]
+  },
+
+
+  "BloodyCatastrophe": {
+    "NAME": "血色悲剧",
+    "DESCRIPTION":
+    "将你的所有卡替换成随机卡,给予你等额的 血痕 .",
+    "UPGRADE_DESCRIPTION":
+    "将你的所有卡替换成 升级 的随机卡,给予你等额的 血痕 .",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "给予的卡 解封 ."
+    ]
+  },
+  "SuperhumanBloodyKnife": {
+    "NAME": "超人血刀",
+    "DESCRIPTION":
+    "造成 !D! 伤害,受场上所有 血痕 !M! 倍加成.若杀死目标,将目标的 血痕 等额给予所有单位.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "不会给予自己 血痕 .."
+    ]
+  },
+  "BloodyLaserofSeventeenArticles": {
+    "NAME": "血腥十七条之光",
+    "DESCRIPTION":
+    "造成 !D! 随机伤害 !M! 次.",
+    "EXTENDED_DESCRIPTION":[
+      "解封",
+      "每次伤害给予1层 血痕 ."
+    ]
+  },
+
+
+  "Lonely": {
+    "NAME": "孤独",
+    "DESCRIPTION":
+    "当你抽卡时,将此卡弃置."
+  }
+}

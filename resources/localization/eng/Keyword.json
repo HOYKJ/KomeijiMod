@@ -5,14 +5,14 @@
         "Graze",
         "graze"
       ],
-      "DESCRIPTION": "Dodge Damage."
+      "DESCRIPTION": "Dodge the next time you would lose HP."
     },
     {
       "NAMES": [
         "Spell Card Rule",
         "spell card rule"
       ],
-      "DESCRIPTION": "1.At the start of your turn, you could get SP card, it base on your #rp point. NL 2.The SP card you can get also base on the card in your hand. NL 3.All the SP card has #yExhaust and #yEthereal . NL 4.The rest of rule need yourself to find it out!"
+      "DESCRIPTION": "1.At the start of your turn, you could get SP card based on your #rp point. NL 2.The SP card you can get also decided by the card in your hand. NL 3.All the SP card has #yExhaust and #yEthereal . NL 4.The rest of rule need you to find it out!"
     },
     {
       "NAMES": [
@@ -26,28 +26,28 @@
         "Replace",
         "replace"
       ],
-      "DESCRIPTION": "This card need to Replace a particular card in your hand, it will back when this card be Exhausted."
+      "DESCRIPTION": "This card will Replace a particular card in your hand, effect last until this card is Exhausted."
     },
     {
       "NAMES": [
         "Echo",
         "echo"
       ],
-      "DESCRIPTION": "This card will add a copy to your hand when Exhausted"
+      "DESCRIPTION": "Add a copy of itself into your hand when it's Exhausted."
     },
     {
       "NAMES": [
         "Charge",
         "charge"
       ],
-      "DESCRIPTION": "This card would not work immediately when used,but you can choose the time to make it work."
+      "DESCRIPTION": "This card would not work immediately when used, but you can trigger it at anytime to make it work."
     },
     {
       "NAMES": [
         "Static",
         "static"
       ],
-      "DESCRIPTION": "Will never change."
+      "DESCRIPTION": "Will not be affected at all times."
     },
     {
       "NAMES": [
@@ -117,7 +117,7 @@
         "Extra Action",
         "extra action"
       ],
-      "DESCRIPTION": "Spear Doll: Deal 3 damage to a random enemy. Shield Doll: Gain 2 Block for you. Archer Doll: Every 2 Archer Doll will heal 1 HP for you."
+      "DESCRIPTION": "Spear Doll: Deal 4 damage to a random enemy. Shield Doll: Gain 2 Block for you. Archer Doll: heal 1 HP for you."
     },
     {
       "NAMES": [
@@ -131,28 +131,28 @@
         "Dimensity",
         "dimensity"
       ],
-      "DESCRIPTION": "When you play a Element Card, if you have the  #yDimensity with corresponding element,consume it/them, play this card again. (But won't produce or consume corresponding Element Orb)"
+      "DESCRIPTION": "When you play a Element Card, if you have the #yDimensity with corresponding element,consume it/them, play this card again and gain [E] . (But won't produce or consume corresponding Element Orb)"
     },
     {
       "NAMES": [
         "Purely Damage",
         "purely damage"
       ],
-      "DESCRIPTION": "Purely Damage will ignore target's Block,and won't be thorns."
+      "DESCRIPTION": "Purely Damage will ignore target's Block, and won't be affected by thorns."
     },
     {
       "NAMES": [
         "Blessing",
         "blessing"
       ],
-      "DESCRIPTION": "Blessing Card will  #yExhaust when it be drew,then works."
+      "DESCRIPTION": "Blessing Card will #yExhaust and works when it is drawn."
     },
     {
       "NAMES": [
         "Permanent",
         "permanent"
       ],
-      "DESCRIPTION": "If this card/relic is not in your deck/relic list, it will add to your deck/relic list,include next game. (only can be removed by special condition)"
+      "DESCRIPTION": "If this card/relic is not in your deck/relic list, it will add into your deck/relic list, including your next run. (It can be removed only by special condition)"
     },
     {
       "NAMES": [
@@ -166,7 +166,7 @@
         "Sticky Bubble",
         "sticky bubble"
       ],
-      "DESCRIPTION": "Its owner lose 1 Strength for each Sticky Bubble, take effect at the end of turn. NL reduce 1 at the start of turn."
+      "DESCRIPTION": "Its owner lose #b1 #yStrength for each Sticky Bubble, take effect at the end of turn. Reduce #b1 at the start of turn. If stacked more than #b4, its owner stun for #b1 turn."
     },
     {
       "NAMES": [
@@ -187,7 +187,35 @@
         "Activate",
         "activate"
       ],
-      "DESCRIPTION": "Right click to make it take effect"
+      "DESCRIPTION": "Right click to activate it."
+    },
+    {
+      "NAMES": [
+        "Abnormity",
+        "abnormity"
+      ],
+      "DESCRIPTION": "Its effect is unknown."
+    },
+    {
+      "NAMES": [
+        "Astrict",
+        "astrict"
+      ],
+      "DESCRIPTION": "If has other Abnormity, this Abnormity's effect will increase."
+    },
+    {
+      "NAMES": [
+        "Reserve",
+        "reserve"
+      ],
+      "DESCRIPTION": "If you don't have #yDoll to evoke, use a secondary effect instead."
+    },
+    {
+      "NAMES": [
+        "Nullify",
+        "nullify"
+      ],
+      "DESCRIPTION": "You can choose whether #yExhaust or not when use this card."
     }
     ]
 }

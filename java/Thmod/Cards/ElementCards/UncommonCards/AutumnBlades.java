@@ -24,7 +24,7 @@ public class AutumnBlades extends AbstractElementSweepCards {
 
     public AutumnBlades() {
         super("AutumnBlades", AutumnBlades.NAME,  2, AutumnBlades.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY,ElementType.Metal);
-        this.baseDamage = 8;
+        this.baseDamage = 16;
         this.isMultiDamage = true;
         this.baseMagicNumber = 2;
         this.magicNumber = baseMagicNumber;

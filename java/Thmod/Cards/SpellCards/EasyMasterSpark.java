@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 
 import Thmod.Cards.UncommonCards.NarrowSpark;
@@ -32,7 +33,7 @@ public class EasyMasterSpark extends AbstractSpellCards {
     public EasyMasterSpark() {
         super("EasyMasterSpark", EasyMasterSpark.NAME,  2, EasyMasterSpark.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 16;
-        this.baseMagicNumber = 6;
+        this.baseMagicNumber = 9;
         this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
         this.pointcost = 5;
@@ -43,6 +44,21 @@ public class EasyMasterSpark extends AbstractSpellCards {
         AbstractPlayer p = AbstractDungeon.player;
         if (p.hasPower("Strength")) {
             if (p.getPower("Strength").amount > 0) {
+                for (int i = 0; i < this.multiDamage.length; i++) {
+                    this.multiDamage[i] += (p.getPower("Strength").amount * (this.magicNumber - 1));
+                }
+                this.damage = this.multiDamage[0];
+                this.isDamageModified = true;
+            }
+        }
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.hasPower(StrengthPower.POWER_ID)) {
+            if (p.getPower(StrengthPower.POWER_ID).amount > 0) {
                 for (int i = 0; i < this.multiDamage.length; i++) {
                     this.multiDamage[i] += (p.getPower("Strength").amount * (this.magicNumber - 1));
                 }

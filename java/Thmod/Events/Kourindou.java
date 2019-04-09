@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Thmod.Relics.BookofPenglai;
+import Thmod.Relics.MiracleMallet;
 import Thmod.ThMod;
+import basemod.DevConsole;
 
 public class Kourindou extends AbstractImageEvent {
     public static final String ID = "Kourindou";
@@ -56,14 +58,14 @@ public class Kourindou extends AbstractImageEvent {
 
         for (int i = 0; i < relics.size(); i++) {
             this.choice = (relics.get(i));
-            if (this.choice.tier != AbstractRelic.RelicTier.STARTER){
+            if ((this.choice.tier != AbstractRelic.RelicTier.STARTER) && (!(this.choice instanceof BookofPenglai))){
                 this.noRelic = false;
                 break;
             }
             this.noRelic = true;
         }
 
-        if (p.gold > 100)
+        if (p.gold > 80)
             this.imageEventText.setDialogOption(OPTIONS[0]);
         else
             this.imageEventText.setDialogOption(OPTIONS[1], true);
@@ -87,6 +89,11 @@ public class Kourindou extends AbstractImageEvent {
                 default:
                     this.getRelic = AbstractDungeon.returnRandomRelic(AbstractRelic.RelicTier.COMMON);
                     break;
+            }
+            int roll = (MathUtils.random(99) + 1);
+            DevConsole.logger.info("roll:" + roll);
+            if(roll <= 17){
+                this.getRelic = new MiracleMallet();
             }
             this.imageEventText.setDialogOption(OPTIONS[2] + FontHelper.colorString(this.upCard.name, "r") + OPTIONS[3] + FontHelper.colorString(this.getRelic.name, "g") + OPTIONS[4],this.upCard.makeStatEquivalentCopy());
         } else
@@ -144,11 +151,12 @@ public class Kourindou extends AbstractImageEvent {
                         this.imageEventText.updateDialogOption(0, OPTIONS[12]);
                         this.imageEventText.clearRemainingOptions();
                         p.loseGold(100);
-                        AbstractDungeon.getCurrRoom().rewards.clear();
+                        //AbstractDungeon.getCurrRoom().rewards.clear();
                         AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(PotionHelper.getRandomPotion()));
                         AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(PotionHelper.getRandomPotion()));
                         AbstractDungeon.getCurrRoom().addCardToRewards();
                         AbstractDungeon.getCurrRoom().addCardToRewards();
+                        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                         break;
                     case 1:
                         this.screen = CurScreen.TAKED;
@@ -157,8 +165,9 @@ public class Kourindou extends AbstractImageEvent {
                         this.imageEventText.clearRemainingOptions();
                         AbstractDungeon.effectList.add(new PurgeCardEffect(this.upCard));
                         AbstractDungeon.player.masterDeck.removeCard(this.upCard);
-                        AbstractDungeon.getCurrRoom().rewards.clear();
+                        //AbstractDungeon.getCurrRoom().rewards.clear();
                         AbstractDungeon.getCurrRoom().addRelicToRewards(this.getRelic);
+                        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                         break;
                     case 2:
                         this.screen = CurScreen.TAKED;
@@ -192,7 +201,7 @@ public class Kourindou extends AbstractImageEvent {
                         this.imageEventText.updateDialogOption(0, OPTIONS[12]);
                         this.imageEventText.clearRemainingOptions();
                         p.loseRelic(this.choice.relicId);
-                        AbstractDungeon.getCurrRoom().rewards.clear();
+                        //AbstractDungeon.getCurrRoom().rewards.clear();
                         AbstractDungeon.getCurrRoom().addGoldToRewards(this.getCoin);
                         AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                         break;

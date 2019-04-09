@@ -1,5 +1,6 @@
 package Thmod.Cards;
 
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 
 import Thmod.Actions.common.AddNewOrbAction;
 import Thmod.Actions.unique.ChooseAction;
+import Thmod.Cards.DeriveCards.ArcherDoll;
+import Thmod.Cards.DeriveCards.ShieldDoll;
+import Thmod.Cards.DeriveCards.SpearDoll;
 import Thmod.Orbs.TateNingyou;
 import Thmod.Orbs.YariNingyou;
 import Thmod.Orbs.YumiNingyou;
@@ -27,12 +31,12 @@ public class NingyouFukuhei extends AbstractSweepCards {
     private static final int COST = 1;
 
     public NingyouFukuhei() {
-        super("NingyouFukuhei", NingyouFukuhei.NAME,  1, NingyouFukuhei.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super("NingyouFukuhei", NingyouFukuhei.NAME,  1, NingyouFukuhei.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE, CardSet_k.ALICE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         final ChooseAction choice = new ChooseAction(this, m, NingyouFukuhei.EXTENDED_DESCRIPTION[0],false, 1);
-        choice.add(NingyouFukuhei.EXTENDED_DESCRIPTION[1], NingyouFukuhei.EXTENDED_DESCRIPTION[2], () -> {
+        choice.add(new SpearDoll(), () -> {
             int EmptyNum = 0;
             for(int i = 0;i < p.orbs.size();i++){
                 if(p.orbs.get(i) instanceof EmptyOrbSlot)
@@ -43,10 +47,10 @@ public class NingyouFukuhei extends AbstractSweepCards {
                 AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
             }
             else {
-                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",1));
+                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this, NingyouFukuhei.EXTENDED_DESCRIPTION[0],1));
             }
         });
-        choice.add(NingyouFukuhei.EXTENDED_DESCRIPTION[3], NingyouFukuhei.EXTENDED_DESCRIPTION[4], () -> {
+        choice.add(new ShieldDoll(), () -> {
             int EmptyNum = 0;
             for(int i = 0;i < p.orbs.size();i++){
                 if(p.orbs.get(i) instanceof EmptyOrbSlot)
@@ -57,10 +61,10 @@ public class NingyouFukuhei extends AbstractSweepCards {
                 AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
             }
             else {
-                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",2));
+                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this, NingyouFukuhei.EXTENDED_DESCRIPTION[0],2));
             }
         });
-        choice.add(NingyouFukuhei.EXTENDED_DESCRIPTION[5], NingyouFukuhei.EXTENDED_DESCRIPTION[6], () -> {
+        choice.add(new ArcherDoll(), () -> {
             int EmptyNum = 0;
             for(int i = 0;i < p.orbs.size();i++){
                 if(p.orbs.get(i) instanceof EmptyOrbSlot)
@@ -71,10 +75,19 @@ public class NingyouFukuhei extends AbstractSweepCards {
                 AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
             }
             else {
-                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this,"选择1个人偶进行替换",3));
+                AbstractDungeon.actionManager.addToBottom(new AddNewOrbAction(this, NingyouFukuhei.EXTENDED_DESCRIPTION[0],3));
             }
         });
         AbstractDungeon.actionManager.addToBottom(choice);
+
+        final ChooseAction choice2 = new ChooseAction(this, m, NingyouFukuhei.EXTENDED_DESCRIPTION[1],false, 1);
+        choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2],NingyouFukuhei.EXTENDED_DESCRIPTION[3], () -> {
+            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, p.discardPile));
+        });
+        choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2],NingyouFukuhei.EXTENDED_DESCRIPTION[4], () -> {
+
+        });
+        AbstractDungeon.actionManager.addToBottom(choice2);
     }
 
     @Override

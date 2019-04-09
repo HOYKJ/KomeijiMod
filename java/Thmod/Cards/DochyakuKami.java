@@ -3,6 +3,7 @@ package Thmod.Cards;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.vfx.combat.RoomTintEffect;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.unique.ChooseAction;
 import Thmod.Power.Abnormal.BlueAbnormity;
 import Thmod.Power.Abnormal.GreenAbnormity;
 import Thmod.Power.Abnormal.RedAbnormity;
@@ -27,8 +29,7 @@ public class DochyakuKami extends AbstractSweepCards {
     private static final int COST = 0;
 
     public DochyakuKami() {
-        super("DochyakuKami", DochyakuKami.NAME,  0, DochyakuKami.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
-        this.exhaust = true;
+        super("DochyakuKami", DochyakuKami.NAME,  0, DochyakuKami.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.SUWAKO);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

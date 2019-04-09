@@ -36,12 +36,14 @@ public class CampfireSweepEffect extends AbstractGameEffect
     private AbstractCard chosencard;
     private Color screenColor = AbstractDungeon.fadeColor.cpy();
     private CardGroup sweepCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    private int healAmt;
 
-    public CampfireSweepEffect()
+    public CampfireSweepEffect(int healAmt)
     {
         this.duration = 2.5F;
         this.screenColor.a = 0F;
         AbstractDungeon.overlayMenu.proceedButton.hide();
+        this.healAmt = healAmt;
     }
 
     public void update()
@@ -91,6 +93,7 @@ public class CampfireSweepEffect extends AbstractGameEffect
                 CardCrawlGame.metricData.addCampfireChoiceData("SWEEP", c.getMetricID());
                 AbstractDungeon.player.masterDeck.removeCard(this.chosencard);
                 AbstractDungeon.effectsQueue.add(new ShowCardAndObtainEffect(c, (float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2)));
+                AbstractDungeon.player.heal(this.healAmt, false);
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             this.selectedSweepCard = true;

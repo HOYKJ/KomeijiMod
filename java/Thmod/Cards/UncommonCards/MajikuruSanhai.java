@@ -24,14 +24,17 @@ public class MajikuruSanhai extends AbstractSweepCards {
     private static final int COST = 1;
 
     public MajikuruSanhai() {
-        super("MajikuruSanhai", MajikuruSanhai.NAME,  1, MajikuruSanhai.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super("MajikuruSanhai", MajikuruSanhai.NAME,  1, MajikuruSanhai.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, CardSet_k.MARISA);
+        this.baseMagicNumber = 16;
+        this.magicNumber = this.baseMagicNumber;
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, 15, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             }
         }
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new Dazed(), 1));

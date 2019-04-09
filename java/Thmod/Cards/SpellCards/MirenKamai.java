@@ -24,7 +24,7 @@ public class MirenKamai extends AbstractSpellCards {
 
     public MirenKamai() {
         super("MirenKamai", MirenKamai.NAME,  1, MirenKamai.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseMagicNumber = 5;
+        this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 3;
     }

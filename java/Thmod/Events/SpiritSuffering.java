@@ -8,11 +8,14 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 import Thmod.Cards.BlessingCards.Determination;
 import Thmod.Cards.Curses.Confused;
 import Thmod.Characters.KomeijiSatori;
+import Thmod.Characters.RemiriaScarlet;
+import Thmod.Events.Remiria.SpiritSufferingRemi;
 import Thmod.ThMod;
 
 public class SpiritSuffering extends AbstractImageEvent {
@@ -41,6 +44,15 @@ public class SpiritSuffering extends AbstractImageEvent {
         else
             this.imageEventText.setDialogOption(OPTIONS[2],true);
         this.imageEventText.setDialogOption(OPTIONS[1], CardLibrary.getCopy("Confused"));
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
+        if((AbstractDungeon.player != null) && (AbstractDungeon.player instanceof RemiriaScarlet)){
+            AbstractDungeon.getCurrRoom().event = new SpiritSufferingRemi();
+            AbstractDungeon.getCurrRoom().event.onEnterRoom();
+        }
     }
 
     protected void buttonEffect(int buttonPressed) {

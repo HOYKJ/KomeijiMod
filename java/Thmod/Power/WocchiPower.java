@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.EntanglePower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
@@ -45,15 +46,30 @@ public class WocchiPower extends AbstractPower {
             CardCrawlGame.music.silenceTempBgmInstantly();
 //        else
             CardCrawlGame.music.silenceBGMInstantly();
-        AbstractDungeon.actionManager.addToTop(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY,true), 2F));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY,true), 2F));
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new TimeLockPower(target)));
             }
         }
-        if (!(this.sekai))
+        if (!(this.sekai)) {
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new EntanglePower(AbstractDungeon.player)));
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                    AbstractPower removePower = null;
+                    for(AbstractPower power : target.powers){
+                        if(power instanceof ArtifactPower){
+                            removePower = power;
+                        }
+                    }
+                    if(removePower != null){
+                        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(target, target, removePower));
+                    }
+                }
+            }
+        }
         AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p,p,"WocchiPower"));
         //this.done = true;
     }

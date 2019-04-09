@@ -20,6 +20,7 @@ import Thmod.Cards.ElementCards.SpellCards.ElementExtend;
 import Thmod.Cards.ElementCards.SpellCards.ElementInflux;
 import Thmod.Cards.ElementCards.SpellCards.JellyfishPrincess;
 import Thmod.Cards.ItemCards.ByoukiHeiyu;
+import Thmod.Cards.ItemCards.FusyokuKusuri;
 import Thmod.Cards.ItemCards.HisouNoKenItem;
 import Thmod.Cards.ItemCards.IbukiHisyaku;
 import Thmod.Cards.ItemCards.MajikkuPosyun;
@@ -70,23 +71,31 @@ import Thmod.Cards.SpellCards.SenseofCherryBlossom;
 import Thmod.Cards.SpellCards.SpeartheGungnir;
 import Thmod.Cards.SpellCards.TaihouKen;
 import Thmod.Cards.SpellCards.TaihouTsuigeki;
+import Thmod.Cards.SpellCards.TatariKami;
 import Thmod.Cards.SpellCards.TenkeiKisyou;
 import Thmod.Cards.SpellCards.TripWire;
 import Thmod.Cards.SpellCards.YomeiIkubaku;
+import Thmod.Cards.UncommonCards.SenseofElegance;
 import Thmod.Power.PointPower;
 import Thmod.Relics.SpellCardsRule;
 import Thmod.ThMod;
 import Thmod.Utils;
 import basemod.DevConsole;
 
+import static Thmod.ThMod.masterSpellCard;
+import static Thmod.ThMod.masterSpellCardFor2;
+import static Thmod.ThMod.masterSpellCardFor3;
+import static Thmod.ThMod.masterSpellCardFor5;
+import static Thmod.ThMod.soulSpellCard;
+import static Thmod.ThMod.soulSpellCardFor2;
+import static Thmod.ThMod.soulSpellCardFor3;
+import static Thmod.ThMod.soulSpellCardFor5;
+
 public class CardSelectAction extends AbstractGameAction
 {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("CardSelectAction");
     public static final String[] TEXT = uiStrings.TEXT;
-    private static final float startingDuration = 0.5f;
     private boolean random;
-    private static final boolean ALLOW_DUPLICATES = false;
-    private static final boolean CHOOSE_FROM_ALL = false;
     private boolean cardOffset;
     private ArrayList<AbstractCard> cardsToShuffle;
     private static CardGroup SpellCards;
@@ -103,34 +112,32 @@ public class CardSelectAction extends AbstractGameAction
         this.cardid = cardid;
         this.cardsToShuffle = new ArrayList<>();
         if (this.powercount >= 1){
-            (CardSelectAction.SpellCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED)).addToTop(new ReiGeki());
-            CardSelectAction.SpellCards.addToTop(new MajikkuPosyun());
-            CardSelectAction.SpellCards.addToTop(new SutoppuWocchi());
-            CardSelectAction.SpellCards.addToTop(new SaSen());
-            CardSelectAction.SpellCards.addToTop(new ByoukiHeiyu());
-//            CardSelectAction.SpellCards.addToTop(new FusyokuKusuri());
-            CardSelectAction.SpellCards.addToTop(new HisouNoKenItem());
-            CardSelectAction.SpellCards.addToTop(new IbukiHisyaku());
-            CardSelectAction.SpellCards.addToTop(new Namazu());
-            CardSelectAction.SpellCards.addToTop(new RyuuSei());
-            CardSelectAction.SpellCards.addToTop(new SanbutsuTenmizu());
-            CardSelectAction.SpellCards.addToTop(new SeigyoBou());
+            CardSelectAction.SpellCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            for(AbstractCard card : masterSpellCard.group) {
+                CardSelectAction.SpellCards.addToTop(card.makeCopy());
+            }
         }
         if (this.powercount >= 2){
-            CardSelectAction.SpellCards.addToTop(new Kamaitachi());
+            for(AbstractCard card : masterSpellCardFor2.group) {
+                CardSelectAction.SpellCards.addToTop(card.makeCopy());
+            }
         }
         if (this.powercount >= 3){
-            CardSelectAction.SpellCards.addToTop(new KokushiMusou());
-            if(!(SpellCardsRule.HangongUsed))
-                CardSelectAction.SpellCards.addToTop(new HangonChyou(SpellCardsRule.Hangongnum));
+            for(AbstractCard card : masterSpellCardFor3.group) {
+                if(card instanceof HangonChyou) {
+                    if (!(SpellCardsRule.HangongUsed)) {
+                        CardSelectAction.SpellCards.addToTop(new HangonChyou(SpellCardsRule.Hangongnum));
+                    }
+                }
+                else {
+                    CardSelectAction.SpellCards.addToTop(card.makeCopy());
+                }
+            }
         }
         if (this.powercount >= 5){
-            CardSelectAction.SpellCards.addToTop(new YomeiIkubaku());
-            CardSelectAction.SpellCards.addToTop(new FusekiShinmei());
-            CardSelectAction.SpellCards.addToTop(new RokkonShyoujyou());
-            CardSelectAction.SpellCards.addToTop(new BurariHaieki());
-            CardSelectAction.SpellCards.addToTop(new DaiesanShikkaiKoroshi());
-            CardSelectAction.SpellCards.addToTop(new GensouFuubi());
+            for(AbstractCard card : masterSpellCardFor5.group) {
+                CardSelectAction.SpellCards.addToTop(card.makeCopy());
+            }
         }
         if ((this.powercount >= 1) && (this.cardid.size() > 0)){
             for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext();) {
@@ -145,8 +152,10 @@ public class CardSelectAction extends AbstractGameAction
                 AbstractCard Cardid = (AbstractCard) localIterator.next();
                 if ((Cardid.cardID.equals("KeiseiJin")) || (Cardid.cardID.equals("KinbakuJin")) || (Cardid.cardID.equals("JyouchiJin"))) {
                     CardSelectAction.SpellCards.addToTop(new FuumaJin());
+                    CardSelectAction.SpellCards.addToTop(new FuumaJin());
                 }
                 if (Cardid.cardID.equals("DemonsDinnerFork")) {
+                    CardSelectAction.SpellCards.addToTop(new HeartBreak());
                     CardSelectAction.SpellCards.addToTop(new HeartBreak());
                 }
             }
@@ -156,17 +165,22 @@ public class CardSelectAction extends AbstractGameAction
                 AbstractCard Cardid = (AbstractCard) localIterator.next();
                 if (Cardid.cardID.equals("Sabishigari")) {
                     CardSelectAction.SpellCards.addToTop(new MirenKamai());
+                    CardSelectAction.SpellCards.addToTop(new MirenKamai());
                 }
                 if (Cardid.cardID.equals("NarrowSpark")) {
+                    CardSelectAction.SpellCards.addToTop(new FinalSpark());
                     CardSelectAction.SpellCards.addToTop(new FinalSpark());
                 }
                 if (Cardid.cardID.equals("SeishiRoten")) {
                     CardSelectAction.SpellCards.addToTop(new EnshinRoten(false));
+                    CardSelectAction.SpellCards.addToTop(new EnshinRoten(false));
                 }
                 if (Cardid.cardID.equals("KokorosuKi")) {
                     CardSelectAction.SpellCards.addToTop(new SakuraHirame());
+                    CardSelectAction.SpellCards.addToTop(new SakuraHirame());
                 }
                 if (Cardid.cardID.equals("KouPou")) {
+                    CardSelectAction.SpellCards.addToTop(new TaihouKen());
                     CardSelectAction.SpellCards.addToTop(new TaihouKen());
                 }
             }
@@ -176,32 +190,42 @@ public class CardSelectAction extends AbstractGameAction
                 AbstractCard Cardid = (AbstractCard) localIterator.next();
                 if ((Cardid.cardID.equals("KeiseiJin")) || (Cardid.cardID.equals("KinbakuJin")) || (Cardid.cardID.equals("JyouchiJin"))) {
                     CardSelectAction.SpellCards.addToTop(new HappouKibaku());
+                    CardSelectAction.SpellCards.addToTop(new HappouKibaku());
                 }
                 if (Cardid.cardID.equals("RikonNoKama")) {
+                    CardSelectAction.SpellCards.addToTop(new SeikonRyuuri());
                     CardSelectAction.SpellCards.addToTop(new SeikonRyuuri());
                 }
                 if (Cardid.cardID.equals("VampireKiss")) {
                     CardSelectAction.SpellCards.addToTop(new Mireniamu());
+                    CardSelectAction.SpellCards.addToTop(new Mireniamu());
                 }
                 if (Cardid.cardID.equals("MusuNoYume")) {
+                    CardSelectAction.SpellCards.addToTop(new MusuNoTegata());
                     CardSelectAction.SpellCards.addToTop(new MusuNoTegata());
                 }
                 if (Cardid.cardID.equals("HenyouMirume")) {
                     CardSelectAction.SpellCards.addToTop(new RapurasuNoMa());
+                    CardSelectAction.SpellCards.addToTop(new RapurasuNoMa());
                 }
                 if (Cardid.cardID.equals("MissingPower")) {
+                    CardSelectAction.SpellCards.addToTop(new MissingPurplePower());
                     CardSelectAction.SpellCards.addToTop(new MissingPurplePower());
                 }
                 if (Cardid.cardID.equals("KoKei")) {
                     CardSelectAction.SpellCards.addToTop(new MoukoNaikei());
+                    CardSelectAction.SpellCards.addToTop(new MoukoNaikei());
                 }
                 if (Cardid.cardID.equals("MajikuruSanhai")) {
+                    CardSelectAction.SpellCards.addToTop(new DeepEcologicalBomb());
                     CardSelectAction.SpellCards.addToTop(new DeepEcologicalBomb());
                 }
                 if (Cardid.cardID.equals("DemonsDinnerFork")) {
                     CardSelectAction.SpellCards.addToTop(new SpeartheGungnir());
+                    CardSelectAction.SpellCards.addToTop(new SpeartheGungnir());
                 }
                 if (Cardid.cardID.equals("HisouTensoku")) {
+                    CardSelectAction.SpellCards.addToTop(new TenkeiKisyou());
                     CardSelectAction.SpellCards.addToTop(new TenkeiKisyou());
                 }
             }
@@ -211,27 +235,39 @@ public class CardSelectAction extends AbstractGameAction
                 AbstractCard Cardid = (AbstractCard) localIterator.next();
                 if (Cardid.cardID.equals("DamonLordCradle")) {
                     CardSelectAction.SpellCards.addToTop(new DraculaCradle());
+                    CardSelectAction.SpellCards.addToTop(new DraculaCradle());
                 }
                 if (Cardid.cardID.equals("NarrowSpark")) {
+                    CardSelectAction.SpellCards.addToTop(new EasyMasterSpark());
                     CardSelectAction.SpellCards.addToTop(new EasyMasterSpark());
                 }
                 if (Cardid.cardID.equals("KouPou")) {
                     CardSelectAction.SpellCards.addToTop(new TaihouTsuigeki());
+                    CardSelectAction.SpellCards.addToTop(new TaihouTsuigeki());
                 }
                 if (Cardid.cardID.equals("SenseofElegance")) {
-                    CardSelectAction.SpellCards.addToTop(new SenseofCherryBlossom(Cardid.timesUpgraded));
+                    CardSelectAction.SpellCards.addToTop(new SenseofCherryBlossom(Cardid.timesUpgraded, ((SenseofElegance)Cardid).extraEffect, ((SenseofElegance)Cardid).remainEffect));
+                    CardSelectAction.SpellCards.addToTop(new SenseofCherryBlossom(Cardid.timesUpgraded, ((SenseofElegance)Cardid).extraEffect, ((SenseofElegance)Cardid).remainEffect));
                 }
                 if (Cardid.cardID.equals("MusouMyousyu")) {
+                    CardSelectAction.SpellCards.addToTop(new MusouTensei());
                     CardSelectAction.SpellCards.addToTop(new MusouTensei());
                 }
                 if (Cardid.cardID.equals("LunaDial")) {
                     CardSelectAction.SpellCards.addToTop(new SakuyaNoSekai());
+                    CardSelectAction.SpellCards.addToTop(new SakuyaNoSekai());
                 }
                 if (Cardid.cardID.equals("WumiGaWareru")) {
+                    CardSelectAction.SpellCards.addToTop(new MoozeNoKiseki());
                     CardSelectAction.SpellCards.addToTop(new MoozeNoKiseki());
                 }
                 if (Cardid.cardID.equals("TerribleSouvenir")) {
                     CardSelectAction.SpellCards.addToTop(new KyoufuSaimin());
+                    CardSelectAction.SpellCards.addToTop(new KyoufuSaimin());
+                }
+                if ((Cardid.cardID.equals("Agarareta")) || (Cardid.cardID.equals("DochyakuKami"))) {
+                    CardSelectAction.SpellCards.addToTop(new TatariKami());
+                    CardSelectAction.SpellCards.addToTop(new TatariKami());
                 }
             }
         }
@@ -276,9 +312,9 @@ public class CardSelectAction extends AbstractGameAction
                     if (Cardid.cardID.equals("TripWire")) {
                         CardSelectAction.SpellCards.addToTop(new TripWire());
                     }
-                    if(AbstractDungeon.player.orbs.size() >= 2)
-                        CardSelectAction.SpellCards.addToTop(new FocusManipulate());
                 }
+                if(AbstractDungeon.player.orbs.size() >= 2)
+                    CardSelectAction.SpellCards.addToTop(new FocusManipulate());
             }
             if ((this.powercount >= 3) && (this.cardid.size() > 0)) {
                 for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
@@ -308,8 +344,8 @@ public class CardSelectAction extends AbstractGameAction
             if ((this.powercount >= 5) && (this.cardid.size() > 0)) {
                 for (Iterator localIterator = this.cardid.iterator(); localIterator.hasNext(); ) {
                     AbstractCard Cardid = (AbstractCard) localIterator.next();
-                    if (Cardid.cardID.equals("TripWire")) {
-                        CardSelectAction.SpellCards.addToTop(new TripWire());
+                    if (Cardid.cardID.equals("LemmingsParade")) {
+                        CardSelectAction.SpellCards.addToTop(new LemmingsParade());
                     }
                 }
             }
@@ -362,7 +398,7 @@ public class CardSelectAction extends AbstractGameAction
             if (this.random) {
                 this.cardsToShuffle = getRandomSpellCards(this.amount, false);
                 SpellCardsRule.selected = true;
-                this.cardselect();
+                this.cardSelect();
             }
             else {
                 if (AbstractDungeon.cardRewardScreen.codexCard != null) {
@@ -390,13 +426,13 @@ public class CardSelectAction extends AbstractGameAction
                     return;
                 }
                 SpellCardsRule.clicked = false;
-                this.cardselect();
+                this.cardSelect();
             }
         }
         this.tickDuration();
     }
 
-    private void cardselect() {
+    private void cardSelect() {
         final boolean randomSpot = true;
         boolean canRep = false;
         boolean given = false;

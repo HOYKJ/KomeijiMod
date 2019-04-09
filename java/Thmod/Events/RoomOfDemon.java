@@ -3,7 +3,6 @@ package Thmod.Events;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,23 +11,19 @@ import com.megacrit.cardcrawl.events.RoomEventDialog;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.vfx.campfire.CampfireSleepScreenCoverEffect;
 import com.megacrit.cardcrawl.vfx.scene.LightFlareMEffect;
-
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Thmod.Cards.Agarareta;
-import Thmod.Power.FetterPower;
+import Thmod.Characters.RemiriaScarlet;
+import Thmod.Events.Remiria.RoomOfDemonRemi;
 import Thmod.Relics.SpellCardsRule;
-import Thmod.Relics.SteinsOfFate;
 import Thmod.Relics.ThirstyCross;
+import Thmod.ThMod;
 import Thmod.vfx.RedFogCoverEffect;
-import Thmod.vfx.RedFogEffect;
 import Thmod.vfx.scene.CeremonialTorchEffect;
 import Thmod.vfx.scene.TorchUnactivated;
-import basemod.DevConsole;
 
 public class RoomOfDemon extends AbstractEvent {
     public static final String ID = "RoomOfDemon";
@@ -41,7 +36,7 @@ public class RoomOfDemon extends AbstractEvent {
     private float y = AbstractDungeon.floorY;
     public static boolean enemyAppear = false;
     private CurScreen screen = CurScreen.INTRO;
-    private ArrayList<CeremonialTorchEffect> torches = new ArrayList();
+    private ArrayList<CeremonialTorchEffect> torches = new ArrayList<>();
     private boolean battleStart = false;
     private boolean raedDone = false;
     private boolean extractDone = false;
@@ -52,11 +47,22 @@ public class RoomOfDemon extends AbstractEvent {
     private Texture adventurerImg3;
 
 
-    private static enum CurScreen
+    private enum CurScreen
     {
         INTRO,  READ,  CROSS,ESCAPE;
 
-        private CurScreen() {}
+        CurScreen() {}
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
+        if((AbstractDungeon.player != null) && (AbstractDungeon.player instanceof RemiriaScarlet)){
+            RoomEventDialog.optionList.clear();
+            ThMod.logger.info("Replace Event");
+            AbstractDungeon.getCurrRoom().event = new RoomOfDemonRemi();
+            AbstractDungeon.getCurrRoom().event.onEnterRoom();
+        }
     }
 
     public void update() {

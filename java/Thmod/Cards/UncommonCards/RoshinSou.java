@@ -2,6 +2,7 @@ package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -23,14 +24,16 @@ public class RoshinSou extends AbstractSweepCards {
     private static final int DAMAGE_AMT = 15;
 
     public RoshinSou() {
-        super("RoshinSou", RoshinSou.NAME,  2, RoshinSou.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super("RoshinSou", RoshinSou.NAME,  2, RoshinSou.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, CardSet_k.TENSHI);
         this.baseDamage = 15;
+        this.baseBlock = 3;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping)) && (!(target.hasPower("Flight")))) {
+                AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
                 AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             }
         }

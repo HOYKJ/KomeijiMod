@@ -21,7 +21,7 @@ public class Demotivation extends AbstractKomeijiCards {
     private static final int COST = 0;
 
     public Demotivation() {
-        super("Demotivation", Demotivation.NAME,  0, Demotivation.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super("Demotivation", Demotivation.NAME,  0, Demotivation.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.REISEN);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

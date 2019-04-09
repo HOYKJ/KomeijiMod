@@ -22,7 +22,7 @@ public class KochyouYume extends AbstractKomeijiCards{
     private static final int ATTACK_DMG= 6;
 
     public KochyouYume() {
-        super("KochyouYume", KochyouYume.NAME,  2, KochyouYume.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
+        super("KochyouYume", KochyouYume.NAME,  2, KochyouYume.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY, CardSet_k.YUYUKO);
         this.baseDamage = 6;
     }
 

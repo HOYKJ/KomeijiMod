@@ -23,7 +23,7 @@ public class SelfTokamak extends AbstractKomeijiCards {
     private static final int ENERGY_AMT = 2;
 
     public SelfTokamak() {
-        super("SelfTokamak", SelfTokamak.NAME,  0, SelfTokamak.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super("SelfTokamak", SelfTokamak.NAME,  0, SelfTokamak.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.UTSUHO);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;

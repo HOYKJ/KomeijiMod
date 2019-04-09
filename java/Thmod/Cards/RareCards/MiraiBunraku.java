@@ -20,7 +20,7 @@ public class MiraiBunraku extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public MiraiBunraku() {
-        super("MiraiBunraku", MiraiBunraku.NAME,  1, MiraiBunraku.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+        super("MiraiBunraku", MiraiBunraku.NAME,  1, MiraiBunraku.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE, CardSet_k.ALICE);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }

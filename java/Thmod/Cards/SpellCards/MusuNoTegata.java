@@ -21,7 +21,7 @@ public class MusuNoTegata extends AbstractSpellCards {
 
     public MusuNoTegata() {
         super("MusuNoTegata", MusuNoTegata.NAME,  1, MusuNoTegata.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseMagicNumber = 32;
+        this.baseMagicNumber = 45;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;
     }

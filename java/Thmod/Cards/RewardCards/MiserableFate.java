@@ -21,7 +21,7 @@ public class MiserableFate extends AbstractKomeijiCards {
     private static final int COST = 2;
 
     public MiserableFate() {
-        super("MiserableFate", MiserableFate.NAME,  2, MiserableFate.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ENEMY);
+        super("MiserableFate", MiserableFate.NAME,  2, MiserableFate.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ENEMY, CardSet_k.OTHER);
         this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;

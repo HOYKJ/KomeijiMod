@@ -1,6 +1,7 @@
 package Thmod.Cards.UncommonCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.EntanglePower;
 
 import java.util.ArrayList;
 
@@ -23,12 +25,25 @@ public class KouPou extends AbstractSweepCards {
     private static final int DAMAGE_AMT = 10;
 
     public KouPou() {
-        super("KouPou", KouPou.NAME,  1, KouPou.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseDamage = 10;
+        super("KouPou", KouPou.NAME,  1, KouPou.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, CardSet_k.MEIRIN);
+        this.baseDamage = 24;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EntanglePower(p)));
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m)
+    {
+        boolean canUse = super.canUse(p, m);
+        if (!canUse) {
+            return false;
+        }
+        if(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() > 0){
+            canUse = false;
+        }
+        return canUse;
     }
 
     @Override

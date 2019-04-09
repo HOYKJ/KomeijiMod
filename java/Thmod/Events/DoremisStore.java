@@ -109,7 +109,7 @@ public class DoremisStore extends AbstractImageEvent {
                                 retVal.group.add(card);
                             }
                         }
-                        AbstractDungeon.gridSelectScreen.open(retVal, 1, OPTIONS[3], false, false, false, true);
+                        AbstractDungeon.gridSelectScreen.open(retVal, 1, OPTIONS[7], false, false, false, true);
                         this.cardSelect = true;
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
                         this.imageEventText.updateDialogOption(0, OPTIONS[1]);

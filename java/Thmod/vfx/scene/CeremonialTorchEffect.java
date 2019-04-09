@@ -74,50 +74,7 @@ public class CeremonialTorchEffect  extends AbstractGameEffect
         this.hb.update();
         if ((this.hb.hovered) && (InputHelper.justClickedLeft) && (!(this.size == TorchSize.M)))
         {
-            this.activated = (!this.activated);
-            if (this.activated) {
-                if (((num1 == 0) && ((num2 == 2) || (num2 == 6)))
-                        || ((num1 == 1) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
-                        || ((num1 == 2) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
-                        || ((num1 == 3) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
-                        || ((num1 == 4) && ((num2 == 0) || (num2 == 2) || (num2 == 6) || (num2 == 8)))
-                        || ((num1 == 5) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
-                        || ((num1 == 6) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
-                        || ((num1 == 7) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
-                        || ((num1 == 8) && ((num2 == 2) || (num2 == 6)))){
-                    if(this.started) {
-//                        CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
-                        CardCrawlGame.sound.play("Fire_Remnant2");
-                    }
-                    else
-                        CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
-                }
-                else
-                    CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
-            } else {
-//                if (((num1 == 0) && ((num2 == 2) || (num2 == 6)))
-//                    || ((num1 == 1) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
-//                    || ((num1 == 2) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
-//                    || ((num1 == 3) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
-//                    || ((num1 == 4) && ((num2 == 0) || (num2 == 2) || (num2 == 6) || (num2 == 8)))
-//                    || ((num1 == 5) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
-//                    || ((num1 == 6) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
-//                    || ((num1 == 7) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
-//                    || ((num1 == 8) && ((num2 == 2) || (num2 == 6)))){
-//                if(this.started) {
-////                        CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
-//                    CardCrawlGame.sound.play("Fire_Remnant2");
-//                }
-//                else
-//                    CardCrawlGame.sound.playA("ATTACK_FIRE", -0.4F);
-//            }
-//            else
-                CardCrawlGame.sound.playA("ATTACK_FIRE", -0.4F);
-            }
-            if(this.started) {
-                SpellCardsRule.torchLight.set(((this.num1 * 9) + this.num2), (!(SpellCardsRule.torchLight.get(((this.num1 * 9) + this.num2)))));
-                AbstractDungeon.effectsQueue.add(new CeremonyAction());
-            }
+            setActivated(true);
         }
         if (this.activated)
         {
@@ -150,6 +107,63 @@ public class CeremonialTorchEffect  extends AbstractGameEffect
         if(sound)
             CardCrawlGame.sound.playA("ATTACK_FIRE", -0.4F);
         SpellCardsRule.torchLight.add(false);
+    }
+
+    public void setActivated(boolean sound){
+        this.activated = (!this.activated);
+        if (this.activated) {
+            if (((num1 == 0) && ((num2 == 2) || (num2 == 6)))
+                    || ((num1 == 1) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
+                    || ((num1 == 2) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
+                    || ((num1 == 3) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
+                    || ((num1 == 4) && ((num2 == 0) || (num2 == 2) || (num2 == 6) || (num2 == 8)))
+                    || ((num1 == 5) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
+                    || ((num1 == 6) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
+                    || ((num1 == 7) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
+                    || ((num1 == 8) && ((num2 == 2) || (num2 == 6)))){
+                if(this.started) {
+//                        CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
+                    if(sound) {
+                        CardCrawlGame.sound.play("Fire_Remnant2");
+                    }
+                }
+                else {
+                    if(sound) {
+                        CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
+                    }
+                }
+            }
+            else {
+                if(sound) {
+                    CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
+                }
+            }
+        } else {
+//                if (((num1 == 0) && ((num2 == 2) || (num2 == 6)))
+//                    || ((num1 == 1) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
+//                    || ((num1 == 2) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
+//                    || ((num1 == 3) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
+//                    || ((num1 == 4) && ((num2 == 0) || (num2 == 2) || (num2 == 6) || (num2 == 8)))
+//                    || ((num1 == 5) && ((num2 == 1) || (num2 == 2) || (num2 == 6) || (num2 == 7)))
+//                    || ((num1 == 6) && ((num2 == 2) || (num2 == 3) || (num2 == 4) || (num2 == 5) || (num2 == 6)))
+//                    || ((num1 == 7) && ((num2 == 2) || (num2 == 3) || (num2 == 5) || (num2 == 6)))
+//                    || ((num1 == 8) && ((num2 == 2) || (num2 == 6)))){
+//                if(this.started) {
+////                        CardCrawlGame.sound.playA("ATTACK_FIRE", 0.4F);
+//                    CardCrawlGame.sound.play("Fire_Remnant2");
+//                }
+//                else
+//                    CardCrawlGame.sound.playA("ATTACK_FIRE", -0.4F);
+//            }
+//            else
+            if(sound) {
+                CardCrawlGame.sound.playA("ATTACK_FIRE", -0.4F);
+            }
+        }
+        if(this.started) {
+            SpellCardsRule.torchLight.set(((this.num1 * 9) + this.num2), (!(SpellCardsRule.torchLight.get(((this.num1 * 9) + this.num2)))));
+            AbstractDungeon.effectsQueue.add(new CeremonyAction());
+        }
     }
 
     public void midUnactivated(){

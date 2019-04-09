@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
 
 import Thmod.Cards.UncommonCards.NarrowSpark;
@@ -32,7 +33,7 @@ public class FinalSpark extends AbstractSpellCards {
     public FinalSpark() {
         super("FinalSpark", FinalSpark.NAME,  2, FinalSpark.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 12;
-        this.baseMagicNumber = 5;
+        this.baseMagicNumber = 7;
         this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
         this.pointcost = 3;
@@ -41,8 +42,23 @@ public class FinalSpark extends AbstractSpellCards {
     public void calculateCardDamage(AbstractMonster mo){
         super.calculateCardDamage(mo);
         AbstractPlayer p = AbstractDungeon.player;
-        if (p.hasPower("Strength")) {
-            if (p.getPower("Strength").amount > 0) {
+        if (p.hasPower(StrengthPower.POWER_ID)) {
+            if (p.getPower(StrengthPower.POWER_ID).amount > 0) {
+                for (int i = 0; i < this.multiDamage.length; i++) {
+                    this.multiDamage[i] += (p.getPower("Strength").amount * (this.magicNumber - 1));
+                }
+                this.damage = this.multiDamage[0];
+                this.isDamageModified = true;
+            }
+        }
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.hasPower(StrengthPower.POWER_ID)) {
+            if (p.getPower(StrengthPower.POWER_ID).amount > 0) {
                 for (int i = 0; i < this.multiDamage.length; i++) {
                     this.multiDamage[i] += (p.getPower("Strength").amount * (this.magicNumber - 1));
                 }

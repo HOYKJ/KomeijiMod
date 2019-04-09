@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import Thmod.Actions.Special.ShivWeaveAction;
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.ThMod;
 
 public class InscribeRedSoul extends AbstractKomeijiCards {
     public static final String ID = "InscribeRedSoul";
@@ -23,7 +24,7 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
     private static final int ATTACK_DMG = 6;
 
     public InscribeRedSoul() {
-        super("InscribeRedSoul", InscribeRedSoul.NAME,  1, InscribeRedSoul.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super("InscribeRedSoul", InscribeRedSoul.NAME,  1, InscribeRedSoul.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, CardSet_k.SAKUYA);
         this.baseDamage = 6;
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
@@ -53,6 +54,8 @@ public class InscribeRedSoul extends AbstractKomeijiCards {
             this.upgradeDamage(2);
             this.timesUpgraded += 1;
             this.upgraded = true;
+            this.textureImg = ThMod.komeijiCardImage(this.cardID,true);
+            loadCardImage(this.textureImg);
         }
     }
 

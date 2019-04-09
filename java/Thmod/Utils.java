@@ -16,24 +16,37 @@ import basemod.ReflectionHacks;
 
 public class Utils {
     public static void openCardRewardsScreen(final ArrayList<AbstractCard> cards, final boolean allowSkip,int appearnum) {
+        openCardRewardsScreen(cards, allowSkip, appearnum, null);
+    }
+
+    public static void openCardRewardsScreen(final ArrayList<AbstractCard> cards, final boolean allowSkip, String text) {
+        openCardRewardsScreen(cards, allowSkip, -1, text);
+    }
+
+    public static void openCardRewardsScreen(final ArrayList<AbstractCard> cards, final boolean allowSkip,int appearnum, String text) {
         final CardRewardScreen crs = AbstractDungeon.cardRewardScreen;
         crs.rItem = null;
-        ReflectionHacks.setPrivate((Object)crs, (Class)CardRewardScreen.class, "codex", (Object)true);
-        ReflectionHacks.setPrivate((Object)crs, (Class)CardRewardScreen.class, "draft", (Object)false);
+        ReflectionHacks.setPrivate(crs, CardRewardScreen.class, "codex", true);
+        ReflectionHacks.setPrivate(crs, CardRewardScreen.class, "draft", false);
         crs.codexCard = null;
-        ((SingingBowlButton)ReflectionHacks.getPrivate((Object)crs, (Class)CardRewardScreen.class, "bowlButton")).hide();
+        ((SingingBowlButton)ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "bowlButton")).hide();
         if (allowSkip) {
-            ((SkipCardButton)ReflectionHacks.getPrivate((Object)crs, (Class)CardRewardScreen.class, "skipButton")).show();
+            ((SkipCardButton)ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "skipButton")).show();
         }
         else {
-            ((SkipCardButton) ReflectionHacks.getPrivate((Object)crs, (Class)CardRewardScreen.class, "skipButton")).hide();
+            ((SkipCardButton) ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "skipButton")).hide();
         }
         crs.onCardSelect = true;
         AbstractDungeon.topPanel.unhoverHitboxes();
         crs.rewardGroup = cards;
         AbstractDungeon.isScreenUp = true;
         AbstractDungeon.screen = AbstractDungeon.CurrentScreen.CARD_REWARD;
-        AbstractDungeon.dynamicBanner.appear(AbstractSpellCards.EXTENDED_DESCRIPTION[appearnum]);
+        if(appearnum != -1) {
+            AbstractDungeon.dynamicBanner.appear(AbstractSpellCards.EXTENDED_DESCRIPTION[appearnum]);
+        }
+        else {
+            AbstractDungeon.dynamicBanner.appear(text);
+        }
         AbstractDungeon.overlayMenu.showBlackScreen();
         final float CARD_TARGET_Y = Settings.HEIGHT * 0.45f;
         try {

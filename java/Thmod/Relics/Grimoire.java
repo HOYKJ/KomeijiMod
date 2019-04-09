@@ -15,11 +15,6 @@ public class Grimoire extends AbstractThRelic {
         super("Grimoire",  RelicTier.BOSS, LandingSound.MAGICAL);
     }
 
-    public void onEquip()
-    {
-        this.counter = 0;
-    }
-
     public void atTurnStart() {
         AbstractPlayer p = AbstractDungeon.player;
         if(p.maxOrbs < 10) {

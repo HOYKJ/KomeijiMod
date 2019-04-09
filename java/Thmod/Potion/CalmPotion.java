@@ -1,5 +1,6 @@
 package Thmod.Potion;
 
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -29,8 +30,12 @@ public class CalmPotion extends AbstractPotion
     {
         target = AbstractDungeon.player;
         for(AbstractPower p:target.powers){
-            if(p.amount >= 1)
+            if(p.amount > this.potency) {
                 p.amount -= this.potency;
+            }
+            else if((p.amount <= this.potency) && (p.amount >= 1)) {
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, target, p));
+            }
         }
     }
 

@@ -15,6 +15,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import Thmod.Actions.common.DashAction;
+import Thmod.Monsters.Satori;
+import Thmod.Power.satoriEnemy.PointPowerSpe;
 
 public class DashPower extends AbstractPower {
     public static final String POWER_ID = "DashPower";
@@ -55,7 +57,14 @@ public class DashPower extends AbstractPower {
         if(this.owner != p) {
             if (damageAmount > 0) {
                 damageAmount = 0;
-                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, 1));
+                AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
+                if(this.owner instanceof Satori){
+                    if (!(this.owner.hasPower("PointPower"))) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPowerSpe(this.owner, 1), 1));
+                    } else if (this.owner.getPower("PointPower").amount < 5) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPowerSpe(this.owner, 1), 1));
+                    }
+                }
             }
             CardCrawlGame.sound.play("graze");
         }

@@ -52,7 +52,9 @@ public abstract class AbstractElementSpellCards extends AbstractElementCards{
     public void triggerOnExhaust() {
         if(ThMod.removedcardids.size() > 0) {
             this.addcard = ThMod.removedcardids.get(this.id);
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.addcard, 1));
+            if(this.addcard != null) {
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.addcard, 1));
+            }
         }
     }
 

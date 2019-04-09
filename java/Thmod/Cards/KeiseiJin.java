@@ -24,8 +24,8 @@ public class KeiseiJin extends AbstractSweepCards{
     private static final int BLOCK_AMT = 5;
 
     public KeiseiJin() {
-        super("KeiseiJin", KeiseiJin.NAME,  1, KeiseiJin.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
-        this.baseBlock = 5;
+        super("KeiseiJin", KeiseiJin.NAME,  1, KeiseiJin.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY, CardSet_k.REIMU);
+        this.baseBlock = 6;
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }

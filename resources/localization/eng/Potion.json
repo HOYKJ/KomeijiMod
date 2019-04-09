@@ -31,13 +31,13 @@
   "RedTea": {
     "NAME": "Red Tea",
     "DESCRIPTIONS": [
-      "Red Tea is helpful for sleep."
+      "Red Tea is good for sleep."
     ]
   },
   "UndeadPotion": {
     "NAME": "Undead Potion",
     "DESCRIPTIONS": [
-      "Lose #b10 Max HP, your HP in this combat at least 1.(Can't use in Boss combat)"
+      "Lose #b10 Max HP, this combat your HP cannot go below #b1.(Can't use in Boss combat)"
     ]
   },
   "JyouchiReiPotion": {

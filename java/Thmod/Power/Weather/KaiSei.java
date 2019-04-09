@@ -34,7 +34,7 @@ public class KaiSei extends AbstractPower {
         if(card.cost > 1)
             this.counter += 1;
         if(this.counter == 4){
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, 1));
             flash();
             this.counter = 0;
         }

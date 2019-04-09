@@ -23,9 +23,12 @@ public class MidautumnSpear extends AbstractElementSweepCards {
     public static final String DESCRIPTION;
     private static final int COST = 2;
 
-    public MidautumnSpear() {
+    public MidautumnSpear(int damage) {
         super("MidautumnSpear", MidautumnSpear.NAME,  2, MidautumnSpear.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY,ElementType.Earth);
-        this.baseDamage = 12;
+        this.baseMagicNumber = 10;
+        this.magicNumber = this.baseMagicNumber;
+        this.baseDamage = damage + this.magicNumber;
+        this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -43,7 +46,7 @@ public class MidautumnSpear extends AbstractElementSweepCards {
     }
 
     public AbstractCard makeCopy() {
-        return new MidautumnSpear();
+        return new MidautumnSpear(this.baseDamage - this.magicNumber);
     }
 
     public void upgrade() {

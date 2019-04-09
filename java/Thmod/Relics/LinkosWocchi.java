@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import Thmod.Actions.unique.BackInTimeAction;
 import Thmod.Actions.unique.PlayerTalkAction;
 import Thmod.vfx.TheWorld;
-import basemod.DevConsole;
+import Thmod.vfx.TimeWarpBack;
 
 public class LinkosWocchi extends AbstractThRelic {
     public static final String ID = "LinkosWocchi";
@@ -48,10 +48,15 @@ public class LinkosWocchi extends AbstractThRelic {
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((target.halfDead) || ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping)) && (!(target.hasPower("Minion"))))) {
-                if(target.halfDead)
+                if(target.halfDead) {
                     this.monHP.add(0);
-                else
+                }
+                else {
                     this.monHP.add(target.currentHealth);
+                }
+            }
+            else {
+                this.monHP.add(0);
             }
         }
         this.playerturn = true;
@@ -59,14 +64,17 @@ public class LinkosWocchi extends AbstractThRelic {
     }
 
     protected  void onRightClick(){
-        if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
-            if ((this.playerturn) && (playerHPtobe != 0) && (!(this.used))) {
-                this.used = true;
-                this.pulse = false;
-                AbstractDungeon.actionManager.addToTop(new BackInTimeAction(this.playerHPtobe,this.monHPtobe));
-                AbstractDungeon.actionManager.addToTop(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, true), 2F));
-            } else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[1]));
+        if(AbstractDungeon.currMapNode != null) {
+            if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
+                if ((this.playerturn) && (playerHPtobe != 0) && (!(this.used))) {
+                    this.used = true;
+                    this.pulse = false;
+                    AbstractDungeon.actionManager.addToTop(new BackInTimeAction(this.playerHPtobe, this.monHPtobe));
+                    AbstractDungeon.actionManager.addToTop(new VFXAction(new TimeWarpBack(), 2F));
+                    AbstractDungeon.actionManager.addToTop(new VFXAction(new TheWorld(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, false), 2F));
+                } else {
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[1]));
+                }
             }
         }
     }

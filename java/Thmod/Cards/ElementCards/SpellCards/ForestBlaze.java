@@ -18,7 +18,6 @@ public class ForestBlaze extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
 
     public ForestBlaze() {
         super("ForestBlaze", ForestBlaze.NAME,  2, ForestBlaze.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE,ElementType.Wood,ElementType.Fire);

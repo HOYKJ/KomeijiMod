@@ -23,7 +23,6 @@ import Thmod.vfx.RoundDiggerEffect;
 public class MusouFuuyinAction extends AbstractGameEffect{
     private int num;
     private int colorNum = 1;
-    private Color colorNew;
     private float stakeTimer = 0.1F;
     private boolean hasScreen = false;
     private DamageInfo info;
@@ -44,35 +43,36 @@ public class MusouFuuyinAction extends AbstractGameEffect{
 
         this.stakeTimer -= Gdx.graphics.getDeltaTime();
         if (this.stakeTimer <= 0.0F){
+            Color colorNew;
             switch (this.colorNum) {
                 case 1:
-                    this.colorNew = Color.SCARLET.cpy();
+                    colorNew = Color.SCARLET.cpy();
                     break;
                 case 2:
-                    this.colorNew = Color.ORANGE.cpy();
+                    colorNew = Color.ORANGE.cpy();
                     break;
                 case 3:
-                    this.colorNew = Color.YELLOW.cpy();
+                    colorNew = Color.YELLOW.cpy();
                     break;
                 case 4:
-                    this.colorNew = Color.GREEN.cpy();
+                    colorNew = Color.GREEN.cpy();
                     break;
                 case 5:
-                    this.colorNew = Color.SKY.cpy();
+                    colorNew = Color.SKY.cpy();
                     break;
                 case 6:
-                    this.colorNew = Color.BLUE.cpy();
+                    colorNew = Color.BLUE.cpy();
                     break;
                 case 7:
-                    this.colorNew = Color.PURPLE.cpy();
+                    colorNew = Color.PURPLE.cpy();
                     break;
                 default:
-                    this.colorNew = Color.SCARLET.cpy();
+                    colorNew = Color.SCARLET.cpy();
                     break;
             }
             this.colorNum ++;
 
-            AbstractDungeon.effectsQueue.add(new MusouFuuinEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, this.colorNew, this.info, this.attackEffect));
+            AbstractDungeon.effectsQueue.add(new MusouFuuinEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY, colorNew, this.info, this.attackEffect));
             this.stakeTimer = 0.2F;
             this.num -= 1;
             if (this.num == 0) {

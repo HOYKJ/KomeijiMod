@@ -34,7 +34,7 @@ public class DiamondHardness extends AbstractElementSweepCards {
     @Override
     public ArrayList<AbstractElementSweepCards> getOpposite() {
         final ArrayList<AbstractElementSweepCards> opposite = new ArrayList<>();
-        opposite.add(new MidautumnSpear());
+        opposite.add(new MidautumnSpear(0));
         opposite.add(new EmeraldCity());
         return opposite;
     }

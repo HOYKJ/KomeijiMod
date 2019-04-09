@@ -17,10 +17,9 @@ public class SemiAutomaton extends AbstractKomeijiCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION;
-    private static final int COST = 3;
 
     public SemiAutomaton() {
-        super("SemiAutomaton", SemiAutomaton.NAME,  3, SemiAutomaton.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+        super("SemiAutomaton", SemiAutomaton.NAME,  2, SemiAutomaton.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE, CardSet_k.ALICE);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
     }
@@ -36,7 +35,7 @@ public class SemiAutomaton extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBaseCost(2);
+            this.upgradeBaseCost(1);
         }
     }
 

@@ -10,9 +10,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 
+import Thmod.Power.JyouchiRei;
 import Thmod.Power.SoulPower;
 
 public class RikonNoKama extends AbstractSweepCards {
@@ -20,19 +22,28 @@ public class RikonNoKama extends AbstractSweepCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 1;
-    private static final int ATTACK_DMG = 8;
+    private int extraDamage;
 
     public RikonNoKama() {
-        super("RikonNoKama", RikonNoKama.NAME,  1, RikonNoKama.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
+        super("RikonNoKama", RikonNoKama.NAME,  1, RikonNoKama.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY, CardSet_k.KOMACHI);
         this.baseDamage = 8;
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
+        this.extraDamage = 0;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SoulPower(p,3,this.magicNumber),3));
+        if(m.hasPower(JyouchiRei.POWER_ID)){
+            for(AbstractPower power : m.powers){
+                if(power instanceof JyouchiRei){
+                    //this.extraDamage = (int) Math.pow(2, (double) power.amount / 2) / 2;
+                    this.extraDamage = power.amount * 2;
+                    AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.extraDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+                }
+            }
+        }
     }
 
     @Override

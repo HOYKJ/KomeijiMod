@@ -28,7 +28,7 @@ public class GroundStardust extends AbstractSweepCards {
     private static final int COST = 1;
 
     public GroundStardust() {
-        super("GroundStardust", GroundStardust.NAME,  1, GroundStardust.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super("GroundStardust", GroundStardust.NAME,  1, GroundStardust.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, CardSet_k.MARISA);
         this.exhaust = true;
     }
 

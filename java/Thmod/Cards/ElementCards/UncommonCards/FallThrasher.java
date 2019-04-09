@@ -43,8 +43,8 @@ public class FallThrasher extends AbstractElementSweepCards {
             AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
         }
         else{
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
-            AbstractDungeon.actionManager.addToTop(new GainEnergyAction(2));
+            AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new ThrasherAccumulate(p), 1));
         }
     }
 

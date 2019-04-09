@@ -29,7 +29,21 @@ public class RedAbnormity extends AbstractPower {
     {
         if (type == DamageInfo.DamageType.NORMAL)
         {
-            return (damage * 1.25F);
+            int oth = 0;
+            float crease = 0.12f;
+            boolean ga = true;
+            boolean ba = true;
+            for(AbstractPower p:this.owner.powers){
+                if((p instanceof GreenAbnormity) && (ga)){
+                    oth += 1;
+                    ga = false;
+                }
+                if((p instanceof BlueAbnormity) && (ba)){
+                    oth += 1;
+                    ba = false;
+                }
+            }
+            return (damage * (1.25F + oth * crease));
         }
         return damage;
     }

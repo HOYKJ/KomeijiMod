@@ -61,7 +61,7 @@ public class HimawariPower extends AbstractPower {
         elementCardPool.addToTop(new EmeraldCity());
         elementCardPool.addToTop(new FallThrasher());
         elementCardPool.addToTop(new FlashOfSpring());
-        elementCardPool.addToTop(new MidautumnSpear());
+        elementCardPool.addToTop(new MidautumnSpear(0));
         elementCardPool.addToTop(new SpringWind());
         elementCardPool.addToTop(new StaticGreen());
 

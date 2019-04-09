@@ -21,7 +21,7 @@ public class HagoromoKu extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public HagoromoKu() {
-        super("HagoromoKu", HagoromoKu.NAME,  1, HagoromoKu.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.NONE);
+        super("HagoromoKu", HagoromoKu.NAME,  1, HagoromoKu.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.NONE, CardSet_k.IKU);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

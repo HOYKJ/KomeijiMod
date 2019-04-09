@@ -29,9 +29,7 @@ public class SoulPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer){
-        AbstractPlayer p = AbstractDungeon.player;
-        if(isPlayer)
-            AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, this.num));
+        AbstractDungeon.actionManager.addToBottom(new HealAction(this.owner, this.owner, this.num));
     }
 
     public void atEndOfRound() {

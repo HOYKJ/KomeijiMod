@@ -20,7 +20,7 @@ public class CondensedBubble extends AbstractElementSweepCards {
 
     public CondensedBubble() {
         super("CondensedBubble", CondensedBubble.NAME,  1, CondensedBubble.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE,ElementType.Water);
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
     }
 

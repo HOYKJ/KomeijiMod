@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 public class RandomAttackAction extends AbstractGameAction
 {
     private DamageInfo info;
-    private static final float DURATION = 0.0099999997764825821F;
-    private static final float POST_ATTACK_WAIT_DUR = 0.20000000298023224F;
     private int numTimes;
 
     public RandomAttackAction(AbstractCreature target, DamageInfo info, int numTimes, AbstractGameAction.AttackEffect attackEffect)

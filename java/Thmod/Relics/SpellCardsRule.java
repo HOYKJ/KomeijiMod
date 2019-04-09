@@ -16,16 +16,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Thmod.Actions.common.MoveOrbAction;
+import Thmod.Actions.unique.CardSelectAction;
 import Thmod.Actions.unique.GetFamiliarSpoon;
 import Thmod.Actions.unique.PlayerTalkAction;
+import Thmod.Cards.AbstractSetCards;
 import Thmod.Cards.BlessingCards.BlessingOfTime;
+import Thmod.Cards.DeriveCards.EasterEgg.CardSetForOne;
+import Thmod.Cards.DeriveCards.EasterEgg.RecForget;
 import Thmod.Cards.DeriveCards.FuubiStrike;
+import Thmod.Cards.UncommonCards.SenseofElegance;
 import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Power.PointPower;
 import Thmod.Power.TenmizuPower;
 import Thmod.ThMod;
 
 import static Thmod.ThMod.blessingOfTime;
+import static Thmod.ThMod.masterSpellCard;
+import static Thmod.ThMod.masterSpellCardFor2;
+import static Thmod.ThMod.masterSpellCardFor3;
+import static Thmod.ThMod.masterSpellCardFor5;
+import static Thmod.ThMod.soulSpellCard;
+import static Thmod.ThMod.soulSpellCardFor2;
+import static Thmod.ThMod.soulSpellCardFor3;
+import static Thmod.ThMod.soulSpellCardFor5;
 
 
 public class SpellCardsRule extends AbstractThRelic {
@@ -56,6 +69,22 @@ public class SpellCardsRule extends AbstractThRelic {
 
     public void atPreBattle() {
         AbstractPlayer p = AbstractDungeon.player;
+        masterSpellCard.clear();
+        masterSpellCardFor2.clear();
+        masterSpellCardFor3.clear();
+        masterSpellCardFor5.clear();
+        for(AbstractCard card : soulSpellCard.group) {
+            masterSpellCard.addToTop(card.makeCopy());
+        }
+        for(AbstractCard card : soulSpellCardFor2.group) {
+            masterSpellCardFor2.addToTop(card.makeCopy());
+        }
+        for(AbstractCard card : soulSpellCardFor3.group) {
+            masterSpellCardFor3.addToTop(card.makeCopy());
+        }
+        for(AbstractCard card : soulSpellCardFor5.group) {
+            masterSpellCardFor5.addToTop(card.makeCopy());
+        }
         if (!(pointcount.get(0) == 0))
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new PointPower(p, pointcount.get(0)), pointcount.get(0)));
         if (!(pointcount.get(1) == 0))
@@ -103,6 +132,92 @@ public class SpellCardsRule extends AbstractThRelic {
         }
 
         HangongUsed = false;
+
+        for (AbstractCard card : p.hand.group){
+            if(card instanceof SenseofElegance){
+                ((SenseofElegance) card).chooseActive = true;
+            }
+        }
+        for (AbstractCard card : p.drawPile.group){
+            if(card instanceof SenseofElegance){
+                ((SenseofElegance) card).chooseActive = true;
+            }
+        }
+    }
+
+    @Override
+    public void onEnterRoom(AbstractRoom room) {
+        super.onEnterRoom(room);
+
+            if(room.phase == AbstractRoom.RoomPhase.EVENT){
+                ThMod.logger.info("EVENT STEP");
+                for(AbstractCard card : AbstractDungeon.player.masterDeck.group){
+                    if(card instanceof SenseofElegance){
+                        ((SenseofElegance) card).eventActive = true;
+                    }
+                }
+            }
+            else {
+                ThMod.logger.info("OTHER STEP");
+                for(AbstractCard card : AbstractDungeon.player.masterDeck.group){
+                    if(card instanceof SenseofElegance){
+                        ((SenseofElegance) card).eventActive = false;
+                    }
+                }
+            }
+
+    }
+
+    @Override
+    public void onObtainCard(AbstractCard c) {
+        super.onObtainCard(c);
+        AbstractPlayer p = AbstractDungeon.player;
+        if(c instanceof AbstractSetCards){
+            if((((AbstractSetCards) c).cardSetK != AbstractSetCards.CardSet_k.OTHER) && (((AbstractSetCards) c).cardSetK != AbstractSetCards.CardSet_k.ALICE)
+                    && (((AbstractSetCards) c).cardSetK != AbstractSetCards.CardSet_k.PATCHOULI)&& (((AbstractSetCards) c).cardSetK != AbstractSetCards.CardSet_k.SANAE)
+                    && (((AbstractSetCards) c).cardSetK != AbstractSetCards.CardSet_k.SATORI)&& (((AbstractSetCards) c).cardSetK != AbstractSetCards.CardSet_k.KOISHI)) {
+                boolean hasBlessing = false;
+                for(AbstractCard c2 : p.masterDeck.group){
+                    if(c2.cardID.equals ((ThMod.cardSetReward.get(((AbstractSetCards) c).cardSetK)).cardID)){
+                        hasBlessing = true;
+                        break;
+                    }
+                }
+                if (!hasBlessing) {
+                    ArrayList<AbstractCard> hasCards = new ArrayList<>();
+                    hasCards.add(c);
+                    for (AbstractCard card : p.masterDeck.group) {
+                        if (card instanceof AbstractSetCards) {
+                            if (((AbstractSetCards) card).cardSetK == ((AbstractSetCards) c).cardSetK) {
+                                boolean isHas = false;
+                                for (AbstractCard has : hasCards){
+                                    if(has.cardID.equals(card.cardID)){
+                                        isHas = true;
+                                    }
+                                }
+                                if(!isHas){
+                                    hasCards.add(card);
+                                }
+                            }
+                        }
+                    }
+                    if (hasCards.size() == ThMod.cardSetCheck.get(((AbstractSetCards) c).cardSetK)) {
+                        //UnlockTracker.unlockCard(CardSetForOne.ID);
+                        UnlockTracker.markCardAsSeen(CardSetForOne.ID);
+                        p.masterDeck.group.add(ThMod.cardSetReward.get(((AbstractSetCards) c).cardSetK));
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onExhaust(AbstractCard card) {
+        super.onExhaust(card);
+        AbstractPlayer p = AbstractDungeon.player;
+        if((p.hand.group.size() == 0) && (p.drawPile.group.size() == 0) && (p.discardPile.group.size() == 0)){
+            UnlockTracker.unlockCard(RecForget.ID);
+        }
     }
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
@@ -179,29 +294,37 @@ public class SpellCardsRule extends AbstractThRelic {
 
     protected void onRightClick() {
         AbstractPlayer p = AbstractDungeon.player;
-        if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
-            if (!(selected)) {
-                if (this.playerturn) {
-                    if (p.hasPower("PointPower")) {
-                        if (p.getPower("PointPower").amount > 0) {
-                            if (!(clicked)) {
-                                clicked = true;
-                                PointPower.Start();
-                                this.pulse = false;
+        boolean isSelecting = false;
+        if(AbstractDungeon.actionManager.currentAction instanceof CardSelectAction){
+            isSelecting = true;
+        }
+        if(AbstractDungeon.currMapNode != null) {
+            if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
+                if ((!isSelecting)) {
+                    if ((!selected)) {
+                        if (this.playerturn) {
+                            if (p.hasPower("PointPower")) {
+                                if (p.getPower("PointPower").amount > 0) {
+                                    if (!(clicked)) {
+                                        clicked = true;
+                                        PointPower.Start();
+                                        this.pulse = false;
+                                    } else {
+                                        AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[1]));
+                                    }
+                                } else {
+                                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[2]));
+                                }
                             } else {
-                                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[1]));
+                                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[2]));
                             }
                         } else {
-                            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p,this.DESCRIPTIONS[2] ));
+                            AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[3]));
                         }
                     } else {
-                        AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[2]));
+                        AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[4]));
                     }
-                } else {
-                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[3]));
                 }
-            } else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, this.DESCRIPTIONS[4]));
             }
         }
     }

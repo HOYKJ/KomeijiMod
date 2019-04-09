@@ -44,8 +44,18 @@ public class WumiGaWareruPower extends AbstractPower {
                 flash();
                 this.amount -= 1;
             }
+            else if (this.amount == 1){
+                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    }
+                }
+                flash();
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
+            }
             else
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"WumiGaWareruPower"));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
         }
     }
 

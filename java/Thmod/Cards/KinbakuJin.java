@@ -23,7 +23,7 @@ public class KinbakuJin extends AbstractSweepCards{
     private static final int COST = 1;
 
     public KinbakuJin() {
-        super("KinbakuJin", KinbakuJin.NAME,  1, KinbakuJin.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super("KinbakuJin", KinbakuJin.NAME,  1, KinbakuJin.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY, CardSet_k.REIMU);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

@@ -56,7 +56,7 @@ public class Fuuu extends AbstractPower {
 
     public void atEndOfRound() {
         if (this.amount <= 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "Fuuu"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }

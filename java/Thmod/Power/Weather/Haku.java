@@ -33,7 +33,7 @@ public class Haku extends AbstractPower {
 
     public Haku(AbstractCreature owner) {
         this.name = NAME;
-        this.ID = "KaiSei";
+        this.ID = "Haku";
         this.owner = owner;
         this.amount = 5;
         updateDescription();
@@ -59,7 +59,7 @@ public class Haku extends AbstractPower {
 
     public void atEndOfRound() {
         if (this.amount <= 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "Haku"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }

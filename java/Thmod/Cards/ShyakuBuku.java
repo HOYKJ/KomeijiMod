@@ -19,7 +19,7 @@ public class ShyakuBuku extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public ShyakuBuku() {
-        super("ShyakuBuku", ShyakuBuku.NAME,  1, ShyakuBuku.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.NONE);
+        super("ShyakuBuku", ShyakuBuku.NAME,  1, ShyakuBuku.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.NONE, CardSet_k.YOUMU);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;

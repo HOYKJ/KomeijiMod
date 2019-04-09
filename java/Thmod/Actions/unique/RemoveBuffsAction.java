@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.Iterator;
 
+import Thmod.Power.BoundariesPower;
+
 public class RemoveBuffsAction extends AbstractGameAction
 {
     private AbstractCreature c;
@@ -21,11 +23,10 @@ public class RemoveBuffsAction extends AbstractGameAction
     public void update()
     {
         for (AbstractPower p : this.c.powers) {
-            if (p.type == AbstractPower.PowerType.BUFF)
-                AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.c, this.c, p.ID));
-
+            if ((p.type == AbstractPower.PowerType.BUFF) && !(p instanceof BoundariesPower)) {
+                AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.c, this.c, p));
+            }
         }
-
         this.isDone = true;
     }
 }

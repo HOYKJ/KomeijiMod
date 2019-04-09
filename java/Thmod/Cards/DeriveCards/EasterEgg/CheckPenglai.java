@@ -16,7 +16,7 @@ public class CheckPenglai extends AbstractDeriveCards {
     private static final int COST = -2;
 
     public CheckPenglai() {
-        super("CheckPenglai", CheckPenglai.NAME,  -2, CheckPenglai.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
+        super("CheckPenglai", CheckPenglai.NAME,  -2, CheckPenglai.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

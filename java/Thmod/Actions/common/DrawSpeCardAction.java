@@ -24,7 +24,7 @@ public class DrawSpeCardAction extends AbstractGameAction {
         boolean hasCard = false;
         if(p.hand.size() < 10){
             if (!p.drawPile.isEmpty()) {
-                AbstractCard c = cardToDraw;
+                AbstractCard c = this.cardToDraw;
                 for(AbstractCard card:p.drawPile.group){
                     if(card.cardID.equals(c.cardID)) {
                         hasCard = true;

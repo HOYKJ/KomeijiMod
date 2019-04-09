@@ -20,7 +20,7 @@ public class LunaticRedEyes extends AbstractKomeijiCards {
     private static final int COST = 3;
 
     public LunaticRedEyes() {
-        super("LunaticRedEyes", LunaticRedEyes.NAME,  3, LunaticRedEyes.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super("LunaticRedEyes", LunaticRedEyes.NAME,  3, LunaticRedEyes.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.SELF, CardSet_k.REISEN);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m)

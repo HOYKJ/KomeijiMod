@@ -31,17 +31,24 @@ public class KyoufuSaiminPower extends AbstractPower {
 
     public void atEndOfRound() {
         if(this.counter <= 1){
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"KyoufuSaiminPower"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
         }
-        else
+        else {
             this.counter -= 1;
-        AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        }
     }
 
-    public int onLoseHp(int damageAmount) {
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
         this.amount += damageAmount;
-        return damageAmount;
+        return super.onAttacked(info, damageAmount);
     }
+
+//    public int onLoseHp(int damageAmount) {
+//        this.amount += damageAmount;
+//        return damageAmount;
+//    }
 
     public void updateDescription()
     {

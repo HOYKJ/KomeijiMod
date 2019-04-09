@@ -23,7 +23,7 @@ public class TenguNoTaiko extends AbstractKomeijiCards {
     private ArrayList<AbstractCard> cardid = new ArrayList<>();
 
     public TenguNoTaiko() {
-        super("TenguNoTaiko", TenguNoTaiko.NAME,  1, TenguNoTaiko.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super("TenguNoTaiko", TenguNoTaiko.NAME,  1, TenguNoTaiko.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.AYA);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

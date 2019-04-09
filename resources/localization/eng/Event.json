@@ -2,14 +2,14 @@
   "RoomOfDemon": {
     "NAME": "Evil Room",
     "DESCRIPTIONS": [
-      "You find a room with a lot of burning #ytorches, you can feel a unknown breath there. NL You want to leave, but the door is @closed@ @heavily@ , you scrutinize this room. NL Only find a #yparchment with a #ycross pining it on the floor...",
-      "You look attentively at this #yparchment, some #rblood words emerge: NL  #r@Ph'nglui.mglw'nafh.Remilia.D'mansion.wgah'nagl.fhtagn@  NL At this moment, ALL #ytorches in this room are extinguished... NL  ~On~ ~this~ ~parchment...~ ~a~ ~askew~ ~triangle~ ~emerge~",
+      "You find a room with a lot of burning #ytorches, you can sense a disturbing feeling. NL You want to leave, but the door is @closed@ @heavily@ , you scrutinize this room. NL Only find a #yparchment with a #ycross pining it on the floor...",
+      "You look attentively at this #yparchment, some #rblood words emerge: NL  #r@Ph'nglui.mglw'nafh.Remilia.D'mansion.wgah'nagl.fhtagn@  NL At this moment, ALL #ytorches are extinguished... NL  ~On~ ~this~ ~parchment...~ ~a~ ~askew~ ~triangle~ ~emerge~",
       "You pull out the #ycross, this moment the door is @heavily@ opened. You run out in hash.",
-      "You can feel a #p~cold~ #p~hint~ in back, you find door was opened after turn round. NL So you leave immediately."
+      "You can feel a #p~cold~ #p~hint~ in back. You look backward, and realize that the door is opened. NL So you leave immediately."
     ],
     "OPTIONS": [
       "[Read The Parchment] #bCheck #bthe #bmassage #babove #bit.",
-      "[pull Out The Cross] #gObtain #ga #gRelic #g\"Thirsty #gCross\".",
+      "[Pull Out The Cross] #gObtain #ga #gRelic #g\"Thirsty #gCross\".",
       "[Continue]",
       "[Leave]"
     ]
@@ -17,37 +17,42 @@
   "RoomOfTime": {
     "NAME": "Graceful Room",
     "DESCRIPTIONS": [
-      "You walk into a delicately ornamented room. But it is covered with dust, seems like there is a long time nobody using it. NL You didn't find anything helpful, but a #ynotebook and a #ypocket #ywatch in a desk drawer.",
-      "你来到一间装饰精致的房间,从被擦去的灰尘可以看出 ~不久前有人搜索过这里...~  NL 你没有翻到什么有用的东西,只在一个柜子中发现了一本 #y笔记本 和一只 #y怀表 .",
-      "You leaf through this thick and heavy #ynotebook. There is full of ~good~ ~memories~. NL At the last page of this book, has something you can't understand with @messy@ @handwriting@... NL And there has #b2 Cards...",
-      "You leaf through this thick and heavy #ynotebook. There is full of ~good~ ~memories~. NL At the last page of this book, write with @messy@ @handwriting@:  #b@I'm@ #b@so@ #b@sorry@ #b@for@ #b@can't@ #b@accompany@ #b@you@ #b@till@ #b@the@ #b@last...@   NL And there has #b2 Cards...",
-      "You leaf through this thick and heavy #ynotebook. There is no word in it... NL Only has #b2 Cards at the last page...",
-      "You leaf through this thick and heavy #ynotebook. There is no word in it... NL Only at the last page, write with #rscarlet #rblood: #rI #rhad #ralready #rsee #rthis #rday's #rcome...  NL And there has #b2 Cards...",
-      "You screw the #ypocket #ywatch, it start to #b~ticked~ #b~down~. NL You surprised for that it can still work. At the same time you find, the hands of this watch ~move~ ~anticlockwise...~ ",
-      "You feel @dazed@. You find you are on the path before when sobered up. And your wound recovery partly...",
-      "You feel @dazed@. You find you are on the path before when sobered up. And with that #ypocket #ywatch in your hand ...",
-      "You feel @dazed@. You find room is disappear when sobered up, and you are standing where you entered that room...",
-      "You feel a #p@Violent@ #p@dizziness@. You find room is disappear when sobered up, and you are standing where you entered that room...",
-      "You decide to leave without take anything...",
-      "You decide to leave without take anything. You believe it's a right decision."
+      "You walk into a exquisitely decorated room. The room however was covered with dust, seems like it's been a long time since anyone used it. NL You didn't find anything useful, only a #ynotebook and a #ypocket #ywatch in a desk drawer.",
+      "You walk into a exquisitely decorated room. In some places the dust was wiped away, signaling that ~someone~ ~had~ ~searched~ ~this~ ~room~ ~recently~ . NL You didn't found anything useful, only a #ynotebook and a #ypocket #ywatch in a desk drawer.",
+      "You leaf through this thick and heavy #ynotebook. It's filled with ~pleasant~ ~memories~. NL On the last page of this book, there's some indecipherable message written using a @messy@ @handwriting@ ... NL And there has #b2 Cards...",
+      "You leaf through this thick and heavy #ynotebook. It's filled with ~pleasant~ ~memories~. NL On the last page of this book, a message was written with a @messy@ @handwriting@:  #b@I'm@ #b@so@ #b@sorry@ #b@for@ #b@unable@ #b@to@ #b@accompany@ #b@you@ #b@till@ #b@the@ #b@end...@   NL And there has #b2 Cards...",
+      "You leaf through this thick and heavy #ynotebook. There blank... NL You can only find #b2 Cards between the last page...",
+      "You leaf through this thick and heavy #ynotebook. There blank... NL Except a message on the last page written using #rscarlet #rblood: #rI #rhad #ralready #rsaw #rthis #rday's #rcoming...  NL And there has #b2 Cards...",
+      "You turn the #ypocket #ywatch, and it starts to #b~tick~ #b~tock~. NL You're surprised that it can still work. But soon you realized the hands of this watch ~move~ ~anticlockwise...~ ",
+      "You feel @dizzy@. When you recover, you find yourself standing on the road before. And your wounds slightly recovered...",
+      "You feel @dizzy@. When you recover, you find yourself standing on the road before. And with that #ypocket #ywatch still in your hand ...",
+      "You feel @dizzy@. When you recover, you realize that the room was gone, and you are standing at the place before you entered that room...",
+      "You feel a #p@Violent@ #p@dizziness@. When you recover, you realize that the room was gone, and you are standing at the place before you entered that room...",
+      "You decide to leave without taking anything...",
+      "You decide to leave without taking anything. You believe it's a right decision.",
+      "You find at the left of the desk, there has a #b~Hidden~ #b~Door~ .",
+      "You take out a #ySpecial #yStopwatch . NL When you look around, find you are standing at the place before you entered that room...",
+      "You think don't probe what is in it is better."
     ],
     "OPTIONS": [
       "[Read The Notebook] #bleaf #bthrough. ",
       "[Screw The Pocket Watch] #gHeal  #g10  #gHP. ",
-      "[Screw The Pocket Watch] #gObtain #ga #gRelic #gReverse #gWatch",
+      "[Screw The Pocket Watch] #gObtain #ga #gRelic #g\"Reverse #gWatch\"",
       "[Take The Card] #gObtain #ga #gCard #gRec\"Perfect #gMaid\" ",
       "[Take The Card] #gObtain #ga #gCard #gRec\"Vanishing #gEverything\" ",
       "[Leave] #bLeave memories here... ",
       "[Continue]",
-      "[Continue Forward]"
+      "[Continue Forward]",
+      "[Probe] #gObtain #ga #gRelic #g\"Special #gWatch\"",
+      "[Ignore]"
     ]
   },
   "SpiritSuffering": {
     "NAME": "Spirit Suffering",
     "DESCRIPTIONS": [
-      "You feel you are be ~stared~ ~at~ by something. Then the #p@terrible@  ~memories~ what you never want to remember ~arise~ ~in~ ~your~ ~mind...~",
-      "You feel very #p@bad@ , you don't want to face it. That makes you, ~feel ~better,~ ~feel~ ~nothing...~",
-      "You survived this, but still has #p~dark~ #p~clouds~ shroud your mind. It also steel you, makes you fill with #g@determination@ !"
+      "You feel something ~staring~ ~at~ you. Then, #p@horrible@  ~memories~ that you would never wish to recall ~arise~ ~in~ ~your~ ~mind...~",
+      "You feel very #p@bad@ , you don't want to face it, ever. That makes you, ~feel ~better,~ ~feel~ ~nothing...~",
+      "You survived this, but still #p~dark~ #p~clouds~ shroud your mind. It also steels you, you are now filled with #g@DETERMINATION@ !"
     ],
     "OPTIONS": [
       "[Close Mind] #rLose\"Satori's #rEye\", #gObtain\"Closed #gSatori's #gEye\".",
@@ -60,18 +65,18 @@
   "Ferry": {
     "NAME": "Ferry",
     "DESCRIPTIONS": [
-      "You are stopped by a wide #briver(?) that even can't see the the other side. NL You search for a long time, only find 1 boat. NL There is a person with #b~a~ #b~clock~ #b~and~ #b~a~ #b~huge~ #b~sickle~ stand on the boat.",
-      "You ask her for river crossing, NL \"You are not the object of my serivice\" NL \"But it's #p~unusual~ #p~time~ now, only need #r@ALL@ of your #yGold. NL Then you can cross the river!\" NL What do you decide to do?",
-      "She signals you to embark. After a while, NL she asks in a sudden: \"Your combat there, it's for what?\" ",
-      "She signals you to embark. This river is not so wide as it seems. NL You attain the opposite shore soon.",
-      "\"So, there's no way out.\" , she signals you to embark. NL ...A long time passed, you still cannot see the opposite shore. You feel #p~Exhaustion~ of body and mind ~...~ ",
-      "\"Maybe I can help you\" NL Then she @swings@ @to@ @you@ with her #rsickle, you are so scarded that close your eye... NL You find you attain the opposite shore after opening your eye, and you feel #gglow #gwith #genergy .",
-      "\"A 'amusing' reason\" NL Then she rummages on the boat, and take out #ysomething, \"Take them.\" ",
-      "You take them in your bag, you find you attain the opposite shore when look up.",
-      "\" @Hahahahahaha@ \" NL she laughs out loudly. Boat attain the opposite shore soon. NL When you about to leave, She presses #ysomething to you, \"Give my regards to his nibs\" NL You leave with doubt.",
-      "She silent for a while. NL \"The #pend of everthing, is the new #gbeginning ...\" NL Boat attain the opposite shore soon...",
-      "\"Sorry, I have nothing to talk with you\" NL Boat attain the opposite shore soon...",
-      "She #r@beats@ you in a sudden. You was got to sleep, then find you attained the opposite shore."
+      "You are stopped by #briver(?) so wide that you can't even see the other side. NL You search for a long time, but can only find a boat by the river. NL Someone wearing #b~clock~ #b~and~ #b~holding~ #b~a~ #b~giant~ #b~sickle~ is standing on the boat.",
+      "You ask her for help crossing the river, NL \"You are not the target of my serivice\" NL \"But it's #p~unusual~ #p~time~ now, it will only cost #r@ALL@ of your #yGold. NL Then you can cross the river!\" NL What do you decide to do?",
+      "She signals you to embark. After a while, NL she asks in a sudden: \"Your combat there, what's it for?\" ",
+      "She signals you to embark. Apparently its not as wide as it seems. NL You reach the opposite shore soon.",
+      "\"So, there's no way out.\" , she signals you to embark. NL ...After a long time, you still cannot see the opposite shore. Both your mind and body feels #p~Exhaustion...~ ",
+      "\"Maybe I can help you\" NL Then she @swings@ her #rsickle @towards@ @you@, you closed your eyes out of fear... NL You found yourself at the opposite shore after reopening your eye, and you feel yourself #gfilled #gwith #genergy .",
+      "\"An 'amusing' answer\" NL Then she rummages through the boat, and take out #ysomething, \"Take them.\" ",
+      "You placed them in your bag, and found that you've reached the opposite shore when you look up.",
+      "\" @Hahahahahaha@ \" NL she laughs out loudly. The boat reaches the opposite shore soon. NL When you're about to leave, She stuffed #ysomething in your hand, \"Give my regards to the highness\" NL You leave v.",
+      "She went silent for a while. NL \"The #pend of everthing, is the new #gbeginning ...\" NL Boat reaches the opposite shore soon...",
+      "\"Sorry, I have nothing to talk with you\" NL Boat reaches the opposite shore soon...",
+      "She #r@beats@ you in a sudden. You found that your had fallen asleep, then find you reach the opposite shore."
     ],
     "OPTIONS": [
       "[Hand ALL] #rLose #r",
@@ -88,8 +93,8 @@
   "GateofTheMinistry": {
     "NAME": "Gate",
     "DESCRIPTIONS": [
-      "You see a #ymagnificent door. When you #b~lightly touch~ the door. NL It #b~open~ #b~a~ #b~crack~ itself, just enough for you to walk in...",
-      "You think it's #pnot #pin #pharmony, so decide to #bignore it."
+      "You see a #ymagnificent door. When you #b~touched~ the door. NL It #b~open~ #b~a~ #b~crack~ itself, just enough for you to walk in...",
+      "You felt that something is #pnot #pright, so you decide to #bignore it."
     ],
     "OPTIONS": [
       "[Walk In]",
@@ -100,9 +105,9 @@
   "Kourindou": {
     "NAME": "Mysterious Shop",
     "DESCRIPTIONS": [
-      "You enter a Mysterious Shop, it crammed with #b~peculiar~ object. NL A man with bizarre attire accost you from shadow: NL \" #yWhat you want to gain, and #rwhat you could give?\" NL NL It seems like you can change #ysomething with him.",
-      "He take the #yGold,\" #yThese would be useful to you.\", NL Then he rummages some #bpotions and #bcards.",
-      "He holds the card and looks it over carefully,\"It's #binteresting .\", NL Then takes out a #yRelic,\" ~A equitable deal.~ \"",
+      "You enter a Mysterious Shop, it's crammed with #b~peculiar~ objects. NL A man with bizarre attire accost you from the shadow: NL \" #yWhat you wish to gain, and #rwhat you could give?\" NL NL It seems like you can exchange #ysomething with him.",
+      "He take the #yGold,\" #yThese might be useful to you.\", NL Then he rummages out some #bpotions and #bcards.",
+      "He holds the card and observes it over carefully,\"It's #binteresting .\", NL Then takes out a #yRelic,\" ~A equitable deal.~ \"",
       "He holds the #yRelic ,\"A",
       "... #pshity thing...\" NL Then takes out #b1 #yGold ",
       " #bcommon thing.\" NL Then takes out some #yGold .",
@@ -110,14 +115,14 @@
       " #yrare treasure!\" NL Then takes out a pile of #yGold .",
       " #ymysterious treasure!\" NL Then takes out a pile of #yGold .",
       " #ypowerful treasure!\" NL Then takes out a great pile of #yGold .",
-      ",\" #yIt just deserve.\"",
+      ",\" #yIt deserves the price.\"",
       "You take his things.",
-      "When see this #bspoon, he catches his breath. Then rummages a #pantiquated #bbook. NL He seems @endures@ @something@. But without ~any~ ~word~, just pass the #bbook on to you. NL You don't have the nerve to ask more...",
+      "Seeing the #bspoon, he held his breath. Then rummages out an #pantiquated #bbook. NL He seems that he's @enduring@ @something@. But he did not let out ~any~ ~word~, just passed the #bbook on to you silently. NL You don't have the nerve to ask more...",
       "\"It seems we have nothing to talk.\""
     ],
     "OPTIONS": [
-      "[Gold] #rLose #r100 #rGold. #gObtain #g2 #gpotions, #g2 #gcards.",
-      "[Locked] Requires: 100 Gold.",
+      "[Gold] #rLose #r80 #rGold. #gObtain #g2 #gpotions, #g2 #gcards.",
+      "[Locked] Requires: 80 Gold.",
       "[Card] #rLoes ",
       ". #gObtain ",
       ".",
@@ -135,12 +140,12 @@
   "DoremisStore": {
     "NAME": "Store of Dream",
     "DESCRIPTIONS": [
-      "You enter a room with #bpeculiar atmosphere, there is nobody here. NL You find a #bbell on the table, you hesitate whether to ring it.",
-      "You ring the #bbell, but it don't make any sound. NL Suddenly, a voice come from above.\"Alala, it's custom.\" NL Then a girl who wear a clothes like bedgown, floats in front of you. NL \"Which service do you want?\" And point to a list",
-      "\" ~Aiheyhey~ \"Girl take the Gold and give you a #bpillow with strange shape. NL This pillow feels so ~soft~ , that makes you want to sleep with it.",
-      "\"Well, please lie there\"You lie down and close your eyes. NL You feel much relaxed when you wake up. NL \"Thank you for patronage\"Girl send you away with smile",
-      "\"Ah, So you can sleep there\"Girl point to a bed which seems very comfortable, NL You lie down on it and have a good sleep.",
-      "You worried if will happen something bad, NL so just look about this room, but didn't find anything else, you leave."
+      "You enter a room with #bpeculiar atmosphere, there is nobody here. NL You find a #bbell on the table, you hesitate whether if you should ring it.",
+      "You ring the #bbell, but it didn't made any sound. NL Suddenly, a voice come from above.\"Alala, a customer.\" NL Then a girl with a pyjamas looking dress floats in front of you. NL \"What kind of service do you want?\" And points to a list",
+      "\" ~Aiheyhey~ \"The girl takes the Gold and gives you a strangely shaped #bpillow . NL This pillow feels so ~soft~ , that makes you want to sleep on it.",
+      "\"Well, please lie there\"You lie down and close your eyes. NL You feel much relaxed when you wake up. NL \"Thank you for patronage\"Girl sends you out with smile",
+      "\"Ah, So you can sleep there\"Girl points to a bed which seems very comfortable, NL You lie down on it and have a good sleep.",
+      "You worried if anything bad will happen, NL so you just survey this room, and after you've made certain that there's nothing else here, you leave."
     ],
     "OPTIONS": [
       "[Ring]",
@@ -149,7 +154,8 @@
       "[Expel Nightmare] #gRemove #g1 #gCurse.",
       "[Good Dream] #gHeal #g15 #gHP.",
       "[Locked] Requires: 123 Gold.",
-      "[Locked] Requires: Curse."
+      "[Locked] Requires: Curse.",
+      "Select a curse to remove."
     ]
   }
 }

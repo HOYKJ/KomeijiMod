@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class YumiNingyou extends AbstractOrb {
     public static final String ORB_ID = "YumiNingyou";
@@ -54,6 +55,15 @@ public class YumiNingyou extends AbstractOrb {
         AbstractMonster m = AbstractDungeon.getMonsters().getRandomMonster(true);
         if(m != null)
             AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.passiveAmount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+    }
+
+    @Override
+    public void applyFocus() {
+        super.applyFocus();
+        AbstractPower power = AbstractDungeon.player.getPower("Focus");
+        if (power != null) {
+            this.passiveAmount = Math.max(0, this.basePassiveAmount + 2 * power.amount);
+        }
     }
 
     public void onEvoke() {

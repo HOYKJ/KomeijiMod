@@ -22,7 +22,7 @@ public class MagicStarsSword extends AbstractKomeijiCards{
     private static final int ATTACK_DMG = 4;
 
     public MagicStarsSword() {
-        super("MagicStarsSword", MagicStarsSword.NAME,  1, MagicStarsSword.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super("MagicStarsSword", MagicStarsSword.NAME,  1, MagicStarsSword.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY, CardSet_k.SAKUYA);
         this.baseDamage = 4;
         this.isMultiDamage = true;
     }

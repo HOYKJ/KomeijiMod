@@ -30,28 +30,31 @@ public class RingOfDollmaker extends AbstractThRelic {
 
     protected  void onRightClick() {
         AbstractPlayer p = AbstractDungeon.player;
-        if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
-            if (!(this.selected)) {
-                if (this.playerturn) {
-                    this.selected = true;
-                    int orbEmptyNum = 0;
-                    for (int i = 0; i < p.orbs.size(); i++) {
-                        if (p.orbs.get(i) instanceof EmptyOrbSlot) {
-                            orbEmptyNum += 1;
+        if(AbstractDungeon.currMapNode != null) {
+            if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
+                if (!(this.selected)) {
+                    if (this.playerturn) {
+                        this.pulse = false;
+                        this.selected = true;
+                        int orbEmptyNum = 0;
+                        for (int i = 0; i < p.orbs.size(); i++) {
+                            if (p.orbs.get(i) instanceof EmptyOrbSlot) {
+                                orbEmptyNum += 1;
+                            }
                         }
-                    }
-                    if (orbEmptyNum > 3) {
-                        orbEmptyNum = 3;
-                    }
-                    for (int i = 0; i < orbEmptyNum; i++) {
-                        AbstractOrb orb = new NingyouOrb();
-                        AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+                        if (orbEmptyNum > 3) {
+                            orbEmptyNum = 3;
+                        }
+                        for (int i = 0; i < orbEmptyNum; i++) {
+                            AbstractOrb orb = new NingyouOrb();
+                            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+                        }
+                    } else {
+                        AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[1]));
                     }
                 } else {
-                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[1]));
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[2]));
                 }
-            } else {
-                AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[2]));
             }
         }
     }
@@ -61,6 +64,12 @@ public class RingOfDollmaker extends AbstractThRelic {
 
     public void onPlayerEndTurn() {
         this.playerturn = false;
+    }
+
+    @Override
+    public void onVictory() {
+        super.onVictory();
+        this.pulse = false;
     }
 
     public String getUpdatedDescription() {

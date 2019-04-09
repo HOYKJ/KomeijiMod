@@ -28,8 +28,7 @@ public class Agarareta extends AbstractSweepCards {
     private static final int COST = 1;
 
     public Agarareta() {
-        super("Agarareta", Agarareta.NAME,  1, Agarareta.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        this.exhaust = true;
+        super("Agarareta", Agarareta.NAME,  1, Agarareta.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY, CardSet_k.SUWAKO);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -40,6 +39,15 @@ public class Agarareta extends AbstractSweepCards {
         for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                if(target.hasPower(RedAbnormity.POWER_ID)){
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new RedAbnormity(target, 1), 1));
+                }
+                if(target.hasPower(GreenAbnormity.POWER_ID)){
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new GreenAbnormity(target, 1), 1));
+                }
+                if(target.hasPower(BlueAbnormity.POWER_ID)){
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new BlueAbnormity(target, 1), 1));
+                }
                 int roll = MathUtils.random(2);
                 switch (roll) {
                     case 0:

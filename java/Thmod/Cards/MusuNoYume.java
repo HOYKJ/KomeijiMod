@@ -18,7 +18,7 @@ public class MusuNoYume extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public MusuNoYume() {
-        super("MusuNoYume", MusuNoYume.NAME,  1, MusuNoYume.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
+        super("MusuNoYume", MusuNoYume.NAME,  1, MusuNoYume.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.YUYUKO);
         this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
     }
@@ -35,7 +35,7 @@ public class MusuNoYume extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(3);
+            this.upgradeMagicNumber(2);
         }
     }
 

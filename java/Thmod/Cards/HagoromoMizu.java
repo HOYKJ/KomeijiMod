@@ -1,6 +1,7 @@
 package Thmod.Cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BlurPower;
 
 public class HagoromoMizu extends AbstractKomeijiCards {
     public static final String ID = "HagoromoMizu";
@@ -22,9 +24,9 @@ public class HagoromoMizu extends AbstractKomeijiCards {
     private static final int BLOCK = 5;
 
     public HagoromoMizu() {
-        super("HagoromoMizu", HagoromoMizu.NAME,  1, HagoromoMizu.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
-        this.baseBlock = 5;
-        this.baseDamage = 5;
+        super("HagoromoMizu", HagoromoMizu.NAME,  1, HagoromoMizu.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY, CardSet_k.IKU);
+        this.baseBlock = 3;
+        this.baseDamage = 3;
     }
 
     public AbstractCard makeCopy() {
@@ -35,6 +37,9 @@ public class HagoromoMizu extends AbstractKomeijiCards {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1F));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        if(!p.hasPower(BlurPower.POWER_ID)){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BlurPower(p, 1)));
+        }
     }
 
     public void upgrade() {

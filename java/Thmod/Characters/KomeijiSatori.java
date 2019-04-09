@@ -12,9 +12,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -26,7 +29,11 @@ import Thmod.Cards.Defend_Komeiji;
 import Thmod.Cards.Strike_Komeiji;
 import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
+import Thmod.Power.NextSpear;
 import Thmod.Relics.BookofPenglai;
+import Thmod.Relics.KomeijisEye;
+import Thmod.Relics.MusicBox;
+import Thmod.Relics.SpellCardsRule;
 import Thmod.ThMod;
 import basemod.abstracts.CustomPlayer;
 
@@ -45,14 +52,18 @@ public class KomeijiSatori extends CustomPlayer {
         this.dialogX = this.drawX + 0.0f * Settings.scale;
         this.dialogY = this.drawY + 240.0f * Settings.scale;
         ThMod.orbAtlas = new TextureAtlas(Gdx.files.internal("images/orbs/Komeiji/orb.atlas"));
-        AbstractCard.orb_red = ThMod.orbAtlas.findRegion("komeiji");
-        ImageMaster.RED_ORB = ThMod.orbAtlas.findRegion("komeiji");
+//        AbstractCard.orb_red = ThMod.orbAtlas.findRegion("komeiji");
+//        ImageMaster.RED_ORB = ThMod.orbAtlas.findRegion("komeiji");
 
         this.initializeClass(null, "images/characters/komeiji/shoulder.png", "images/characters/komeiji/shoulder2.png", "images/characters/komeiji/corpse.png", getLoadout(), 0.0F, 5.0F, 240.0F, 300.0F, new EnergyManager(ENERGY_PER_TURN));
         loadAnimation("images/characters/komeiji/Komeiji.atlas", "images/characters/komeiji/Komeiji.json", 1.0F);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Normal", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(1.0F);
+//        this.stateData.setMix("Normal", "Closed", 0.2F);
+//        this.stateData.setMix("Closed", "Normal", 0.2F);
+        this.state.getData().setMix("Normal", "Closed", 0.2F);
+        this.state.getData().setMix("Closed", "Normal", 0.2F);
     }
 
     public ArrayList<String> getStartingDeck() {
@@ -78,10 +89,12 @@ public class KomeijiSatori extends CustomPlayer {
 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add("KomeijisEye");
-        UnlockTracker.markRelicAsSeen("KomeijisEye");
-        retVal.add("SpellCardsRule");
-        UnlockTracker.markRelicAsSeen("SpellCardsRule");
+        retVal.add(KomeijisEye.ID);
+        UnlockTracker.markRelicAsSeen(KomeijisEye.ID);
+        retVal.add(SpellCardsRule.ID);
+        UnlockTracker.markRelicAsSeen(SpellCardsRule.ID);
+        retVal.add(MusicBox.ID);
+        UnlockTracker.markRelicAsSeen(MusicBox.ID);
         if (ThMod.blessingOfDetermination == 2){
             retVal.add(BookofPenglai.ID);
         }
@@ -205,7 +218,7 @@ public class KomeijiSatori extends CustomPlayer {
 
     public TextureAtlas.AtlasRegion getOrb()
     {
-        return AbstractCard.orb_red;
+        return ThMod.orbAtlas.findRegion("komeiji");
     }
 
     public Color getSlashAttackColor()
@@ -221,6 +234,18 @@ public class KomeijiSatori extends CustomPlayer {
         else
             Description = "NL 你将你的精神紧绷到极限……";
         return Description;
+    }
+
+    @Override
+    public void applyStartOfTurnPostDrawPowers() {
+        super.applyStartOfTurnPostDrawPowers();
+        for(AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters){
+            for(AbstractPower power : monster.powers){
+                if(power instanceof NextSpear){
+                    power.atStartOfTurnPostDraw();
+                }
+            }
+        }
     }
 
     static {

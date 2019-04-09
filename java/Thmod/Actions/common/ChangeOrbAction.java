@@ -40,8 +40,8 @@ public class ChangeOrbAction extends AbstractGameAction{
     @Override
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
+        p.orbs.get(this.orbNum).onEvoke();
         if (this.setNum == 0) {
-            p.orbs.get(this.orbNum).onEvoke();
             if (this.toEmpty) {
                 AbstractOrb orb = new EmptyOrbSlot();
                 p.orbs.set(this.orbNum, orb);
@@ -75,8 +75,9 @@ public class ChangeOrbAction extends AbstractGameAction{
             p.orbs.set(this.orbNum, orb);
         }
 
-        for (int i = 0; i < p.orbs.size(); ++i)
+        for (int i = 0; i < p.orbs.size(); ++i) {
             (p.orbs.get(i)).setSlot(i, p.maxOrbs);
+        }
         isDone = true;
     }
 }

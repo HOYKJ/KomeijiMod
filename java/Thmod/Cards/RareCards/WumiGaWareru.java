@@ -19,7 +19,7 @@ public class WumiGaWareru extends AbstractKomeijiCards {
     private static final int COST = 2;
 
     public WumiGaWareru() {
-        super("WumiGaWareru", WumiGaWareru.NAME,  2, WumiGaWareru.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
+        super("WumiGaWareru", WumiGaWareru.NAME,  2, WumiGaWareru.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY, CardSet_k.SANAE);
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.baseDamage = 8;

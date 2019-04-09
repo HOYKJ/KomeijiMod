@@ -57,8 +57,8 @@ public class HibernatePower extends AbstractPower {
     }
 
     public void onInitialApplication() {
-        AbstractDungeon.player.state.setAnimation(0,"Close",false);
-        AbstractDungeon.effectList.add(new LatterEffect(() ->{AbstractDungeon.player.state.setAnimation(0,"Closed",true);},1.67F));
+        AbstractDungeon.player.state.setAnimation(0,"Closed",true);
+        //AbstractDungeon.effectList.add(new LatterEffect(() ->{AbstractDungeon.player.state.setAnimation(0,"Closed",true);},1.67F));
     }
 
     public void onRemove() {
@@ -80,8 +80,12 @@ public class HibernatePower extends AbstractPower {
                 p.heal(this.healnum);
                 this.amount -= 1;
             }
-            else if(this.amount == 1)
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,"HibernatePower"));
+            else if(this.amount == 1){
+                p.heal(this.healnum);
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
+            }
+            else
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
         }
     }
 

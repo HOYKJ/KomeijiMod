@@ -1,5 +1,6 @@
 package Thmod.Cards.ElementCards.RareCards;
 
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,6 +15,7 @@ import Thmod.Actions.common.ChangeOrbAction;
 import Thmod.Actions.unique.ChooseAction;
 import Thmod.Actions.unique.ElementMixAction;
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Orbs.ElementOrb.EarthOrb;
 import Thmod.Orbs.ElementOrb.FireOrb;
 import Thmod.Orbs.ElementOrb.LunaOrb;
@@ -32,53 +34,108 @@ public class ElementMix extends AbstractKomeijiCards {
     private static final int COST = 0;
 
     public ElementMix() {
-        super("ElementMix", ElementMix.NAME,  0, ElementMix.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super("ElementMix", ElementMix.NAME,  0, ElementMix.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE, CardSet_k.OTHER);
         this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        final ChooseAction choice = new ChooseAction(this, m, ElementMix.EXTENDED_DESCRIPTION[0], false, 2);
-        for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
-            final ArrayList<Integer> orbnum = new ArrayList<>();
-            orbnum.clear();
-            orbnum.add(i);
-            if (AbstractDungeon.player.orbs.get(i) instanceof EarthOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[1], ElementMix.EXTENDED_DESCRIPTION[2], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new EarthOrb()));
-                });
-            }
-            if (AbstractDungeon.player.orbs.get(i) instanceof FireOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[3], ElementMix.EXTENDED_DESCRIPTION[4], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new FireOrb()));
-                });
-            }
-            if (AbstractDungeon.player.orbs.get(i) instanceof LunaOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[5], ElementMix.EXTENDED_DESCRIPTION[6], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new LunaOrb()));
-                });
-            }
-            if (AbstractDungeon.player.orbs.get(i) instanceof MetalOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[7], ElementMix.EXTENDED_DESCRIPTION[8], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new MetalOrb()));
-                });
-            }
-            if (AbstractDungeon.player.orbs.get(i) instanceof SunOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[9], ElementMix.EXTENDED_DESCRIPTION[10], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new SunOrb()));
-                });
-            }
-            if (AbstractDungeon.player.orbs.get(i) instanceof WaterOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[11], ElementMix.EXTENDED_DESCRIPTION[12], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new WaterOrb()));
-                });
-            }
-            if (AbstractDungeon.player.orbs.get(i) instanceof WoodOrb) {
-                choice.add(ElementMix.EXTENDED_DESCRIPTION[13], ElementMix.EXTENDED_DESCRIPTION[14], () -> {
-                    AbstractDungeon.actionManager.addToTop(new ElementMixAction(new WoodOrb()));
-                });
+        ElementMixAction mixAction = new ElementMixAction();
+        final ChooseAction choice2 = new ChooseAction(this, m, ElementMix.EXTENDED_DESCRIPTION[15], true, 1);
+        choice2.add(ElementMix.EXTENDED_DESCRIPTION[1], ElementMix.EXTENDED_DESCRIPTION[2], () -> {
+            AbstractElementOrb orb = new EarthOrb();
+            mixAction.addOrb(orb);
+            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        });
+        choice2.add(ElementMix.EXTENDED_DESCRIPTION[3], ElementMix.EXTENDED_DESCRIPTION[4], () -> {
+            AbstractElementOrb orb = new FireOrb();
+            mixAction.addOrb(orb);
+            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        });
+        choice2.add(ElementMix.EXTENDED_DESCRIPTION[7], ElementMix.EXTENDED_DESCRIPTION[8], () -> {
+            AbstractElementOrb orb = new MetalOrb();
+            mixAction.addOrb(orb);
+            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        });
+        choice2.add(ElementMix.EXTENDED_DESCRIPTION[11], ElementMix.EXTENDED_DESCRIPTION[12], () -> {
+            AbstractElementOrb orb = new WaterOrb();
+            mixAction.addOrb(orb);
+            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        });
+        choice2.add(ElementMix.EXTENDED_DESCRIPTION[13], ElementMix.EXTENDED_DESCRIPTION[14], () -> {
+            AbstractElementOrb orb = new WoodOrb();
+            mixAction.addOrb(orb);
+            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        });
+        if(this.upgraded){
+            choice2.add(ElementMix.EXTENDED_DESCRIPTION[5], ElementMix.EXTENDED_DESCRIPTION[6], () -> {
+                AbstractElementOrb orb = new LunaOrb();
+                mixAction.addOrb(orb);
+                AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            });
+
+            choice2.add(ElementMix.EXTENDED_DESCRIPTION[9], ElementMix.EXTENDED_DESCRIPTION[10], () -> {
+                AbstractElementOrb orb = new SunOrb();
+                mixAction.addOrb(orb);
+                AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            });
+        }
+        AbstractDungeon.actionManager.addToBottom(choice2);
+
+        boolean hasEle = false;
+        for(int i = 0;i < p.orbs.size();i ++){
+            if(p.orbs.get(i) instanceof AbstractElementOrb){
+                hasEle = true;
+                break;
             }
         }
-        AbstractDungeon.actionManager.addToBottom(choice);
+        if(hasEle) {
+            final ChooseAction choice = new ChooseAction(this, m, ElementMix.EXTENDED_DESCRIPTION[0], true, 1);
+            for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                if (AbstractDungeon.player.orbs.get(i) instanceof EarthOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[1], ElementMix.EXTENDED_DESCRIPTION[2], () -> {
+                        mixAction.addOrb(new EarthOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+                if (AbstractDungeon.player.orbs.get(i) instanceof FireOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[3], ElementMix.EXTENDED_DESCRIPTION[4], () -> {
+                        mixAction.addOrb(new FireOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+                if (AbstractDungeon.player.orbs.get(i) instanceof LunaOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[5], ElementMix.EXTENDED_DESCRIPTION[6], () -> {
+                        mixAction.addOrb(new LunaOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+                if (AbstractDungeon.player.orbs.get(i) instanceof MetalOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[7], ElementMix.EXTENDED_DESCRIPTION[8], () -> {
+                        mixAction.addOrb(new MetalOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+                if (AbstractDungeon.player.orbs.get(i) instanceof SunOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[9], ElementMix.EXTENDED_DESCRIPTION[10], () -> {
+                        mixAction.addOrb(new SunOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+                if (AbstractDungeon.player.orbs.get(i) instanceof WaterOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[11], ElementMix.EXTENDED_DESCRIPTION[12], () -> {
+                        mixAction.addOrb(new WaterOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+                if (AbstractDungeon.player.orbs.get(i) instanceof WoodOrb) {
+                    choice.add(ElementMix.EXTENDED_DESCRIPTION[13], ElementMix.EXTENDED_DESCRIPTION[14], () -> {
+                        mixAction.addOrb(new WoodOrb());
+                        AbstractDungeon.actionManager.addToBottom(mixAction);
+                    });
+                }
+            }
+            AbstractDungeon.actionManager.addToBottom(choice);
+        }
     }
 
     public AbstractCard makeCopy() {
@@ -94,19 +151,19 @@ public class ElementMix extends AbstractKomeijiCards {
         }
     }
 
-    public boolean canUse(AbstractPlayer p, AbstractMonster m){
-        super.canUse(p,m);
-        int emptyNum = 0;
-        for(int i = 0;i < p.orbs.size();i ++){
-            if(p.orbs.get(i) instanceof EmptyOrbSlot)
-                emptyNum += 1;
-        }
-        if((p.orbs.size() - emptyNum) < 2){
-            this.cantUseMessage = "我没有足够的元素球";
-            return false;
-        }
-        return true;
-    }
+//    public boolean canUse(AbstractPlayer p, AbstractMonster m){
+//        super.canUse(p,m);
+//        int emptyNum = 0;
+//        for(int i = 0;i < p.orbs.size();i ++){
+//            if(p.orbs.get(i) instanceof EmptyOrbSlot)
+//                emptyNum += 1;
+//        }
+//        if((p.orbs.size() - emptyNum) < 2){
+//            this.cantUseMessage = "我没有足够的元素球";
+//            return false;
+//        }
+//        return true;
+//    }
 
     static {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("ElementMix");

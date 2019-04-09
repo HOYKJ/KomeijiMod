@@ -3,18 +3,18 @@
       "NAME": "Spell Card Rule Manual",
       "FLAVOR": "A mysterious power keeps Spell Card Rule's work.",
       "DESCRIPTIONS": [
-        "With this, you can use the #ySpell #yCard #yRule. #yActivate: get a SP card. (Every turn limit #b1).",
-        "Don't continuous click please.",
+        "With this, you can use the #ySpell #yCard #yRule. #yActivate : get a SP card.(Limit #b1 time each turn).",
+        "Don't continuously click please.",
         "I don't have enough P point.",
         "It's not my turn.",
-        "I had got the SP card."
+        "I already got a SP card."
       ]
     },
     "KomeijisEye": {
       "NAME": "Satori's Eye",
       "FLAVOR": "The source of mind-reading.",
       "DESCRIPTIONS": [
-        "At the start of your turn, you will gain buff according to enemy's #bIntents. (It will be of no effect at the first turn)."
+        "At the start of your turn, you will gain buff based on enemy's #bIntents. (It will be of no effect at the first turn)."
       ]
     },
   "Grimoire": {
@@ -33,44 +33,47 @@
   },
   "SteinsOfFate": {
     "NAME": "Gem of Fate",
-    "FLAVOR": "This scarlet gem produce an effect on your fate somehow...",
+    "FLAVOR": "This scarlet gem is affecting your fate somehow...",
     "DESCRIPTIONS": [
-      "Draw an extra card at the start of your turn. When each enemy die,gain #1 count. right click to cost #1 count to draw #b1 card."
+      "Draw an extra card at the start of your turn. Gain #1 count whenever an enemy dies. #yActivate : use #1 count to draw #b1 card."
     ]
   },
   "ThirstyCross": {
-    "NAME": "Thirsty Cross",
-    "FLAVOR": "You can't rid it. Whether itself, or the thirst it brings,the thirst of blood...",
+    "NAME": "Bloodlusting Cross",
+    "FLAVOR": "You can't get rid of it. Whether itself, or the thirst it brings, the thirst of blood...",
     "DESCRIPTIONS": [
-      "Start each combat with #b2 #yStrength . If you didn't use any #yAttack in #b1 turn, lose #b3 HP at turn's end."
+      "Start each combat with #b2 #yStrength . If you didn't use any #yAttack in #b1 turn, lose #b",
+      " HP at the end of the turn.",
+      "Start each combat with #b2 #yStrength . If you didn't use any #yAttack in #b1 turn, gain #b",
+      " #rBloodBruise at the end of the turn."
     ]
   },
   "ReiryokuShyu": {
     "NAME": "Spirit Orb",
-    "FLAVOR": "When you glow with energy, this gem will radiate softly.",
+    "FLAVOR": "When you are enegetic, this gem will radiate softly.",
     "DESCRIPTIONS": [
-      "At start of your turn, if you have at least  #b4 #rP point, gain [R] ."
+      "At start of your turn, if you have at least #b4 #rP point, gain [E] ."
     ]
   },
   "SpellExtend": {
     "NAME": "Spell Card Extend",
-    "FLAVOR": "This SP card will suddenly appear in Spell Card Rule Manual,and become can be use...",
+    "FLAVOR": "SP card in it will suddenly appear in Spell Card Rule Manual ready to be used...",
     "DESCRIPTIONS": [
       "If you have at least #b2 #rP point,you can choose from #b5 cards when choose SP card."
     ]
   },
   "ShirouKen": {
     "NAME": "Hakurou Sword",
-    "FLAVOR": "A sword cast by mystic apparition, which can chop off maze.",
+    "FLAVOR": "A youkai forged sword that cuts away hesitation.",
     "DESCRIPTIONS": [
-      "In #1 turn, each #yAttack you used will make after #yAttacks' damage grows #1 ."
+      "In #b1 turn, each #yAttack you used will make all following #yAttacks' damage increase #1 ."
     ]
   },
   "LinkosWocchi": {
     "NAME": "Reverse Watch",
-    "FLAVOR": "There is several words on its back: As long as you keep pushing beyond yourself, there will be light in the front.",
+    "FLAVOR": "Several words are carved on its back: As long as you keep pushing beyond yourself, there will be light in the front.",
     "DESCRIPTIONS": [
-      " #yActivate: it in your turn, will make every unit's HP back to last turn, it is of no effect to dead or Minion.(Every combat limit #b1 time)",
+      " #yActivate : If it's in your turn, make ALL unit's HP return back to the amount last turn, it is of no effect to the dead or Minion.(Limited #b1 time per combat)",
       "I can't use it yet!"
     ]
   },
@@ -92,23 +95,23 @@
     "NAME": "Cleansed Crystal Mirror",
     "FLAVOR": "By looking into the mirror, they see all your past deeds.",
     "DESCRIPTIONS": [
-      "At the start of your turn, enemy will gain debuff according to its #bIntents ."
+      "At the start of your turn, enemy will gain debuff based on its #bIntents in last turn."
     ]
   },
   "WordlessDocument": {
     "NAME": "Wordless Document",
-    "FLAVOR": "There is no word on it,but a signet with: the Ministry of Right and Wrong...",
+    "FLAVOR": "There is no word on it, but a signet with: the Ministry of Right and Wrong...",
     "DESCRIPTIONS": [
-      "You can feel something peculiar with it,but you can't say what it is..."
+      "You can feel something peculiar about it,but you can't tell what it is..."
     ]
   },
   "CrystalBall": {
     "NAME": "Crystal Ball",
-    "FLAVOR": "By pour mana into this,you can make element magic work easily.",
+    "FLAVOR": "By pouring mana into this,you can use elemental magics easily.",
     "DESCRIPTIONS": [
-      " #yActivate: choose #b1 #yElement #yOrb to gain (Except Luna and Sun).Every turn limit #1 time.",
-      "Choose an Element Orb",
-      "Don't continuous click please.",
+      " #yActivate : If you have no #yElement #yOrb , choose #b1 and obtain (Except Luna and Sun). Otherwise choose #b1 #yElement #yOrb to #yResonance.(Cooling for #b1 turn)",
+      "Choose 1 Element Orb",
+      "Don't continuously click please.",
       "It's not my turn.",
       "I had used it before."
     ]
@@ -124,7 +127,7 @@
     "NAME": "Mysterious Book",
     "FLAVOR": "There is no word on its cover...",
     "DESCRIPTIONS": [
-      " #yPermanent #yActivate: browse this book...",
+      " #yPermanent #yActivate : browse this book...",
       "Choose one page.",
       "First page","Read first page",
       "Second page","Read second page",
@@ -139,18 +142,18 @@
 
       "The remaining pages are all blank...",
       "What does it main...",
-      "The anxious paradise will open the gate.'",
+      "The long awaited paradise will open the gate.'",
       "It says:'When \"Innocent Treasures\" coming,",
-      "There write in blood: NL Hexa Ghost",
-      "There write in blood: NL Slime Boss",
-      "There write in blood: NL The Guardian",
-      "There write in blood: NL Bronze Automaton",
-      "There write in blood: NL Champ",
-      "There write in blood: NL The Collector",
-      "There write in blood: NL Awakened One",
-      "There write in blood: NL Time Eater",
-      "This handwriting,it's my handwriting...",
-      "It says:This no longer has practical effect,keep it only as a souvenir.",
+      "Blood writing: NL Hexa Ghost",
+      "Blood writing: NL Slime Boss",
+      "Blood writing: NL The Guardian",
+      "Blood writing: NL Bronze Automaton",
+      "Blood writing: NL Champ",
+      "Blood writing: NL The Collector",
+      "Blood writing: NL Awakened One",
+      "Blood writing: NL Time Eater",
+      "This handwriting, it's my handwriting...",
+      "It says: This no longer has practical effect,keep it only as a souvenir.",
 
       "Right click to browse this book..."
     ]
@@ -159,7 +162,7 @@
     "NAME": "General Service Bag",
     "FLAVOR": "There are various items in the bag,you can assemble them optionally.",
     "DESCRIPTIONS": [
-      " #yActivate: create #b1 card and add to your draw pile.(Every combat limit #b1 time)",
+      " #yActivate : create #b1 card and add to your draw pile.(Limited #b1 time per combat)",
       "Assemle fittings",
       "Specification:Small device","cost 1",
       "Specification:Middle device","cost 2",
@@ -188,7 +191,7 @@
       "Fittings:Multiplexing armor","Gain 2 Strength.",
       "Fittings:Multiplexing armor","Gain 2 Dexterity.",
       "Fittings:Multiplexing armor","Gain 1 Strength and Dexterity.",
-      "Fittings:Power device","Gain [R] .",
+      "Fittings:Power device","Gain [E] .",
       "Fittings:Medical machine","Heal 6 HP.",
 
       "Fittings:Extending Arm","Deal 18 Static damage to a random enemy.",
@@ -202,7 +205,7 @@
       "Fittings:Multiplexing armor","Gain 3 Dexterity.",
       "Fittings:Multiplexing armor","Gain 2 Strength and 1 Dexterity.",
       "Fittings:Multiplexing armor","Gain 1 Strength and 2 Dexterity.",
-      "Fittings:Power device","Gain [R] [R] .",
+      "Fittings:Power device","Gain [E] [E] .",
       "Fittings:Medical machine","Heal 9 HP.",
 
       "Don't continuous click please.",
@@ -214,7 +217,7 @@
     "NAME": "Staff",
     "FLAVOR": "Formidable magician can conjure without tool. But to those new magicians, they can only ues senior magic with a staff.",
     "DESCRIPTIONS": [
-      " #yActivate: add #b1 Spell Card to your hand. This card base on #b2 next #yElement orb.(Every turn limit #b1 time)",
+      " #yActivate : add #b1 Spell Card to your hand. This card base on #b2 next #yElement orb.(Limit #b1 time each turn)",
       "I had used it before.",
       "It's not my turn.",
       "I had used it before.",
@@ -223,9 +226,9 @@
   },
   "ColorfulQuillpen": {
     "NAME": "Colorful Quill-pen",
-    "FLAVOR": "This miraculous quill-pen can overwrite the Manual partly...",
+    "FLAVOR": "This miraculous quill-pen can rewrite the Manual partially...",
     "DESCRIPTIONS": [
-      " #yActivate: refresh the Spell Card you can choose.(Every combat limit #b1 time)",
+      " #yActivate : refresh the Spell Card you can choose.(Limited #b1 time each turn)",
       "I don't need to use it now.",
       "I had used it before."
     ]
@@ -234,24 +237,88 @@
     "NAME": "Ring of Dollmaker",
     "FLAVOR": "It's almost a essential tool to Dollmakers. Even a Dollmaker attained perfection in skill, he still will use it.",
     "DESCRIPTIONS": [
-      " #yActivate: fill your slot with #yDoll. At most #3.(Every combat limit #b1 time)",
+      " #yActivate : fill your slot with #yDoll. At most #3.(Limited #b1 time per combat)",
       "It's not my turn.",
       "I had used it before."
     ]
   },
   "GoodDreamPillow": {
     "NAME": "Dream Soul Pillow",
-    "FLAVOR": "A pillow with Dream Soul as the model sample. It's very very soft, sleep with it will be very comfortable.",
+    "FLAVOR": "A pillow made using Dream Soul as its model. It's very, very soft, sleeping on it will be very comfortable.",
     "DESCRIPTIONS": [
       "Can make you have a good dream. A tag on it write:",
-      "It seems do no effect anymore, but still comfortable."
+      "Seems like it won't work anymore, but still it is very comfortable."
     ]
   },
   "Clue": {
     "NAME": "Slip of Paper",
-    "FLAVOR": "The handwriting on it is very illegible",
+    "FLAVOR": "The handwriting on it is quite illegible",
     "DESCRIPTIONS": [
-      " #yActivate: See the content on the slip."
+      " #yActivate : See the content on the slip."
+    ]
+  },
+  "MiracleMallet": {
+    "NAME": "Miracle Mallet",
+    "FLAVOR": "This mallet sends out a ominous bewitchment...",
+    "DESCRIPTIONS": [
+      " #yActivate : #bStrengthen a random card from draw pile/hand/discard pile, and make it #yExhaust . It will restore when combat ends.(Every combat limit #b1 time)",
+      " Exhaust .",
+      "You can sense this mallet is crying for its lost owner..."
+    ]
+  },
+  "MusicBox": {
+    "NAME": "Music Box",
+    "FLAVOR": "A attaching label: I want give you a gift before we meet. It seems indicate something?",
+    "DESCRIPTIONS": [
+      "Right click to switch. If active, it will play music in some conditions."
+    ]
+  },
+  "Memoirist": {
+    "NAME": "Memoirist",
+    "FLAVOR": "In fact it's a novel, but you can find some fragmentary memories of its author from it.",
+    "DESCRIPTIONS": [
+      " #yActivate : Choose #b1 #yAssociation card in your hand, transform it to a appointed associate card.",
+      "Choose a Association card."
+    ]
+  },
+  "HoshigumaDish": {
+    "NAME": "Hoshiguma Dish",
+    "FLAVOR": "It raises the quality of any sake poured into it, but the quality will reduce as time goes.",
+    "DESCRIPTIONS": [
+      " #yActivate : Choose #b1 card in your hand, transform it to a random card. Strengthen and add it into your discard pile. It will be weaken every turn.(Every combat limit #b1 time)",
+      "Choose a Association card."
+    ]
+  },
+  "CrystalOfMemory": {
+    "NAME": "Crystal Of Memory",
+    "FLAVOR": "A cluster of crystals which seems have vitality.",
+    "DESCRIPTIONS": [
+      "Choose 1 card.",
+      "Upon pickup, choose 1 card from your deck, get effect bases on thar card.",
+      "Future card rewards have #b1 additional card to choose from.",
+      "You can see enemy #bIntents and ALL units' status again.",
+      "At start of turn, if you have #yShield #yDoll , #ySpear #yDoll and #yArcher #yDoll , gain [E] .",
+      "When you draw, deal #b3 damage to a random enemy.",
+      "Whenever you blocked attack, gain #b3 #yBlock at start of next turn.",
+      "Whenever you gain #yBlock , deal #b1 damage to a random enemy.",
+      "Apply #b1 #yBound #ySpirit to a random enemy at start of turn..",
+      "Gain extra #b15 gold when you win a combat.",
+      "Gain #b8 Block at end of your turn, whenever you played #b1 #yAttack , reduce by #b1 .",
+      "Record #yElement you played. If you play an #yElement is interpromoting with record, trigger its #bResonance (without exhaust element). If restriction, clear the record.",
+      "Your applied #yWeak and #yVulnerable will increase by #b1 .",
+      " #yActivate : Choose #b1 card in your hand, make a copy and add into discard pile.(Limited #b1 time per combat)",
+      " #yActivate : Add #b1 random card into your hand, it cost #b0 this turn.(Limited #b1 time per combat)",
+      "If you didn't be attacked, draw #b1 card at start of next turn.",
+      "At start of turn, a random unit lose or heal #b2 hp.",
+      "If you didn't play any #yAttack , gain #b1 #yStrength at start of next turn.",
+      "When a enemy with #yAbnormity attack you, you heal #b1 hp.",
+      "Whenever you gain #yWeather , gain #b1 #yStrength .",
+      "Whenever you exhaust #b3 cards, gain #b1 #yStrength .",
+      "Whenever you played #b4 #yAttack , your ALL attack cards' damage in crease by #b1 .",
+      "Whenever you shuffle your discard pile, choose #b1 card in exhaust pile, add it into your discard pile.",
+      "Whenever you played #b3 #ySkill , upgrade #b1 random card in your hand.",
+      "Interpromoting Relation","Water-Wood-Fire-Earth-Metal",
+      "restriction Relation","Water-Fire-Metal-Wood-Earth"
     ]
   }
   }

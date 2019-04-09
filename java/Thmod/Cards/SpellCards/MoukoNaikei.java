@@ -20,7 +20,7 @@ public class MoukoNaikei extends AbstractSpellCards {
     private int pointcost;
 
     public MoukoNaikei() {
-        super("MoukoNaikei", MoukoNaikei.NAME,  0, MoukoNaikei.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
+        super("MoukoNaikei", MoukoNaikei.NAME,  0, MoukoNaikei.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ENEMY);
         this.pointcost = 4;
     }
 

@@ -49,14 +49,13 @@ public class Yukari extends AbstractMonster {
     private AbstractPlayer p = AbstractDungeon.player;
     private boolean firstTurn;
     private boolean attacked;
-    private int damages;
     private int cardsNeedUse;
 
     public Yukari(float x, float y) {
         super(NAME, "Yukari", 510, -10.0F, 0.0F, 280.0F, 350.0F, "images/monsters/Yukari/Main.png", x, y);
         this.firstTurn = true;
         this.attacked = false;
-        this.damages = 17;
+        this.damage.add(new DamageInfo(this, 17));
         this.cardsNeedUse = 2;
         this.dialogX = (-100.0F * Settings.scale);
         this.dialogY = (10.0F * Settings.scale);
@@ -81,7 +80,7 @@ public class Yukari extends AbstractMonster {
         }
         else if(lastMove((byte)6)){
             if(!(attacked)){
-                setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damages, 3, true);
+                setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damage.get(0).base, 3, true);
                 attacked = true;
             }
             else {
@@ -115,7 +114,7 @@ public class Yukari extends AbstractMonster {
                     setMove((byte)4, Intent.BUFF);
                 }
                 else
-                    setMove((byte)5, Intent.ATTACK_BUFF,this.damages);
+                    setMove((byte)5, Intent.ATTACK_BUFF, this.damage.get(0).base);
             }
         }
     }
@@ -145,9 +144,9 @@ public class Yukari extends AbstractMonster {
                 break;
             case 3:
                 for (int i = 0; i < 3; i++) {
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damages, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 }
-                this.damages += 3;
+                this.damage.set(0, new DamageInfo(this, this.damage.get(0).base + 3));
                 this.attacked = true;
                 break;
             case 4:
@@ -158,7 +157,7 @@ public class Yukari extends AbstractMonster {
                 }
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
                 AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
-                this.damages += 3;
+                this.damage.set(0, new DamageInfo(this, this.damage.get(0).base + 3));
                 break;
             case 5:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
@@ -168,8 +167,8 @@ public class Yukari extends AbstractMonster {
                 }
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
                 AbstractDungeon.actionManager.addToBottom(new RemoveDebuffsAction(this));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, this.damages, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-                this.damages += 3;
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                this.damage.set(0, new DamageInfo(this, this.damage.get(0).base + 3));
                 break;
             case 6:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
@@ -202,7 +201,7 @@ public class Yukari extends AbstractMonster {
         }
         else {
             if(!(attacked)){
-                setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damages, 3, true);
+                setMove(MOVES[2],(byte) 3, Intent.ATTACK, this.damage.get(0).base, 3, true);
                 attacked = true;
             }
             else {

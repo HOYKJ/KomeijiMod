@@ -1,5 +1,6 @@
 package Thmod.Cards.ElementCards;
 
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -12,6 +13,8 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import Thmod.Actions.common.ChangeOrbAction;
 import Thmod.Actions.common.MoveOrbAction;
 import Thmod.Actions.unique.ResonateAction;
+import Thmod.Cards.AbstractSetCards;
+import Thmod.Cards.ElementCards.SpellCards.AbstractElementSpellCards;
 import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Orbs.ElementOrb.EarthOrb;
 import Thmod.Orbs.ElementOrb.FireOrb;
@@ -25,38 +28,41 @@ import Thmod.Patches.AbstractCardEnum;
 import Thmod.ThMod;
 import basemod.abstracts.CustomCard;
 
-public abstract class AbstractElementCards extends CustomCard {
+public abstract class AbstractElementCards extends AbstractSetCards {
     public ElementType elementType;
-    private ElementType mixElementType;
-    private boolean allElements;
+    public ElementType mixElementType;
+    public boolean allElements;
 
     public AbstractElementCards(final String id, final String name, final int cost, final String description, final AbstractCard.CardType type, final AbstractCard.CardRarity rarity, final AbstractCard.CardTarget target, final ElementType elementType){
-        super(id, name, ThMod.komeijiCardImage(id), cost, description, type, AbstractCardEnum.古明地觉, rarity, target);
+        super(id, name, ThMod.komeijiCardImage(id,false), cost, description, type, AbstractCardEnum.古明地觉, rarity, target, CardSet_k.PATCHOULI);
         this.elementType = elementType;
         this.mixElementType = null;
         this.allElements = false;
+        setElementBG();
     }
 
     public AbstractElementCards(final String id, final String name, final int cost, final String description, final AbstractCard.CardType type, final AbstractCard.CardRarity rarity, final AbstractCard.CardTarget target, final ElementType elementType,boolean isSP){
-        super(id, name, ThMod.komeijiCardImage(id), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target);
+        super(id, name, ThMod.komeijiCardImage(id,false), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target, CardSet_k.PATCHOULI);
         this.elementType = elementType;
         this.mixElementType = null;
         this.allElements = false;
+        setElementBG();
     }
 
     public AbstractElementCards(final String id, final String name, final int cost, final String description, final AbstractCard.CardType type, final AbstractCard.CardRarity rarity, final AbstractCard.CardTarget target, final ElementType elementType, final ElementType mixElementType){
-        super(id, name, ThMod.komeijiCardImage(id), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target);
+        super(id, name, ThMod.komeijiCardImage(id,false), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target, CardSet_k.PATCHOULI);
         this.elementType = elementType;
-        this.mixElementType = null;
         this.mixElementType = mixElementType;
         this.allElements = false;
+        setMixElementBG();
     }
 
     public AbstractElementCards(final String id, final String name, final int cost, final String description, final AbstractCard.CardType type, final AbstractCard.CardRarity rarity, final AbstractCard.CardTarget target, final boolean allElements){
-        super(id, name, ThMod.komeijiCardImage(id), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target);
+        super(id, name, ThMod.komeijiCardImage(id,false), cost, description, type, AbstractCardEnum.Sp符卡, rarity, target, CardSet_k.PATCHOULI);
         this.elementType = null;
         this.mixElementType = null;
         this.allElements = allElements;
+        setKenjiaBG();
     }
 
     @Override
@@ -188,6 +194,7 @@ public abstract class AbstractElementCards extends CustomCard {
             }
             if((double1) && (double2)){
                 flash();
+                AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
                 for(int i = 0;i < p.orbs.size();i++) {
                     if (p.orbs.get(i) instanceof AbstractKenjiaOrb) {
                         AbstractKenjiaOrb elementOrb = (AbstractKenjiaOrb) p.orbs.get(i);
@@ -270,7 +277,121 @@ public abstract class AbstractElementCards extends CustomCard {
             this.setCostForTurn(-9);
     }
 
-    public static enum ElementType
+    private void setElementBG(){
+        String tmp = "";
+        switch (this.type)
+        {
+            case ATTACK:
+                tmp += "bg_attack_komeiji";
+                break;
+            case POWER:
+                tmp += "bg_power_komeiji";
+                break;
+            case SKILL:
+                tmp += "bg_skill_komeiji";
+                break;
+            default:
+                return;
+        }
+        switch (this.elementType)
+        {
+            case Earth:
+                tmp += "_earth";
+                break;
+            case Fire:
+                tmp += "_fire";
+                break;
+            case Luna:
+                tmp += "_luna";
+                break;
+            case Metal:
+                tmp += "_metal";
+                break;
+            case Wood:
+                tmp += "_wood";
+                break;
+            case Sun:
+                tmp += "_sun";
+                break;
+            case Water:
+                tmp += "_water";
+                break;
+            default:
+                return;
+        }
+        tmp += ".png";
+        //ThMod.logger.info("bg name:" + tmp);
+        setBackgroundTexture("images/cardui/512/Element/" + tmp, "images/cardui/1024/Element/" + tmp);
+        if(this instanceof AbstractElementSpellCards){
+            tmp = "water_water.png";
+            setBackgroundTexture("images/cardui/512/ElementSpell/" + tmp, "images/cardui/1024/ElementSpell/" + tmp);
+        }
+    }
+
+    private void setMixElementBG(){
+        String tmp = "";
+        switch (this.elementType)
+        {
+            case Earth:
+                tmp += "earth";
+                break;
+            case Fire:
+                tmp += "fire";
+                break;
+            case Luna:
+                tmp += "luna";
+                break;
+            case Metal:
+                tmp += "metal";
+                break;
+            case Wood:
+                tmp += "wood";
+                break;
+            case Sun:
+                tmp += "sun";
+                break;
+            case Water:
+                tmp += "water";
+                break;
+            default:
+                return;
+        }
+        switch (this.mixElementType)
+        {
+            case Earth:
+                tmp += "_earth";
+                break;
+            case Fire:
+                tmp += "_fire";
+                break;
+            case Luna:
+                tmp += "_luna";
+                break;
+            case Metal:
+                tmp += "_metal";
+                break;
+            case Wood:
+                tmp += "_wood";
+                break;
+            case Sun:
+                tmp += "_sun";
+                break;
+            case Water:
+                tmp += "_water";
+                break;
+            default:
+                return;
+        }
+        tmp += ".png";
+        setBackgroundTexture("images/cardui/512/ElementSpell/" + tmp, "images/cardui/1024/ElementSpell/" + tmp);
+    }
+
+    private void setKenjiaBG(){
+        String tmp = "kenjia.png";
+        setBackgroundTexture("images/cardui/512/ElementSpell/" + tmp, "images/cardui/1024/ElementSpell/" + tmp);
+    }
+
+    public enum ElementType
     {
         Fire,Water,Metal,Wood,Earth,Sun,Luna;
     }

@@ -21,7 +21,7 @@ public class PerfectMaid extends AbstractSweepCards {
     private static final int COST = 2;
 
     public PerfectMaid() {
-        super("PerfectMaid", PerfectMaid.NAME,  2, PerfectMaid.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
+        super("PerfectMaid", PerfectMaid.NAME,  2, PerfectMaid.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardSet_k.OTHER);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

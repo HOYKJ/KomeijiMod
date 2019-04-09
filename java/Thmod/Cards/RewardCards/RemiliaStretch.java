@@ -23,7 +23,7 @@ public class RemiliaStretch extends AbstractKomeijiCards {
     private static final int COST = 3;
 
     public RemiliaStretch() {
-        super("RemiliaStretch", RemiliaStretch.NAME,  3, RemiliaStretch.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
+        super("RemiliaStretch", RemiliaStretch.NAME,  3, RemiliaStretch.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY, CardSet_k.OTHER);
         this.baseDamage = 50;
         this.isMultiDamage = true;
         this.exhaust = true;

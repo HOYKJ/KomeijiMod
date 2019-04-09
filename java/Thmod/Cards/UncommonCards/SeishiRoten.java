@@ -28,11 +28,12 @@ public class SeishiRoten extends AbstractSweepCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     private static final int COST = 1;
-    private static final int DAMAGE_AMT = 5;
 
     public SeishiRoten() {
-        super("SeishiRoten", SeishiRoten.NAME,  1, SeishiRoten.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseDamage = 7;
+        super("SeishiRoten", SeishiRoten.NAME,  1, SeishiRoten.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, CardSet_k.YOUMU);
+        this.baseDamage = 6;
+        this.baseMagicNumber = 4;
+        this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;
     }
 
@@ -45,7 +46,7 @@ public class SeishiRoten extends AbstractSweepCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         if(AbstractDungeon.player instanceof KomeijiSatori) {
-            SpellCardsRule.SeishiRotenNum += 2;
+            SpellCardsRule.SeishiRotenNum += this.magicNumber;
         }
     }
 

@@ -22,7 +22,7 @@ public class GasuOrimono extends AbstractKomeijiCards {
     private static final int STR_AMOUNT = 3;
 
     public GasuOrimono() {
-        super("GasuOrimono", GasuOrimono.NAME,  1, GasuOrimono.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        super("GasuOrimono", GasuOrimono.NAME,  1, GasuOrimono.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.REISEN);
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
     }

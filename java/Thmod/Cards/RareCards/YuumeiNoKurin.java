@@ -21,7 +21,7 @@ public class YuumeiNoKurin extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public YuumeiNoKurin() {
-        super("YuumeiNoKurin", YuumeiNoKurin.NAME,  1, YuumeiNoKurin.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE);
+        super("YuumeiNoKurin", YuumeiNoKurin.NAME,  1, YuumeiNoKurin.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE, CardSet_k.YOUMU);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;

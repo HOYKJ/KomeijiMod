@@ -34,13 +34,28 @@ public class BlueAbnormity extends AbstractPower {
     }
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if(target == AbstractDungeon.player)
-            AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, (int)(this.damageGive*0.5), DamageInfo.DamageType.HP_LOSS)));
+        if(target != this.owner) {
+            int oth = 0;
+            float crease = 0.2f;
+            boolean ga = true;
+            boolean ra = true;
+            for(AbstractPower p:this.owner.powers){
+                if((p instanceof GreenAbnormity) && (ga)){
+                    oth += 1;
+                    ga = false;
+                }
+                if((p instanceof RedAbnormity) && (ra)){
+                    oth += 1;
+                    ra = false;
+                }
+            }
+            AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, (int) (this.damageGive * (0.5 + oth * crease)), DamageInfo.DamageType.HP_LOSS)));
+        }
     }
 
     public void atEndOfRound() {
         if (this.amount <= 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "BlueAbnormity"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }

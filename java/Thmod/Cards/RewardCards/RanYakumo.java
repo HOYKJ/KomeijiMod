@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.common.LatterAction;
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Power.LanPower;
 
@@ -19,14 +20,16 @@ public class RanYakumo extends AbstractKomeijiCards {
     private static final int COST = 2;
 
     public RanYakumo() {
-        super("RanYakumo", RanYakumo.NAME,  3, RanYakumo.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
+        super("RanYakumo", RanYakumo.NAME,  2, RanYakumo.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE, CardSet_k.OTHER);
         this.upgraded = true;
         this.isEthereal = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new LanPower(p,3),3));
-        this.modifyCostForCombat(1);
+        AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
+            this.modifyCostForCombat(1);
+        }, 0.1f));
     }
 
     public boolean canUpgrade()

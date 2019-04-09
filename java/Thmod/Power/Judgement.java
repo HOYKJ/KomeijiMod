@@ -47,13 +47,13 @@ public class Judgement extends AbstractPower {
         if(this.turnToJudge){
             if(card.type == AbstractCard.CardType.ATTACK){
                 this.amount += 1;
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(p, 1, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(p, 2, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             }
         }
         else{
             if(card.type == AbstractCard.CardType.SKILL){
                 this.amount += 1;
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(p, 1, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(p, 2, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             }
         }
     }

@@ -25,7 +25,8 @@ public class Mishyaguji extends AbstractSweepCards {
     private static final int COST = 1;
 
     public Mishyaguji() {
-        super("Mishyaguji", Mishyaguji.NAME,  1, Mishyaguji.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super("Mishyaguji", Mishyaguji.NAME,  1, Mishyaguji.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY, CardSet_k.SUWAKO);
+        this.isEthereal = true;
         this.exhaust = true;
     }
 

@@ -20,7 +20,7 @@ public class SuitokuNoKyoryu extends AbstractKomeijiCards {
     private static final int DEX_AMOUNT = 2;
 
     public SuitokuNoKyoryu() {
-        super("SuitokuNoKyoryu", SuitokuNoKyoryu.NAME,  1, SuitokuNoKyoryu.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        super("SuitokuNoKyoryu", SuitokuNoKyoryu.NAME,  1, SuitokuNoKyoryu.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.IKU);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
     }

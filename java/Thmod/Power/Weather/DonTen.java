@@ -39,15 +39,15 @@ public class DonTen extends AbstractPower {
         if((card.type == AbstractCard.CardType.ATTACK)&&(this.counter != 5))
             this.counter += 1;
         if(this.counter == 5){
-            if(p.hasPower("PointPower")) {
-                if (p.getPower("PointPower").amount < 5) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+            if(this.owner.hasPower("PointPower")) {
+                if (this.owner.getPower("PointPower").amount < 5) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
                     flash();
                     this.counter = 0;
                 }
             }
             else{
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PointPower(p, 1), 1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPower(this.owner, 1), 1));
                 flash();
                 this.counter = 0;
             }

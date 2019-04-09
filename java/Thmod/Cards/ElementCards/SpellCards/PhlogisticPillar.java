@@ -16,13 +16,12 @@ public class PhlogisticPillar extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 2;
 
     public PhlogisticPillar() {
         super("PhlogisticPillar", PhlogisticPillar.NAME,  2, PhlogisticPillar.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY,ElementType.Fire,ElementType.Water);
-        this.baseDamage = 16;
+        this.baseDamage = 18;
         this.isMultiDamage = true;
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
     }
 

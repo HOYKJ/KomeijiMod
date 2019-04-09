@@ -2,6 +2,7 @@ package Thmod.Cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,17 +17,18 @@ public class Melting extends AbstractKomeijiCards{
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 1;
-    private static final int ATTACK_DMG = 8;
 
     public Melting() {
-        super("Melting", Melting.NAME,  1, Melting.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        this.baseDamage = 8;
+        super("Melting", Melting.NAME,  1, Melting.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.UTSUHO);
+        this.baseDamage = 10;
+        this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(m, p));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        AbstractDungeon.actionManager.addToBottom(new ExhaustAction(p, p, this.magicNumber, false));
     }
 
     public AbstractCard makeCopy() {

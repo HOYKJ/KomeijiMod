@@ -23,7 +23,7 @@ public class SenyouGoraku extends AbstractSweepCards {
     private static final int DAMAGE_AMT = 30;
 
     public SenyouGoraku() {
-        super("SenyouGoraku", SenyouGoraku.NAME,  6, SenyouGoraku.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        super("SenyouGoraku", SenyouGoraku.NAME,  5, SenyouGoraku.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, CardSet_k.TENSHI);
         this.baseDamage = 30;
     }
 

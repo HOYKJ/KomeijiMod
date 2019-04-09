@@ -1,15 +1,17 @@
 package Thmod.Power;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import Thmod.Cards.ElementCards.UncommonCards.MidautumnSpear;
+import Thmod.ThMod;
 
 public class NextSpear extends AbstractPower {
     public static final String POWER_ID = "NextSpear";
@@ -31,11 +33,27 @@ public class NextSpear extends AbstractPower {
         updateDescription();
     }
 
+//    public void atEndOfTurn(boolean isPlayer) {
+//        if(!(isPlayer)) {
+//            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+//            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+//        }
+//    }
+
+
+    @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if(!(isPlayer)) {
-            AbstractDungeon.actionManager.addToTop(new DamageAction(this.owner, new DamageInfo(this.owner, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        super.atEndOfTurn(isPlayer);
+        if(!isPlayer) {
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new MidautumnSpear(this.damage), false));
         }
+    }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        super.atStartOfTurnPostDraw();
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, (int) ((float)this.damage / 2)));
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }
 
     public void updateDescription()

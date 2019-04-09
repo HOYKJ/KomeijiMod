@@ -23,7 +23,7 @@ public class SpeartheGungnir extends AbstractSpellCards {
     public SpeartheGungnir() {
         super("SpeartheGungnir", SpeartheGungnir.NAME,  1, SpeartheGungnir.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.baseDamage = 20;
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 10;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;
     }

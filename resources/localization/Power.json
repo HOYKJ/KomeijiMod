@@ -69,7 +69,8 @@
   "HenyouMirumePower": {
     "NAME": "静观其变之眼",
     "DESCRIPTIONS": [
-      "在你攻击后追加 #b15 点伤害."
+      "本回合你的下一次攻击追加 #b",
+      " 点 #b固定 伤害."
     ]
   },
   "HibernatePower": {
@@ -81,7 +82,7 @@
   "IceTornadoPower": {
     "NAME": "Ice Tornado",
     "DESCRIPTIONS": [
-      "对所有敌人造成伤害."
+      "对所有敌人造成伤害,同时减少你受到的伤害."
     ]
   },
   "JyouchiPower": {
@@ -106,11 +107,17 @@
   "KoKeiPower": {
     "NAME": "虎劲",
     "DESCRIPTIONS": [
-      "下 #b1 次攻击造成 #y2 倍伤害."
+      "本回合内下 #b1 次攻击造成 #y2 倍伤害."
     ]
   },
   "KyoufuSaiminPower": {
     "NAME": "恐怖催眠术",
+    "DESCRIPTIONS": [
+      "记录接下来2回合内受到的伤害,结束时失去等额的生命."
+    ]
+  },
+  "RoseHellPower": {
+    "NAME": "蔷薇地狱",
     "DESCRIPTIONS": [
       "记录接下来2回合内受到的伤害,结束时失去等额的生命."
     ]
@@ -142,6 +149,15 @@
 	"在每个回合开始时,根据敌人的 #b意图 获得属性."
       ]
     },
+  "MusouTenseiPower": {
+    "NAME": "梦想天生",
+    "DESCRIPTIONS": [
+      "在 #b",
+      " 回合内,再打出 #b",
+      " 张 #y攻击 造成 #b",
+      " 点伤害."
+    ]
+  },
   "MusuNoTegataPower": {
     "NAME": "无寿之国的文书",
     "DESCRIPTIONS": [
@@ -161,6 +177,13 @@
 	"爱丽丝做的人偶,为什么会出现在这呢?"
       ]
     },
+  "PhlogisticPower": {
+    "NAME": "燃素",
+    "DESCRIPTIONS": [
+      "不能再获得状态或恢复生命,每次生效时失去 #b",
+      " 生命."
+    ]
+  },
   "PointPower": {
     "NAME": "P点",
     "DESCRIPTIONS": [
@@ -380,27 +403,27 @@
 
 
   "BlueAbnormity": {
-    "NAME": "负面效果",
+    "NAME": "负面效果[蓝]",
     "DESCRIPTIONS": [
-      "效果不明"
+      "效果不明, 如果存在其它负面效果, 该负面效果效果增强."
     ]
   },
   "GreenAbnormity": {
-    "NAME": "负面效果",
+    "NAME": "负面效果[绿]",
     "DESCRIPTIONS": [
-      "效果不明"
+      "效果不明, 如果存在其它负面效果, 该负面效果效果增强."
     ]
   },
   "RedAbnormity": {
-    "NAME": "负面效果",
+    "NAME": "负面效果[红]",
     "DESCRIPTIONS": [
-      "效果不明"
+      "效果不明, 如果存在其它负面效果, 该负面效果效果增强."
     ]
   },
   "HauntPower": {
-    "NAME": "负面效果",
+    "NAME": "重创负面",
     "DESCRIPTIONS": [
-      "效果不明"
+      "在攻击后获得 #y约束负面效果 ."
     ]
   },
 
@@ -424,8 +447,8 @@
   "BubblePower": {
     "NAME": "Sticky Bubble",
     "DESCRIPTIONS": [
-      "使这个单位损失 #b",
-      " 点 #y力量 ,回合结束生效.每个回合开始时失去1层."
+      "损失 #b",
+      " 点 #y力量 ,回合结束生效.每个回合开始时失去 #b1 层.如果超过 #b4 层,目标眩晕 #b1 回合."
     ]
   },
   "CromlechPower": {
@@ -464,8 +487,8 @@
   "NextSpear": {
     "NAME": "Midautumn Spear",
     "DESCRIPTIONS": [
-      "在回合开始时,受到 #b",
-      " 点伤害."
+      "在回合开始时,将1张获得额外 #b",
+      " 点伤害的「Midautumn Spear」加入你的手牌."
     ]
   },
   "PhotosynthesisPower": {
@@ -498,7 +521,7 @@
     "NAME": "SelfTokamak",
     "DESCRIPTIONS": [
       "在 #b",
-      " 回合内,获得 [R] ."
+      " 回合内,获得 [E] ."
     ]
   },
   "InfluxPower": {
@@ -521,7 +544,14 @@
     "NAME": "思维扩展",
     "DESCRIPTIONS": [
       "再打出 #b",
-      " 张 #y联想 卡,获得 [R] 并抽 #b1 张卡."
+      " 张 #y联想 卡,获得 [E] 并抽 #b1 张卡."
+    ]
+  },
+  "PreThgoughtPower": {
+    "NAME": "预想",
+    "DESCRIPTIONS": [
+      "你打出的下 #b",
+      " 张 #y联想 卡,会额外随机打出 #b1 张其关联卡."
     ]
   },
 
@@ -536,7 +566,7 @@
     "NAME": "审判",
     "DESCRIPTIONS": [
       "每当你使用 #b1 张 #y",
-      " ,叠加 #b1 层 #y罪 ,并失去 #b1 生命.",
+      " ,叠加 #b1 层 #y罪 ,并失去 #b2 生命.",
       "攻击",
       "技能"
     ]

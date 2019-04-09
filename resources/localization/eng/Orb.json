@@ -24,7 +24,7 @@
     "NAME":"Bow Doll",
     "DESCRIPTION":[
       " #yPassive: At the end of turn, deal #b",
-      " damage to a random enemy. NL  #yEvoke: Disarm."
+      " damage to a random enemy.(affect 2 times by Focus) NL  #yEvoke: Disarm."
     ]
   },
   "Shanghai": {
@@ -57,45 +57,45 @@
   "EarthOrb": {
     "NAME":"Element Earth",
     "DESCRIPTION":[
-      "Element Orb will do effect to the SP cards you can choose. #yResonance: Gain #b8 #yBlock."
+      "Element Orb will affect to the SP cards you can choose. #yResonance: Gain #b10 #yBlock."
     ]
   },
   "FireOrb": {
     "NAME":"Element Fire",
     "DESCRIPTION":[
-      "Element Orb will do effect to the SP cards you can choose. #yResonance: Gain #b1 #yStrength."
+      "Element Orb will affect to the SP cards you can choose. #yResonance: Gain #b1 #yStrength."
     ]
   },
   "MetalOrb": {
     "NAME":"Element Metal",
     "DESCRIPTION":[
-      "Element Orb will do effect to the SP cards you can choose. #yResonance: Deal #b10 damage to a random enemy."
+      "Element Orb will affect to the SP cards you can choose. #yResonance: Deal #b12 damage to a random enemy."
     ]
   },
   "WaterOrb": {
     "NAME":"Element Water",
     "DESCRIPTION":[
-      "Element Orb will do effect to the SP cards you can choose. #yResonance: Gain #b1 #yDexterity."
+      "Element Orb will affect to the SP cards you can choose. #yResonance: Gain #b1 #yDexterity."
     ]
   },
   "WoodOrb": {
     "NAME":"Element Wood",
     "DESCRIPTION":[
-      "Element Orb will do effect to the SP cards you can choose. #yResonance: Draw #b2 cards."
+      "Element Orb will affect to the SP cards you can choose. #yResonance: Draw #b2 cards."
     ]
   },
   "LunaOrb": {
     "NAME":"Element Luna",
     "DESCRIPTION":[
       " #yPassive: Provide #b",
-      " #yDexterity . NL Element Orb will do effect to the SP cards you can choose."
+      " #yDexterity . NL Element Orb will affect to the SP cards you can choose."
     ]
   },
   "SunOrb": {
     "NAME":"Element Sun",
     "DESCRIPTION":[
       " #yPassive: Provide #b",
-      " #yStrength . NL Element Orb will do effect to the SP cards you can choose."
+      " #yStrength . NL Element Orb will affect to the SP cards you can choose."
     ]
   },
   "KenjiaEarth": {

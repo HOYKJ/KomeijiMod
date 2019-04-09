@@ -26,6 +26,7 @@ public class Cheng extends AbstractMonster {
     public Cheng(float x, float y) {
         super(NAME, "Cheng", 100, 10.0F, 0.0F, 200.0F, 275.0F, "images/monsters/Cheng/Main.png", x, y);
         this.attackTimes = 2;
+        this.damage.add(new DamageInfo(this, 5));
     }
 
     protected void getMove(int num) {
@@ -39,9 +40,9 @@ public class Cheng extends AbstractMonster {
         }
         if(hasLan) {
             if (this.attackTimes < 4)
-                setMove(MOVES[0], (byte) 1, Intent.ATTACK, 5, this.attackTimes, true);
+                setMove(MOVES[0], (byte) 1, Intent.ATTACK, this.damage.get(0).base, this.attackTimes, true);
             else
-                setMove(MOVES[1], (byte) 1, Intent.ATTACK, 5, this.attackTimes, true);
+                setMove(MOVES[1], (byte) 1, Intent.ATTACK, this.damage.get(0).base, this.attackTimes, true);
         }
         else {
             setMove((byte) 2,Intent.ESCAPE);
@@ -52,7 +53,7 @@ public class Cheng extends AbstractMonster {
         switch (this.nextMove){
             case 1:
                 for(int i = 0;i < this.attackTimes;i++) {
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, 5, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 }
                 this.attackTimes += 1;
                 break;

@@ -8,7 +8,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ConservePower;
+import com.megacrit.cardcrawl.powers.EquilibriumPower;
 
+import Thmod.Actions.unique.PlayerTalkAction;
+import Thmod.Cards.RareCards.LunaDial;
+import Thmod.Power.MyWorldPower;
 import Thmod.Power.WocchiPower;
 
 public class SakuyaNoSekai extends AbstractSpellCards {
@@ -16,13 +21,13 @@ public class SakuyaNoSekai extends AbstractSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 1;
-    private static final int ATTACK_DMG = 12;
     private int pointcost;
 
     public SakuyaNoSekai() {
         super("SakuyaNoSekai", SakuyaNoSekai.NAME,  1, SakuyaNoSekai.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
         this.pointcost = 5;
+        this.baseMagicNumber = 2;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -30,6 +35,8 @@ public class SakuyaNoSekai extends AbstractSpellCards {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WocchiPower(p,true)));
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EquilibriumPower(p, this.magicNumber), this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ConservePower(p, this.magicNumber), this.magicNumber));
             }
         }
     }
@@ -38,6 +45,10 @@ public class SakuyaNoSekai extends AbstractSpellCards {
         super.canUse(p,m);
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
+                if(p.hasPower(MyWorldPower.POWER_ID)){
+                    AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player, LunaDial.EXTENDED_DESCRIPTION[0]));
+                    return false;
+                }
                 return true;
             }
         }

@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
 import java.lang.reflect.Field;
 
 import Thmod.Events.GateofTheMinistry;
+import Thmod.Events.Remiria.RoomOfDemonRemi;
 import Thmod.Events.RoomOfDemon;
 import basemod.DevConsole;
 
@@ -59,7 +60,7 @@ public class ProceedButtonPatch {
                             (!(AbstractDungeon.getCurrRoom() instanceof TreasureRoomBoss)))
                     {
                         if ((currentRoom instanceof EventRoom)){
-                            if ((currentRoom.event instanceof RoomOfDemon) || (currentRoom.event instanceof GateofTheMinistry)){
+                            if ((currentRoom.event instanceof RoomOfDemon) || (currentRoom.event instanceof GateofTheMinistry) || (currentRoom.event instanceof RoomOfDemonRemi)){
                                 AbstractDungeon.closeCurrentScreen();
                                 AbstractDungeon.dungeonMapScreen.open(false);
                                 AbstractDungeon.previousScreen = AbstractDungeon.CurrentScreen.COMBAT_REWARD;

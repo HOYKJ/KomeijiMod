@@ -17,12 +17,11 @@ public class JellyfishPrincess extends AbstractElementSpellCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
-    private static final int COST = 1;
     private int pointcost;
 
     public JellyfishPrincess() {
         super("JellyfishPrincess", JellyfishPrincess.NAME,  1, JellyfishPrincess.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF,ElementType.Water,true);
-        this.baseMagicNumber = 5;
+        this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 3;
     }

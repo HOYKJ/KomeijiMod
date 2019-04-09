@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import Thmod.Actions.common.LatterAction;
+import Thmod.ThMod;
 import Thmod.vfx.JyouchiEffect;
 
 public class JyouchiPower extends AbstractPower {
@@ -41,12 +42,12 @@ public class JyouchiPower extends AbstractPower {
         {
             flash();
             AbstractDungeon.actionManager.addToTop(new LatterAction(() ->{
-                AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, 8, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(info.owner, this.owner, new WeakPower(info.owner, this.magicNumber,false), this.magicNumber));
-            AbstractDungeon.effectList.add(new JyouchiEffect(info.owner.hb.cX, info.owner.hb.cY, Color.YELLOW.cpy()));
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner,this.owner,this));
+                AbstractDungeon.actionManager.addToTop(new DamageAction(info.owner,new DamageInfo(this.owner, 5, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(info.owner, this.owner, new WeakPower(info.owner, this.magicNumber,false), this.magicNumber));
+                AbstractDungeon.effectList.add(new JyouchiEffect(info.owner.hb.cX, info.owner.hb.cY, Color.YELLOW.cpy()));
             }, 0.5F));
 
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner,this.owner,this));
             return damageAmount;
         }
         else

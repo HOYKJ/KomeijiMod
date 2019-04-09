@@ -130,7 +130,7 @@ public class CardMixAction extends AbstractGameAction
                             roll = new ArrayList<>();
                             count = 0;
                             while(count < 6) {
-                                int num = MathUtils.random(23,36);
+                                int num = MathUtils.random(24,36);
                                 boolean flag = true;
                                 for (int j = 0; j < roll.size(); j++) {
                                     if(num == roll.get(j)){

@@ -57,7 +57,7 @@ public class MakuraSekiPower extends AbstractPower {
             }
             this.attacked = false;
         }
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this.ID));
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this));
     }
 
     public void updateDescription()

@@ -22,7 +22,7 @@ public class DollsWar extends AbstractSpellCards {
     private int pointcost;
 
     public DollsWar() {
-        super("DollsWar", DollsWar.NAME,  1, DollsWar.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE);
+        super("DollsWar", DollsWar.NAME,  0, DollsWar.DESCRIPTION, CardType.POWER, CardRarity.SPECIAL, CardTarget.NONE);
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;

@@ -29,7 +29,21 @@ public class GreenAbnormity extends AbstractPower {
 
     public int onAttacked(DamageInfo info, int damageAmount)
     {
-        int roll = MathUtils.random(6);
+        int oth = 0;
+        int crease = 3;
+        boolean ba = true;
+        boolean ra = true;
+        for(AbstractPower p:this.owner.powers){
+            if((p instanceof BlueAbnormity) && (ba)){
+                oth += 1;
+                ba = false;
+            }
+            if((p instanceof RedAbnormity) && (ra)){
+                oth += 1;
+                ra = false;
+            }
+        }
+        int roll = MathUtils.random(6 + oth * crease);
         return (damageAmount + roll);
     }
 

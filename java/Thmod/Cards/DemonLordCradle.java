@@ -22,7 +22,7 @@ public class DemonLordCradle extends AbstractKomeijiCards {
     private static final int BASE_DRAW = 1;
 
     public DemonLordCradle() {
-        super("DemonLordCradle", DemonLordCradle.NAME,  1, DemonLordCradle.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super("DemonLordCradle", DemonLordCradle.NAME,  1, DemonLordCradle.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.REMIRIA);
         this.baseDamage = 8;
         this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;

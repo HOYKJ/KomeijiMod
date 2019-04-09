@@ -24,9 +24,11 @@ public class SteinsOfFate extends AbstractThRelic {
     }
 
     protected  void onRightClick(){
-        if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) && (this.counter > 0)) {
-            this.counter -= 1;
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
+        if(AbstractDungeon.currMapNode != null) {
+            if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) && (this.counter > 0)) {
+                this.counter -= 1;
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
+            }
         }
     }
 

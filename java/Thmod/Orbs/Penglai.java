@@ -34,9 +34,9 @@ public class Penglai extends AbstractOrb {
         if (Penglai.img1 == null) {
             Penglai.img1 = ImageMaster.loadImage("images/orbs/Penglai.png");
         }
-        this.baseEvokeAmount = 18;
+        this.baseEvokeAmount = 24;
         this.evokeAmount = this.baseEvokeAmount;
-        this.basePassiveAmount = 6;
+        this.basePassiveAmount = 9;
         this.passiveAmount = this.basePassiveAmount;
         this.angle = MathUtils.random(360.0f);
         this.cX = AbstractDungeon.player.drawX + AbstractDungeon.player.hb_x;
@@ -54,7 +54,6 @@ public class Penglai extends AbstractOrb {
     public void onEvoke() {
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"Strength",this.StrNum));
-        AbstractDungeon.actionManager.addToTop(new DamageAction(p, new DamageInfo(p, 3, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {

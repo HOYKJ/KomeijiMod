@@ -1,0 +1,165 @@
+﻿{
+  "Keyword":[
+    {
+      "NAMES": [
+        "Pleasant Weather",
+        "pleasant weather"
+      ],
+      "DESCRIPTION": "After you use #b4 cards which cost no less than #b1 , draw #b1 card."
+    },
+    {
+      "NAMES": [
+        "Drizzle",
+        "drizzle"
+      ],
+      "DESCRIPTION": "Deal #b1.25 times damage, reduce #b1 when this weather take effect."
+    },
+    {
+      "NAMES": [
+        "Dull Cloudy Weather",
+        "dull cloudy weather"
+      ],
+      "DESCRIPTION": "Gain #b1 extra #rP point when you use #b5 Attack. When you use an Attack cost no less than #b2 , reduce its cost by #b1 , then remove this weather."
+    },
+    {
+      "NAMES": [
+        "Azure Sky",
+        "azure sky"
+      ],
+      "DESCRIPTION": "Gain [E] after you used #b3 cards, reduce #b1 when this weather take effect."
+    },
+    {
+      "NAMES": [
+        "Hail",
+        "hail"
+      ],
+      "DESCRIPTION": "Every #b2 turns gain [E] ."
+    },
+    {
+      "NAMES": [
+        "Hazy Spring Weather",
+        "hazy spring weather"
+      ],
+      "DESCRIPTION": "When you get Dash, change it to Intangible."
+    },
+    {
+      "NAMES": [
+        "Heavy Fog",
+        "heavy fog"
+      ],
+      "DESCRIPTION": "When you deal damage(except hp loss), heal hp by #b0.15 * damage."
+    },
+    {
+      "NAMES": [
+        "Snow",
+        "snow"
+      ],
+      "DESCRIPTION": "When you be damaged and you have #rP point, reduce #b1 #rP point and reduce damage to #b1 ."
+    },
+    {
+      "NAMES": [
+        "Sun Shower",
+        "sun shower"
+      ],
+      "DESCRIPTION": "Block you gain will random #b-2 ~ #b+3 ."
+    },
+    {
+      "NAMES": [
+        "Sparse Rain",
+        "sparse rain"
+      ],
+      "DESCRIPTION": "When you use #b1 unupgraded card, upgrade it, reduce #b1 when this weather take effect."
+    },
+    {
+      "NAMES": [
+        "Rainstorm",
+        "rainstorm"
+      ],
+      "DESCRIPTION": "Draw #b1 card at the start of turn."
+    },
+    {
+      "NAMES": [
+        "Mountain Vapor",
+        "mountain vapor"
+      ],
+      "DESCRIPTION": "Everytime you use #b1 card, discard your hand and draw that many cards."
+    },
+    {
+      "NAMES": [
+        "River Mist",
+        "river mist"
+      ],
+      "DESCRIPTION": " Gain random #b1 ~ #b2 Strength or Dexterity at the start of turn, and lose it at the end of turn."
+    },
+    {
+      "NAMES": [
+        "Typhoon",
+        "typhoon"
+      ],
+      "DESCRIPTION": "ALL damage * #b1.5 ."
+    },
+    {
+      "NAMES": [
+        "Calm",
+        "calm"
+      ],
+      "DESCRIPTION": "Heal #b1 hp at the end of turn."
+    },
+    {
+      "NAMES": [
+        "Diamond Dust",
+        "diamond dust"
+      ],
+      "DESCRIPTION": "At end of turn, ALL asleep enemies will die."
+    },
+    {
+      "NAMES": [
+        "Dust Storm",
+        "dust storm"
+      ],
+      "DESCRIPTION": "Every turn's first normal damage * #b1.35 ."
+    },
+    {
+      "NAMES": [
+        "Blazing Sun",
+        "blazing sun"
+      ],
+      "DESCRIPTION": "ALL enemies lose hp at the end of turn, this number will raise every turn."
+    },
+    {
+      "NAMES": [
+        "Rainy Season",
+        "rainy season"
+      ],
+      "DESCRIPTION": "Gain #b3 Block when you lose hp."
+    },
+    {
+      "NAMES": [
+        "Aurora Borealis",
+        "aurora borealis"
+      ],
+      "DESCRIPTION": "A random weather effect."
+    },
+    {
+      "NAMES": [
+        "Abnormity[Blue]",
+        "abnormity[blue]"
+      ],
+      "DESCRIPTION": "When its owner deal damage, deal half damage to itself."
+    },
+    {
+      "NAMES": [
+        "Abnormity[Green]",
+        "abnormity[green]"
+      ],
+      "DESCRIPTION": "The damage its owner received increase random #b0 ~ #b6 ."
+    },
+    {
+      "NAMES": [
+        "Abnormity[Red]",
+        "abnormity[red]"
+      ],
+      "DESCRIPTION": "Received damage * #b1.25 ."
+    }
+    ]
+}

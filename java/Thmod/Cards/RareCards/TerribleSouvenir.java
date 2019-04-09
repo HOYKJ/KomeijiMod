@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import Thmod.Cards.AbstractKomeijiCards;
+import Thmod.Relics.KoishisEye;
 
 public class TerribleSouvenir extends AbstractKomeijiCards {
     public static final String ID = "TerribleSouvenir";
@@ -26,7 +27,7 @@ public class TerribleSouvenir extends AbstractKomeijiCards {
     private static final int COST = 3;
 
     public TerribleSouvenir() {
-        super("TerribleSouvenir", TerribleSouvenir.NAME,  3, TerribleSouvenir.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super("TerribleSouvenir", TerribleSouvenir.NAME,  3, TerribleSouvenir.DESCRIPTION, CardType.SKILL, CardRarity.RARE, CardTarget.NONE, CardSet_k.SATORI);
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;
@@ -48,6 +49,11 @@ public class TerribleSouvenir extends AbstractKomeijiCards {
     }
 
     public AbstractCard makeCopy() {
+        if(AbstractDungeon.player != null) {
+            if (AbstractDungeon.player.hasRelic(KoishisEye.ID)) {
+                return new SubterraneanRose();
+            }
+        }
         return new TerribleSouvenir();
     }
 

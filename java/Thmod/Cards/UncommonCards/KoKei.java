@@ -21,7 +21,7 @@ public class KoKei extends AbstractSweepCards {
     private static final int COST = 1;
 
     public KoKei() {
-        super("KoKei", KoKei.NAME,  1, KoKei.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super("KoKei", KoKei.NAME,  1, KoKei.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE, CardSet_k.MEIRIN);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

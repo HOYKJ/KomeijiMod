@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import Thmod.Cards.AbstractKomeijiCards;
 import Thmod.Power.LagDamagePower;
+import Thmod.ThMod;
 
 public class SatsujinDooru extends AbstractKomeijiCards {
     public static final String ID = "SatsujinDooru";
@@ -21,8 +22,8 @@ public class SatsujinDooru extends AbstractKomeijiCards {
     private static final int COST = 1;
 
     public SatsujinDooru() {
-        super("SatsujinDooru", SatsujinDooru.NAME,  1, SatsujinDooru.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseMagicNumber = 10;
+        super("SatsujinDooru", SatsujinDooru.NAME,  1, SatsujinDooru.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.SAKUYA);
+        this.baseMagicNumber = 12;
         this.magicNumber = this.baseMagicNumber;
 
     }
@@ -39,9 +40,11 @@ public class SatsujinDooru extends AbstractKomeijiCards {
         if (!(this.upgraded)) {
             this.name = EXTENDED_DESCRIPTION[0];
             this.initializeTitle();
-            this.upgradeMagicNumber(5);
+            this.upgradeMagicNumber(6);
             this.timesUpgraded += 1;
             this.upgraded = true;
+            this.textureImg = ThMod.komeijiCardImage(this.cardID,true);
+            loadCardImage(this.textureImg);
         }
     }
 

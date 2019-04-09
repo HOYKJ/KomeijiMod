@@ -117,7 +117,7 @@ public class SparkEffect extends AbstractGameEffect {
                 sb.setColor(this.color);
                 sb.draw(img2, this.x, this.y - (float) (img2.packedHeight / 2), 0.0F, (float) img2.packedHeight / 2.0F, (float) img2.packedWidth, (float) img2.packedHeight, this.scale * 2.0F, this.scale / 2.0F, MathUtils.random(-2.0F, 2.0F));
                 sb.draw(img2, this.x, this.y - (float) (img2.packedHeight / 2), 0.0F, (float) img2.packedHeight / 2.0F, (float) img2.packedWidth, (float) img2.packedHeight, this.scale * 2.0F, this.scale / 2.0F, MathUtils.random(-2.0F, 2.0F));
-                if(!narrow) {
+                if(!this.narrow) {
                     for (Color color1 : colors) {
                         sb.setColor(color1);
                         sb.draw(img2, this.x, this.y - (float) (img2.packedHeight / 2), 0.0F, (float) img2.packedHeight / 2.0F, (float) img2.packedWidth, (float) img2.packedHeight, this.scale * 2.0F, this.scale / 2.0F, MathUtils.random(-2.0F, 2.0F));
@@ -134,7 +134,12 @@ public class SparkEffect extends AbstractGameEffect {
             sb.setColor(this.color);
             sb.draw(img2, this.x, this.y - (float)(img2.packedHeight / 2), 0.0F, (float)img2.packedHeight / 2.0F, (float)img2.packedWidth, (float)img2.packedHeight, this.scale * 2.0F, this.scale / 2.0F, MathUtils.random(187.0F, 188.0F));
             sb.draw(img2, this.x, this.y - (float)(img2.packedHeight / 2), 0.0F, (float)img2.packedHeight / 2.0F, (float)img2.packedWidth, (float)img2.packedHeight, this.scale * 2.0F, this.scale / 2.0F, MathUtils.random(187.0F, 188.0F));
-
+            if(!this.narrow) {
+                for (Color color1 : colors) {
+                    sb.setColor(color1);
+                    sb.draw(img2, this.x, this.y - (float) (img2.packedHeight / 2), 0.0F, (float) img2.packedHeight / 2.0F, (float) img2.packedWidth, (float) img2.packedHeight, this.scale * 2.0F, this.scale / 2.0F, MathUtils.random(187.0F, 188.0F));
+                }
+            }
         }
 
         sb.setBlendFunction(770, 771);

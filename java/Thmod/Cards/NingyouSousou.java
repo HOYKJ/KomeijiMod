@@ -1,11 +1,8 @@
 package Thmod.Cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,6 +13,12 @@ import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.common.ChangeOrbAction;
+import Thmod.Actions.unique.ChooseAction;
+import Thmod.Cards.DeriveCards.ArcherDoll;
+import Thmod.Cards.DeriveCards.ShieldDoll;
+import Thmod.Cards.DeriveCards.SpearDoll;
+import Thmod.Cards.UncommonCards.LittleLegion;
 import Thmod.Orbs.NingyouOrb;
 
 public class NingyouSousou extends AbstractSweepCards {
@@ -26,23 +29,59 @@ public class NingyouSousou extends AbstractSweepCards {
     private static final int COST = 1;
 
     public NingyouSousou() {
-        super("NingyouSousou", NingyouSousou.NAME,  1, NingyouSousou.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
-        this.baseBlock = 5;
-        this.baseDamage = 5;
+        super("NingyouSousou", NingyouSousou.NAME,  1, NingyouSousou.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE, CardSet_k.ALICE);
+        this.baseMagicNumber = 2;
+        this.magicNumber = this.baseMagicNumber;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        int EmptyNum = 0;
-        for(int i = 0;i < p.orbs.size();i++){
-            if(p.orbs.get(i) instanceof EmptyOrbSlot)
-                EmptyNum += 1;
+        boolean hasDoll = false;
+        for(AbstractOrb orb : p.orbs){
+            if(orb instanceof NingyouOrb){
+                hasDoll = true;
+                break;
+            }
         }
-        if(EmptyNum > 0) {
-            AbstractOrb orb = new NingyouOrb();
-            AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+        if(hasDoll){
+            final ChooseAction choice = new ChooseAction(this, m, LittleLegion.EXTENDED_DESCRIPTION[0], false, 1);
+            choice.add(new SpearDoll(), () -> {
+                for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                    if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i, 1));
+                        break;
+                    }
+                }
+            });
+            choice.add(new ShieldDoll(), () -> {
+                for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                    if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i, 2));
+                        break;
+                    }
+                }
+            });
+            choice.add(new ArcherDoll(), () -> {
+                for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                    if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i, 3));
+                        break;
+                    }
+                }
+            });
+            AbstractDungeon.actionManager.addToBottom(choice);
         }
-        AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
+        else {
+            int EmptyNum = 0;
+            for (int i = 0; i < p.orbs.size(); i++) {
+                if (p.orbs.get(i) instanceof EmptyOrbSlot)
+                    EmptyNum += 1;
+            }
+            if (EmptyNum > 0) {
+                AbstractOrb orb = new NingyouOrb();
+                AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
+            }
+        }
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
     }
 
     @Override

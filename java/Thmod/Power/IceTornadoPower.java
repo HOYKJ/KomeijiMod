@@ -25,27 +25,39 @@ public class IceTornadoPower extends AbstractPower {
         this.name = NAME;
         this.ID = "IceTornadoPower";
         this.owner = owner;
-        this.amount = 2;
+        this.amount = 3;
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/IceTornadoPower.png");
         this.type = PowerType.BUFF;
         this.damage = Amount;
     }
 
+    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+        if (damage > this.damage) {
+            damage -= this.damage;
+        }
+        else {
+            damage = 0;
+        }
+        return damage;
+    }
+
     public void atEndOfTurn(boolean isPlayer) {
         if(isPlayer){
-            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                    flash();
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-                }
-            }
-            this.damage += 2;
-            if (this.amount == 1)
+            if (this.amount == 1) {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "IceTornadoPower"));
-            else
+            }
+            else {
+                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                        flash();
+                        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                    }
+                }
+                this.damage += 2;
                 this.amount -= 1;
+            }
         }
     }
 

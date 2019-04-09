@@ -21,11 +21,10 @@ public class EmeraldCity extends AbstractElementSweepCards {
     public static final String NAME;
     public static final String DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION;
-    private static final int COST = 2;
 
     public EmeraldCity() {
         super("EmeraldCity", EmeraldCity.NAME,  2, EmeraldCity.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY,ElementType.Earth);
-        this.baseBlock = 6;
+        this.baseBlock = 8;
         this.baseDamage = 0;
     }
 
@@ -68,7 +67,7 @@ public class EmeraldCity extends AbstractElementSweepCards {
     @Override
     public ArrayList<AbstractElementSweepCards> getOpposite() {
         final ArrayList<AbstractElementSweepCards> opposite = new ArrayList<>();
-        opposite.add(new MidautumnSpear());
+        opposite.add(new MidautumnSpear(0));
         opposite.add(new DiamondHardness());
         return opposite;
     }

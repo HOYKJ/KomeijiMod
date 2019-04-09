@@ -1,5 +1,6 @@
 package Thmod.Cards;
 
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,6 +11,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.unique.ChooseAction;
+
 public class SeekerWire extends AbstractSweepCards {
     public static final String ID = "SeekerWire";
     private static final CardStrings cardStrings;
@@ -18,7 +21,7 @@ public class SeekerWire extends AbstractSweepCards {
     private static final int COST = 1;
 
     public SeekerWire() {
-        super("SeekerWire", SeekerWire.NAME,  1, SeekerWire.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super("SeekerWire", SeekerWire.NAME,  1, SeekerWire.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE, CardSet_k.ALICE);
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.isEthereal = true;
@@ -26,6 +29,15 @@ public class SeekerWire extends AbstractSweepCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new IncreaseMaxOrbAction(this.magicNumber));
+
+        final ChooseAction choice2 = new ChooseAction(this, m, NingyouFukuhei.EXTENDED_DESCRIPTION[1],false, 1);
+        choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2],NingyouFukuhei.EXTENDED_DESCRIPTION[3], () -> {
+            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, p.discardPile));
+        });
+        choice2.add(NingyouFukuhei.EXTENDED_DESCRIPTION[2],NingyouFukuhei.EXTENDED_DESCRIPTION[4], () -> {
+
+        });
+        AbstractDungeon.actionManager.addToBottom(choice2);
     }
 
     @Override

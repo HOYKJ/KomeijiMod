@@ -8,6 +8,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Relics.KoishisEye;
+import basemod.helpers.BaseModCardTags;
+
 public class Defend_Komeiji extends AbstractKomeijiCards{
     public static final String ID = "Defend_Komeiji";
     private static final CardStrings cardStrings;
@@ -17,8 +20,9 @@ public class Defend_Komeiji extends AbstractKomeijiCards{
     private static final int BLOCK_AMT = 5;
 
     public Defend_Komeiji() {
-        super("Defend_Komeiji", Defend_Komeiji.NAME,  1, Defend_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super("Defend_Komeiji", Defend_Komeiji.NAME,  1, Defend_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF, CardSet_k.SATORI);
         this.baseBlock = 5;
+        tags.add(BaseModCardTags.BASIC_DEFEND);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -26,6 +30,11 @@ public class Defend_Komeiji extends AbstractKomeijiCards{
     }
 
     public AbstractCard makeCopy() {
+        if(AbstractDungeon.player != null) {
+            if (AbstractDungeon.player.hasRelic(KoishisEye.ID)) {
+                return new Defend_Koishi();
+            }
+        }
         return new Defend_Komeiji();
     }
 

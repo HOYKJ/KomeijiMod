@@ -18,11 +18,11 @@ public class ReflectorPower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private float damageReceive;
 
-    public ReflectorPower(AbstractCreature owner) {
+    public ReflectorPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = "ReflectorPower";
         this.owner = owner;
-        this.amount = -1;
+        this.amount = amount;
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/ReflectorPower.png");
         this.type = PowerType.BUFF;
@@ -45,7 +45,12 @@ public class ReflectorPower extends AbstractPower {
     }
 
     public void atStartOfTurnPostDraw() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.owner,this));
+        if(this.amount > 1){
+            this.amount -= 1;
+        }
+        else {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
     }
 
     public void updateDescription()
