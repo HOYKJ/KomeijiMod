@@ -20,5 +20,19 @@ public class CardRewardScreenPatch {
             Obj.rewardGroup.get(3).target_y = Settings.HEIGHT * 0.45f;
             Obj.rewardGroup.get(4).target_y = Settings.HEIGHT * 0.45f;
         }
+        else if(Obj.rewardGroup.size() == 6){
+            Obj.rewardGroup.get(0).target_x = Settings.WIDTH / 2.0f - AbstractCard.IMG_WIDTH * 2.5f;
+            Obj.rewardGroup.get(1).target_x = Settings.WIDTH / 2.0f - AbstractCard.IMG_WIDTH * 1.5f;
+            Obj.rewardGroup.get(2).target_x = Settings.WIDTH / 2.0f - AbstractCard.IMG_WIDTH * 0.5f;
+            Obj.rewardGroup.get(3).target_x = Settings.WIDTH / 2.0f + AbstractCard.IMG_WIDTH * 0.5f;
+            Obj.rewardGroup.get(4).target_x = Settings.WIDTH / 2.0f + AbstractCard.IMG_WIDTH * 1.5f;
+            Obj.rewardGroup.get(5).target_x = Settings.WIDTH / 2.0f + AbstractCard.IMG_WIDTH * 2.5f;
+            Obj.rewardGroup.get(0).target_y = Settings.HEIGHT * 0.45f;
+            Obj.rewardGroup.get(1).target_y = Settings.HEIGHT * 0.45f;
+            Obj.rewardGroup.get(2).target_y = Settings.HEIGHT * 0.45f;
+            Obj.rewardGroup.get(3).target_y = Settings.HEIGHT * 0.45f;
+            Obj.rewardGroup.get(4).target_y = Settings.HEIGHT * 0.45f;
+            Obj.rewardGroup.get(5).target_y = Settings.HEIGHT * 0.45f;
+        }
     }
 }

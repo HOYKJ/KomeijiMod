@@ -67,6 +67,10 @@ public class SweepViewPatch {
                     DevConsole.logger.info("Show Sweep instead Upgrade");
                 }
             }
+            else{
+                SweepViewField.isSweepView.set(_inst, false);
+                SweepViewField.isSweepView2.set(_inst, false);
+            }
 
             if(SweepViewField.sweepHb.get(_inst) != null) {
                 SweepViewField.sweepHb.get(_inst).update();
@@ -108,9 +112,9 @@ public class SweepViewPatch {
 
             if ((card.get(_inst) instanceof AbstractSweepCards) || (card.get(_inst) instanceof AbstractElementSweepCards)) {
                 if (((Hitbox) upgradeHb.get(_inst)).hovered) {
-                    FontHelper.renderFont(sb, FontHelper.cardTitleFont_N, TEXT[18], ((Hitbox) upgradeHb.get(_inst)).cX - 45.0F * Settings.scale, ((Hitbox) upgradeHb.get(_inst)).cY + 10.0F * Settings.scale, Settings.BLUE_TEXT_COLOR);
+                    FontHelper.renderFont(sb, FontHelper.cardTitleFont, TEXT[18], ((Hitbox) upgradeHb.get(_inst)).cX - 45.0F * Settings.scale, ((Hitbox) upgradeHb.get(_inst)).cY + 10.0F * Settings.scale, Settings.BLUE_TEXT_COLOR);
                 } else {
-                    FontHelper.renderFont(sb, FontHelper.cardTitleFont_N, TEXT[18], ((Hitbox) upgradeHb.get(_inst)).cX - 45.0F * Settings.scale, ((Hitbox) upgradeHb.get(_inst)).cY + 10.0F * Settings.scale, Settings.GOLD_COLOR);
+                    FontHelper.renderFont(sb, FontHelper.cardTitleFont, TEXT[18], ((Hitbox) upgradeHb.get(_inst)).cX - 45.0F * Settings.scale, ((Hitbox) upgradeHb.get(_inst)).cY + 10.0F * Settings.scale, Settings.GOLD_COLOR);
                 }
                 if (SweepViewField.isSweepView.get(_inst)) {
                     sb.setColor(Color.WHITE);
@@ -121,9 +125,9 @@ public class SweepViewPatch {
                 if(SweepViewField.sweepHb.get(_inst) != null){
                     sb.draw(ImageMaster.CHECKBOX, SweepViewField.sweepHb.get(_inst).cX - 80.0F * Settings.scale - 32.0F, SweepViewField.sweepHb.get(_inst).cY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
                     if (SweepViewField.sweepHb.get(_inst).hovered) {
-                        FontHelper.renderFont(sb, FontHelper.cardTitleFont_N, TEXT[19], SweepViewField.sweepHb.get(_inst).cX - 45.0F * Settings.scale, SweepViewField.sweepHb.get(_inst).cY + 10.0F * Settings.scale, Settings.BLUE_TEXT_COLOR);
+                        FontHelper.renderFont(sb, FontHelper.cardTitleFont, TEXT[19], SweepViewField.sweepHb.get(_inst).cX - 45.0F * Settings.scale, SweepViewField.sweepHb.get(_inst).cY + 10.0F * Settings.scale, Settings.BLUE_TEXT_COLOR);
                     } else {
-                        FontHelper.renderFont(sb, FontHelper.cardTitleFont_N, TEXT[19], SweepViewField.sweepHb.get(_inst).cX - 45.0F * Settings.scale, SweepViewField.sweepHb.get(_inst).cY + 10.0F * Settings.scale, Settings.GOLD_COLOR);
+                        FontHelper.renderFont(sb, FontHelper.cardTitleFont, TEXT[19], SweepViewField.sweepHb.get(_inst).cX - 45.0F * Settings.scale, SweepViewField.sweepHb.get(_inst).cY + 10.0F * Settings.scale, Settings.GOLD_COLOR);
                     }
                     if (SweepViewField.isSweepView2.get(_inst)) {
                         sb.setColor(Color.WHITE);
@@ -280,7 +284,7 @@ public class SweepViewPatch {
                 }
             }
             else {
-                SweepViewField.sweepHb.set(_inst,null);
+                SweepViewField.sweepHb.set(_inst, null);
                 if ((boolean) m.invoke(_inst)) {
                     if ((boolean) me.invoke(_inst)) {
                         ((Hitbox) betaArtHb.get(_inst)).move(Settings.WIDTH / 2.0F + 270.0F * Settings.scale, 70.0F * Settings.scale);

@@ -56,6 +56,8 @@ public class Shikieiki extends AbstractMonster {
         this.stateData.setMix("hit", "normal", 0.2F);
         this.damage.add(new DamageInfo(this, 0));
         this.damage.add(new DamageInfo(this, 0));
+        ThMod.logger.info("Shikieiki y 1: ---------- " + y + " ----------");
+        ThMod.logger.info("Shikieiki y: ---------- " + this.drawY + " ----------");
     }
 
     public void usePreBattleAction() {

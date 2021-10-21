@@ -1,5 +1,6 @@
 package Thmod.Power;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -17,6 +18,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import Thmod.Actions.common.DashAction;
 import Thmod.Monsters.Satori;
 import Thmod.Power.satoriEnemy.PointPowerSpe;
+import Thmod.vfx.animation.DashEffect;
 
 public class DashPower extends AbstractPower {
     public static final String POWER_ID = "DashPower";
@@ -65,6 +67,7 @@ public class DashPower extends AbstractPower {
                         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PointPowerSpe(this.owner, 1), 1));
                     }
                 }
+                AbstractDungeon.effectList.add(new DashEffect(this.owner, 1, !this.owner.flipHorizontal));
             }
             CardCrawlGame.sound.play("graze");
         }
@@ -82,6 +85,7 @@ public class DashPower extends AbstractPower {
                 }
                 CardCrawlGame.sound.play("graze");
             }
+            AbstractDungeon.effectList.add(new DashEffect(this.owner, 1, this.owner.flipHorizontal));
             return 0;
         }
         return damageAmount;

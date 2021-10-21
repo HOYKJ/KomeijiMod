@@ -36,16 +36,21 @@ public class BadLadyScramble extends AbstractRemiriaCards {
         if (this.energyOnUse < EnergyPanel.totalCount) {
             this.energyOnUse = EnergyPanel.totalCount;
         }
-        if(!this.upgraded){
-            this.energyOnUse -= 1;
-        }
+//        if(!this.upgraded){
+//            this.energyOnUse -= 1;
+//        }
         if (p.hasRelic("Chemical X")) {
             this.energyOnUse += 2;
             p.getRelic("Chemical X").flash();
         }
         for(;this.energyOnUse > 0; this.energyOnUse --){
             AbstractCard card = AbstractDungeon.returnTrulyRandomCard().makeCopy();
-            card.freeToPlayOnce = true;
+            if(!this.upgraded){
+                card.setCostForTurn(card.costForTurn - 1);
+            }
+            else {
+                card.freeToPlayOnce = true;
+            }
             if(this.isPlus){
                 if(card instanceof AbstractRemiriaCards){
                     ((AbstractRemiriaCards) card).plusCard();

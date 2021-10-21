@@ -29,7 +29,7 @@ public class CurseofVladTepesPower extends AbstractPower {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         super.onAttack(info, damageAmount, target);
 
-        if ((damageAmount > 0) && (target != this.owner) && (info.type == DamageInfo.DamageType.NORMAL))
+        if ((damageAmount > 0) && (target != this.owner))
         {
             flash();
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, this.owner, new BloodBruisePower(target, this.amount), this.amount));
@@ -38,6 +38,6 @@ public class CurseofVladTepesPower extends AbstractPower {
 
     public void updateDescription()
     {
-        this.description = DESCRIPTIONS[0];
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 }

@@ -22,10 +22,8 @@ public class MakuraSekiPower extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("MakuraSekiPower");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static AbstractPlayer p = AbstractDungeon.player;
     private boolean attacked;
     private boolean uped;
-    private AbstractDeriveCards c;
 
     public MakuraSekiPower(AbstractCreature owner, boolean uped) {
         this.name = NAME;
@@ -50,14 +48,15 @@ public class MakuraSekiPower extends AbstractPower {
             if(AbstractDungeon.player.hand.size() >= 10)
                 AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(AbstractDungeon.player,PointPower.DESCRIPTIONS[1]));
             else {
-                c = new SouSeki();
-                if (this.uped)
+                AbstractDeriveCards c = new SouSeki();
+                if (this.uped) {
                     c.upgrade();
+                }
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, false));
             }
             this.attacked = false;
         }
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p,p,this));
+        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner,this));
     }
 
     public void updateDescription()

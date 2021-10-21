@@ -37,7 +37,7 @@ public class DemonLordWalk extends AbstractRemiriaCards {
         super("DemonLordWalk", DemonLordWalk.NAME,  2, DemonLordWalk.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY, isPlus);
         this.baseDamage = 8;
         this.baseBlock = 8;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
         this.attackType = AttackType.LIGHT;
@@ -71,6 +71,7 @@ public class DemonLordWalk extends AbstractRemiriaCards {
             this.upgradeName();
             this.upgradeDamage(4);
             this.upgradeBlock(4);
+            //this.upgradeMagicNumber(1);
         }
     }
 

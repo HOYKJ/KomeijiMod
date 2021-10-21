@@ -25,7 +25,7 @@ public class SeventeenArticlesAction extends AbstractGameAction
         this.target = target;
         this.actionType = AbstractGameAction.ActionType.DAMAGE;
         this.attackEffect = attackEffect;
-        this.duration = 0.5F;
+        this.duration = 0.25F;
         this.numTimes = numTimes;
         this.isPlus = isPlus;
         this.effect = true;
@@ -56,8 +56,6 @@ public class SeventeenArticlesAction extends AbstractGameAction
                 if (this.isPlus) {
                     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.info.owner, new BloodBruisePower(this.target, 1), 1));
                 }
-                this.target.damageFlash = true;
-                this.target.damageFlashFrames = 4;
                 AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
                 this.info.applyPowers(this.info.owner, this.target);
                 this.target.damage(this.info);
@@ -68,7 +66,7 @@ public class SeventeenArticlesAction extends AbstractGameAction
                             this.attackEffect, this.isPlus));
                 }
 
-                AbstractDungeon.actionManager.addToTop(new WaitAction(0.2F));
+                AbstractDungeon.actionManager.addToTop(new WaitAction(0.05F));
             }
             this.isDone = true;
         }

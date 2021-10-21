@@ -38,7 +38,7 @@ public class Impregnable extends AbstractRemiriaCards {
         this.block += AbstractDungeon.player.hand.group.size();
         if(this.isPlus){
             if(AbstractDungeon.player.hasPower(StrengthPower.POWER_ID)){
-                this.block += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
+                this.block += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount * 2;
             }
         }
         this.isBlockModified = true;
@@ -50,7 +50,7 @@ public class Impregnable extends AbstractRemiriaCards {
         this.block += AbstractDungeon.player.hand.group.size();
         if(this.isPlus){
             if(AbstractDungeon.player.hasPower(StrengthPower.POWER_ID)){
-                this.block += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
+                this.block += AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount * 2;
             }
         }
         this.isBlockModified = true;

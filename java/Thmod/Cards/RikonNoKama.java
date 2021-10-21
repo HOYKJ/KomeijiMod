@@ -1,6 +1,7 @@
 package Thmod.Cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlyingOrbEffect;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,9 @@ public class RikonNoKama extends AbstractSweepCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SoulPower(p,3,this.magicNumber),3));
         if(m.hasPower(JyouchiRei.POWER_ID)){
             for(AbstractPower power : m.powers){

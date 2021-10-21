@@ -30,7 +30,7 @@ public class SummerFlame extends AbstractElementSweepCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         super.use(p,m);
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
-        AbstractDungeon.effectList.add(new CardFeedBack(1f));
+        //AbstractDungeon.effectList.add(new CardFeedBack(1f));
         for(AbstractCard card : p.drawPile.group){
             if(card.baseDamage > 0){
                 card.baseDamage += this.magicNumber;

@@ -1,5 +1,6 @@
 package Thmod.Power.remiria;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import Thmod.Actions.unique.ChooseAction;
 import Thmod.Cards.ScarletCard.Absorbed;
@@ -19,9 +22,10 @@ public class FitfulNightmarePower extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("FitfulNightmarePower");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private boolean ask;
+    private boolean goodTurn;
+    private boolean canEnd;
 
-    public FitfulNightmarePower(AbstractCreature owner) {
+    public FitfulNightmarePower(AbstractCreature owner, boolean canEnd) {
         this.name = NAME;
         this.ID = "FitfulNightmarePower";
         this.owner = owner;
@@ -29,17 +33,16 @@ public class FitfulNightmarePower extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/remiria/FitfulNightmarePower.png");
         this.type = PowerType.BUFF;
-        this.ask = false;
+        this.goodTurn = false;
+        this.canEnd = canEnd;
     }
 
     @Override
     public void atStartOfTurnPostDraw() {
         super.atStartOfTurnPostDraw();
-        if(this.ask) {
+        if(this.canEnd) {
             final ChooseAction choice = new ChooseAction(new FitfulNightmare(), null, Absorbed.EXTENDED_DESCRIPTION[2], false, 1);
             choice.add(FitfulNightmare.NAME, DESCRIPTIONS[1], () -> {
-                AbstractCard card = AbstractDungeon.returnRandomCurse().makeCopy();
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card, 1));
             });
             choice.add(FitfulNightmare.NAME, DESCRIPTIONS[2], () -> {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
@@ -52,11 +55,17 @@ public class FitfulNightmarePower extends AbstractPower {
                 }
             });
             AbstractDungeon.actionManager.addToBottom(choice);
-            this.ask = false;
+        }
+
+        if(this.goodTurn){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new ScarletLordPower(this.owner, 1), 1));
         }
         else {
-            this.ask = true;
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new WeakPower(this.owner, 1, false), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new FrailPower(this.owner, 1, false), 1));
         }
+
+        this.goodTurn = !this.goodTurn;
     }
 
     public void updateDescription()

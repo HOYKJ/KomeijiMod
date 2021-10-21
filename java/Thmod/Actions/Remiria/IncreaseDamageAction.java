@@ -46,7 +46,7 @@ public class IncreaseDamageAction extends AbstractGameAction
                     {
                         c.misc += this.increaseAmount;
                         c.applyPowers();
-                        c.baseDamage = c.misc;
+                        //c.baseDamage = c.misc;
                         c.isBlockModified = false;
                     }
                 }
@@ -54,7 +54,7 @@ public class IncreaseDamageAction extends AbstractGameAction
                 {
                     c.misc += this.increaseAmount;
                     c.applyPowers();
-                    c.baseDamage = c.misc;
+                    //c.baseDamage = c.misc;
                 }
             }
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

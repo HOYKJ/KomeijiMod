@@ -15,7 +15,9 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import java.util.ArrayList;
 
+import Thmod.Actions.common.LatterAction;
 import Thmod.Cards.AbstractSweepCards;
+import Thmod.vfx.animation.EnmuEffect;
 
 public class EnMu extends AbstractSweepCards {
     public static final String ID = "EnMu";
@@ -27,12 +29,18 @@ public class EnMu extends AbstractSweepCards {
     public EnMu() {
         super("EnMu", EnMu.NAME,  0, EnMu.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, CardSet_k.SUIKA);
         this.upgraded = true;
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        for(int i = 0; i < 72; i ++){
+            AbstractDungeon.effectList.add(new EnmuEffect(p.hb.cX, p.hb.cY));
+        }
+//        AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
+//
+//        }, 2F));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1), 1));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new VulnerablePower(p, this.magicNumber,false), this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WeakPower(p, this.magicNumber,false), this.magicNumber));

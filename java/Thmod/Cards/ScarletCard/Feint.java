@@ -50,7 +50,13 @@ public class Feint extends AbstractRemiriaCards {
                 AbstractDungeon.actionManager.addToBottom(choice);
             }
         }
-        if(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() <= 1){
+        int tmp = 0;
+        for(AbstractCard card : AbstractDungeon.actionManager.cardsPlayedThisTurn){
+            if(card.type == CardType.ATTACK){
+                tmp++;
+            }
+        }
+        if(tmp <= 1){
             final ChooseAction choice = new ChooseAction(null, null, Absorbed.EXTENDED_DESCRIPTION[2], true, 1);
             for (AbstractCard card : p.drawPile.group) {
                 if(card.type == CardType.ATTACK) {

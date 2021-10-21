@@ -43,7 +43,7 @@ public class BloodyLaserofSeventeenArticles extends AbstractRemiriaCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new SeventeenArticlesAction(AbstractDungeon.getMonsters().getRandomMonster(true), new DamageInfo(p, this.damage, this.damageTypeForTurn),
+        AbstractDungeon.actionManager.addToBottom(new SeventeenArticlesAction(AbstractDungeon.getMonsters().getRandomMonster(true), new DamageInfo(p, this.baseDamage, this.damageTypeForTurn),
                 this.magicNumber, AbstractGameAction.AttackEffect.BLUNT_LIGHT, this.isPlus));
         super.use(p, m);
     }

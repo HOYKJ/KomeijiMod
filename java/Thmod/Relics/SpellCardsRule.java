@@ -29,6 +29,7 @@ import Thmod.Orbs.ElementOrb.AbstractElementOrb;
 import Thmod.Power.PointPower;
 import Thmod.Power.TenmizuPower;
 import Thmod.ThMod;
+import Thmod.vfx.action.GetFamiliarSpoonEffect;
 
 import static Thmod.ThMod.blessingOfTime;
 import static Thmod.ThMod.masterSpellCard;
@@ -65,6 +66,14 @@ public class SpellCardsRule extends AbstractThRelic {
         selected = false;
         newCards = true;
         HangongUsed = false;
+    }
+
+    @Override
+    public void justEnteredRoom(AbstractRoom room) {
+        super.justEnteredRoom(room);
+        if (AbstractDungeon.player.hasRelic("Strange Spoon")) {
+            AbstractDungeon.effectList.add(new GetFamiliarSpoonEffect());
+        }
     }
 
     public void atPreBattle() {

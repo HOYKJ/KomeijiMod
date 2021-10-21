@@ -10,21 +10,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.BobEffect;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import Thmod.Actions.common.LatterAction;
 import Thmod.Actions.unique.TurnEndAction;
-import Thmod.vfx.LatterEffect;
 
 public class HibernatePower extends AbstractPower {
     public static final String POWER_ID = "HibernatePower";

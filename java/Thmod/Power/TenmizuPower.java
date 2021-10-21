@@ -11,6 +11,9 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 
+import Thmod.Actions.common.LatterAction;
+import Thmod.vfx.animation.TenmizuMutekiEffect;
+
 
 public class TenmizuPower extends AbstractPower {
     public static final String POWER_ID = "TenmizuPower";
@@ -31,8 +34,11 @@ public class TenmizuPower extends AbstractPower {
 
     public void atEndOfTurn(boolean isPlayer) {
         if((isPlayer) && (this.amount >= 3)){
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner,this.owner,new IntangiblePlayerPower(this.owner,3),3));
+            AbstractDungeon.effectList.add(new TenmizuMutekiEffect(this.owner));
+            AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner,this.owner,new IntangiblePlayerPower(this.owner,3),3));
+            }, 3.0F));
         }
     }
 

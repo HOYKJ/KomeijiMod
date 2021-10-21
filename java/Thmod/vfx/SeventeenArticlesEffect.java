@@ -28,7 +28,6 @@ public class SeventeenArticlesEffect extends AbstractGameEffect
 
     public void update() {
         AbstractDungeon.effectsQueue.add(new HemokinesisParticle(this.x +
-
                 MathUtils.random(60.0F, -60.0F) * Settings.scale, this.y +
                 MathUtils.random(60.0F, -60.0F) * Settings.scale, this.tX, this.tY, AbstractDungeon.player.flipHorizontal));
 

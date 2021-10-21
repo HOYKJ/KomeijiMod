@@ -15,12 +15,16 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import Thmod.vfx.weather.FuuuEffect;
+import Thmod.vfx.weather.KawaGiriBack;
+import Thmod.vfx.weather.NouMuEffect;
+
 public class NouMu extends AbstractPower {
     public static final String POWER_ID = "NouMu";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("NouMu");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private Color kiri = Color.GRAY.cpy();
+    //private Color kiri = Color.GRAY.cpy();
     private Color[][] noumu = new Color[4][8];
     private float[][] x = new float[4][8];
     private float[][] y = new float[4][8];
@@ -33,7 +37,9 @@ public class NouMu extends AbstractPower {
     private boolean[][] flipY = new boolean[4][8];
     private boolean[][] fadeOut = new boolean[4][8];
     private TextureAtlas.AtlasRegion[][] img2 =new  TextureAtlas.AtlasRegion[4][8];
-    private TextureAtlas.AtlasRegion img3 = ImageMaster.BORDER_GLOW_2;
+    //private TextureAtlas.AtlasRegion img3 = ImageMaster.BORDER_GLOW_2;
+    private KawaGiriBack back;
+    public static NouMuEffect[][] effects = new NouMuEffect[4][8];
 
     public NouMu(AbstractCreature owner) {
         this.name = NAME;
@@ -43,12 +49,16 @@ public class NouMu extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/Weather/NouMu.png");
         this.type = PowerType.BUFF;
-        this.kiri.a = 0.0F;
-        for (int i = 0; i < 4; i++) {
-            for (int i1 = 0; i1 < 8; i1++) {
+        //this.kiri.a = KawaGiri
+        for (int i = 0; i < effects.length; i++) {
+            for (int i1 = 0; i1 < effects[i].length; i1++) {
                 initializeData(i, i1);
             }
         }
+
+        this.back = new KawaGiriBack();
+        this.back.initializeData();
+        AbstractDungeon.effectList.add(this.back);
     }
 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
@@ -119,8 +129,8 @@ public class NouMu extends AbstractPower {
     public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
         super.renderIcons(sb, x, y, c);
 
-        for (int i = 0; i < 4; i++) {
-            for (int i1 = 0; i1 < 8; i1++) {
+        for (int i = 0; i < effects.length; i++) {
+            for (int i1 = 0; i1 < effects[i].length; i1++) {
                 if(this.noumu[i][i1].a <= 0.0F && !this.fadeOut[i][i1]){
                     initializeData(i, i1);
                 }
@@ -156,13 +166,27 @@ public class NouMu extends AbstractPower {
             }
         }
 
-        if (this.kiri.a < Color.GRAY.a) {
-            this.kiri.a += Gdx.graphics.getDeltaTime();
-        } else if (this.kiri.a > Color.GRAY.a) {
-            this.kiri.a = Color.GRAY.a;
+//        if (this.kiri.a < Color.GRAY.a) {
+//            this.kiri.a += Gdx.graphics.getDeltaTime();
+//        } else if (this.kiri.a > Color.GRAY.a) {
+//            this.kiri.a = Color.GRAY.a;
+//        }
+//        sb.setColor(this.kiri);
+//        sb.draw(this.img3, 0F, 0F, Settings.WIDTH, Settings.HEIGHT);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        //ThMod.logger.info("num is" + this.tmp + ", " + this.tmp2);
+        for (int i = 0; i < effects.length; i++) {
+            for (int i1 = 0; i1 < effects[i].length; i1++) {
+                effects[i][i1].getInfo(this.noumu[i][i1], this.x[i][i1], this.y[i][i1], this.aV[i][i1], this.scale[i][i1], this.rotation[i][i1], this.cV[i][i1],
+                        this.flipX[i][i1], this.flipY[i][i1], this.img2[i][i1], i);
+                AbstractDungeon.effectList.add(effects[i][i1]);
+            }
         }
-        sb.setColor(this.kiri);
-        sb.draw(this.img3, 0F, 0F, Settings.WIDTH, Settings.HEIGHT);
+        this.back.remove();
     }
 
     public void updateDescription()

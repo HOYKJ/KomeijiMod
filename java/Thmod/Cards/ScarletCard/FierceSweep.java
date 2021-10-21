@@ -36,13 +36,15 @@ public class FierceSweep extends AbstractRemiriaCards {
 
     public FierceSweep(boolean isPlus) {
         super("FierceSweep", FierceSweep.NAME,  2, FierceSweep.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, isPlus);
-        this.baseDamage = 16;
+        this.baseDamage = 8;
+        this.isMultiDamage = true;
         this.addTips();
         this.attackType = AttackType.HEAVY;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         final ChooseAction choice = new ChooseAction(null, null, Absorbed.EXTENDED_DESCRIPTION[2], false, 1);
         for (AbstractCard card : p.discardPile.group) {
             choice.add(card, () -> {
@@ -52,6 +54,7 @@ public class FierceSweep extends AbstractRemiriaCards {
         AbstractDungeon.actionManager.addToBottom(choice);
         if(this.isPlus){
             AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         super.use(p, m);
     }
@@ -68,7 +71,7 @@ public class FierceSweep extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(5);
+            this.upgradeDamage(3);
         }
     }
 

@@ -290,7 +290,7 @@ public class DreamEventEffect extends AbstractGameEffect
                                 break;
                             case 2:
                                 updateDreamText(TEXT[26]);
-                                AbstractDungeon.player.gainGold(321);
+                                AbstractDungeon.player.gainGold(444);
                                 break;
                             case 3:
                                 updateDreamText(TEXT[27]);
@@ -452,7 +452,7 @@ public class DreamEventEffect extends AbstractGameEffect
                 {
                     String tmp = Character.toString(word.charAt(i));
 
-                    this.gl.setText(FontHelper.eventBodyText, tmp);
+                    this.gl.setText(FontHelper.charDescFont, tmp);
                     if (this.curLineWidth + this.gl.width > DIALOG_MSG_W)
                     {
                         this.curLine += 1;
@@ -462,7 +462,7 @@ public class DreamEventEffect extends AbstractGameEffect
                     {
                         this.curLineWidth += this.gl.width;
                     }
-                    this.words.add(new DialogWord(FontHelper.eventBodyText, tmp, this.a_effect, effect, color, DIALOG_MSG_X + this.curLineWidth - this.gl.width, DIALOG_MSG_Y - LINE_SPACING * this.curLine, this.curLine));
+                    this.words.add(new DialogWord(FontHelper.charDescFont, tmp, this.a_effect, effect, color, DIALOG_MSG_X + this.curLineWidth - this.gl.width, DIALOG_MSG_Y - LINE_SPACING * this.curLine, this.curLine));
 //                    (this.words.get(this.words.size() - 1)).dialogFadeOut();
                 }
             }
@@ -501,7 +501,7 @@ public class DreamEventEffect extends AbstractGameEffect
                 if (effect != DialogWord.WordEffect.NONE) {
                     word = word.substring(1, word.length() - 1);
                 }
-                this.gl.setText(FontHelper.textOnlyEventBody, word);
+                this.gl.setText(FontHelper.charDescFont, word);
                 if (this.curLineWidth + this.gl.width > DIALOG_MSG_W)
                 {
                     this.curLine += 1;
@@ -511,7 +511,7 @@ public class DreamEventEffect extends AbstractGameEffect
                 {
                     this.curLineWidth += this.gl.width + CHAR_SPACING;
                 }
-                this.words.add(new DialogWord(FontHelper.textOnlyEventBody, word, this.a_effect, effect, color, DIALOG_MSG_X + this.curLineWidth - this.gl.width, DIALOG_MSG_Y - LINE_SPACING * this.curLine, this.curLine));
+                this.words.add(new DialogWord(FontHelper.charDescFont, word, this.a_effect, effect, color, DIALOG_MSG_X + this.curLineWidth - this.gl.width, DIALOG_MSG_Y - LINE_SPACING * this.curLine, this.curLine));
 //                (this.words.get(this.words.size() - 1)).dialogFadeOut();
             }
             else

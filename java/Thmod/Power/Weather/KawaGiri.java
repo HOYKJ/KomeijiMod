@@ -19,6 +19,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
+import Thmod.vfx.weather.FuuuEffect;
+import Thmod.vfx.weather.KawaGiriBack;
+import Thmod.vfx.weather.KawaGiriEffect;
+
 public class KawaGiri extends AbstractPower {
     public static final String POWER_ID = "KawaGiri";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("KawaGiri");
@@ -26,7 +30,7 @@ public class KawaGiri extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private int StrgengthCounter;
     private int DexterityCounter;
-    private Color kiri = Color.GRAY.cpy();
+    //private Color kiri = Color.GRAY.cpy();
     private Color[] noumu = new Color[8];
     private float[] x = new float[8];
     private float[] y = new float[8];
@@ -38,8 +42,10 @@ public class KawaGiri extends AbstractPower {
     private boolean[] flipX = new boolean[8];
     private boolean[] flipY = new boolean[8];
     private boolean[] fadeOut = new boolean[8];
-    private TextureAtlas.AtlasRegion[] img2 =new  TextureAtlas.AtlasRegion[8];
-    private TextureAtlas.AtlasRegion img3 = ImageMaster.BORDER_GLOW_2;
+    private TextureAtlas.AtlasRegion[] img2 = new  TextureAtlas.AtlasRegion[8];
+    //private TextureAtlas.AtlasRegion img3 = ImageMaster.BORDER_GLOW_2;
+    public static KawaGiriEffect[] effects = new KawaGiriEffect[8];
+    private KawaGiriBack back;
 
     public KawaGiri(AbstractCreature owner) {
         this.name = NAME;
@@ -51,10 +57,17 @@ public class KawaGiri extends AbstractPower {
         this.type = PowerType.BUFF;
         this.StrgengthCounter = 0;
         this.DexterityCounter = 0;
-        this.kiri.a = 0.0F;
-        for (int i = 0; i < 8; i++) {
+        //this.kiri.a = 0.0F;
+        for(int i = 0; i < effects.length; i ++){
             initializeData(i);
         }
+//        for (KawaGiriEffect effect : effects) {
+//            effect.initializeData();
+//            AbstractDungeon.effectList.add(effect);
+//        }
+        this.back = new KawaGiriBack();
+        this.back.initializeData();
+        AbstractDungeon.effectList.add(this.back);
     }
 
     public void atStartOfTurnPostDraw() {
@@ -76,7 +89,7 @@ public class KawaGiri extends AbstractPower {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new DexterityPower(this.owner, -this.DexterityCounter), -this.DexterityCounter));
         flash();
         if (this.amount <= 1)
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "KawaGiri"));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         else
             this.amount -= 1;
     }
@@ -119,7 +132,7 @@ public class KawaGiri extends AbstractPower {
     public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
         super.renderIcons(sb, x, y, c);
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < effects.length; i++) {
             if (this.noumu[i].a <= 0.0F && !this.fadeOut[i]) {
                 initializeData(i);
             } else if (this.noumu[i].a >= this.targetAlpha[i]) {
@@ -151,13 +164,24 @@ public class KawaGiri extends AbstractPower {
                     this.scale[i], this.scale[i], this.rotation[i]);
         }
 
-        if (this.kiri.a < Color.GRAY.a) {
-            this.kiri.a += Gdx.graphics.getDeltaTime();
-        } else if (this.kiri.a > Color.GRAY.a) {
-            this.kiri.a = Color.GRAY.a;
+//        if (this.kiri.a < Color.GRAY.a) {
+//            this.kiri.a += Gdx.graphics.getDeltaTime();
+//        } else if (this.kiri.a > Color.GRAY.a) {
+//            this.kiri.a = Color.GRAY.a;
+//        }
+//        sb.setColor(this.kiri);
+//        sb.draw(this.img3, 0F, 0F, Settings.WIDTH, Settings.HEIGHT);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        //ThMod.logger.info("num is" + this.tmp + ", " + this.tmp2);
+        for (int i = 0; i < effects.length; i ++) {
+            effects[i].getInfo(this.noumu[i], this.x[i], this.y[i], this.aV[i], this.scale[i], this.rotation[i], this.cV[i], this.flipX[i], this.flipY[i], this.img2[i]);
+            AbstractDungeon.effectList.add(effects[i]);
         }
-        sb.setColor(this.kiri);
-        sb.draw(this.img3, 0F, 0F, Settings.WIDTH, Settings.HEIGHT);
+        this.back.remove();
     }
 
     public void updateDescription()

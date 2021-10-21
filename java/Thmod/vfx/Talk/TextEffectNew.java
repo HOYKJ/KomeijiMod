@@ -44,7 +44,7 @@ public class TextEffectNew extends AbstractGameEffect {
 
         this.x = x;
         this.y = y;
-        this.font = FontHelper.speech_font;
+        this.font = FontHelper.turnNumFont;
         this.a_effect = a_effect;
         this.s = new Scanner(msg);
         this.duration = 0.3F;

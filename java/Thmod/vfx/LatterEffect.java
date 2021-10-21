@@ -2,7 +2,6 @@ package Thmod.vfx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class LatterEffect extends AbstractGameEffect {

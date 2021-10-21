@@ -21,10 +21,14 @@ import basemod.helpers.SuperclassFinder;
 
 public class CardGlowPatch
 {
-    @SpirePatch(cls="com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder", method="<ctor>")
+    @SpirePatch(cls="com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder", method="<ctor>",
+        paramtypez = {
+                AbstractCard.class,
+                Color.class
+        })
     public static class colorFix
     {
-        public static void Postfix(CardGlowBorder _inst, AbstractCard card) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+        public static void Postfix(CardGlowBorder _inst, AbstractCard card, Color gColor) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
         {
             AbstractPlayer p = AbstractDungeon.player;
             Field f = SuperclassFinder.getSuperclassField(CardGlowBorder.class, "color");

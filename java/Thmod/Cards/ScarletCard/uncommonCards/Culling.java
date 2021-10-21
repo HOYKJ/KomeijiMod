@@ -29,7 +29,7 @@ public class Culling extends AbstractRemiriaCards {
     public Culling(boolean isPlus) {
         super("Culling", Culling.NAME,  3, Culling.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, isPlus);
         this.baseDamage = 0;
-        this.baseMagicNumber = 6;
+        this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
     }

@@ -120,8 +120,6 @@ public class TenseiAttackAction extends AbstractGameAction {
                 if(this.damageAmount > 0){
                     for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
                         DamageInfo info = new DamageInfo(monster, this.damagePerOnce + 1);
-                        monster.damageFlash = false;
-                        monster.damageFlashFrames = 0;
                         info.applyPowers(info.owner, monster);
                         monster.damage(info);
                     }
@@ -130,8 +128,6 @@ public class TenseiAttackAction extends AbstractGameAction {
                 else {
                     for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
                         DamageInfo info = new DamageInfo(monster, this.damagePerOnce);
-                        monster.damageFlash = false;
-                        monster.damageFlashFrames = 0;
                         info.applyPowers(info.owner, monster);
                         monster.damage(info);
                     }

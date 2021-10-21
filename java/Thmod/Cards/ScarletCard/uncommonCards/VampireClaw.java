@@ -3,6 +3,7 @@ package Thmod.Cards.ScarletCard.uncommonCards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ModifyDamageAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -28,6 +29,7 @@ public class VampireClaw extends AbstractRemiriaCards {
     public static final String DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
     private int extraDamage;
+    private boolean upgradedMis = false;
 
     public VampireClaw() {
         this(false);
@@ -35,8 +37,8 @@ public class VampireClaw extends AbstractRemiriaCards {
 
     public VampireClaw(boolean isPlus) {
         super("VampireClaw", VampireClaw.NAME,  0, VampireClaw.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, isPlus);
-        this.misc = 6;
-        this.baseDamage = this.misc;
+        this.misc = 0;
+        this.baseDamage = 6;
         this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
         this.extraDamage = 0;
@@ -53,11 +55,12 @@ public class VampireClaw extends AbstractRemiriaCards {
             AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
                 this.extraDamage += this.magicNumber;
             }, 0f));
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(m, p, BloodBruisePower.POWER_ID, 1));
         }
         if(this.isPlus){
             if(m.hasPower(BloodBruisePower.POWER_ID)){
                 AbstractDungeon.actionManager.addToBottom(new IncreaseDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, 6, this.uuid));
+                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, this.magicNumber, this.uuid));
             }
             else {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
@@ -68,10 +71,21 @@ public class VampireClaw extends AbstractRemiriaCards {
 
     public void applyPowers()
     {
-        this.baseDamage = this.misc;
+        int tmp = this.baseDamage;
+        this.baseDamage += this.misc;
         this.baseDamage += this.extraDamage;
         super.applyPowers();
-        initializeDescription();
+        this.baseDamage = tmp;
+        //initializeDescription();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int tmp = this.baseDamage;
+        this.baseDamage += this.misc;
+        this.baseDamage += this.extraDamage;
+        super.calculateCardDamage(mo);
+        this.baseDamage = tmp;
     }
 
     public AbstractCard makeCopy() {
@@ -86,7 +100,19 @@ public class VampireClaw extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(4);
+            this.misc += 3;
+            this.upgradedMis = true;
+            this.baseDamage = this.misc + 6;
+            this.upgradedDamage = true;
+            this.upgradeMagicNumber(1);
+        }
+    }
+
+    @Override
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if(this.upgradedMis){
+            this.misc -= 4;
         }
     }
 

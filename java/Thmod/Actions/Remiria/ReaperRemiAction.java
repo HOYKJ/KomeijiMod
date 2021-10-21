@@ -87,18 +87,19 @@ public class ReaperRemiAction extends AbstractGameAction
                     if (c.uuid.equals(this.uuid))
                     {
                         c.misc += 1;
-                        c.baseMagicNumber = c.misc;
+                        //c.baseMagicNumber = c.misc;
                         c.applyPowers();
-                        c.magicNumber = c.baseMagicNumber;
+                        c.magicNumber = c.baseMagicNumber + c.misc;
                         c.isMagicNumberModified = false;
+                        c.initializeDescription();
                     }
                 }
                 for (AbstractCard c : GetAllInBattleInstances.get(this.uuid))
                 {
                     c.misc += 1;
-                    c.baseMagicNumber = c.misc;
+                    //c.baseMagicNumber = c.misc;
                     c.applyPowers();
-                    c.magicNumber = c.baseMagicNumber;
+                    c.magicNumber = c.baseMagicNumber + c.misc;
                 }
             }
 

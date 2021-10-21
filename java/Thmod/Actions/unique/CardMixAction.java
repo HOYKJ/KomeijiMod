@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import Thmod.Cards.DeriveCards.MixedItem;
 import Thmod.Utils;
+import Thmod.vfx.ShowSameCardAndAddToDrawPileEffect;
 import basemod.DevConsole;
 
 public class CardMixAction extends AbstractGameAction
@@ -171,7 +172,7 @@ public class CardMixAction extends AbstractGameAction
                     mixCard.rawDescription += this.choices2.group.get(this.choices2.group.indexOf(pick.get(1))).rawDescription;
                     mixCard.rawDescription += this.choices3.group.get(this.choices3.group.indexOf(pick.get(2))).rawDescription;
                     mixCard.initializeDescription();
-                    AbstractDungeon.effectList.add(new ShowCardAndAddToDrawPileEffect(mixCard, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, true, true));
+                    AbstractDungeon.effectList.add(new ShowSameCardAndAddToDrawPileEffect(mixCard, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F, true, true));
                     i.clear();
                     pick.clear();
                     actions.clear();

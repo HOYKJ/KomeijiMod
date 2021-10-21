@@ -53,7 +53,7 @@ public class YariNingyou extends AbstractOrb {
 
     public void onEvoke() {
         AbstractPlayer p = AbstractDungeon.player;
-        AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"Strength",this.StrNum));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new StrengthPower(p, -this.StrNum), -this.StrNum));
     }
 
     public void updateAnimation() {

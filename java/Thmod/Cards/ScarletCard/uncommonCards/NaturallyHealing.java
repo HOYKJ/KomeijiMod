@@ -27,13 +27,11 @@ public class NaturallyHealing extends AbstractRemiriaCards {
 
     public NaturallyHealing(boolean isPlus) {
         super("NaturallyHealing", NaturallyHealing.NAME,  1, NaturallyHealing.DESCRIPTION, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
-        this.baseMagicNumber = 1;
-        this.magicNumber = this.baseMagicNumber;
         this.addTips();
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NaturallyHealingPower(p, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NaturallyHealingPower(p, 1), 1));
         if(this.isPlus){
             if(p.hasPower(NaturallyHealingPower.POWER_ID)){
                 ((NaturallyHealingPower)p.getPower(NaturallyHealingPower.POWER_ID)).trigger();

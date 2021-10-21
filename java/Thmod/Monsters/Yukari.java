@@ -84,7 +84,7 @@ public class Yukari extends AbstractMonster {
                 attacked = true;
             }
             else {
-                setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
+                setMove(MOVES[1], (byte) 2, Intent.MAGIC);
                 attacked = false;
             }
         }
@@ -103,7 +103,7 @@ public class Yukari extends AbstractMonster {
             }
             if (!(hasBoundaries)) {
                 if (hasLan) {
-                    setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
+                    setMove(MOVES[1], (byte) 2, Intent.MAGIC);
                 }
                 else {
                     setMove((byte)6, Intent.DEFEND_DEBUFF);
@@ -128,6 +128,7 @@ public class Yukari extends AbstractMonster {
         switch (this.nextMove) {
             case 1:
                 AbstractDungeon.actionManager.addToTop(new SpawnMonsterAction(new Lan(-200.0F, -10.0F), false));
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
                 break;
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new BoundariesPower(this)));
@@ -138,6 +139,7 @@ public class Yukari extends AbstractMonster {
                     }
                 }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new ActivationPower(p, this.cardsNeedUse)));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(this, 17), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 this.cardsNeedUse += 2;
                 this.img = ImageMaster.loadImage("images/monsters/Yukari/Boundaries.png");
                 this.attacked = false;
@@ -172,8 +174,8 @@ public class Yukari extends AbstractMonster {
                 break;
             case 6:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this,17));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new VulnerablePower(p, 2, true), 2));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 3, true), 3));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new VulnerablePower(p, 3, true), 3));
                 break;
             default:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {

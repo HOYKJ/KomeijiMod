@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
+import Thmod.Actions.Remiria.MakeCardInHandAction;
 import Thmod.Actions.common.LatterAction;
 import Thmod.Characters.RemiriaScarlet;
 import Thmod.Power.remiria.BloodBruisePower;
@@ -53,7 +54,9 @@ public class DoubleEdge extends AbstractRemiriaCards {
             AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
                 this.exhaust = false;
             }, 0.1f));
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(this));
+            AbstractRemiriaCards tmp = (AbstractRemiriaCards) this.makeStatEquivalentCopy();
+            tmp.normalCard();
+            AbstractDungeon.actionManager.addToBottom(new MakeCardInHandAction(tmp));
         }
         super.use(p, m);
     }

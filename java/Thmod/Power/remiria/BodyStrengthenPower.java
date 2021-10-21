@@ -41,9 +41,26 @@ public class BodyStrengthenPower extends AbstractPower {
         return super.onAttacked(info, damageAmount);
     }
 
+//    @Override
+//    public void atEndOfTurn(boolean isPlayer) {
+//        super.atEndOfTurn(isPlayer);
+//        if(this.amount > 1){
+//            this.amount -= 1;
+//        }
+//        else {
+//            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+//        }
+//    }
+
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        super.atEndOfTurn(isPlayer);
+    public void atEndOfRound() {
+        super.atEndOfRound();
+
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
         if(this.amount > 1){
             this.amount -= 1;
         }

@@ -1,6 +1,7 @@
 package Thmod.Cards.SpellCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlyingOrbEffect;
 
 import Thmod.Cards.RikonNoKama;
 import Thmod.Power.JyouchiRei;
@@ -43,6 +45,10 @@ public class SeikonRyuuri extends AbstractSpellCards {
         if (p.hasPower("PointPower")) {
             if (p.getPower("PointPower").amount >= this.pointcost) {
                 AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new FlyingOrbEffect(m.hb.cX, m.hb.cY)));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SoulPower(p, 4, this.magicNumber), 4));
                 AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(p, p, "PointPower", this.pointcost));
                 if(m.hasPower(JyouchiRei.POWER_ID)){

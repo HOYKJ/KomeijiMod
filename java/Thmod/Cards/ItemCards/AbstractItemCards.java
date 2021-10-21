@@ -1,5 +1,6 @@
 package Thmod.Cards.ItemCards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,6 +20,7 @@ public abstract class AbstractItemCards extends CustomCard {
         this.isEthereal = true;
         this.exhaust = true;
         this.upgraded = true;
+        this.glowColor = Color.ORANGE.cpy();
     }
 
     public boolean canUpgrade()

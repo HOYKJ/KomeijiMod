@@ -18,6 +18,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
+import com.megacrit.cardcrawl.helpers.input.InputActionSet;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.Keyword;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -33,6 +36,7 @@ import Thmod.Cards.Curses.Lonely;
 import Thmod.Cards.Dash_Komeiji;
 import Thmod.Cards.DeriveCards.EasterEgg.Scarlet;
 import Thmod.Cards.ScarletCard.Absorbed;
+import Thmod.Cards.ScarletCard.AbstractRemiriaFate;
 import Thmod.Cards.ScarletCard.BloodCleaner;
 import Thmod.Cards.ScarletCard.BloodCollect;
 import Thmod.Cards.ScarletCard.BloodySuit;
@@ -113,11 +117,13 @@ import Thmod.Cards.ScarletCard.uncommonCards.YoungDemonLord;
 import Thmod.Monsters.Remiria;
 import Thmod.Patches.AbstractCardEnum;
 import Thmod.Patches.CharacterEnum;
+import Thmod.Power.remiria.StarOfDavidPower;
 import Thmod.Relics.remiria.RedTeaWithBlood;
 import Thmod.Relics.remiria.SpecialStopwatch;
 import Thmod.Relics.remiria.SpellCardsRuleRemi;
 import Thmod.Relics.remiria.TepesBloodVial;
 import Thmod.Relics.remiria.ThirstyCrossSpe;
+import Thmod.Relics.remiria.UnsealingCross;
 import Thmod.ThMod;
 import Thmod.vfx.RemiriaFireParticle;
 import Thmod.vfx.StartPetalEffect;
@@ -287,10 +293,10 @@ public class RemiriaScarlet extends CustomPlayer {
         this.energyOrb.updateOrb(orbCount);
     }
 
-    public TextureAtlas.AtlasRegion getOrb()
-    {
-        return ThMod.orbAtlas.findRegion("komeiji");
-    }
+//    public TextureAtlas.AtlasRegion getOrb()
+//    {
+//        return ThMod.orbAtlas.findRegion("komeiji");
+//    }
 
     public Color getSlashAttackColor()
     {
@@ -376,10 +382,10 @@ public class RemiriaScarlet extends CustomPlayer {
     }
 
     public void changeState(String key){
+        this.isShopAnimation = false;
+        this.isLordAnimation = false;
         switch (key) {
             case "NORMAL":
-                this.isShopAnimation = false;
-                this.isLordAnimation = false;
                 this.fires.clear();
                 loadAnimation("images/characters/remiria/normal/normal.atlas", "images/characters/remiria/normal/normal.json", 1.1F);
                 AnimationState.TrackEntry e = this.state.setAnimation(0, "normal", true);
@@ -416,9 +422,11 @@ public class RemiriaScarlet extends CustomPlayer {
                 this.state.addAnimation(0, "normal", true, 0.0F);
                 break;
             case "C_ATTACK":
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new ClawEffect(this.skeleton
-                        .getX() + this.fires.get(0).getWorldX(), this.skeleton
-                        .getY() + this.fires.get(0).getWorldY(), Color.SCARLET, Color.ORANGE), 0.1F));
+                if(this.fires.size() != 0) {
+                    AbstractDungeon.actionManager.addToBottom(new VFXAction(new ClawEffect(this.skeleton
+                            .getX() + this.fires.get(0).getWorldX(), this.skeleton
+                            .getY() + this.fires.get(0).getWorldY(), Color.SCARLET, Color.ORANGE), 0.1F));
+                }
                 this.state.setAnimation(0, "chainAttack", false);
                 this.state.setTimeScale(1F);
                 this.state.addAnimation(0, "normal", true, 0.0F);
@@ -532,6 +540,7 @@ public class RemiriaScarlet extends CustomPlayer {
         BaseMod.addRelicToCustomPool(new TepesBloodVial(), AbstractCardEnum.Remiria);
         BaseMod.addRelicToCustomPool(new SpellCardsRuleRemi(), AbstractCardEnum.Remiria);
         BaseMod.addRelicToCustomPool(new RedTeaWithBlood(), AbstractCardEnum.Remiria);
+        BaseMod.addRelicToCustomPool(new UnsealingCross(), AbstractCardEnum.Remiria);
     }
 
     public void update()
@@ -556,6 +565,23 @@ public class RemiriaScarlet extends CustomPlayer {
             if(card instanceof Lonely){
                 ((Lonely) card).drawCard();
             }
+        }
+    }
+
+    @Override
+    public void updateInput() {
+        super.updateInput();
+        if ((!AbstractDungeon.actionManager.turnHasEnded))
+        {
+            updateRightClickCard();
+        }
+    }
+
+    private void  updateRightClickCard(){
+        if (((InputHelper.justClickedRight) || (InputActionSet.confirm.isJustPressed()) || (CInputActionSet.select.isJustPressed())) && (this.hoveredCard != null)
+                && (AbstractDungeon.player.hasPower(StarOfDavidPower.POWER_ID)) && (this.hoveredCard instanceof AbstractRemiriaFate)) {
+            InputHelper.justClickedRight = false;
+            ((AbstractRemiriaFate) this.hoveredCard).rightUse();
         }
     }
 

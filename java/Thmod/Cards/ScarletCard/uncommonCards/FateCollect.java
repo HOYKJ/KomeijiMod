@@ -23,6 +23,7 @@ public class FateCollect extends AbstractRemiriaCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
     private int count = 0;
 
@@ -31,88 +32,23 @@ public class FateCollect extends AbstractRemiriaCards {
     }
 
     public FateCollect(boolean isPlus) {
-        super("FateCollect", FateCollect.NAME,  1, FateCollect.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
-        this.isEthereal = true;
+        super("FateCollect", FateCollect.NAME,  0, FateCollect.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
+        this.baseMagicNumber = 3;
+        this.magicNumber = this.baseMagicNumber;
         this.addTips();
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        boolean attack = true, skill = true, power = true, status = true, curse = true;
         this.count = 0;
-        final ChooseAction choice = new ChooseAction(null, null, Absorbed.EXTENDED_DESCRIPTION[2], true, 1);
+        final ChooseAction choice = new ChooseAction(null, null, Absorbed.EXTENDED_DESCRIPTION[2], true, Math.min(this.magicNumber, p.hand.size()));
         for (AbstractCard card : p.hand.group) {
-            switch (card.type){
-                case ATTACK:
-                    if(attack){
-                        choice.add(card, EXTENDED_DESCRIPTION[2], () -> {
-                            for(AbstractCard card1 : p.hand.group) {
-                                if(card1.type != card.type) {
-                                    this.count ++;
-                                    AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(card1, p.hand));
-                                }
-                            }
-                            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, (int) (this.count * 1.5f)));
-                        });
-                        attack = false;
-                    }
-                    break;
-                case SKILL:
-                    if(skill){
-                        choice.add(card, EXTENDED_DESCRIPTION[3], () -> {
-                            for(AbstractCard card1 : p.hand.group) {
-                                if(card1.type != card.type) {
-                                    this.count ++;
-                                    AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(card1, p.hand));
-                                }
-                            }
-                            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, (int) (this.count * 1.5f)));
-                        });
-                        skill = false;
-                    }
-                    break;
-                case POWER:
-                    if(power){
-                        choice.add(card, EXTENDED_DESCRIPTION[4], () -> {
-                            for(AbstractCard card1 : p.hand.group) {
-                                if(card1.type != card.type) {
-                                    this.count ++;
-                                    AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(card1, p.hand));
-                                }
-                            }
-                            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, (int) (this.count * 1.5f)));
-                        });
-                        power = false;
-                    }
-                    break;
-                case STATUS:
-                    if(status){
-                        choice.add(card, EXTENDED_DESCRIPTION[5], () -> {
-                            for(AbstractCard card1 : p.hand.group) {
-                                if(card1.type != card.type) {
-                                    this.count ++;
-                                    AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(card1, p.hand));
-                                }
-                            }
-                            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, (int) (this.count * 1.5f)));
-                        });
-                        status = false;
-                    }
-                    break;
-                case CURSE:
-                    if(curse){
-                        choice.add(card, EXTENDED_DESCRIPTION[6], () -> {
-                            for(AbstractCard card1 : p.hand.group) {
-                                if(card1.type != card.type) {
-                                    this.count ++;
-                                    AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(card1, p.hand));
-                                }
-                            }
-                            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, (int) (this.count * 1.5f)));
-                        });
-                        curse = false;
-                    }
-                    break;
+            if(card == this){
+                continue;
             }
+            choice.add(card, () -> {
+                p.hand.moveToDeck(card, true);
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+            });
         }
         AbstractDungeon.actionManager.addToBottom(choice);
         if(!this.isPlus){
@@ -120,8 +56,6 @@ public class FateCollect extends AbstractRemiriaCards {
             AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
                 this.exhaust = false;
             }, 0.1f));
-//            AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(this, p.hand));
-//            AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(this, p.discardPile));
         }
         super.use(p, m);
     }
@@ -138,7 +72,8 @@ public class FateCollect extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBaseCost(0);
+            //this.upgradeBaseCost(0);
+            this.upgradeMagicNumber(1);
         }
     }
 
@@ -166,6 +101,7 @@ public class FateCollect extends AbstractRemiriaCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("FateCollect");
         NAME = FateCollect.cardStrings.NAME;
         DESCRIPTION = FateCollect.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = FateCollect.cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = FateCollect.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

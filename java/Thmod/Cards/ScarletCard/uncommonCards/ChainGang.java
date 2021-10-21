@@ -30,7 +30,7 @@ public class ChainGang extends AbstractRemiriaCards {
 
     public ChainGang(boolean isPlus) {
         super("ChainGang", ChainGang.NAME,  1, ChainGang.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY, isPlus);
-        this.baseMagicNumber = 6;
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
         this.attackType = AttackType.CHAIN;
@@ -41,14 +41,14 @@ public class ChainGang extends AbstractRemiriaCards {
             for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                 AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                 if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new WeakPower(target, this.magicNumber,false), this.magicNumber));
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new BloodBruisePower(target, 3), 3));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new WeakPower(target, 6,false), 6));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new BloodBruisePower(target, this.magicNumber), this.magicNumber));
                 }
             }
         }
         else {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new BloodBruisePower(m, 3), 3));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 6, false), 6));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new BloodBruisePower(m, this.magicNumber), this.magicNumber));
         }
         super.use(p, m);
     }
@@ -65,7 +65,7 @@ public class ChainGang extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(4);
+            this.upgradeMagicNumber(3);
         }
     }
 

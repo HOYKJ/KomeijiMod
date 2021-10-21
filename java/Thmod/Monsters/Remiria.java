@@ -107,6 +107,8 @@ public class Remiria extends AbstractMonster {
        //this.stateData.setMix("start", "normal", 0.5F);
        this.state.setTimeScale(1.0F);
        this.nowState = combatState.START;
+       ThMod.logger.info("Remiria y 1: ---------- " + y + " ----------");
+       ThMod.logger.info("Remiria y: ---------- " + this.drawY + " ----------");
    }
 
     public void usePreBattleAction()

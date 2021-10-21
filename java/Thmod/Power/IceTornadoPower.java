@@ -25,7 +25,7 @@ public class IceTornadoPower extends AbstractPower {
         this.name = NAME;
         this.ID = "IceTornadoPower";
         this.owner = owner;
-        this.amount = 3;
+        this.amount = 2;
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/IceTornadoPower.png");
         this.type = PowerType.BUFF;
@@ -43,21 +43,26 @@ public class IceTornadoPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        if(isPlayer){
-            if (this.amount == 1) {
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "IceTornadoPower"));
-            }
-            else {
-                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        flash();
-                        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-                    }
+        if(isPlayer) {
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                    flash();
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(p, this.damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 }
-                this.damage += 2;
-                this.amount -= 1;
             }
+            this.damage += 2;
+        }
+    }
+
+    @Override
+    public void atEndOfRound() {
+        super.atEndOfRound();
+        if (this.amount == 1) {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, "IceTornadoPower"));
+        }
+        else {
+            this.amount -= 1;
         }
     }
 

@@ -2,6 +2,7 @@ package Thmod.Cards.ScarletCard;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -27,7 +28,8 @@ public class BodyStrengthen extends AbstractRemiriaCards {
     }
 
     public BodyStrengthen(boolean isPlus) {
-        super("BodyStrengthen", BodyStrengthen.NAME,  0, BodyStrengthen.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF, isPlus);
+        super("BodyStrengthen", BodyStrengthen.NAME,  1, BodyStrengthen.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF, isPlus);
+        this.baseBlock = 6;
         this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;
@@ -35,6 +37,7 @@ public class BodyStrengthen extends AbstractRemiriaCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BodyStrengthenPower(p, this.magicNumber), this.magicNumber));
         if(this.upgraded){
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
@@ -75,6 +78,7 @@ public class BodyStrengthen extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
+//            this.upgradeMagicNumber(1);
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

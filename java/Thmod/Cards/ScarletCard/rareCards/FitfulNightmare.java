@@ -32,11 +32,11 @@ public class FitfulNightmare extends AbstractRemiriaCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if(!this.isPlus){
-            AbstractCard card = AbstractDungeon.returnRandomCurse().makeCopy();
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card, 1));
-        }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FitfulNightmarePower(p)));
+//        if(!this.isPlus){
+//            AbstractCard card = AbstractDungeon.returnRandomCurse().makeCopy();
+//            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card, 1));
+//        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FitfulNightmarePower(p, this.isPlus)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ScarletLordPower(p, 1), 1));
         super.use(p, m);
     }

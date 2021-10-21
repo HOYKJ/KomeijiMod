@@ -23,6 +23,7 @@ public class SealingFear extends AbstractRemiriaCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
 
     public SealingFear() {
@@ -53,6 +54,34 @@ public class SealingFear extends AbstractRemiriaCards {
                     AbstractDungeon.player.hand.refreshHandLayout();
                 });
         }
+        if(this.upgraded){
+            for (AbstractCard card : p.drawPile.group) {
+                if((card instanceof AbstractRemiriaCards) && (card != this))
+                    choice.add(card, () -> {
+                        if(plus){
+                            if (card.cost > 0) {
+                                card.freeToPlayOnce = true;
+                            }
+                        }
+                        ((AbstractRemiriaCards) card).plusCard();
+                        p.drawPile.moveToDeck(card, false);
+                        //AbstractDungeon.player.hand.refreshHandLayout();
+                    });
+            }
+            for (AbstractCard card : p.discardPile.group) {
+                if((card instanceof AbstractRemiriaCards) && (card != this))
+                    choice.add(card, () -> {
+                        if(plus){
+                            if (card.cost > 0) {
+                                card.freeToPlayOnce = true;
+                            }
+                        }
+                        ((AbstractRemiriaCards) card).plusCard();
+                        p.discardPile.moveToDeck(card, false);
+                        //AbstractDungeon.player.hand.refreshHandLayout();
+                    });
+            }
+        }
         AbstractDungeon.actionManager.addToBottom(choice);
         super.use(p, m);
     }
@@ -69,7 +98,9 @@ public class SealingFear extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBaseCost(0);
+            //this.upgradeBaseCost(0);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -83,6 +114,7 @@ public class SealingFear extends AbstractRemiriaCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("SealingFear");
         NAME = SealingFear.cardStrings.NAME;
         DESCRIPTION = SealingFear.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = SealingFear.cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = SealingFear.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

@@ -45,7 +45,7 @@ public class RewardItemPatch {
             }
         }
 
-        @SpireInsertPatch(rloc = 152, localvars={"tips"})
+        @SpireInsertPatch(rloc = 153, localvars={"tips"})
         public static void Insert(RewardItem _inst, SpriteBatch sb, ArrayList<PowerTip> tips) {
             if (_inst.relicLink.type == RewardItemEnum.CRYSTAL) {
                 tips.add(new PowerTip(RewardItem.TEXT[7], RewardItem.TEXT[8] + FontHelper.colorString(_inst.relicLink.relic.name + RewardItem.TEXT[9], "y")));

@@ -27,7 +27,7 @@ public class CruelSlaughter extends AbstractRemiriaCards {
 
     public CruelSlaughter(boolean isPlus) {
         super("CruelSlaughter", CruelSlaughter.NAME,  2, CruelSlaughter.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, isPlus);
-        this.baseDamage = 14;
+        this.baseDamage = 15;
         this.isMultiDamage = true;
         this.addTips();
     }
@@ -49,7 +49,7 @@ public class CruelSlaughter extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(6);
+            this.upgradeDamage(5);
         }
     }
 

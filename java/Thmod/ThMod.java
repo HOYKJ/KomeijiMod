@@ -290,6 +290,15 @@ import Thmod.Potion.JyouchiReiPotion;
 import Thmod.Potion.PpointPotion;
 import Thmod.Potion.RedTea;
 import Thmod.Potion.UndeadPotion;
+import Thmod.Power.Weather.Fuuu;
+import Thmod.Power.Weather.Haku;
+import Thmod.Power.Weather.KawaGiri;
+import Thmod.Power.Weather.KiriSame;
+import Thmod.Power.Weather.NouMu;
+import Thmod.Power.Weather.Soyuki;
+import Thmod.Power.Weather.TenkiYume;
+import Thmod.Power.Weather.Tsume;
+import Thmod.Power.Weather.Yuki;
 import Thmod.Relics.BookofPenglai;
 import Thmod.Relics.Clue;
 import Thmod.Relics.ColorfulQuillpen;
@@ -322,6 +331,12 @@ import Thmod.Relics.remiria.SpecialStopwatch;
 import Thmod.Rewards.AllUpgrade;
 import Thmod.Rewards.FullHealing;
 import Thmod.Rewards.RemoveCurse;
+import Thmod.vfx.weather.FuuuEffect;
+import Thmod.vfx.weather.HakuEffect;
+import Thmod.vfx.weather.KawaGiriEffect;
+import Thmod.vfx.weather.KiriSameEffect;
+import Thmod.vfx.weather.NouMuEffect;
+import Thmod.vfx.weather.YukiEffect;
 import basemod.BaseMod;
 import basemod.DevConsole;
 import basemod.ModButton;
@@ -345,25 +360,25 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     private static final String MODNAME = "Touhou Mod";
     private static final String AUTHOR = "hoykj";
     private static final String DESCRIPTION = "2018.04.14";
-    public static boolean AliceOpen ;
-    public static boolean SoundOpen ;
-    public static boolean StartSelectOpen ;
-    public static boolean MusicOpen ;
-    public static boolean AllzhsOpen ;
-    public static boolean AllengOpen ;
+    public static boolean AliceOpen;
+    public static boolean SoundOpen;
+    public static boolean StartSelectOpen;
+    public static boolean MusicOpen;
+    public static boolean AllzhsOpen;
+    public static boolean AllengOpen;
     public static boolean playerArt;
     public static boolean unknownEffect;
-    public static int blessingOfTime ;
-    public static int blessingOfDetermination ;
-    public static int blessingOfRemission ;
-    public static boolean Hexaghost ;
-    public static boolean SlimeBoss ;
-    public static boolean TheGuardian ;
-    public static boolean BronzeAutomaton ;
-    public static boolean Champ ;
-    public static boolean TheCollector ;
-    public static boolean AwakenedOne ;
-    public static boolean TimeEater ;
+    public static int blessingOfTime;
+    public static int blessingOfDetermination;
+    public static int blessingOfRemission;
+    public static boolean Hexaghost;
+    public static boolean SlimeBoss;
+    public static boolean TheGuardian;
+    public static boolean BronzeAutomaton;
+    public static boolean Champ;
+    public static boolean TheCollector;
+    public static boolean AwakenedOne;
+    public static boolean TimeEater;
     public static boolean firstAnswer;
     public static boolean canDetBle;
     public static boolean canScaBle;
@@ -398,6 +413,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     public static CardGroup masterSpellCardFor2;
     public static CardGroup masterSpellCardFor3;
     public static CardGroup masterSpellCardFor5;
+    public static CardGroup fateCardPool;
     public static boolean cardFeedback = false;
 
     public static HashMap<AbstractSetCards.CardSet_k, Integer> cardSetCheck = new HashMap<>();
@@ -1378,6 +1394,7 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         masterSpellCardFor2 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         masterSpellCardFor3 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         masterSpellCardFor5 = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        fateCardPool = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
         soulSpellCard.addToTop(new ReiGeki());
         soulSpellCard.addToTop(new MajikkuPosyun());
@@ -1421,6 +1438,49 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
         BaseMod.registerCustomReward(RewardItemEnum.ALL_UPGRADE, rewardSave -> new AllUpgrade(), customReward -> new RewardSave(customReward.type.toString(), null, 0, 0));
         BaseMod.registerCustomReward(RewardItemEnum.REMOVE_CURSE, rewardSave -> new RemoveCurse(), customReward -> new RewardSave(customReward.type.toString(), null, 0, 0));
 
+        for (int i = 0; i < Fuuu.effects.length; i++) {
+            for (int i1 = 0; i1 < Fuuu.effects[i].length; i1++) {
+                Fuuu.effects[i][i1] = new FuuuEffect();
+            }
+        }
+        for (int i = 0; i < Haku.effects.length; i++) {
+            for (int i1 = 0; i1 < Haku.effects[i].length; i1++) {
+                Haku.effects[i][i1] = new HakuEffect();
+            }
+        }
+        for (int i = 0; i < KawaGiri.effects.length; i++) {
+            KawaGiri.effects[i] = new KawaGiriEffect();
+        }
+        for (int i = 0; i < KiriSame.effects.length; i++) {
+            for (int i1 = 0; i1 < KiriSame.effects[i].length; i1++) {
+                KiriSame.effects[i][i1] = new KiriSameEffect();
+            }
+        }
+        for (int i = 0; i < NouMu.effects.length; i++) {
+            for (int i1 = 0; i1 < NouMu.effects[i].length; i1++) {
+                NouMu.effects[i][i1] = new NouMuEffect();
+            }
+        }
+        for (int i = 0; i < Soyuki.effects.length; i++) {
+            for (int i1 = 0; i1 < Soyuki.effects[i].length; i1++) {
+                Soyuki.effects[i][i1] = new KiriSameEffect();
+            }
+        }
+        for (int i = 0; i < TenkiYume.effects.length; i++) {
+            for (int i1 = 0; i1 < TenkiYume.effects[i].length; i1++) {
+                TenkiYume.effects[i][i1] = new KiriSameEffect();
+            }
+        }
+        for (int i = 0; i < Tsume.effects.length; i++) {
+            for (int i1 = 0; i1 < Tsume.effects[i].length; i1++) {
+                Tsume.effects[i][i1] = new KiriSameEffect();
+            }
+        }
+        for (int i = 0; i < Yuki.effects.length; i++) {
+            for (int i1 = 0; i1 < Yuki.effects[i].length; i1++) {
+                Yuki.effects[i][i1] = new YukiEffect();
+            }
+        }
         DevConsole.logger.info("========================================================================");
     }
 
@@ -1474,23 +1534,39 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
 
         //if((ThMod.defeatRemiria) && (ThMod.blessingOfTime >= 1)) {
             //RemiriaScarlet.addStrings();
-        if (AllzhsOpen) {
-            String cardStrings = Gdx.files.internal("localization/remiria/zhsCards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        if(AllengOpen) {
+            String cardStrings = Gdx.files.internal("localization/remiria/eng/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
             BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-        } else {
-            String cardStrings = Gdx.files.internal("localization/remiria/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
-            BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+            String relicStrings = Gdx.files.internal("localization/remiria/eng/Relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+            String powerStrings = Gdx.files.internal("localization/remiria/eng/Power.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+            String uiStrings = Gdx.files.internal("localization/remiria/eng/UI.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+            String eventStrings = Gdx.files.internal("localization/remiria/eng/Event.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
+            String monsterStrings = Gdx.files.internal("localization/remiria/eng/Monster.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
         }
-        String relicStrings = Gdx.files.internal("localization/remiria/Relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-        String powerStrings = Gdx.files.internal("localization/remiria/Power.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-        String uiStrings = Gdx.files.internal("localization/remiria/UI.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
-        String eventStrings = Gdx.files.internal("localization/remiria/Event.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
-        String monsterStrings = Gdx.files.internal("localization/remiria/Monster.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
+        else {
+            if (AllzhsOpen) {
+                String cardStrings = Gdx.files.internal("localization/remiria/zhsCards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+                BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+            } else {
+                String cardStrings = Gdx.files.internal("localization/remiria/Cards.json").readString(String.valueOf(StandardCharsets.UTF_8));
+                BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+            }
+            String relicStrings = Gdx.files.internal("localization/remiria/Relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+            String powerStrings = Gdx.files.internal("localization/remiria/Power.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+            String uiStrings = Gdx.files.internal("localization/remiria/UI.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+            String eventStrings = Gdx.files.internal("localization/remiria/Event.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
+            String monsterStrings = Gdx.files.internal("localization/remiria/Monster.json").readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(MonsterStrings.class, monsterStrings);
+        }
         //}
 
         DevConsole.logger.info("========================================================================");
@@ -1502,7 +1578,6 @@ public class ThMod implements PostDungeonInitializeSubscriber, EditRelicsSubscri
     }
     public void receivePostDungeonInitialize()
     {
-
     }
 
     class Keywords{

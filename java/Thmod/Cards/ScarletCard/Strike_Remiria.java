@@ -33,7 +33,7 @@ public class Strike_Remiria extends AbstractRemiriaCards {
     public Strike_Remiria(boolean isPlus) {
         super("Strike_Remiria", Strike_Remiria.NAME,  1, Strike_Remiria.DESCRIPTION, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY, isPlus);
         this.baseDamage = 6;
-        tags.add(BaseModCardTags.BASIC_STRIKE);
+        tags.add(CardTags.STARTER_STRIKE);
         this.addTips();
         this.attackType = AttackType.LIGHT;
     }

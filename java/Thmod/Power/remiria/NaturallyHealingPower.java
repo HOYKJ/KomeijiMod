@@ -33,16 +33,8 @@ public class NaturallyHealingPower extends AbstractPower {
 
     public void trigger(){
         if(this.owner.hasPower(BloodBruisePower.POWER_ID)){
-            int num = AbstractDungeon.player.hand.group.size();
-            AbstractPower blood = this.owner.getPower(BloodBruisePower.POWER_ID);
-            if(blood.amount > (num * this.amount)){
-                blood.amount -= num * this.amount;
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, num + this.amount));
-            }
-            else {
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, blood.amount));
-                blood.amount = 0;
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, blood));
+            for(int i = 0; i < this.amount; i ++) {
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.owner.getPower(BloodBruisePower.POWER_ID).amount));
             }
         }
     }

@@ -1,6 +1,7 @@
 package Thmod.Cards.ScarletCard;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -17,7 +18,7 @@ import Thmod.Power.remiria.ScarletLordPower;
 import Thmod.Power.remiria.ServantFlierPower;
 import basemod.helpers.TooltipInfo;
 
-public class ServantFlier extends AbstractRemiriaCards {
+public class ServantFlier extends AbstractRemiriaFate {
     public static final String ID = "ServantFlier";
     private static final CardStrings cardStrings;
     public static final String NAME;
@@ -29,8 +30,8 @@ public class ServantFlier extends AbstractRemiriaCards {
     }
 
     public ServantFlier(boolean isPlus) {
-        super("ServantFlier", ServantFlier.NAME,  1, ServantFlier.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE, isPlus);
-        this.baseMagicNumber = 2;
+        super("ServantFlier", ServantFlier.NAME,  -2, ServantFlier.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE, isPlus);
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
     }
@@ -38,7 +39,7 @@ public class ServantFlier extends AbstractRemiriaCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ServantFlierPower(p, this.magicNumber), this.magicNumber));
         if(this.isPlus){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ServantFlierPower(p, 2), 2));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
         }
         super.use(p, m);
     }
@@ -55,7 +56,7 @@ public class ServantFlier extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(1);
+            this.upgradeMagicNumber(2);
         }
     }
 

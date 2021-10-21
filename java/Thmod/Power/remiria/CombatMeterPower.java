@@ -15,7 +15,7 @@ public class CombatMeterPower extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("CombatMeterPower");
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private boolean[] check;
+    private int check;
     private int counter;
 
     public CombatMeterPower(AbstractCreature owner, int amount) {
@@ -26,7 +26,7 @@ public class CombatMeterPower extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/remiria/CombatMeterPower.png");
         this.type = PowerType.BUFF;
-        this.check = new boolean[]{true, true, true, true, true};
+        this.check = 0;
         this.counter = amount;
     }
 
@@ -39,43 +39,43 @@ public class CombatMeterPower extends AbstractPower {
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
-        this.check = new boolean[]{true, true, true, true, true};
+        this.check = 0;
         this.counter = this.amount;
     }
 
     public void active(AbstractCard card){
         switch (card.type){
             case ATTACK:
-                if(this.check[0]){
-                    this.check[0] = false;
+                if(this.check != 1){
+                    this.check = 1;
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.counter));
                     this.counter += this.amount;
                 }
                 break;
             case SKILL:
-                if(this.check[1]){
-                    this.check[1] = false;
+                if(this.check != 2){
+                    this.check = 2;
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.counter));
                     this.counter += this.amount;
                 }
                 break;
             case POWER:
-                if(this.check[2]){
-                    this.check[2] = false;
+                if(this.check != 3){
+                    this.check = 3;
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.counter));
                     this.counter += this.amount;
                 }
                 break;
             case STATUS:
-                if(this.check[3]){
-                    this.check[3] = false;
+                if(this.check != 4){
+                    this.check = 4;
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.counter));
                     this.counter += this.amount;
                 }
                 break;
             case CURSE:
-                if(this.check[4]){
-                    this.check[4] = false;
+                if(this.check != 5){
+                    this.check = 5;
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.counter));
                     this.counter += this.amount;
                 }

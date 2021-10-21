@@ -1,14 +1,17 @@
 package Thmod.Cards.ScarletCard.rareCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.common.BlockDamageAction;
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
 import Thmod.Characters.RemiriaScarlet;
 import Thmod.Power.remiria.ScarletLordPower;
@@ -26,7 +29,7 @@ public class RedtheNightlessCastle extends AbstractRemiriaCards {
     }
 
     public RedtheNightlessCastle(boolean isPlus) {
-        super("RedtheNightlessCastle", RedtheNightlessCastle.NAME,  2, RedtheNightlessCastle.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY, isPlus);
+        super("RedtheNightlessCastle", RedtheNightlessCastle.NAME,  2, RedtheNightlessCastle.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY, isPlus);
         this.baseDamage = 2;
         this.baseMagicNumber = 6;
         this.magicNumber = this.baseMagicNumber;
@@ -36,12 +39,17 @@ public class RedtheNightlessCastle extends AbstractRemiriaCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        for(int i = 0; i < this.magicNumber; i ++){
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        }
+//        for(int i = 0; i < this.magicNumber; i ++){
+//            AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+//        }
         if(this.isPlus){
             for(int i = 0; i < this.magicNumber; i ++){
-                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                AbstractDungeon.actionManager.addToTop(new BlockDamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+            }
+        }
+        else {
+            for (int i = 0; i < this.magicNumber; i++) {
+                AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             }
         }
         super.use(p, m);

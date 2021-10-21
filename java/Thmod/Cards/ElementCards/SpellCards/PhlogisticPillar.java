@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
+import Thmod.Power.PhlogisticPower;
+
 public class PhlogisticPillar extends AbstractElementSpellCards {
     public static final String ID = "PhlogisticPillar";
     private static final CardStrings cardStrings;
@@ -30,7 +32,7 @@ public class PhlogisticPillar extends AbstractElementSpellCards {
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new WeakPower(target, this.magicNumber, false), this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new PhlogisticPower(target, this.magicNumber), this.magicNumber));
             }
         }
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));

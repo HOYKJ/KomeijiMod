@@ -27,7 +27,7 @@ public class PainBurst extends AbstractRemiriaCards {
     }
 
     public PainBurst(boolean isPlus) {
-        super("PainBurst", PainBurst.NAME,  5, PainBurst.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, isPlus);
+        super("PainBurst", PainBurst.NAME,  4, PainBurst.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, isPlus);
         this.baseDamage = 24;
         this.isMultiDamage = true;
         this.addTips();
@@ -40,7 +40,7 @@ public class PainBurst extends AbstractRemiriaCards {
         if(this.isPlus){
             if(AbstractDungeon.player.hasPower(BloodBruisePower.POWER_ID)) {
                 for (int i = 0; i < this.multiDamage.length; i++) {
-                    this.multiDamage[i] += AbstractDungeon.player.getPower(BloodBruisePower.POWER_ID).amount * this.costForTurn;
+                    this.multiDamage[i] += AbstractDungeon.player.getPower(BloodBruisePower.POWER_ID).amount * 2;
                 }
                 this.damage = this.multiDamage[0];
                 this.isDamageModified = true;
@@ -50,7 +50,6 @@ public class PainBurst extends AbstractRemiriaCards {
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-
         super.use(p, m);
     }
 
@@ -70,7 +69,7 @@ public class PainBurst extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBaseCost(4);
+            this.upgradeBaseCost(3);
         }
     }
 

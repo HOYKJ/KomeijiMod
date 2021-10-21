@@ -1,6 +1,5 @@
 package Thmod.Cards.ScarletCard.rewardCards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
 import Thmod.Characters.RemiriaScarlet;
-import Thmod.Power.remiria.BloodBruisePower;
 import Thmod.Power.remiria.ScarletLordPower;
 import basemod.helpers.TooltipInfo;
 
@@ -31,7 +29,7 @@ public class BloodyCatastrophe extends AbstractRemiriaCards {
     }
 
     public BloodyCatastrophe(boolean isPlus) {
-        super("BloodyCatastrophe", BloodyCatastrophe.NAME,  2, BloodyCatastrophe.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE, isPlus);
+        super("BloodyCatastrophe", BloodyCatastrophe.NAME,  1, BloodyCatastrophe.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE, isPlus);
         this.addTips();
     }
 
@@ -84,7 +82,7 @@ public class BloodyCatastrophe extends AbstractRemiriaCards {
         p.discardPile.group.clear();
         p.discardPile.group.addAll(cards);
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BloodBruisePower(p, counter), counter));
+        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BloodBruisePower(p, counter), counter));
         super.use(p, m);
     }
 

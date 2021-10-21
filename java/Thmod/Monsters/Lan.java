@@ -63,17 +63,27 @@ public class Lan extends AbstractMonster {
                 break;
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new AllGainBlockAction(this, 10));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new WeakPower(p, 3, true), 3));
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    if ((!(m.isDying)) && (m.currentHealth > 0) && (!(m.isEscaping))) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 1), 1));
+                    }
+                }
                 break;
             case 3:
                 AbstractDungeon.actionManager.addToBottom(new AllGainBlockAction(this, 10));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new VulnerablePower(p, 2, true), 2));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, this, new VulnerablePower(p, 3, true), 3));
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    if ((!(m.isDying)) && (m.currentHealth > 0) && (!(m.isEscaping))) {
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 1), 1));
+                    }
+                }
                 break;
             case 4:
                 AbstractDungeon.actionManager.addToBottom(new AllGainBlockAction(this, 10));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if ((!(m.isDying)) && (m.currentHealth > 0) && (!(m.isEscaping))) {
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 2), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 4), 4));
                     }
                 }
                 break;
@@ -81,7 +91,7 @@ public class Lan extends AbstractMonster {
                 AbstractDungeon.actionManager.addToBottom(new AllGainBlockAction(this, 10));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if ((!(m.isDying)) && (m.currentHealth > 0) && (!(m.isEscaping))) {
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 3), 3));
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, this, new StrengthPower(m, 5), 5));
                     }
                 }
         }

@@ -39,12 +39,12 @@ public class LanPower extends AbstractPower {
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        int newAmount = this.amount%3;
+        int newAmount = this.amount % 3;
         switch (newAmount) {
             case 3:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 3, false), 3));
                 }
                 this.amount -= 1;
                 this.description = DESCRIPTIONS[1];
@@ -53,7 +53,7 @@ public class LanPower extends AbstractPower {
             case 2:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), 2));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, 3, false), 3));
                 }
                 this.amount -= 1;
                 this.description = DESCRIPTIONS[2];
@@ -62,7 +62,12 @@ public class LanPower extends AbstractPower {
             case 1:
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2), 2));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, this));
+                if(this.amount == 1) {
+                    AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, this));
+                }
+                else{
+                    this.amount -= 1;
+                }
                 break;
             default:
                 if(this.amount == 0) {
@@ -71,7 +76,7 @@ public class LanPower extends AbstractPower {
                 else {
                     AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, 10));
                     for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, 3, false), 3));
                     }
                     this.amount -= 1;
                     this.description = DESCRIPTIONS[1];

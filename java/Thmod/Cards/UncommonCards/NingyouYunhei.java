@@ -113,32 +113,32 @@ public class NingyouYunhei extends AbstractSweepCards {
                 }
                 if (AbstractDungeon.player.orbs.get(i) instanceof YariNingyou) {
                     choice.add(new SpearDoll(), () -> {
-                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 3));
                     });
                 }
                 if (AbstractDungeon.player.orbs.get(i) instanceof TateNingyou) {
                     choice.add(new ShieldDoll(), () -> {
-                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 3));
                     });
                 }
                 if (AbstractDungeon.player.orbs.get(i) instanceof YumiNingyou) {
                     choice.add(new ArcherDoll(), () -> {
-                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 3));
                     });
                 }
                 if (AbstractDungeon.player.orbs.get(i) instanceof Shanghai) {
                     choice.add(new ShangHaiDoll(), () -> {
-                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 3));
                     });
                 }
                 if (AbstractDungeon.player.orbs.get(i) instanceof Penglai) {
                     choice.add(new PengLaiDoll(), () -> {
-                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 3));
                     });
                 }
                 if (AbstractDungeon.player.orbs.get(i) instanceof Helan) {
                     choice.add(new HeLanDoll(), () -> {
-                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 2));
+                        AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(orbnum.get(0), 3));
                     });
                 }
             }

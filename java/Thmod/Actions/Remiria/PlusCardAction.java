@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import java.util.ArrayList;
 
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
+import Thmod.Cards.ScarletCard.AbstractRemiriaFate;
 import Thmod.ThMod;
 
 public class PlusCardAction extends AbstractGameAction {
@@ -88,6 +89,17 @@ public class PlusCardAction extends AbstractGameAction {
                 ThMod.logger.info("plus card: " + card.cardID);
             }
             this.cards.clear();
+        }
+    }
+
+    public PlusCardAction(CardGroup cardGroup, boolean all, AbstractCard creater, boolean fate) {
+        this.cards.clear();
+        this.duration = 0.2F;
+
+        for (AbstractCard c : cardGroup.group) {
+            if ((c instanceof AbstractRemiriaCards) && (!((AbstractRemiriaCards) c).isPlus) && (c != creater) && (c instanceof AbstractRemiriaFate)) {
+                this.cards.add((AbstractRemiriaCards) c);
+            }
         }
     }
 

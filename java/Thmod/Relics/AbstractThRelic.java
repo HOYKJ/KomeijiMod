@@ -2,6 +2,7 @@ package Thmod.Relics;
 
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import Thmod.ThMod;
@@ -35,5 +36,9 @@ public abstract class AbstractThRelic extends CustomRelic {
             this.Rclick=false;
             this.onRightClick();
         }
+    }
+
+    public void onChannelOrb(AbstractOrb orb){
+
     }
 }

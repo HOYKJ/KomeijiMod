@@ -49,7 +49,7 @@ public class FateSonata extends AbstractRemiriaCards {
         super("FateSonata", FateSonata.NAME,  0, FateSonata.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY, isPlus);
         this.baseDamage = 4;
         this.baseBlock = 4;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 1;
         this.magicNumber = this.baseMagicNumber;
         this.exhaust = true;
         this.addTips();
@@ -88,24 +88,24 @@ public class FateSonata extends AbstractRemiriaCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         switch (this.step){
             case 0:
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+                //AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
                 AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 if(this.isPlus) {
-                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(this.makeCopy(1), 1, false, false));
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(this.makeCopy(1, this.upgraded), 1, false, false));
                 }
                 else {
-                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeCopy(1), 1));
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeCopy(1, this.upgraded), 1));
                 }
                 break;
             case 1:
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+                //AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
                 AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 AbstractDungeon.actionManager.addToTop(new GainBlockAction(p, p, this.block));
                 if(this.isPlus) {
-                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(this.makeCopy(2), 1, false, false));
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(this.makeCopy(2, this.upgraded), 1, false, false));
                 }
                 else {
-                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeCopy(2), 1));
+                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeCopy(2, this.upgraded), 1));
                 }
                 break;
             case 2:
@@ -156,6 +156,25 @@ public class FateSonata extends AbstractRemiriaCards {
             if((AbstractDungeon.player instanceof RemiriaScarlet) && (AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID))){
                 return new FateSonata(true, num);
             }
+        }
+        return new FateSonata(num);
+    }
+
+    public AbstractCard makeCopy(int num, boolean upgraded) {
+        if(AbstractDungeon.player != null){
+            if((AbstractDungeon.player instanceof RemiriaScarlet) && (AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID))){
+                if(upgraded){
+                    AbstractCard tmp = new FateSonata(true, num);
+                    tmp.upgrade();
+                    return tmp;
+                }
+                return new FateSonata(true, num);
+            }
+        }
+        if(upgraded){
+            AbstractCard tmp = new FateSonata(num);
+            tmp.upgrade();
+            return tmp;
         }
         return new FateSonata(num);
     }

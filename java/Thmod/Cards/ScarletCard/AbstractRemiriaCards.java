@@ -40,7 +40,7 @@ public abstract class AbstractRemiriaCards extends CustomCard {
         if((this.isPlus) &&(!AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID))) {
             this.normalCard();
         }
-        if((AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID)) && (this.attackType != null) && (AbstractDungeon.player instanceof RemiriaScarlet)){
+        if((AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID)) && (this.attackType != null) && (AbstractDungeon.player instanceof RemiriaScarlet) && (((RemiriaScarlet) AbstractDungeon.player).isLordAnimation)){
             switch (this.attackType){
                 case LIGHT:
                     ((RemiriaScarlet) AbstractDungeon.player).changeState("N_ATTACK");

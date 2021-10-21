@@ -1,8 +1,11 @@
 package Thmod.Relics.remiria;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+import java.util.ArrayList;
 
 import Thmod.Actions.unique.ChooseAndObtainAction;
 import Thmod.Cards.ScarletCard.rewardCards.BloodyCatastrophe;
@@ -21,11 +24,13 @@ public class SpellCardsRuleRemi extends AbstractRemiriaRelic {
     @Override
     public void onEquip() {
         super.onEquip();
-        CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        tmp.addToTop(new BloodyCatastrophe());
-        tmp.addToTop(new BloodyLaserofSeventeenArticles());
-        tmp.addToTop(new SuperhumanBloodyKnife());
-        AbstractDungeon.effectsQueue.add(new ChooseAndObtainEffect(tmp, AbstractDungeon.player.masterDeck, DESCRIPTIONS[1]));
+        ArrayList<AbstractCard> tmp = new ArrayList<>();
+        //CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        tmp.add(new BloodyCatastrophe());
+        tmp.add(new BloodyLaserofSeventeenArticles());
+        tmp.add(new SuperhumanBloodyKnife());
+        AbstractDungeon.cardRewardScreen.open(tmp, null, this.DESCRIPTIONS[1]);
+        //AbstractDungeon.effectsQueue.add(new ChooseAndObtainEffect(tmp, AbstractDungeon.player.masterDeck, DESCRIPTIONS[1]));
     }
 
     protected  void onRightClick(){

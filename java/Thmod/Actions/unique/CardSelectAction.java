@@ -411,7 +411,7 @@ public class CardSelectAction extends AbstractGameAction
                     if(this.powercount >= 1) {
                         if (SpellCardsRule.newCards) {
                             if(AbstractDungeon.player.hasRelic("SpellExtend")){
-                                SpellCardsRule.cardsToSelect = getRandomSpellCards(5, false);
+                                SpellCardsRule.cardsToSelect = getRandomSpellCards(6, false);
                             }
                             else
                                 SpellCardsRule.cardsToSelect = getRandomSpellCards(this.powercount, false);

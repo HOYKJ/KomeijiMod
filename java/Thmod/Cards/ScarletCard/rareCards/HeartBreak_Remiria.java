@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.ending.CorruptHeart;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
+import Thmod.Actions.Remiria.HeartBreakAction;
 import Thmod.Actions.unique.ChooseAction;
 import Thmod.Cards.ScarletCard.Absorbed;
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
@@ -52,17 +53,7 @@ public class HeartBreak_Remiria extends AbstractRemiriaCards {
                     this.multiDamage[i] += p.getPower(StrengthPower.POWER_ID).amount * (this.magicNumber - 1);
                 }
             }
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
-            if (p.hasPower(StrengthPower.POWER_ID)) {
-                for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                    AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                    if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new BloodBruisePower(target,
-                                (int) ((float) this.magicNumber / 3 * p.getPower(StrengthPower.POWER_ID).amount)),
-                                (int) ((float) this.magicNumber / 3 * p.getPower(StrengthPower.POWER_ID).amount)));
-                    }
-                }
-            }
+            AbstractDungeon.actionManager.addToBottom(new HeartBreakAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY, (float) this.magicNumber / 10));
         }
         else {
             final ChooseAction choice = new ChooseAction(this, null, Absorbed.EXTENDED_DESCRIPTION[2], false, 1);
@@ -75,17 +66,7 @@ public class HeartBreak_Remiria extends AbstractRemiriaCards {
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
             });
             choice.add(this.name, EXTENDED_DESCRIPTION[4], () -> {
-                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY));
-                if (p.hasPower(StrengthPower.POWER_ID)) {
-                    for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-                        AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                        if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new BloodBruisePower(target,
-                                    (int) ((float) this.magicNumber / 3 * p.getPower(StrengthPower.POWER_ID).amount)),
-                                    (int) ((float) this.magicNumber / 3 * p.getPower(StrengthPower.POWER_ID).amount)));
-                        }
-                    }
-                }
+                AbstractDungeon.actionManager.addToBottom(new HeartBreakAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HEAVY, (float) this.magicNumber / 10));
             });
             AbstractDungeon.actionManager.addToBottom(choice);
         }

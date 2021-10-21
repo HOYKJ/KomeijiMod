@@ -24,7 +24,7 @@ public class Strike_Komeiji extends AbstractKomeijiCards{
     public Strike_Komeiji() {
         super("Strike_Komeiji", Strike_Komeiji.NAME,  1, Strike_Komeiji.DESCRIPTION, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY, CardSet_k.SATORI);
         this.baseDamage = 6;
-        tags.add(BaseModCardTags.BASIC_STRIKE);
+        tags.add(CardTags.STARTER_STRIKE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import Thmod.Actions.Remiria.PlusCardAction;
 import Thmod.Actions.common.LatterAction;
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
 import Thmod.Characters.RemiriaScarlet;
@@ -37,12 +38,17 @@ public class StarOfDavid extends AbstractRemiriaCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StarOfDavidPower(p, this.magicNumber), this.magicNumber));
         if(this.isPlus){
-            AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
-                if(p.hasPower(StarOfDavidPower.POWER_ID)){
-                    ((StarOfDavidPower)p.getPower(StarOfDavidPower.POWER_ID)).trigger();
-                }
-            }, 0.1f));
+            AbstractDungeon.actionManager.addToBottom(new PlusCardAction(p.drawPile, true, this, true));
+            AbstractDungeon.actionManager.addToBottom(new PlusCardAction(p.hand, true, this, true));
+            AbstractDungeon.actionManager.addToBottom(new PlusCardAction(p.discardPile, true, this, true));
         }
+//        if(this.upgraded){
+//            AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
+//                if(p.hasPower(StarOfDavidPower.POWER_ID)){
+//                    ((StarOfDavidPower)p.getPower(StarOfDavidPower.POWER_ID)).trigger();
+//                }
+//            }, 0.1f));
+//        }
         super.use(p, m);
     }
 
@@ -58,9 +64,10 @@ public class StarOfDavid extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.isInnate = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            //this.isInnate = true;
+//            this.rawDescription = UPGRADE_DESCRIPTION;
+//            this.initializeDescription();
+            this.upgradeBaseCost(2);
         }
     }
 

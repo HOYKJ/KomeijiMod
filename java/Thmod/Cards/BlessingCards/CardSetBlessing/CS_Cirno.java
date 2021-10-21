@@ -44,7 +44,7 @@ public class CS_Cirno extends AbstractBlessingCard
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, 1));
         AbstractDungeon.actionManager.addToBottom(new LatterAction(()->{
-            final ChooseAction choice = new ChooseAction(this, null, CS_Cirno.EXTENDED_DESCRIPTION[0], true, 2, true);
+            final ChooseAction choice = new ChooseAction(this, null, CS_Cirno.EXTENDED_DESCRIPTION[0], true, 1, true);
             for(AbstractCard card : p.hand.group){
                 if(!(card instanceof AbstractSpellCards) && !(card instanceof AbstractElementSpellCards) && !(card instanceof AbstractDeriveCards) && !(card instanceof AbstractItemCards)) {
                     choice.add(card, () -> {

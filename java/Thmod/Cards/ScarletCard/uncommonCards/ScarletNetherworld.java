@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
 
 import Thmod.Actions.Remiria.RemoveDebuffsActionChange;
@@ -31,8 +32,8 @@ public class ScarletNetherworld extends AbstractRemiriaCards {
 
     public ScarletNetherworld(boolean isPlus) {
         super("ScarletNetherworld", ScarletNetherworld.NAME,  2, ScarletNetherworld.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
-        this.baseBlock = 12;
-        this.baseMagicNumber = 3;
+        this.baseBlock = 8;
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
     }
@@ -49,9 +50,10 @@ public class ScarletNetherworld extends AbstractRemiriaCards {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, BloodBruisePower.POWER_ID));
             }
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ThornsPower(p, count), count));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PlatedArmorPower(p, count), count));
         }
         if(this.isPlus){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ThornsPower(p, count), count));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PlatedArmorPower(p, count), count));
         }
         super.use(p, m);
     }
@@ -68,6 +70,7 @@ public class ScarletNetherworld extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
+            //this.upgradeBlock(2);
             this.upgradeMagicNumber(2);
         }
     }

@@ -22,7 +22,7 @@ public class ChooseEffect extends AbstractGameEffect
     private AbstractCard baseCard;
     private AbstractMonster target;
     private CardGroup choices;
-    ArrayList<Runnable> actions;
+    private ArrayList<Runnable> actions;
     private String message;
     private boolean canCancel;
     private int chooseNum;

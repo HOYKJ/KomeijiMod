@@ -15,7 +15,7 @@ import Thmod.Relics.CrystalOfMemory;
 
 @SpirePatch(cls="com.megacrit.cardcrawl.core.AbstractCreature", method="renderPowerTips")
 public class NoPowerPatch {
-    @SpireInsertPatch(rloc=8, localvars={"tips"})
+    @SpireInsertPatch(rloc=9, localvars={"tips"})
     public static void Insert(AbstractCreature _inst, SpriteBatch sb, ArrayList<PowerTip> tips)
     {
         if(AbstractDungeon.player.hasRelic("KoishisEye")){

@@ -19,13 +19,14 @@ public class MusuNoYume extends AbstractKomeijiCards {
 
     public MusuNoYume() {
         super("MusuNoYume", MusuNoYume.NAME,  1, MusuNoYume.DESCRIPTION, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY, CardSet_k.YUYUKO);
-        this.baseMagicNumber = 6;
+        this.baseMagicNumber = 9;
         this.magicNumber = this.baseMagicNumber;
+        this.exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new MusuNoYumePower(m,this.magicNumber),3));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new MusuNoYumePower(m,this.magicNumber),3));
     }
 
     public AbstractCard makeCopy() {
@@ -35,7 +36,7 @@ public class MusuNoYume extends AbstractKomeijiCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(2);
+            this.upgradeMagicNumber(3);
         }
     }
 

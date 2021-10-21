@@ -70,9 +70,11 @@ public class Searching extends AbstractVictoryCards{
             AbstractDungeon.getCurrRoom().addGoldToRewards(roll);
         }
 
-        roll = (MathUtils.random(99) + 1);
-        if(roll < this.magicNumber){
-            AbstractDungeon.getCurrRoom().rewards.add(this.clue);
+        if(this.clue.relic.counter != 3) {
+            roll = (MathUtils.random(99) + 1);
+            if (roll < this.magicNumber) {
+                AbstractDungeon.getCurrRoom().rewards.add(this.clue);
+            }
         }
     }
 

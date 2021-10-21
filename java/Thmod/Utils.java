@@ -36,7 +36,7 @@ public class Utils {
         else {
             ((SkipCardButton) ReflectionHacks.getPrivate(crs, CardRewardScreen.class, "skipButton")).hide();
         }
-        crs.onCardSelect = true;
+        //crs.onCardSelect = true;
         AbstractDungeon.topPanel.unhoverHitboxes();
         crs.rewardGroup = cards;
         AbstractDungeon.isScreenUp = true;

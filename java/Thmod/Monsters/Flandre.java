@@ -1,5 +1,7 @@
 package Thmod.Monsters;
 
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -54,7 +56,10 @@ public class Flandre extends AbstractMonster {
     }
 
     public Flandre(float x, float y, int turns) {
-        super(NAME, "Flandre", 495, 20.0F, 0.0F, 350.0F, 350.0F, "images/monsters/Flandre/Main.png", x, y);
+        super(NAME, "Flandre", 495, 0.0F, -40.0F, 350.0F, 400.0F, "images/monsters/Flandre/Main.png", x, y);
+        loadAnimation("images/monsters/Flandre/Flandre.atlas", "images/monsters/Flandre/Flandre.json", 3.0F);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "newAnimation", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
         this.turns = turns;
         this.damage.add(new DamageInfo(this, 18));
         this.damage.add(new DamageInfo(this, 12));
@@ -174,7 +179,7 @@ public class Flandre extends AbstractMonster {
                             power.owner = flan;
                         }
                     }
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(flan, flan, new StrengthPower(flan, 1), 1));
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(flan, flan, new StrengthPower(flan, this.currentHealth / 100 + 1), this.currentHealth / 100 + 1));
                     flan.canFinal = true;
                     AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(flan, false));
                 }

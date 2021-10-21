@@ -32,21 +32,27 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import java.util.ArrayList;
 import java.util.List;
 
+import Thmod.Actions.common.ChangeOrbAction;
 import Thmod.Actions.common.LatterAction;
 import Thmod.Actions.unique.ChooseAction;
 import Thmod.Actions.unique.ResonateAction;
 import Thmod.Cards.AbstractSetCards;
 import Thmod.Cards.DeriveCards.AbstractDeriveCards;
+import Thmod.Cards.DeriveCards.ArcherDoll;
+import Thmod.Cards.DeriveCards.ShieldDoll;
+import Thmod.Cards.DeriveCards.SpearDoll;
 import Thmod.Cards.ElementCards.AbstractElementCards;
 import Thmod.Cards.ElementCards.SpellCards.AbstractElementSpellCards;
 import Thmod.Cards.NingyouShinki;
 import Thmod.Cards.SpellCards.AbstractSpellCards;
+import Thmod.Cards.UncommonCards.LittleLegion;
 import Thmod.Orbs.ElementOrb.EarthOrb;
 import Thmod.Orbs.ElementOrb.FireOrb;
 import Thmod.Orbs.ElementOrb.MetalOrb;
 import Thmod.Orbs.ElementOrb.WaterOrb;
 import Thmod.Orbs.ElementOrb.WoodOrb;
 import Thmod.Orbs.Helan;
+import Thmod.Orbs.NingyouOrb;
 import Thmod.Orbs.Penglai;
 import Thmod.Orbs.Shanghai;
 import Thmod.Orbs.TateNingyou;
@@ -127,25 +133,25 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
     public void atTurnStart() {
         super.atTurnStart();
         AbstractPlayer p = AbstractDungeon.player;
-        if(this.number[0] == 3){
-            boolean spear = false, shield = false, archer = false;
-            for(AbstractOrb orb : p.orbs){
-                if((orb instanceof YariNingyou) || (orb instanceof Shanghai) || (orb instanceof Penglai)){
-                    spear = true;
-                }
-                else if((orb instanceof TateNingyou) || (orb instanceof Helan)){
-                    shield = true;
-                }
-                else if(orb instanceof YumiNingyou){
-                    archer = true;
-                }
-            }
-            if(spear && shield && archer){
-                flash();
-                AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-            }
-        }
+//        if(this.number[0] == 3){
+//            boolean spear = false, shield = false, archer = false;
+//            for(AbstractOrb orb : p.orbs){
+//                if((orb instanceof YariNingyou) || (orb instanceof Shanghai) || (orb instanceof Penglai)){
+//                    spear = true;
+//                }
+//                else if((orb instanceof TateNingyou) || (orb instanceof Helan)){
+//                    shield = true;
+//                }
+//                else if(orb instanceof YumiNingyou){
+//                    archer = true;
+//                }
+//            }
+//            if(spear && shield && archer){
+//                flash();
+//                AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+//                AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+//            }
+//        }
         if(this.number[0] == 5){
             if(this.blockCounter > 0){
                 flash();
@@ -171,7 +177,7 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
         if(this.number[0] == 14){
             if(!this.used){
                 this.flash();
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 2));
             }
             else {
                 this.used = false;
@@ -361,9 +367,11 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
     @Override
     public int onPlayerGainedBlock(float blockAmount) {
         if(this.number[0] == 6){
-            flash();
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.getMonsters().getRandomMonster(true),
-                    new DamageInfo(AbstractDungeon.player, 1, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            if(!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+                flash();
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.getMonsters().getRandomMonster(true),
+                        new DamageInfo(AbstractDungeon.player, 2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            }
         }
         return super.onPlayerGainedBlock(blockAmount);
     }
@@ -441,6 +449,46 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
     }
 
     @Override
+    public void onChannelOrb(AbstractOrb orb) {
+        super.onChannelOrb(orb);
+        if(this.number[0] == 3) {
+            if (orb instanceof NingyouOrb) {
+                this.counter++;
+                if (this.counter == 3) {
+                    this.counter = 0;
+
+                    final ChooseAction choice = new ChooseAction(null, null, LittleLegion.EXTENDED_DESCRIPTION[0], false, 1);
+                    choice.add(new SpearDoll(), () -> {
+                        for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                            if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
+                                AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i, 1));
+                                break;
+                            }
+                        }
+                    });
+                    choice.add(new ShieldDoll(), () -> {
+                        for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                            if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
+                                AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i, 2));
+                                break;
+                            }
+                        }
+                    });
+                    choice.add(new ArcherDoll(), () -> {
+                        for (int i = (AbstractDungeon.player.orbs.size() - 1); i >= 0; i--) {
+                            if (AbstractDungeon.player.orbs.get(i) instanceof NingyouOrb) {
+                                AbstractDungeon.actionManager.addToBottom(new ChangeOrbAction(i, 3));
+                                break;
+                            }
+                        }
+                    });
+                    AbstractDungeon.actionManager.addToBottom(choice);
+                }
+            }
+        }
+    }
+
+    @Override
     public void onVictory() {
         super.onVictory();
         if(this.number[0] == 5){
@@ -484,6 +532,14 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
         }
     }
 
+    @Override
+    public int changeNumberOfCardsInReward(int numberOfCards) {
+        if(this.number[0] == 1) {
+            return super.changeNumberOfCardsInReward(numberOfCards) + 1;
+        }
+        return super.changeNumberOfCardsInReward(numberOfCards);
+    }
+
     protected  void onRightClick(){
         if(this.number[0] == 12){
             if(!this.used){
@@ -509,7 +565,7 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
                     if ((AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)) {
                         this.used = true;
                         AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat().makeCopy();
-                        card.modifyCostForTurn(-99);
+                        card.setCostForTurn(-99);
                         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card, 1));
                     }
                 }
@@ -537,6 +593,7 @@ public class CrystalOfMemory extends AbstractThRelic implements CustomSavable<in
                 break;
             case ALICE:
                 this.number[0] = 3;
+                this.counter = 0;
                 break;
             case AYA:
                 this.number[0] = 4;

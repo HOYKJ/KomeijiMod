@@ -28,7 +28,7 @@ public class Melting extends AbstractKomeijiCards{
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(m, p));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        AbstractDungeon.actionManager.addToBottom(new ExhaustAction(p, p, this.magicNumber, false));
+        AbstractDungeon.actionManager.addToBottom(new ExhaustAction(this.magicNumber, false));
     }
 
     public AbstractCard makeCopy() {

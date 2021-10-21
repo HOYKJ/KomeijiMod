@@ -107,7 +107,7 @@ public class SpecialStopwatch extends AbstractRemiriaRelic {
             for(AbstractCard card : AbstractDungeon.player.hand.group){
                 if((card.costForTurn > 0)){
                     this.originalCost.put(card, card.costForTurn);
-                    card.modifyCostForTurn(-9);
+                    card.setCostForTurn(-9);
                 }
             }
         }

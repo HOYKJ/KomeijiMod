@@ -29,7 +29,7 @@ public class Defend_Remirira extends AbstractRemiriaCards {
     public Defend_Remirira(boolean isPlus) {
         super("Defend_Remirira", Defend_Remirira.NAME,  1, Defend_Remirira.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF, isPlus);
         this.baseBlock = 5;
-        tags.add(BaseModCardTags.BASIC_DEFEND);
+        tags.add(CardTags.STARTER_DEFEND);
         this.addTips();
     }
 

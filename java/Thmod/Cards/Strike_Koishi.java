@@ -23,7 +23,7 @@ public class Strike_Koishi extends AbstractKomeijiCards{
     public Strike_Koishi() {
         super("Strike_Koishi", Strike_Koishi.NAME,  1, Strike_Koishi.DESCRIPTION, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY, CardSet_k.KOISHI);
         this.baseDamage = 6;
-        tags.add(BaseModCardTags.BASIC_STRIKE);
+        tags.add(CardTags.STARTER_STRIKE);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
+import Thmod.Cards.ScarletCard.BodyStrengthen;
 import Thmod.Characters.RemiriaScarlet;
 import Thmod.Power.remiria.MiserableFatePower;
 import Thmod.Power.remiria.ScarletLordPower;
@@ -20,6 +21,7 @@ public class MiserableFate_Remiria extends AbstractRemiriaCards {
     private static final CardStrings cardStrings;
     public static final String NAME;
     public static final String DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
 
     public MiserableFate_Remiria() {
@@ -29,6 +31,7 @@ public class MiserableFate_Remiria extends AbstractRemiriaCards {
     public MiserableFate_Remiria(boolean isPlus) {
         super("MiserableFate_Remiria", MiserableFate_Remiria.NAME,  3, MiserableFate_Remiria.DESCRIPTION, CardType.POWER, CardRarity.RARE, CardTarget.NONE, isPlus);
         this.addTips();
+        this.isEthereal = true;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
@@ -51,7 +54,9 @@ public class MiserableFate_Remiria extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBaseCost(2);
+            this.isEthereal = false;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -65,6 +70,7 @@ public class MiserableFate_Remiria extends AbstractRemiriaCards {
         cardStrings = CardCrawlGame.languagePack.getCardStrings("MiserableFate_Remiria");
         NAME = MiserableFate_Remiria.cardStrings.NAME;
         DESCRIPTION = MiserableFate_Remiria.cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = MiserableFate_Remiria.cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = MiserableFate_Remiria.cardStrings.EXTENDED_DESCRIPTION;
     }
 }

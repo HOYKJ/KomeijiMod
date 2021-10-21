@@ -28,7 +28,7 @@ public class IceTornado extends AbstractKomeijiCards {
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IceTornadoPower(p, this.magicNumber)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IceTornadoPower(p, this.magicNumber), 2));
         //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 2),2));
     }
 

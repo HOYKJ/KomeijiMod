@@ -35,7 +35,7 @@ public class ScarletLordPower extends AbstractPower {
         updateDescription();
         this.img = ImageMaster.loadImage("images/power/32/remiria/ScarletLordPower.png");
         this.type = PowerType.BUFF;
-        this.counter = 8;
+        this.counter = 6;
         updateDescription();
     }
 
@@ -61,7 +61,7 @@ public class ScarletLordPower extends AbstractPower {
                 ((AbstractRemiriaCards) card).plusCard();
             }
         }
-        this.counter = 8;
+        this.counter = 6;
         updateDescription();
     }
 
@@ -112,15 +112,15 @@ public class ScarletLordPower extends AbstractPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
-        this.counter = 8;
+        this.counter = 6;
         updateDescription();
-        if(!this.owner.hasPower(FitfulNightmarePower.POWER_ID)) {
+//        if(!this.owner.hasPower(FitfulNightmarePower.POWER_ID)) {
             if (this.amount > 1) {
                 this.amount -= 1;
             } else {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             }
-        }
+        //}
     }
 
     @Override

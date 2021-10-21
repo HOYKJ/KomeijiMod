@@ -12,13 +12,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import Thmod.Actions.Remiria.ReaperRemiAction;
+import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
 import Thmod.Cards.ScarletCard.AbstractRemiriaFate;
 import Thmod.Characters.RemiriaScarlet;
 import Thmod.Power.remiria.BloodBruisePower;
 import Thmod.Power.remiria.ScarletLordPower;
 import basemod.helpers.TooltipInfo;
 
-public class Reaper_Remiria extends AbstractRemiriaFate {
+public class Reaper_Remiria extends AbstractRemiriaCards {
     public static final String ID = "Reaper_Remiria";
     private static final CardStrings cardStrings;
     public static final String NAME;
@@ -31,10 +32,10 @@ public class Reaper_Remiria extends AbstractRemiriaFate {
 
     public Reaper_Remiria(boolean isPlus) {
         super("Reaper_Remiria", Reaper_Remiria.NAME,  -2, Reaper_Remiria.DESCRIPTION, CardType.ATTACK, CardRarity.RARE, CardTarget.NONE, isPlus);
-        this.misc = 2;
+        this.misc = 0;
         this.baseDamage = 0;
         this.isMultiDamage = true;
-        this.baseMagicNumber = 2;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
     }
@@ -44,7 +45,7 @@ public class Reaper_Remiria extends AbstractRemiriaFate {
         AbstractDungeon.actionManager.addToBottom(new ReaperRemiAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SMASH, this.uuid));
         if(!this.isPlus){
             if(p.hasPower(BloodBruisePower.POWER_ID)) {
-                AbstractDungeon.actionManager.addToTop(new DamageAction(p, new DamageInfo(p, p.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber,
+                AbstractDungeon.actionManager.addToTop(new DamageAction(p, new DamageInfo(p, p.getPower(BloodBruisePower.POWER_ID).amount * 2,
                         this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }
         }
@@ -52,22 +53,31 @@ public class Reaper_Remiria extends AbstractRemiriaFate {
     }
 
     @Override
-    public void triggerWhenDrawn() {
-        super.triggerWhenDrawn();
+    public void triggerOnEndOfPlayerTurn() {
+        super.triggerOnEndOfPlayerTurn();
         this.use(AbstractDungeon.player, null);
     }
 
     @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return false;
+    }
+
+    @Override
     public void applyPowers() {
-        this.baseMagicNumber = this.misc;
-        this.magicNumber = this.baseMagicNumber;
         super.applyPowers();
+        this.magicNumber = this.baseMagicNumber;
+        this.magicNumber += this.misc;
+        this.isMagicNumberModified = true;
         initializeDescription();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         super.calculateCardDamage(mo);
+        this.magicNumber = this.baseMagicNumber;
+        this.magicNumber += this.misc;
+        this.isMagicNumberModified = true;
         int temp = AbstractDungeon.getCurrRoom().monsters.monsters.size();
 
         for(int i = 0; i < temp; ++i) {

@@ -54,18 +54,18 @@ public class TricksterDevil extends AbstractRemiriaFate {
                 tmp.calculateCardDamage(m);
             }
             tmp.purgeOnUse = true;
+            if(this.upgraded){
+                tmp.upgrade();
+            }
             AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, monster, tmp.energyOnUse));
-        }
-        if(this.upgraded){
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
         }
         super.use(p, m);
     }
 
     @Override
-    public void triggerWhenDrawn() {
-        super.triggerWhenDrawn();
-        this.use(AbstractDungeon.player, null);
+    public void triggerOnExhaust() {
+        super.triggerOnExhaust();
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, this.magicNumber));
     }
 
     public AbstractCard makeCopy() {
@@ -80,6 +80,7 @@ public class TricksterDevil extends AbstractRemiriaFate {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
+            this.upgradeMagicNumber(1);
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

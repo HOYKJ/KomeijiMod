@@ -71,7 +71,7 @@ public class Cripple extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(2);
+            this.upgradeDamage(3);
             this.upgradeMagicNumber(1);
         }
     }

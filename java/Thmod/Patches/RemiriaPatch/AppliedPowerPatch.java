@@ -10,7 +10,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import java.lang.reflect.Field;
 
 import Thmod.Cards.ScarletCard.uncommonCards.BathedInBlood;
+import Thmod.Power.remiria.BloodBruisePower;
 import Thmod.Power.remiria.MiserableFatePower;
+import basemod.helpers.SuperclassFinder;
 
 public class AppliedPowerPatch {
     @SpirePatch(
@@ -21,7 +23,7 @@ public class AppliedPowerPatch {
         @SpireInsertPatch(rloc=6)
         public static void Insert(ApplyPowerAction _inst) throws NoSuchFieldException, IllegalAccessException {
             Field powerToApply;
-            powerToApply = _inst.getClass().getDeclaredField("powerToApply");
+            powerToApply = SuperclassFinder.getSuperclassField(_inst.getClass(), "powerToApply");
             powerToApply.setAccessible(true);
 
             if(_inst.target.hasPower(MiserableFatePower.POWER_ID)){
@@ -37,6 +39,10 @@ public class AppliedPowerPatch {
                 if(card instanceof BathedInBlood){
                     ((BathedInBlood) card).appliedPower((AbstractPower) powerToApply.get(_inst));
                 }
+            }
+
+            if((powerToApply.get(_inst) instanceof BloodBruisePower) && !(_inst.target.hasPower(((AbstractPower)powerToApply.get(_inst)).ID)) && (!_inst.target.hasPower("Artifact"))){
+                ((BloodBruisePower) powerToApply.get(_inst)).init();
             }
         }
     }

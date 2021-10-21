@@ -21,7 +21,7 @@ public class Defend_Koishi extends AbstractKomeijiCards{
     public Defend_Koishi() {
         super("Defend_Koishi", Defend_Koishi.NAME,  1, Defend_Koishi.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF, CardSet_k.KOISHI);
         this.baseBlock = 5;
-        tags.add(BaseModCardTags.BASIC_DEFEND);
+        tags.add(CardTags.STARTER_DEFEND);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

@@ -59,7 +59,7 @@ public class DeleteSpellAction extends AbstractGameAction {
                 if(masterSpellCardFor5.contains(card)){
                     masterSpellCardFor5.removeCard(card);
                 }
-                if(this.choices.size() <= 7){
+                if(this.choices.size() <= 8){
                     AbstractCard deleteCard = null;
                     for(AbstractCard card1 : masterSpellCard.group){
                         if(card1 instanceof FusyokuKusuri){

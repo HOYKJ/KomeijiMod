@@ -36,7 +36,7 @@ public class JinkouTaiyouAction extends AbstractGameAction
                         AbstractDungeon.actionManager.addToTop(new DamageAction(target, this.info, AbstractGameAction.AttackEffect.FIRE));
                     }
                 }
-                AbstractDungeon.actionManager.addToTop(new ExhaustAction(AbstractDungeon.player, AbstractDungeon.player, 1, true, true));
+                AbstractDungeon.actionManager.addToTop(new ExhaustAction(1, true, true));
             }
         }
         tickDuration();

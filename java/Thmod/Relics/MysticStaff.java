@@ -47,8 +47,9 @@ public class MysticStaff extends AbstractThRelic {
                             if (orb2 == null)
                                 AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[4]));
                             else {
-                                AbstractDungeon.actionManager.addToTop(new ElementMixAction(orb2));
-                                AbstractDungeon.actionManager.addToTop(new ElementMixAction(orb1));
+                                ElementMixAction elementMixAction = new ElementMixAction(orb2);
+                                elementMixAction.addOrb(orb1);
+                                AbstractDungeon.actionManager.addToTop(elementMixAction);
                             }
                         } else {
                             AbstractDungeon.actionManager.addToTop(new PlayerTalkAction(p, DESCRIPTIONS[1]));

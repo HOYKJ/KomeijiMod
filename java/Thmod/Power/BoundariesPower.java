@@ -48,6 +48,11 @@ public class BoundariesPower extends AbstractPower {
     }
 
     @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        return 0;
+    }
+
+    @Override
     public int onLoseHp(int damageAmount) {
         return 0;
     }

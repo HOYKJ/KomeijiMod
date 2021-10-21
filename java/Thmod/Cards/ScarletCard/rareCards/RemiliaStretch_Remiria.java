@@ -79,8 +79,8 @@ public class RemiliaStretch_Remiria extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(6);
-            this.upgradeMagicNumber(2);
+            this.upgradeDamage(8);
+            //this.upgradeMagicNumber(2);
         }
     }
 

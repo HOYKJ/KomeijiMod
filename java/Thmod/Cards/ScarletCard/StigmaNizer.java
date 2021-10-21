@@ -29,8 +29,8 @@ public class StigmaNizer extends AbstractRemiriaCards {
 
     public StigmaNizer(boolean isPlus) {
         super("StigmaNizer", StigmaNizer.NAME,  1, StigmaNizer.DESCRIPTION, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY, isPlus);
-        this.baseDamage = 6;
-        this.baseMagicNumber = 2;
+        this.baseDamage = 7;
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
         this.isMultiDamage = true;
         this.addTips();

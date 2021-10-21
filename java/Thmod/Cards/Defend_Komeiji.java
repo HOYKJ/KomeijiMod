@@ -22,7 +22,7 @@ public class Defend_Komeiji extends AbstractKomeijiCards{
     public Defend_Komeiji() {
         super("Defend_Komeiji", Defend_Komeiji.NAME,  1, Defend_Komeiji.DESCRIPTION, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF, CardSet_k.SATORI);
         this.baseBlock = 5;
-        tags.add(BaseModCardTags.BASIC_DEFEND);
+        tags.add(CardTags.STARTER_DEFEND);
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {

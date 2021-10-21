@@ -21,8 +21,8 @@ public class ShirouKen extends AbstractThRelic {
         }
     }
 
-    public int onAttackedMonster(DamageInfo info, int damageAmount)
-    {
+    @Override
+    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
         if ((info.owner != null) && (info.type != DamageInfo.DamageType.HP_LOSS) && (info.type != DamageInfo.DamageType.THORNS))
         {
             flash();
@@ -30,6 +30,16 @@ public class ShirouKen extends AbstractThRelic {
         }
         return damageAmount;
     }
+
+//    public int onAttackedMonster(DamageInfo info, int damageAmount)
+//    {
+//        if ((info.owner != null) && (info.type != DamageInfo.DamageType.HP_LOSS) && (info.type != DamageInfo.DamageType.THORNS))
+//        {
+//            flash();
+//            return (damageAmount + this.counter - 1);
+//        }
+//        return damageAmount;
+//    }
 
     public void onPlayerEndTurn() {
         this.counter = 0;

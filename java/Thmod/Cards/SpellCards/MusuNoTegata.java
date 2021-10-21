@@ -21,7 +21,7 @@ public class MusuNoTegata extends AbstractSpellCards {
 
     public MusuNoTegata() {
         super("MusuNoTegata", MusuNoTegata.NAME,  1, MusuNoTegata.DESCRIPTION, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ALL_ENEMY);
-        this.baseMagicNumber = 45;
+        this.baseMagicNumber = 120;
         this.magicNumber = this.baseMagicNumber;
         this.pointcost = 4;
     }
@@ -32,7 +32,7 @@ public class MusuNoTegata extends AbstractSpellCards {
                 for (int i = (AbstractDungeon.getCurrRoom().monsters.monsters.size() - 1); i >= 0; i--) {
                     AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                     if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target,p,new MusuNoTegataPower(target,this.magicNumber)));
+                        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new MusuNoTegataPower(target, this.magicNumber)));
                     }
                 }
                 AbstractDungeon.actionManager.addToTop(new ReducePowerAction(p,p,"PointPower",this.pointcost));

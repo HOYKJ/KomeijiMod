@@ -27,7 +27,7 @@ public class WocchiPower extends AbstractPower {
     private boolean sekai;
     //private boolean done;
 
-    public WocchiPower(AbstractCreature owner,boolean sekai) {
+    public WocchiPower(AbstractCreature owner, boolean sekai) {
         this.name = NAME;
         this.ID = "WocchiPower";
         this.owner = owner;
@@ -53,8 +53,7 @@ public class WocchiPower extends AbstractPower {
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, p, new TimeLockPower(target)));
             }
         }
-        if (!(this.sekai)) {
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new EntanglePower(AbstractDungeon.player)));
+        if (this.sekai) {
             for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                 AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
                 if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
@@ -69,6 +68,9 @@ public class WocchiPower extends AbstractPower {
                     }
                 }
             }
+        }
+        else {
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p, new EntanglePower(AbstractDungeon.player)));
         }
         AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(p,p,"WocchiPower"));
         //this.done = true;

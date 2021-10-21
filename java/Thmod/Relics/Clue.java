@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import Thmod.ThMod;
 import Thmod.vfx.ClueEffect;
+import Thmod.vfx.LatterEffect;
 
 public class Clue extends AbstractThRelic {
     public static final String ID = "Clue";
@@ -21,7 +22,12 @@ public class Clue extends AbstractThRelic {
     public void onEquip() {
         for(AbstractRelic relic:AbstractDungeon.player.relics){
             if((relic instanceof Clue) && (relic != this)){
-                remove = true;
+                //remove = true;
+                AbstractDungeon.effectList.add(new LatterEffect(()->{
+                    relicAdd.addClue();
+                    AbstractDungeon.player.relics.remove(this);
+                    AbstractDungeon.player.reorganizeRelics();
+                }, 0));
                 relicAdd = ((Clue) relic);
             }
             else
@@ -33,10 +39,15 @@ public class Clue extends AbstractThRelic {
 
     @Override
     public void renderCounter(SpriteBatch sb, boolean inTopPanel) {
+
+    }
+
+    @Override
+    public void update() {
+        super.update();
         if(remove) {
-            relicAdd.addClue();
-            AbstractDungeon.player.relics.remove(this);
-            AbstractDungeon.player.reorganizeRelics();
+
+
         }
     }
 

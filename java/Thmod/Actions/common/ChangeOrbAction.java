@@ -1,10 +1,12 @@
 package Thmod.Actions.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import Thmod.Orbs.Helan;
 import Thmod.Orbs.NingyouOrb;
@@ -18,6 +20,7 @@ public class ChangeOrbAction extends AbstractGameAction{
     private int orbNum;
     private boolean toEmpty;
     private int setNum;
+    private static int yariCount = 0;
 
     public ChangeOrbAction(int orbNum,boolean toEmpty){
         this.orbNum = orbNum;
@@ -51,6 +54,11 @@ public class ChangeOrbAction extends AbstractGameAction{
             }
         }
         else if(this.setNum == 1){
+            yariCount ++;
+            if(yariCount >= 3){
+                yariCount = 0;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
+            }
             AbstractOrb orb = new YariNingyou();
             p.orbs.set(this.orbNum, orb);
         }
@@ -63,10 +71,20 @@ public class ChangeOrbAction extends AbstractGameAction{
             p.orbs.set(this.orbNum, orb);
         }
         else if(this.setNum == 4){
+            yariCount ++;
+            if(yariCount >= 3){
+                yariCount = 0;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
+            }
             AbstractOrb orb = new Shanghai();
             p.orbs.set(this.orbNum, orb);
         }
         else if(this.setNum == 5){
+            yariCount ++;
+            if(yariCount >= 3){
+                yariCount = 0;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
+            }
             AbstractOrb orb = new Penglai();
             p.orbs.set(this.orbNum, orb);
         }
@@ -78,6 +96,6 @@ public class ChangeOrbAction extends AbstractGameAction{
         for (int i = 0; i < p.orbs.size(); ++i) {
             (p.orbs.get(i)).setSlot(i, p.maxOrbs);
         }
-        isDone = true;
+        this.isDone = true;
     }
 }

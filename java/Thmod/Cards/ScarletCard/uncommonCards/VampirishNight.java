@@ -28,7 +28,7 @@ public class VampirishNight extends AbstractRemiriaCards {
 
     public VampirishNight(boolean isPlus) {
         super("VampirishNight", VampirishNight.NAME,  2, VampirishNight.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, isPlus);
-        this.baseMagicNumber = 10;
+        this.baseMagicNumber = 5;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
         this.attackType = AttackType.CHAIN;
@@ -38,6 +38,7 @@ public class VampirishNight extends AbstractRemiriaCards {
         for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
             AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
             if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new BloodBruisePower(target, this.magicNumber), this.magicNumber));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, p, new BloodBruisePower(target, this.magicNumber), this.magicNumber));
             }
         }
@@ -56,7 +57,7 @@ public class VampirishNight extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(4);
+            this.upgradeMagicNumber(2);
         }
     }
 

@@ -1,21 +1,20 @@
 package Thmod.Cards.ScarletCard.uncommonCards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
+import Thmod.Actions.Remiria.PlusCardAction;
+import Thmod.Cards.ScarletCard.AbstractRemiriaFate;
 import Thmod.Characters.RemiriaScarlet;
 import Thmod.Power.remiria.ScarletLordPower;
 import basemod.helpers.TooltipInfo;
 
-public class FateEnsemble extends AbstractRemiriaCards {
+public class FateEnsemble extends AbstractRemiriaFate {
     public static final String ID = "FateEnsemble";
     private static final CardStrings cardStrings;
     public static final String NAME;
@@ -27,14 +26,15 @@ public class FateEnsemble extends AbstractRemiriaCards {
     }
 
     public FateEnsemble(boolean isPlus) {
-        super("FateEnsemble", FateEnsemble.NAME,  1, FateEnsemble.DESCRIPTION, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, isPlus);
-        this.baseDamage = 8;
+        super("FateEnsemble", FateEnsemble.NAME,  -2, FateEnsemble.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY, isPlus);
+        this.baseBlock = 4;
         this.addTips();
         this.attackType = AttackType.CHAIN;
     }
 
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        this.applyPowers();
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
         if(p instanceof RemiriaScarlet) {
             for (AbstractCard card : p.hand.group) {
                 if(this.isPlus){
@@ -51,6 +51,14 @@ public class FateEnsemble extends AbstractRemiriaCards {
         super.use(p, m);
     }
 
+    @Override
+    public void triggerOnExhaust() {
+        super.triggerOnExhaust();
+        AbstractDungeon.actionManager.addToBottom(new PlusCardAction(AbstractDungeon.player.drawPile, true, this, true));
+        AbstractDungeon.actionManager.addToBottom(new PlusCardAction(AbstractDungeon.player.hand, true, this, true));
+        AbstractDungeon.actionManager.addToBottom(new PlusCardAction(AbstractDungeon.player.discardPile, true, this, true));
+    }
+
     public AbstractCard makeCopy() {
         if(AbstractDungeon.player != null){
             if((AbstractDungeon.player instanceof RemiriaScarlet) && (AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID))){
@@ -63,7 +71,7 @@ public class FateEnsemble extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeDamage(4);
+            this.upgradeBlock(4);
         }
     }
 

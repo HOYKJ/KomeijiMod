@@ -27,14 +27,15 @@ public class YoungDemonLord extends AbstractRemiriaCards implements CustomSavabl
     public static final String DESCRIPTION;
     public static final String[] EXTENDED_DESCRIPTION;
     public int[] mis2 = {1};
+    private boolean upgradedMis = false;
 
     public YoungDemonLord() {
         this(false);
     }
 
     public YoungDemonLord(boolean isPlus) {
-        super("YoungDemonLord", YoungDemonLord.NAME,  1, YoungDemonLord.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
-        this.misc = 4;
+        super("YoungDemonLord", YoungDemonLord.NAME,  2, YoungDemonLord.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
+        this.misc = 6;
         this.baseBlock = this.misc;
         this.mis2[0] = 1;
         this.baseMagicNumber = this.mis2[0];
@@ -87,7 +88,19 @@ public class YoungDemonLord extends AbstractRemiriaCards implements CustomSavabl
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(1);
+            this.mis2[0] += 1;
+            this.upgradedMis = true;
+            this.baseMagicNumber = this.mis2[0];
+            this.magicNumber = this.baseMagicNumber;
+            this.isMagicNumberModified = true;
+        }
+    }
+
+    @Override
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if(this.upgradedMis){
+            this.mis2[0] -= 1;
         }
     }
 

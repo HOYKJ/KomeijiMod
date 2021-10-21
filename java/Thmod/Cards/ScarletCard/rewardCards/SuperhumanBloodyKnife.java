@@ -28,29 +28,29 @@ public class SuperhumanBloodyKnife extends AbstractRemiriaCards {
     }
 
     public SuperhumanBloodyKnife(boolean isPlus) {
-        super("SuperhumanBloodyKnife", SuperhumanBloodyKnife.NAME,  3, SuperhumanBloodyKnife.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY, isPlus);
+        super("SuperhumanBloodyKnife", SuperhumanBloodyKnife.NAME,  2, SuperhumanBloodyKnife.DESCRIPTION, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY, isPlus);
         this.baseDamage = 6;
-        this.baseMagicNumber = 3;
+        this.baseMagicNumber = 4;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
         this.attackType = AttackType.HEAVY;
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        if(AbstractDungeon.player.hasPower(BloodBruisePower.POWER_ID)){
-            this.damage += AbstractDungeon.player.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
-        }
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-            if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                if(target.hasPower(BloodBruisePower.POWER_ID)){
-                    this.damage += target.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
-                }
-            }
-        }
-    }
+//    @Override
+//    public void applyPowers() {
+//        super.applyPowers();
+//        if(AbstractDungeon.player.hasPower(BloodBruisePower.POWER_ID)){
+//            this.damage += AbstractDungeon.player.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
+//        }
+//        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+//            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+//            if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+//                if(target.hasPower(BloodBruisePower.POWER_ID)){
+//                    this.damage += target.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
@@ -58,12 +58,19 @@ public class SuperhumanBloodyKnife extends AbstractRemiriaCards {
         if(AbstractDungeon.player.hasPower(BloodBruisePower.POWER_ID)){
             this.damage += AbstractDungeon.player.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
         }
-        for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
-            AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-            if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
-                if(target.hasPower(BloodBruisePower.POWER_ID)){
-                    this.damage += target.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
+        if(this.isPlus) {
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractMonster target = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                if ((!(target.isDying)) && (target.currentHealth > 0) && (!(target.isEscaping))) {
+                    if (target.hasPower(BloodBruisePower.POWER_ID)) {
+                        this.damage += target.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
+                    }
                 }
+            }
+        }
+        else {
+            if (mo.hasPower(BloodBruisePower.POWER_ID)) {
+                this.damage += mo.getPower(BloodBruisePower.POWER_ID).amount * this.magicNumber;
             }
         }
     }
@@ -71,11 +78,11 @@ public class SuperhumanBloodyKnife extends AbstractRemiriaCards {
     public void use(final AbstractPlayer p, final AbstractMonster m) {
         if(m.hasPower(BloodBruisePower.POWER_ID)){
             AbstractDungeon.actionManager.addToBottom(new BloodyKnifeAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                    AbstractGameAction.AttackEffect.SLASH_HEAVY, m.getPower(BloodBruisePower.POWER_ID).amount, this.isPlus));
+                    AbstractGameAction.AttackEffect.SLASH_HEAVY, m.getPower(BloodBruisePower.POWER_ID).amount, false));
         }
         else {
             AbstractDungeon.actionManager.addToBottom(new BloodyKnifeAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                    AbstractGameAction.AttackEffect.SLASH_HEAVY, 0, this.isPlus));
+                    AbstractGameAction.AttackEffect.SLASH_HEAVY, 0, false));
         }
         super.use(p, m);
     }
@@ -92,7 +99,7 @@ public class SuperhumanBloodyKnife extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeMagicNumber(1);
+            this.upgradeMagicNumber(2);
         }
     }
 

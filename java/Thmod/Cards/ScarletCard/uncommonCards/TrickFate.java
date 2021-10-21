@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BlurPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import Thmod.Actions.Remiria.RemoveDebuffsActionChange;
 import Thmod.Cards.ScarletCard.AbstractRemiriaCards;
@@ -30,7 +31,7 @@ public class TrickFate extends AbstractRemiriaCards {
 
     public TrickFate(boolean isPlus) {
         super("TrickFate", TrickFate.NAME,  1, TrickFate.DESCRIPTION, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, isPlus);
-        this.baseBlock = 9;
+        //this.baseBlock = 9;
         this.baseMagicNumber = 2;
         this.magicNumber = this.baseMagicNumber;
         this.addTips();
@@ -47,7 +48,8 @@ public class TrickFate extends AbstractRemiriaCards {
     }
 
     public void triggerOnExhaust() {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
+        //AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, this.magicNumber), this.magicNumber));
     }
 
     public AbstractCard makeCopy() {
@@ -62,7 +64,7 @@ public class TrickFate extends AbstractRemiriaCards {
     public void upgrade() {
         if (!(this.upgraded)) {
             this.upgradeName();
-            this.upgradeBlock(4);
+            //this.upgradeBlock(4);
             this.upgradeMagicNumber(1);
         }
     }

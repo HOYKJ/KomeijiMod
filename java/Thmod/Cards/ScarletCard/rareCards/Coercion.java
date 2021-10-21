@@ -46,12 +46,6 @@ public class Coercion extends AbstractRemiriaFate {
         super.use(p, m);
     }
 
-    @Override
-    public void triggerWhenDrawn() {
-        super.triggerWhenDrawn();
-        this.use(AbstractDungeon.player, null);
-    }
-
     public AbstractCard makeCopy() {
         if(AbstractDungeon.player != null){
             if((AbstractDungeon.player instanceof RemiriaScarlet) && (AbstractDungeon.player.hasPower(ScarletLordPower.POWER_ID))){

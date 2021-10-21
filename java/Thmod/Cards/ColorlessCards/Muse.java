@@ -77,7 +77,7 @@ public class Muse extends AbstractColorlessCards {
 
     public void triggerOnEndOfTurnForPlayingCard()
     {
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this,1));
+        AbstractDungeon.actionManager.addToTop(new MakeTempCardInDiscardAction(this,1));
     }
 
     public AbstractCard makeCopy() {

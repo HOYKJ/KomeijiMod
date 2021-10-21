@@ -50,7 +50,8 @@ public class CS_Reisen extends AbstractBlessingCard
         AbstractDungeon.actionManager.addToBottom(new LatterAction(()-> {
             ArrayList<AbstractCard> cards = new ArrayList<>();
             for (AbstractCard card : p.hand.group) {
-                if (!(card instanceof AbstractSpellCards) && !(card instanceof AbstractElementSpellCards) && !(card instanceof AbstractDeriveCards) && !(card instanceof AbstractItemCards)) {
+                if (!(card instanceof AbstractSpellCards) && !(card instanceof AbstractElementSpellCards) && !(card instanceof AbstractDeriveCards) && !(card instanceof AbstractItemCards)
+                        && !(card instanceof AbstractBlessingCard)) {
                     cards.add(card);
                 }
             }
