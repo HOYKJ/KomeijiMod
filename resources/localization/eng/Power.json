@@ -612,8 +612,8 @@
   "LanPower": {
     "NAME": "Shikigami",
     "DESCRIPTIONS": [
-      "Gain #b10 #yBlock for you. NL Apply #b2 #yWeak to ALL enemies.",
-      "Gain #b10 #yBlock for you. NL Apply #b2 #yVulnerable .",
+      "Gain #b10 #yBlock for you. NL Apply #b3 #yWeak to ALL enemies.",
+      "Gain #b10 #yBlock for you. NL Apply #b3 #yVulnerable .",
       "Gain #b10 #yBlock and Apply #b2 #yStrength for you."
     ]
   }

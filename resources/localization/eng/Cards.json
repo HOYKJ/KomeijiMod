@@ -219,7 +219,7 @@
     "MusuNoYume":{
       "NAME": "Rec\"Ageless Dream\"",
       "DESCRIPTION": 
-	"At the end of your next 3 turns, deal !M! Static damage. Ends early if you lose HP."
+	"At the end of your next 3 turns, deal !M! Static damage. Ends early if you lose HP. Exhaust."
     },
     "NarrowSpark":{
       "NAME": "Rec\"Narrow Spark\"",
@@ -610,7 +610,7 @@
   "MusuNoTegata": {
     "NAME": "Rec\"Ticket to the Ageless Land\"",
     "DESCRIPTION":
-    "After 3 turns, deal !M! Static damage and apply 1 Vulnerable to ALL enemies. NL Effect ends when you lose HP. NL Replace. cost 4P."
+    "After 6 turns, deal !M! Static damage and apply 2 Vulnerable to ALL enemies. NL Effect ends when you lose HP. NL Replace. cost 4P."
   },
   "RapurasuNoMa": {
     "NAME": "Rec\"Laplace's Demon\"",
@@ -913,7 +913,7 @@
   "RanYakumo": {
     "NAME": "Shikigami \"Ran Yakumo\"",
     "DESCRIPTION":
-    "Summon the Ran. NL Whenever you play this card, increase its cost by [E] for this combat. Ethereal."
+    "Summon the Ran. NL Whenever you play this card, increase its cost by [E] for this combat. NL Nullify."
   },
   "IdRelease": {
     "NAME": "Rec\"Release of the Id\"",
@@ -972,7 +972,7 @@
   "SeekerWire":{
     "NAME": "Rec\"Seeker Wire\"",
     "DESCRIPTION":
-    "Gain !M! slots. NL Nullify. Ethereal. Association."
+    "Gain !M! slots. NL If you have 10 slots, Exhaust this and gain 1 Focus. Association."
   },
 
   "ArtfulChanter":{
@@ -1216,7 +1216,7 @@
   "ElementInvoke":{
     "NAME": "\"Element Invoke\"",
     "DESCRIPTION":
-    "Invoke your next !M! Element orbs, make their Resonance effect. NL Ethereal.",
+    "Invoke your next !M! Element orbs, make their Resonance effect.",
     "UPGRADE_DESCRIPTION":
     "Invoke your next !M! Element orbs, make their Resonance effect."
   },

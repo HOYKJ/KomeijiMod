@@ -75,7 +75,7 @@
         "Spear Doll",
         "spear doll"
       ],
-      "DESCRIPTION": "Spear Doll will provide #yStrength for you."
+      "DESCRIPTION": "Spear Doll will provide #yStrength for you. Whenever you get #b3 Spear Doll will give you extra #b1 #yStrength."
     },
     {
       "NAMES": [
@@ -117,7 +117,7 @@
         "Extra Action",
         "extra action"
       ],
-      "DESCRIPTION": "Spear Doll: Deal 4 damage to a random enemy. Shield Doll: Gain 2 Block for you. Archer Doll: heal 1 HP for you."
+      "DESCRIPTION": "Spear Doll: Deal 4 damage to a random enemy. Shield Doll: Gain 2 Block for you. Every 2 Archer Doll: heal 1 HP for you."
     },
     {
       "NAMES": [

@@ -9,9 +9,10 @@
   "BloodBruisePower": {
     "NAME": "血痕",
     "DESCRIPTIONS": [
-      "回合结束时,每 #b2 点 #r血痕 会流失 #r1 点生命.(每 #b12 层伤害翻1.5倍)",
+      "回合结束时,每 #b2 点 #r血痕 会流失 #r1 点生命.(每 #b12 层伤害翻1.5倍).",
       "吸血鬼","你身上的每层 #r血痕 会使你获得 #b1.5% 的吸血(对有 #r血痕 的目标有效).",
-      "你现在有 #b", "% 的吸血.(最多 #b30% )"
+      "你现在有 #b", "% 的吸血.(最多 #b30% )",
+      "将受到 #r", " 点伤害."
     ]
   },
   "BloodCoagulationPower": {
@@ -59,7 +60,8 @@
   "CurseofVladTepesPower": {
     "NAME": "弗拉德·特佩斯的诅咒",
     "DESCRIPTIONS": [
-      "每当你造成伤害,给予目标1层血痕."
+      "每当你造成伤害,给予目标 #b",
+      " 层 #r血痕 ."
     ]
   },
   "FateMeisterPower": {
@@ -72,8 +74,8 @@
   "FitfulNightmarePower": {
     "NAME": "Fitful Nightmare",
     "DESCRIPTIONS": [
-      "持续 #y猩红领主 状态.每隔 #b1 回合,在回合开始时选择:将 #b1 张 #p诅咒 加入你的弃牌堆;结束此状态.",
-      "将1张诅咒加入你的弃牌堆.","结束状态."
+      "每隔 #b1 回合,进入 #y猩红领主 状态.间隔回合获得 #b1 层 #b虚弱 与 #b脆弱 .",
+      "持续状态.","结束状态."
     ]
   },
   "MillenniumVampirePower": {
@@ -105,7 +107,7 @@
   "RemiliaStalkerPower": {
     "NAME": "Remilia Stalker",
     "DESCRIPTIONS": [
-      "你每回合打出的第1张卡若造成了 #b伤害 ,给予你等同伤害值的 #b格挡 ."
+      "你每回合打出的第 #b1 张卡若造成了 #b伤害 ,给予你等同伤害值的 #b格挡 ."
     ]
   },
   "RemiliaStretchPower": {
@@ -123,7 +125,7 @@
     ]
   },
   "ScarletLordPower": {
-    "NAME": "猩红领主",
+    "NAME": "ScarletLord",
     "DESCRIPTIONS": [
       "你的所有卡维持 #y解封 ,本回合再打出 #b",
       " 张卡后弃置你的所有卡."
@@ -132,14 +134,14 @@
   "ServantFlierPower": {
     "NAME": "Servant Flier",
     "DESCRIPTIONS": [
-      "每当你造成伤害, 减少 #b1 层并给予目标 #b2 或 #b3 层 #r血痕 ."
+      "每当你造成伤害, 减少 #b1 层并在本回合给予你 #b1 点 #y力量 ."
     ]
   },
   "StarOfDavidPower": {
     "NAME": "Star of David",
     "DESCRIPTIONS": [
-      "回合开始时选择至多 #b",
-      " 手牌消耗,将等量的随机卡加入手牌并将它们 #y解封 ."
+      "回合开始时从抽牌堆选择至多 #b",
+      " 张卡消耗,将等量的随机 #y命运 卡加入抽牌堆."
     ]
   },
   "TearingPower": {

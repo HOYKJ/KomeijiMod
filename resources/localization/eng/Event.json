@@ -2,7 +2,7 @@
   "RoomOfDemon": {
     "NAME": "Evil Room",
     "DESCRIPTIONS": [
-      "You find a room with a lot of burning #ytorches, you can sense a disturbing feeling. NL You want to leave, but the door is @closed@ @heavily@ , you scrutinize this room. NL Only find a #yparchment with a #ycross pining it on the floor...",
+      "You find a room with a lot of burning #ytorches, you can sense a disturbing feeling. NL You want to leave, but the door is @closed@ @heavily@ , you scrutinize this room. NL Only find a #yparchment with a #ycross pinning it on the floor...",
       "You look attentively at this #yparchment, some #rblood words emerge: NL  #r@Ph'nglui.mglw'nafh.Remilia.D'mansion.wgah'nagl.fhtagn@  NL At this moment, ALL #ytorches are extinguished... NL  ~On~ ~this~ ~parchment...~ ~a~ ~askew~ ~triangle~ ~emerge~",
       "You pull out the #ycross, this moment the door is @heavily@ opened. You run out in hash.",
       "You can feel a #p~cold~ #p~hint~ in back. You look backward, and realize that the door is opened. NL So you leave immediately."
@@ -35,7 +35,7 @@
       "You think don't probe what is in it is better."
     ],
     "OPTIONS": [
-      "[Read The Notebook] #bleaf #bthrough. ",
+      "[Read The Notebook] #bLeaf #bthrough. ",
       "[Screw The Pocket Watch] #gHeal  #g10  #gHP. ",
       "[Screw The Pocket Watch] #gObtain #ga #gRelic #g\"Reverse #gWatch\"",
       "[Take The Card] #gObtain #ga #gCard #gRec\"Perfect #gMaid\" ",

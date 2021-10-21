@@ -3,7 +3,7 @@
       "NAME": "Spell Card Rule Manual",
       "FLAVOR": "A mysterious power keeps Spell Card Rule's work.",
       "DESCRIPTIONS": [
-        "With this, you can use the #ySpell #yCard #yRule. #yActivate : get a SP card.(Limit #b1 time each turn).",
+        "With this, you can use the #ySpell #yCard #yRule. #yActivate: get a SP card.(Limit #b1 time each turn).",
         "Don't continuously click please.",
         "I don't have enough P point.",
         "It's not my turn.",
@@ -59,7 +59,7 @@
     "NAME": "Spell Card Extend",
     "FLAVOR": "SP card in it will suddenly appear in Spell Card Rule Manual ready to be used...",
     "DESCRIPTIONS": [
-      "If you have at least #b2 #rP point,you can choose from #b5 cards when choose SP card."
+      "If you have at least #b2 #rP point,you can choose from #b6 cards when choose SP card."
     ]
   },
   "ShirouKen": {
@@ -297,10 +297,10 @@
       "Upon pickup, choose 1 card from your deck, get effect bases on thar card.",
       "Future card rewards have #b1 additional card to choose from.",
       "You can see enemy #bIntents and ALL units' status again.",
-      "At start of turn, if you have #yShield #yDoll , #ySpear #yDoll and #yArcher #yDoll , gain [E] .",
+      "Every 3 Simple Doll you gained can be armed immediately.",
       "When you draw, deal #b3 damage to a random enemy.",
       "Whenever you blocked attack, gain #b3 #yBlock at start of next turn.",
-      "Whenever you gain #yBlock , deal #b1 damage to a random enemy.",
+      "Whenever you gain #yBlock , deal #b2 damage to a random enemy.",
       "Apply #b1 #yBound #ySpirit to a random enemy at start of turn..",
       "Gain extra #b15 gold when you win a combat.",
       "Gain #b8 Block at end of your turn, whenever you played #b1 #yAttack , reduce by #b1 .",
@@ -308,7 +308,7 @@
       "Your applied #yWeak and #yVulnerable will increase by #b1 .",
       " #yActivate : Choose #b1 card in your hand, make a copy and add into discard pile.(Limited #b1 time per combat)",
       " #yActivate : Add #b1 random card into your hand, it cost #b0 this turn.(Limited #b1 time per combat)",
-      "If you didn't be attacked, draw #b1 card at start of next turn.",
+      "If you didn't be attacked, draw #b2 card at start of next turn.",
       "At start of turn, a random unit lose or heal #b2 hp.",
       "If you didn't play any #yAttack , gain #b1 #yStrength at start of next turn.",
       "When a enemy with #yAbnormity attack you, you heal #b1 hp.",
